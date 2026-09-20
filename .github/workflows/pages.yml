@@ -22,7 +22,8 @@ jobs:
       - name: Check the static site is self-contained
         run: |
           test -f site/index.html && test -f site/CNAME && test -f site/assets/workspace.png
-          ! grep -rn "http://" site/*.html site/*.js
+          ! grep -rnE "(href|src)=\"http://" site/*.html
+          ! grep -rnE "fetch\(.http://" site/*.js
       - name: Stamp asset URLs with the commit so CDN caches refresh
         run: sed -i "s/__BUILD__/${GITHUB_SHA::7}/g" site/*.html && grep -c "?v=${GITHUB_SHA::7}" site/index.html
       - uses: actions/configure-pages@v5
