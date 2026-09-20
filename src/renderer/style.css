@@ -101,3 +101,17 @@ header>button{flex-shrink:0}
 .range-marker{position:absolute;bottom:0;font:10px Inter,sans-serif;background:#287cdd;color:white;border-radius:3px 3px 0 0;padding:1px 3px;z-index:1}.range-marker.end{transform:translateX(-100%)}
 .track-list-trigger{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13px;padding:6px 11px;white-space:nowrap}.track-list-trigger svg{width:15px;height:15px;flex-shrink:0}
 .recommendation-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;min-height:28px}.recommendation-row p{font-size:12px;margin:0}.recommendation-row button{margin-left:auto;background:transparent;border:0;color:#70abec;font-size:12px;padding:4px 0}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}.export-note{font-size:12px;color:#a0aab8}
+/* Modal actions follow Pen Button / Primary and Button / Secondary. */
+.dialog :where(button:not(.switch):not(.gain-value):not(.drag-handle)){min-height:34px;padding:7px 14px;border-radius:9px;border:1px solid #3a4350;background:#292f38;color:#f3f6fb;font-size:12px;font-weight:500;line-height:18px;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background 120ms ease,border-color 120ms ease,transform 120ms ease}
+.dialog :where(button:not(.switch):not(.gain-value):not(.drag-handle)):hover:not(:disabled){background:#354253;border-color:#536276}
+.dialog button.primary{background:#287cdd!important;border-color:#4998f1!important}.dialog button.primary:hover:not(:disabled){background:#3389e8!important}
+.dialog button:active:not(:disabled):not(.switch):not(.gain-value):not(.drag-handle){transform:translateY(1px)}
+.dialog .dialog-actions{gap:8px;margin-top:20px}.dialog-actions>button{min-width:80px}
+.dialog .track-list-row>button:not(.switch){min-height:28px;width:28px;height:28px;padding:5px}
+.dialog .stem-categories button,.dialog .stem-presets button,.dialog .selected-stems button{min-height:28px;padding:4px 10px}
+.dialog .stem-categories button{background:transparent;border-color:transparent}
+.dialog .first-beat-row>button,.dialog .recommendation-row>button{background:transparent;border-color:transparent;color:#70abec}
+.dialog .recommendation-row>button{min-height:28px;padding:4px 8px}
+.dialog .delete-confirm>button:last-child,.dialog button.danger{background:#553039;border-color:#9b5364;color:#ffd5de}
+@media(prefers-reduced-motion:reduce){.dialog button{transition:none!important}.dialog button:active{transform:none!important}}
