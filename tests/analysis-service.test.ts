@@ -7,7 +7,7 @@ import {AnalysisService,type AnalysisRunner} from '../src/main/analysis'
 import {ProjectStore} from '../src/main/store'
 import type {Project} from '../src/shared/domain'
 import type {AnalysisTask} from '../src/shared/api'
-test('explicit analysis persists recommendations without overwriting manual settings and preserves failed fields',async()=>{
+test('explicit analysis applies recommendations over manual settings, keeps values for failed fields, and stores the recommendation',async()=>{
  const root=await mkdtemp(path.join(tmpdir(),'printemps-analysis-'))
  try{
   const store=new ProjectStore(root);await store.initialize()
@@ -26,9 +26,12 @@ test('explicit analysis persists recommendations without overwriting manual sett
   async function run(){const completed=new Promise<AnalysisTask>(resolve=>{done=resolve});await service.start(project.id);const result=await completed;await expect.poll(()=>service.busy).toBe(false);return result}
   expect((await run()).phase).toBe('complete')
   let saved=await store.load(project.id)
-  expect(saved.music).toEqual(project.music);expect(saved.name).toBe('Renamed during analysis');expect(saved.recommendation).toEqual({bpm:120,key:'C major',meter:'4/4',firstBeat:0})
+  expect(saved.music).toEqual({bpm:120,key:'C major',meter:'4/4',firstBeat:0});expect(saved.name).toBe('Renamed during analysis');expect(saved.recommendation).toEqual({bpm:120,key:'C major',meter:'4/4',firstBeat:0})
+  await store.update(project.id,current=>({...current,music:{...current.music,bpm:99,key:'D minor'}}))
   mode='partial';await run();saved=await store.load(project.id)
   expect(saved.recommendation).toEqual({bpm:120,key:'G major',meter:'4/4',firstBeat:0});expect(saved.analysis?.errors?.beats).toBe('fixture failure')
+  expect(saved.music).toEqual({bpm:99,key:'G major',meter:'4/4',firstBeat:0})
+  mode='success';await run();expect((await store.load(project.id)).music).toEqual({bpm:120,key:'C major',meter:'4/4',firstBeat:0});saved=await store.load(project.id)
   mode='cancel';expect((await run()).phase).toBe('cancelled');expect((await store.load(project.id)).recommendation).toEqual(saved.recommendation)
  }finally{await rm(root,{recursive:true,force:true})}
 })

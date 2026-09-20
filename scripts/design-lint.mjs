@@ -16,6 +16,7 @@ const lines=css.split('\n')
 lines.forEach((line,i)=>{
  const n=i+1
  for(const m of line.matchAll(/#[0-9a-fA-F]{3,8}\b|\brgba?\(/g))findings.push({rule:'no-raw-colors',file:'src/renderer/style.css',line:n,detail:m[0]})
+ if(!/design-lint: icon-artwork/.test(lines[i-1]||''))for(const m of line.matchAll(/%23[0-9a-fA-F]{3,8}\b/g))findings.push({rule:'no-raw-colors',file:'src/renderer/style.css',line:n,detail:m[0]+' (data URI; mark the preceding line with “design-lint: icon-artwork” if it is icon artwork)'})
  for(const m of line.matchAll(/font-size:\s*([0-9.]+)px/g))if(!typeScale.has(Number(m[1])))findings.push({rule:'no-arbitrary-values',file:'src/renderer/style.css',line:n,detail:`font-size ${m[1]}px`})
  for(const m of line.matchAll(/\bfont:\s*(?:[a-z0-9 ]*?)([0-9.]+)px/g))if(!typeScale.has(Number(m[1])))findings.push({rule:'no-arbitrary-values',file:'src/renderer/style.css',line:n,detail:`font ${m[1]}px`})
  for(const m of line.matchAll(/border-radius:\s*([0-9.]+)px/g))if(!radiusScale.has(Number(m[1])))findings.push({rule:'no-arbitrary-values',file:'src/renderer/style.css',line:n,detail:`border-radius ${m[1]}px`})

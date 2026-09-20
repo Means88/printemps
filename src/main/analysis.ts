@@ -49,11 +49,14 @@ export class AnalysisService {
    await this.store.update(projectId,project=>{
     controller.signal.throwIfAborted()
     if(project.tracks.find(t=>t.role==='original')?.assetId!==assetId)throw new Error('Original audio changed')
-    // Analysis stores recommendations; applying them is an explicit Reset action.
+    // Analysis applies its recommendation right away, replacing manual values (user decision 2026-09-20); fields whose analysis failed keep the current value and Reset restores the recommendation later.
     const merged={...recommendation}
     if(result.errors?.beats)for(const field of ['bpm','meter','firstBeat'] as const){const value=project.recommendation?.[field];if(value!=null)Object.assign(merged,{[field]:value})}
     if(result.errors?.key&&project.recommendation?.key)merged.key=project.recommendation.key
-    return {...project,recommendation:merged,analysis:{analyzedAt:new Date().toISOString(),warnings,beatCount:result.beats.length,downbeatCount:result.downbeats.length,keyStrength:result.errors?.key?project.analysis?.keyStrength??null:result.strength,errors:result.errors},updatedAt:new Date().toISOString()}
+    const music={...project.music}
+    if(!result.errors?.beats)for(const field of ['bpm','meter','firstBeat'] as const){const value=merged[field];if(value!=null)Object.assign(music,{[field]:value})}
+    if(!result.errors?.key&&merged.key!=null)music.key=merged.key
+    return {...project,music,recommendation:merged,analysis:{analyzedAt:new Date().toISOString(),warnings,beatCount:result.beats.length,downbeatCount:result.downbeats.length,keyStrength:result.errors?.key?project.analysis?.keyStrength??null:result.strength,errors:result.errors},updatedAt:new Date().toISOString()}
    })
    this.emit({phase:'complete'})
   }catch(e){this.emit({phase:controller.signal.aborted?'cancelled':'failed',error:e instanceof Error?e.message:String(e)})}
