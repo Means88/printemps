@@ -95,6 +95,7 @@ export class ProjectStore {
   /** Startup only, before accepting jobs. Preserve assets and unreadable projects. */
   async recoverInterruptedTasks() {
     for(const project of await this.list()) {
+      if(project.lastSeparation?.state==='running')await this.update(project.id,current=>({...current,lastSeparation:{...current.lastSeparation!,state:'interrupted',finishedAt:new Date().toISOString()}}))
       await fs.rm(path.join(this.projectDirectory(project.id),'tasks'),{recursive:true,force:true})
     }
   }

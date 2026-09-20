@@ -77,3 +77,5 @@ header>button{flex-shrink:0}
 .model-cache-location{font-size:12px;overflow-wrap:anywhere;margin:12px 0;color:#a0aab8}.model-library-status p{font-size:12px}.model-library-status button{margin-top:12px}
 .history-pagination{display:flex;align-items:center;gap:12px;margin-top:24px}.history-pagination>span{margin-right:auto;color:#a0aab8;font-size:12px}
 .model-active-task{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px;background:#172536;border:1px solid #355274;border-radius:10px;font-size:12px;flex-wrap:wrap}.model-active-task progress{flex:1;min-width:80px}.model-active-task button{margin:0}
+
+.history-tools{flex-wrap:wrap}.history-tools input{min-width:220px}.history-inspector details{font-size:12px;color:#a0aab8}

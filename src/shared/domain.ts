@@ -20,6 +20,11 @@ export const projectSchema = z.object({
   sourceName: z.string(), createdAt: z.string(), updatedAt: z.string(),
   tracks: z.array(trackSchema), music: musicalSchema,
   recommendation: musicalSchema.partial().nullable(),
+  lastSeparation: z.object({
+    id:z.string().uuid(),sourceId:z.string().uuid(),targets:z.array(z.string()),
+    state:z.enum(['running','complete','failed','cancelled','interrupted']),
+    completed:z.number().int().nonnegative(),startedAt:z.string(),finishedAt:z.string().optional(),error:z.string().optional()
+  }).optional(),
   analysis: z.object({analyzedAt:z.string(),warnings:z.array(z.string()),beatCount:z.number().int().nonnegative(),downbeatCount:z.number().int().nonnegative(),keyStrength:z.number().nullable(),errors:z.object({beats:z.string().optional(),key:z.string().optional()}).optional()}).optional(),
   metronome: z.boolean(), clickGain: z.number().min(-60).max(0),
   timeFormat: z.enum(['time','beats']), monitor: z.enum(['original','stems']),

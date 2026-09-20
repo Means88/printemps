@@ -13,6 +13,10 @@ let project:Project={schemaVersion:1,id:uuid(),name:en?'Midnight Session — lay
 const count=Math.min(40,Math.max(1,Number(new URLSearchParams(location.search).get('projects'))||1))
 let projects=Array.from({length:count},(_,i)=>i===0?project:{...structuredClone(project),id:uuid(),name:`${en?'Layout fixture':'布局示例'} ${String(i+1).padStart(2,'0')}`,updatedAt:new Date(Date.now()-i*60000).toISOString()}),settings:Settings={language:en?'en':'zh',device:'cpu',modelDirectory:'',exportDirectory:''}
 let archived:{archiveId:string;project:Project}[]=[]
+if(new URLSearchParams(location.search).get('taskStates')==='1'){
+ const states=['complete','failed','cancelled','interrupted','running'] as const
+ projects=projects.map((p,i)=>({...p,lastSeparation:{id:uuid(),sourceId:p.tracks[0].id,targets:['drums','bass'],state:states[i%5],completed:i%5===0?2:1,startedAt:p.createdAt,finishedAt:i%5===4?undefined:p.updatedAt,error:i%5===1?'Fixture: second target failed':undefined}}))
+}
 const noopSubscription=()=>()=>{}
 const modelListeners=new Set<Parameters<DesktopAPI['onModelProgress']>[0]>()
 const cachedModels=new Set(manifest.models.filter((_,i)=>i%4===0).map(m=>m.id))

@@ -29,12 +29,17 @@ export class SeparationService {
    const project=await this.store.load(projectId),source=project.tracks.find(t=>t.id===sourceId)
    if(!source)throw new Error('Source track no longer exists')
    this.task={id:randomUUID(),projectId,sourceId,phase:'waiting',progress:0,targets:[...ids]}
+   await this.store.update(projectId,current=>({...current,lastSeparation:{id:this.task!.id,sourceId,targets:[...ids],state:'running',completed:0,startedAt:new Date().toISOString()},updatedAt:new Date().toISOString()}))
    const initial={...this.task}
    void this.execute(cache,ids,source,device,controller)
    return initial
   }catch(e){this.controller=null;throw e}
  }
  private emit(update:Partial<SeparationTask>){this.task={...this.task!,...update};this.notify({...this.task})}
+ private async finish(state:'complete'|'failed'|'cancelled',error?:string){
+  const task=this.task!
+  await this.store.update(task.projectId,current=>current.lastSeparation?.id!==task.id?current:{...current,lastSeparation:{...current.lastSeparation,state,finishedAt:new Date().toISOString(),error},updatedAt:new Date().toISOString()})
+ }
  private async execute(cache:ModelCache,ids:string[],source:Track,device:Settings['device'],controller:AbortController){
   const {projectId,id}=this.task!,signal=controller.signal
   const directory=path.join(this.store.projectDirectory(projectId),'tasks',id),created:string[]=[]
@@ -51,7 +56,7 @@ export class SeparationService {
     targets.push({id:stem,...files});received+=cache.entry(stem).totalBytes
    }
    signal.throwIfAborted();this.emit({phase:'separating',progress:0,stem:ids[0]})
-   if(source.role==='original'){await this.executeOriginal(projectId,source,targets,directory,device,signal);committed=true;this.emit({phase:'complete',progress:1});return}
+   if(source.role==='original'){await this.executeOriginal(projectId,source,targets,directory,device,signal);committed=true;await this.finish('complete');this.emit({phase:'complete',progress:1});return}
    const result=await this.runner(this.python,this.script,{input:this.store.assetPath(projectId,source.assetId),output:directory,device,targets},signal,p=>this.emit({phase:'separating',progress:p.progress,stem:p.stem}))
    const outputs:Track[]=[]
    const en=(await this.store.settings()).language==='en'
@@ -67,11 +72,16 @@ export class SeparationService {
    await this.store.update(projectId,current=>{
     signal.throwIfAborted()
     if(current.tracks.find(t=>t.id===source.id)?.assetId!==source.assetId)throw new Error('Source track changed')
-    return {...commitSeparation(current,source.id,outputs),monitor:'stems'}
+    return {...commitSeparation(current,source.id,outputs),monitor:'stems',lastSeparation:{...current.lastSeparation!,completed:ids.length}}
    })
    committed=true
+   await this.finish('complete')
    this.emit({phase:'complete',progress:1})
-  }catch(e){this.emit({phase:signal.aborted?'cancelled':'failed',error:e instanceof Error?e.message:String(e)})}
+  }catch(e){
+   const phase=signal.aborted?'cancelled':'failed';let error=e instanceof Error?e.message:String(e)
+   try{await this.finish(phase,error)}catch(saveError){error+=`; Could not save task status: ${String(saveError)}`}
+   this.emit({phase,error})
+  }
   finally{
    if(!committed)await Promise.all(created.map(file=>fs.rm(file,{force:true}).catch(()=>{})))
    await fs.rm(directory,{recursive:true,force:true}).catch(()=>{})
@@ -101,13 +111,13 @@ export class SeparationService {
     await this.store.update(projectId,current=>{
      signal.throwIfAborted()
      if(current.tracks.find(t=>t.id===source.id)?.assetId!==source.assetId)throw new Error('Source track changed')
-     if(!previousRemainder)return {...commitSeparation(current,source.id,outputs),monitor:'stems'}
+     if(!previousRemainder)return {...commitSeparation(current,source.id,outputs),monitor:'stems',lastSeparation:{...current.lastSeparation!,completed:index+1}}
      const position=current.tracks.findIndex(t=>t.id===previousRemainder.id),last=current.tracks.findIndex(t=>t.id===lastStemId)
      if(position<0||last<0)throw new Error('Progressive results changed')
      const tracks=[...current.tracks],old=tracks[position]
      tracks[position]={...outputs[0],name:old.name,gain:old.gain,muted:old.muted,solo:old.solo}
      tracks.splice(last+1,0,outputs[1])
-     return {...current,tracks,updatedAt:new Date().toISOString()}
+     return {...current,tracks,lastSeparation:{...current.lastSeparation!,completed:index+1},updatedAt:new Date().toISOString()}
     })
     published=true;remainder=outputs[0];lastStemId=outputs[1].id
     this.emit({phase:'separating',stem:target.id,progress:(index+1)/targets.length,completedStems:index+1,retrySourceId:remainder.id,remainingTargets:targets.slice(index+1).map(t=>t.id)})

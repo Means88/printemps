@@ -25,6 +25,7 @@ test('original separation publishes complete stem/residual pairs before later ta
    const stem=request.targets[0].id
    if(stem==='bass'){
     const partial=await store.load(id)
+    expect(partial.lastSeparation).toMatchObject({state:'running',completed:1,targets:['drums','bass']})
     expect(partial.tracks.map(t=>t.role)).toEqual(['original','other','stem'])
     expect(request.input).toBe(store.assetPath(id,partial.tracks[1].assetId))
     await store.update(id,p=>({...p,tracks:p.tracks.map(t=>t.stem==='drums'?{...t,name:'Edited drums',gain:-8}:t)}))
@@ -38,11 +39,19 @@ test('original separation publishes complete stem/residual pairs before later ta
   async function run(){const result=new Promise<SeparationTask>(resolve=>{finished=resolve});await service.start(id,sourceId,['drums','bass'],cache,'cpu');const task=await result;await expect.poll(()=>service.busy).toBe(false);return task}
   expect((await run()).phase).toBe('complete')
   const result=await store.load(id)
+  expect(result.lastSeparation).toMatchObject({state:'complete',completed:2})
+  expect(result.lastSeparation?.finishedAt).toBeTruthy()
   expect(result.tracks.map(t=>t.stem)).toEqual(['original','other','drums','bass'])
   expect(result.tracks[2].name).toBe('Edited drums');expect(result.tracks[2].gain).toBe(-8)
   await store.save({...result,tracks:[result.tracks[0]]});failSecond=true
   const failed=await run(),partial=await store.load(id)
   expect(failed.phase).toBe('failed');expect(partial.tracks.map(t=>t.stem)).toEqual(['original','other','drums'])
+  expect(partial.lastSeparation).toMatchObject({state:'failed',completed:1,error:'Second target failed'})
   expect(failed.remainingTargets).toEqual(['bass']);expect(failed.retrySourceId).toBe(partial.tracks[1].id)
+  await store.update(id,p=>({...p,lastSeparation:{...p.lastSeparation!,state:'running',finishedAt:undefined}}))
+  await store.recoverInterruptedTasks()
+  const recovered=await store.load(id)
+  expect(recovered.lastSeparation).toMatchObject({state:'interrupted',completed:1})
+  expect(recovered.tracks).toEqual(partial.tracks)
  }finally{await rm(root,{recursive:true,force:true})}
 })
