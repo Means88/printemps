@@ -395,3 +395,5 @@ header>button{flex-shrink:0}
 .save-recovery details[open]>summary{grid-column:2;grid-row:1;padding-top:6px}
 .save-recovery pre{grid-column:1/-1;grid-row:2;margin:0;max-height:120px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;user-select:text}
 .save-recovery>button{grid-column:3;grid-row:1}
+
+.master svg{width:18px;height:18px;color:#a0aab8;flex-shrink:0}.master .fader{display:flex;flex-direction:row-reverse;align-items:center;gap:12px;width:auto}.master .fader .slider{width:100px}.master .gain-value{min-width:52px;margin:0;text-align:right}.transport-clock{display:flex;flex-direction:column;gap:2px}.transport-clock>div{display:flex;align-items:baseline;gap:10px}.loop-range{font:12px Inter,sans-serif;color:#a0aab8}

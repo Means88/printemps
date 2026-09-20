@@ -34,3 +34,8 @@ export function beatGrid(duration:number,music:Musical,maxLines=300){
  for(let i=0;i<total;i+=stride)lines.push({seconds:music.firstBeat+i*interval,bar:i%numerator===0})
  return lines
 }
+
+/** Tracks the workspace lists; consumed or user-hidden tracks are excluded so Home and the workspace agree. */
+export function visibleTrackCount(project:{tracks:{hidden?:boolean}[]}){
+ return project.tracks.filter(track=>!track.hidden).length
+}

@@ -19,7 +19,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 源码、构建与远端
 
-- 代码检查点：签名包/CI 对应 `18799ce`。本轮末尾另有两个源码小修，**尚未进入任何包或 CI**：`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，94 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点。
+- 代码检查点：签名包/CI 对应 `18799ce`。本轮末尾另有源码修改，**尚未进入任何包或 CI**：画板 30 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，95 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点。
 - **最后推送、签名包和三平台 CI 现在都对应 `18799ce20b584cd4c5959dea86df2a2fd95b799d`**。旧的 9564b98 包与 CI 已被覆盖，不再是当前证据。
 - CI：https://github.com/Means88/printemps/actions/runs/35498158919 ，三平台成功；产物 ID/哈希见 acceptance.md 最后一节，2026-09-27 过期。workflow 只在 `pull_request` 和 `workflow_dispatch` 触发，推送不会自动跑；用 `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`。
 - 本地签名包 `release/mac-arm64/Printemps.app`（Developer ID，未公证），`app.asar` SHA256 `55ae0a0ea511058c8fd59294cdd3e455a5e6df54916e590fe3a07b6eaf62a151`。日志：`/tmp/printemps-18799-package.log`、`-signature.log`、`-packaged-analysis.log`、`-full-tests.log`（92 passed / 3 skipped）。
@@ -32,7 +32,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 3. 真实播放：原生窗口 AudioContext running、默认输出设备（MacBook Air 扬声器）outputLatency 26 ms，母线分析仪读到真实信号；节拍器 120 BPM 每 0.499 s 一次点击，峰值与 −12 dB×母线增益一致。**证明信号到达系统默认设备，不证明人耳听感。**
 4. 签名包 18799ce 原生验收（第一批）：原生文件选择器导入 40 字节损坏 WAV → 紧凑横幅 52 px（展开 72.5 px），项目目录无残留；真实 drums 分离 33% 时 `kill -9` 主进程 → 包内 Python 1 s 内退出 → 重启恢复 interrupted 并保留 `clipId` → Retry 重开预选声部弹窗 → Start 完成（~48 s），结果 0–2 s、offset 8，来源轨全部片段消费后整轨隐藏。Cmd+Q 1 s 内退出，无 singleton 锁和残留进程。
 5. 签名包 18799ce 原生验收（第二批，acceptance.md 最后一节）：Source out 精确裁剪落盘并复原；FLAC 剪辑经真实文件夹面板导出 0.75 s 24-bit，面板 Escape 取消后无文件、弹窗回到空闲；项目目录只读 → 改名 → 紧凑 EACCES 横幅 → 恢复权限 → Retry save 落盘 → Cmd+Q → 重启保留；缓存 bass 二次分离 33% 取消 → Python 3 s 内退出、任务 cancelled、来源片段保留、无新轨、Dismiss 清除提示。
-6. 中文工作台对照画板 30：1440×900 与 1280×800 截图无溢出，主要结构一致；记录了 5 处待设计决定的偏差（缩放按钮 vs 文字提示、缺底部操作提示行、导出按钮文案、总音量标签/扬声器图标、起始位置颜色），见 acceptance.md 最后一节。未改设计文件。
+6. 中文工作台对照画板 30 的 5 处偏差已做设计决定并实现（决定表见 acceptance.md “Board 30 deviation decisions implemented”）：缩放按钮组、导出文案、去掉提示行改在 Pen 侧同步；扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页可见音轨计数在应用侧实现。1440×900 与 1280×800 已复核。
 7. 排除了一个疑似缺陷：关窗后用 AppleScript `tell application "Electron" to quit` 不退出，是因为本机还运行着另一个同名 Electron 进程（见下），对 QA 进程直接 Cmd+Q 正常退出。
 
 ## QA 自动化方法（可复用）
@@ -58,18 +58,18 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 最新 31：`OspP2`，保存/导入失败中英紧凑提示，1440×328，x4800/y11324。PNG `design/save-recovery/OspP2.png`，入口 `design/index.html`。
 - 30 多剪辑工作台 `ymoeh`；29 原生窗口 `x0yR1`；03 首页 `u1mPk`；04 声部选择 `rAm7a`；05 下载 `RJx43`；08 导出 `S5oPw`；13 历史 `b1tMnW`。
 - 修改先读取当前节点；复制节点会产生新 ID。显式定位曾比 fill_container 更稳定。保存后核实文件实际变化。
-- 本轮没有改动设计。
+- 本轮改动画板 30（`ymoeh`）：新增缩放按钮组（Copy 自 Split 按钮/标签）、删除提示行与示例注释、导出文案、起始位置颜色；已用原生 File → Save 保存并重新导出 `design/workspace-revision/ymoeh.png`，README 已注明。**注意：在该画板直接 Insert 新文本节点会出现 +50px 的 y 偏移并渲染错位，用 Copy 现有文本节点再改内容则正常。**
 
 ## 已知小问题
 
 - 已修（源码，未进包）：技术详情曾带 IPC 包装前缀 `Error invoking remote method '…': Error:`；现由 `diagnosticDetail` 统一剥离。
 - 已修（源码，未进包）：用户主动取消且无部分结果的分离，重开项目时不再反复显示“分离已取消”提示；失败任务与有部分结果的取消仍会复现供重试。
-- 未修：首页最近项目显示“6 tracks”，工作台显示“Tracks / 05”，因为首页把已全部消费、隐藏的来源轨也计入。需决定首页是否排除隐藏轨后再改。
+- 已修（源码，未进包）：首页/全部项目的音轨数只计工作台可见的音轨，与“音轨 / 05”一致。
 - 预期行为：Original 试听模式下分轨列表整体置灰（互斥试听）；中断分离的 Retry 会重开 Choose stems 预选来源与声部，需再点 Start separation。
 
 ## 下一步（按优先级）
 
-1. 就 acceptance.md 记录的画板 30 五处偏差与首页隐藏轨计数做设计决定（先改 Pen 再实现，或确认接受现状并更新画板/说明）；其余画板（03 首页、04 声部、08 导出、13 历史、31 恢复）用同样方法逐屏对照。然后连同本轮两个源码修复合并为一次新包/CI，不要每个小改动重打大型包。
+1. 其余画板（03 首页、04 声部、08 导出、13 历史、31 恢复、02 英文紧凑）用同样方法逐屏对照并处理偏差；随后把本轮全部源码改动（IPC 前缀、取消提示、画板 30 对齐）合并为一次新包/CI，不要每个小改动重打大型包。
 2. 新包出来后只需复核变更点（技术详情文案、视觉修正），本轮已在 18799ce 上通过的原生回归不必重复整套跑。
 3. 仍缺原生证据：导出写入失败（磁盘满/只读导出目录）、离线缺模型下载失败、拖放导入。
 4. 持续在 acceptance.md 和 implementation-status.md 区分已测/未测。物理输入法候选窗、人耳听感、Windows/Linux 桌面、真实差分升级、公证/公开发布不能冒充完成。

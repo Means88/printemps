@@ -49071,8 +49071,8 @@
           "id": "dccHD",
           "x": 1040,
           "y": 72,
-          "name": "导出音轨",
-          "width": 106,
+          "name": "导出",
+          "width": 82,
           "height": 30,
           "fill": "#292F38",
           "cornerRadius": 9,
@@ -49087,7 +49087,7 @@
               "id": "J6IUJP",
               "name": "导出音轨 label",
               "fill": "#F3F6FB",
-              "content": "导出音轨",
+              "content": "导出",
               "fontFamily": "Noto Sans SC",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -49271,18 +49271,6 @@
           "content": "音轨 / 07",
           "fontFamily": "Noto Sans SC",
           "fontSize": 12,
-          "fontWeight": "normal"
-        },
-        {
-          "type": "text",
-          "id": "wtKjq",
-          "x": 980,
-          "y": 134,
-          "name": "Time zoom",
-          "fill": "#A0AAB8",
-          "content": "滚轮 / 捏合缩放",
-          "fontFamily": "Noto Sans SC",
-          "fontSize": 11,
           "fontWeight": "normal"
         },
         {
@@ -51281,18 +51269,6 @@
           "fontWeight": "500"
         },
         {
-          "type": "text",
-          "id": "x5Ppc",
-          "x": 16,
-          "y": 793,
-          "name": "Demo caption",
-          "fill": "#8593A7",
-          "content": "示例波形 · 非模型实测结果",
-          "fontFamily": "Noto Sans SC",
-          "fontSize": 12,
-          "fontWeight": "normal"
-        },
-        {
           "type": "frame",
           "id": "d2c68x",
           "x": 468,
@@ -51391,7 +51367,7 @@
           "x": 1254,
           "y": 309,
           "name": "Detail value 0",
-          "fill": "#75D8BC",
+          "fill": "#B6A0EA",
           "content": "00:48.000",
           "fontFamily": "Noto Sans SC",
           "fontSize": 12,
@@ -52673,18 +52649,6 @@
           ]
         },
         {
-          "type": "text",
-          "id": "oBOEt",
-          "x": 260,
-          "y": 799,
-          "name": "Clip design note",
-          "fill": "#A0AAB8",
-          "content": "点击片段选中 · 拖动首尾裁剪 · S 在游标处分割 · 分离结果保持片段 offset",
-          "fontFamily": "Noto Sans SC",
-          "fontSize": 11,
-          "fontWeight": "normal"
-        },
-        {
           "type": "frame",
           "id": "E8BP0",
           "x": 730,
@@ -52990,6 +52954,85 @@
           "fontFamily": "Nunito Sans",
           "fontSize": 12,
           "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "U1ihx",
+          "x": 1030,
+          "y": 124,
+          "name": "Zoom out button",
+          "opacity": 0.4,
+          "width": 30,
+          "height": 30,
+          "fill": "#292F38",
+          "cornerRadius": 8,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "RY7lt",
+              "x": 11,
+              "y": 7,
+              "name": "− label",
+              "fill": "#E8ECF2",
+              "content": "−",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "I0Duh",
+          "x": 1064,
+          "y": 124,
+          "name": "Zoom level button",
+          "width": 38,
+          "height": 30,
+          "fill": "#292F38",
+          "cornerRadius": 8,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "RAcVl",
+              "x": 12,
+              "y": 7,
+              "name": "1× label",
+              "fill": "#E8ECF2",
+              "content": "1×",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "L2Lnz",
+          "x": 1106,
+          "y": 124,
+          "name": "Zoom in button",
+          "width": 30,
+          "height": 30,
+          "fill": "#292F38",
+          "cornerRadius": 8,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "HcAAG",
+              "x": 9,
+              "y": 7,
+              "name": "＋ label",
+              "fill": "#E8ECF2",
+              "content": "＋",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
         }
       ]
     },

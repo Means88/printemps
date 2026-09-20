@@ -647,3 +647,20 @@ Hashes identify uploaded artifact archives, not individual installers. macOS CI 
 - Deviations logged for the design pass, not changed: (1) the board's right-side toolbar hint “滚轮 / 捏合缩放” is a − 1× + zoom group in the app; (2) the board's footer hint row (点击片段选中 · 拖动首尾裁剪 · S 在游标处分割 · 分离结果保持片段 offset) is absent in the app; (3) board header button reads 导出音轨, app reads 导出; (4) board shows a speaker icon before the master fader and its 起始位置 value in the track colour, the app uses a 总音量 label and white value; (5) the board shows the loop range under the timecode when a loop is set, not verified here because no loop was active.
 - Found while reopening: a separation the user had cancelled (no partial results) resurfaced its “分离已取消 · 源音轨已保留” lane notice on every reopen because `recoverSeparationTask` rebuilt it from `lastSeparation`. Changed the shared mapper to skip cancelled records with `completed === 0`; failed tasks and partial cancels still resurface with their remainder. Regression added in `tests/progressive-separation.test.ts`. Rebuilt and confirmed natively: after quit/relaunch the project opens with no cancel notice while the source clip and 音轨 / 05 remain; the on-disk record stays `cancelled`. Full suite 94 passed / 3 conditional skipped.
 - Both source fixes from this round (IPC prefix stripping, cancelled-notice suppression) are later than the 18799ce signed package and CI.
+
+### 2026-09-20 · Board 30 deviation decisions implemented
+
+Decisions (Pen first, then code), all on board 30 `ymoeh`; the Pen file was saved with the app's native Save and `design/workspace-revision/ymoeh.png` re-exported:
+
+| Deviation | Decision | Pen change | App change |
+| --- | --- | --- | --- |
+| Toolbar zoom: text hint vs − 1× ＋ buttons | Keep the button group: it is an operable, keyboard-discoverable control; hint text is tutorial copy the project keeps off the resident UI | Replaced “滚轮 / 捏合缩放” with a − / 1× / ＋ button group at the toolbar's right end | none |
+| Footer hint row and “示例波形” annotation | Drop from the screen mock; the README already carries the interaction notes | Deleted both text nodes | none |
+| Header export label 导出音轨 vs 导出 | Keep 导出 (the dialog names the target) | Label → 导出, button width 82 | none |
+| Master volume: label vs speaker icon + inline level | Follow the board | none (board already had it) | Speaker icon replaces the 总音量 text; value sits inline right of a 100 px rail; aria label unchanged |
+| 起始位置 value colour | Use the selected clip's track colour (board's fixed teal was arbitrary; the clip title already uses the track colour) | Value recoloured to the selected clip's purple | `dd` styled with `track.color` |
+| Loop range under the timecode | Follow the board | none | `循环 hh:mm — hh:mm` small line under the clock while a loop is set |
+| Home “6 tracks” vs workspace “Tracks / 05” | Count only tracks the workspace lists | — | `visibleTrackCount` in shared timeline used by Home and All projects |
+
+- Fresh `Insert` of text nodes into board 30 reported a +50 px y offset and rendered off-position; copying the existing Split label with new content positioned correctly, so labels were created by `Copy`. Recorded here so the next Pen session does not re-debug it.
+- Verification on the rebuilt `out/` in Chinese with the isolated profile: 1440×900 and 1280×800 screenshots show the speaker icon + inline `-30.0 dB`, 起始位置 in the clip colour, the loop line `循环 00:00.000 — 00:10.000` with the loop region shaded, and Home listing `5 音轨`. No horizontal overflow at either size (footer 1264 px wide at 1280; transport right edge 810 px, master starts at 1062 px). Tests 95 passed / 3 conditional skipped (36 files); production build passed. Not yet in a signed package or CI.
