@@ -12,3 +12,6 @@ worker/assets/*.ckpt
 .runtime/
 release-status/
 release-revision/
+# App Store Connect API keys — never commit
+*.p8
+AuthKey_*

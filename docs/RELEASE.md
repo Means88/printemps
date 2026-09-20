@@ -3,7 +3,7 @@
 ## 前提
 
 - 仓库目前是 **private**。GitHub Pages 在私有仓库需要付费计划；私有仓库的 Release 资产也无法匿名下载，electron-updater 的 GitHub provider 同样需要 token。要让 printemps.dev 对外可用，需要把 `Means88/printemps` 设为 public，或者新建一个公开的发布仓库并把 `site/app.js` 的 `REPO` 与 `package.json#build.publish` 指向它。这是产品决定，未在代码里替你做。
-- macOS 包目前只签名未公证：用户首次打开要在“系统设置 › 隐私与安全性”放行一次；CI 上没有证书时为 ad-hoc 签名（提示“已损坏”），所以 macOS 资产建议用本机 Developer ID 打出的 DMG 覆盖。公证见下文。
+- macOS 包若未公证，用户首次打开要在“系统设置 › 隐私与安全性”放行一次；公证配置见下文，CI 上没有证书时为 ad-hoc 签名（提示“已损坏”），所以 macOS 资产建议用本机 Developer ID 打出的 DMG 覆盖。公证见下文。
 
 ## 发一个版本
 
@@ -37,6 +37,40 @@ pnpm dist --mac && gh release upload v0.1.2 release/*.dmg release/*.zip release/
 - `printemps.dev` 的 DNS 托管在 Cloudflare（nile/aliza.ns.cloudflare.com），当前 A/AAAA 仍指向 Cloudflare 代理地址，站点尚未生效。需要在 Cloudflare 把根域改为上面的 GitHub A/AAAA 记录（或 CNAME 到 `means88.github.io`），并把代理设为 **DNS only**（灰云）；若保留橙云代理，SSL/TLS 模式需为 Full。DNS 生效、GitHub 签发证书后，再在 Settings › Pages 勾选 **Enforce HTTPS**（API `https_enforced` 在证书签发前会返回 404）。
 - 本地预览：`python3 -m http.server 8080 --directory site`。
 
-## 公证（暂不处理，记录步骤）
+## 公证
 
-设置 `APPLE_ID`、`APPLE_APP_SPECIFIC_PASSWORD`、`APPLE_TEAM_ID`（或 App Store Connect API Key），electron-builder 会自动 notarize 并 staple。首轮公证很可能被退回并列出未签名的 Python `.so`/`.dylib`，需要为 `extraResources` 里的运行时补签名与 entitlements。通过后 `spctl -a -vv -t install Printemps.dmg` 应显示 `source=Notarized Developer ID`。
+electron-builder 26 的 `mac.notarize` 是**禁用**开关（设 `false` 才跳过），检测到下面任一组环境变量就自动 notarize 并 staple，`package.json` 不需要改。
+
+凭据两选一，推荐 App Store Connect API Key（不绑定个人 Apple ID，可单独吊销）：
+
+- `APPLE_API_KEY`（`.p8` 文件**路径**）、`APPLE_API_KEY_ID`、`APPLE_API_ISSUER`
+- 或 `APPLE_ID`、`APPLE_APP_SPECIFIC_PASSWORD`、`APPLE_TEAM_ID`（本项目团队 ID 为 `FM39C6H8AH`）
+
+先验证凭据可用，再打包：
+
+```bash
+xcrun notarytool history --key <path>/AuthKey_XXXXXXXX.p8 --key-id XXXXXXXX --issuer <issuer-uuid>
+```
+
+```bash
+APPLE_API_KEY=<path>/AuthKey_XXXXXXXX.p8 APPLE_API_KEY_ID=XXXXXXXX APPLE_API_ISSUER=<issuer-uuid> \
+  pnpm run dist --mac -c.directories.output=release-notarized
+```
+
+打包会阻塞等待 Apple 返回，通常几分钟。验证：
+
+```bash
+spctl -a -vv -t install release-notarized/mac-arm64/Printemps.app
+```
+
+看到 `source=Notarized Developer ID` 即通过，用户首次打开不再需要去“隐私与安全性”放行。electron-builder 先公证并 staple `.app`，再用它生成 DMG/zip，所以 DMG 里的应用已带 staple 票据。
+
+`.p8` 是凭据：放在仓库之外，`.gitignore` 已屏蔽 `*.p8` 与 `AuthKey_*`。泄露后到 App Store Connect 吊销该密钥即可。
+
+### 关于内置 Python 运行时
+
+旧文档说首轮公证会因未签名的 Python `.so`/`.dylib` 被退回，这条已过时：electron-builder 会连同 `extraResources` 里的运行时一起签。2026-09-20 对 `release-b9776bd` 全量扫描，包内 62 个 Mach-O 二进制全部带 Developer ID 签名与 hardened runtime，entitlements 为 `allow-jit`、`allow-unsigned-executable-memory`、`disable-library-validation`，无会导致退回的 `get-task-allow`。
+
+### CI
+
+`release.yml` 两条路径都接好了。用 API Key 时在仓库 secrets 里设 `APPLE_API_KEY_P8`（`.p8` 全文）、`APPLE_API_KEY_ID`、`APPLE_API_ISSUER`；工作流会把密钥写进 `RUNNER_TEMP` 的临时文件、把路径传给 electron-builder，并在构建后无条件删除。用密码路径则设 `APPLE_ID`、`APPLE_APP_SPECIFIC_PASSWORD`、`APPLE_TEAM_ID`。两种都需要 `CSC_LINK` / `CSC_KEY_PASSWORD` 提供 Developer ID 证书，否则 macOS 构建仍是 ad-hoc 签名且不会公证。

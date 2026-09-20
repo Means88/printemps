@@ -38,6 +38,10 @@ jobs:
       APPLE_ID: ${{ secrets.APPLE_ID }}
       APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
       APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      # App Store Connect API key route; electron-builder wants APPLE_API_KEY as a file path,
+      # so the .p8 secret is written to a temp file by the step below.
+      APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+      APPLE_API_ISSUER: ${{ secrets.APPLE_API_ISSUER }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -60,10 +64,25 @@ jobs:
       - run: pnpm test
       - run: pnpm run runtime:prepare
       - run: uv cache clean
+      - name: Stage the App Store Connect API key for notarization
+        if: runner.os == 'macOS'
+        shell: bash
+        env:
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+        run: |
+          if [ -z "${APPLE_API_KEY_P8}" ]; then echo "No APPLE_API_KEY_P8 secret; notarization uses APPLE_ID if set."; exit 0; fi
+          key="${RUNNER_TEMP}/AuthKey.p8"
+          printf '%s' "${APPLE_API_KEY_P8}" > "${key}"
+          chmod 600 "${key}"
+          echo "APPLE_API_KEY=${key}" >> "${GITHUB_ENV}"
       - name: Build installers (never publish from the builder)
         shell: bash
         run: |
           if [ "${{ runner.os }}" = "macOS" ] && [ -z "${CSC_LINK}" ]; then pnpm run dist --config.mac.identity=-; else pnpm run dist; fi
+      - name: Remove the staged API key
+        if: always() && runner.os == 'macOS'
+        shell: bash
+        run: rm -f "${RUNNER_TEMP}/AuthKey.p8"
       - name: Verify packaged analysis runtime
         run: pnpm run test:integration
         env:
