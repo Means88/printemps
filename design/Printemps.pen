@@ -254,7 +254,8 @@
           "fill": "$st-muted",
           "content": "Nunito Sans + Noto Sans SC · 数字 Inter · 12 / 13 / 16 / 24",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -280,7 +281,8 @@
               "fill": "#F3F6FB",
               "content": "开始分离",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -308,7 +310,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -334,7 +337,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -562,7 +566,8 @@
           "width": 780,
           "content": "9–10 px 控件圆角 · 16 px 面板 · 8 px 音频片段\n颜色 + 文字双重状态；波形与进度均为设计示例。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -585,7 +590,8 @@
           "fill": "#B6A0EA",
           "content": "圆润规范  ·  控件 9–10 px  /  面板 16 px  /  音频片段 8 px  /  圆形推子 12 px",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         }
       ]
     },
@@ -863,7 +869,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -1043,7 +1050,8 @@
           "fill": "#A0AAB8",
           "content": "音轨 / 07",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -1054,7 +1062,8 @@
           "fill": "#A0AAB8",
           "content": "−   100%   +",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -1382,7 +1391,8 @@
               "fill": "#8D9BAD",
               "content": "原始音频",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -1647,7 +1657,8 @@
               "fill": "#B6A0EA",
               "content": "主唱",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -1912,7 +1923,8 @@
               "fill": "#E8B76A",
               "content": "鼓组",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -2177,7 +2189,8 @@
               "fill": "#55C4B0",
               "content": "贝斯",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -2442,7 +2455,8 @@
               "fill": "#70ABEC",
               "content": "电吉他",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -2707,7 +2721,8 @@
               "fill": "#D991AA",
               "content": "钢琴",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -2796,7 +2811,8 @@
           "fill": "#A0AAB8",
           "content": "播放状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -2808,7 +2824,8 @@
           "fill": "#75D8BC",
           "content": "● 就绪",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -2939,7 +2956,8 @@
           "fill": "#A0AAB8",
           "content": "循环  00:48 — 01:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -3042,7 +3060,8 @@
           "fill": "#8593A7",
           "content": "示例波形 · 非模型实测结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -3134,7 +3153,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -3145,7 +3165,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -3156,7 +3177,8 @@
           "fill": "#A0AAB8",
           "content": "时长",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -3179,7 +3201,8 @@
           "fill": "#A0AAB8",
           "content": "采样率",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -3202,7 +3225,8 @@
           "fill": "#A0AAB8",
           "content": "声道",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -3225,7 +3249,8 @@
           "fill": "#A0AAB8",
           "content": "模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -3261,7 +3286,8 @@
           "fill": "#A0AAB8",
           "content": "试听结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -3302,7 +3328,8 @@
               "fill": "#F3F6FB",
               "content": "在文件夹中显示",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -3329,7 +3356,8 @@
               "content": "导出此音轨",
               "textAlign": "center",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -3386,7 +3414,8 @@
                   "fill": "#F3F6FB",
                   "content": "原始",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -3412,7 +3441,8 @@
                   "fill": "#F3F6FB",
                   "content": "分轨",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -3676,7 +3706,8 @@
               "fill": "#91A9BC",
               "content": "其它",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -6599,7 +6630,8 @@
           "fill": "#A0AAB8",
           "content": "新建项目",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -6759,7 +6791,8 @@
                   "fill": "#F3F6FB",
                   "content": "选择音频文件",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -6787,7 +6820,8 @@
           "fill": "#70ABEC",
           "content": "查看全部项目 →",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -6822,7 +6856,8 @@
           "fill": "#A0AAB8",
           "content": "5 个声部 · 03:24",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -6880,7 +6915,8 @@
           "fill": "#A0AAB8",
           "content": "3 个声部 · 02:18",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -6938,7 +6974,8 @@
           "fill": "#A0AAB8",
           "content": "6 个声部 · 04:52",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -6983,7 +7020,8 @@
           "fill": "#E8ECF2",
           "content": "01  导入音频",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -6994,7 +7032,8 @@
           "fill": "#E8ECF2",
           "content": "02  选择声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7005,7 +7044,8 @@
           "fill": "#E8ECF2",
           "content": "03  试听并导出",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7016,7 +7056,8 @@
           "fill": "#A0AAB8",
           "content": "支持 WAV · FLAC · MP3 · M4A",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "rectangle",
@@ -7200,7 +7241,8 @@
           "fill": "#4C9AFF",
           "content": "选择声部 · 弹窗",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7223,7 +7265,8 @@
           "fill": "#A0AAB8",
           "content": "选择目标声部；开始后在工作区查看进度。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -7297,7 +7340,8 @@
               "fill": "#F3F6FB",
               "content": "更换文件",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -7336,7 +7380,8 @@
           "fill": "#A0AAB8",
           "content": "搜索声部：名称 / 英文名称 / 乐器类别",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -7361,7 +7406,8 @@
               "fill": "#F3F6FB",
               "content": "乐队组合",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -7388,7 +7434,8 @@
               "fill": "#F3F6FB",
               "content": "人声组合",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -7415,7 +7462,8 @@
               "fill": "#F3F6FB",
               "content": "清空选择",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -7440,7 +7488,8 @@
           "fill": "#8FC0FF",
           "content": "全部声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7451,7 +7500,8 @@
           "fill": "#A0AAB8",
           "content": "人声",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7462,7 +7512,8 @@
           "fill": "#A0AAB8",
           "content": "鼓与打击乐",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7473,7 +7524,8 @@
           "fill": "#A0AAB8",
           "content": "弦乐与吉他",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7484,7 +7536,8 @@
           "fill": "#A0AAB8",
           "content": "键盘",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -7495,7 +7548,8 @@
           "fill": "#A0AAB8",
           "content": "管乐",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -7568,7 +7622,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -7643,7 +7698,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -7718,7 +7774,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -8367,7 +8424,8 @@
           "fill": "#A0AAB8",
           "content": "3 个已缓存 · 2 个待下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -8389,7 +8447,8 @@
           "fill": "#A0AAB8",
           "content": "本次下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -8424,7 +8483,8 @@
           "fill": "#A0AAB8",
           "content": "处理设备  自动选择",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -8437,7 +8497,8 @@
           "width": 300,
           "content": "下载完成后自动开始分离。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -8459,7 +8520,8 @@
           "fill": "#A0AAB8",
           "content": "已选声部在搜索和分类切换后保留。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -8484,7 +8546,8 @@
               "fill": "#F3F6FB",
               "content": "取消",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -8680,7 +8743,8 @@
           "fill": "#4C9AFF",
           "content": "02 / 准备模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -8799,7 +8863,8 @@
               "fill": "#A0AAB8",
               "content": "速度 8.2 MB/s · 示例",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -8833,7 +8898,8 @@
               "fill": "#75D8BC",
               "content": "下载中",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -8879,7 +8945,8 @@
               "fill": "#8AB8EE",
               "content": "等待下载",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -8925,7 +8992,8 @@
               "fill": "#8AB8EE",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -8936,7 +9004,8 @@
               "fill": "#A0AAB8",
               "content": "无需重复下载",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -8961,7 +9030,8 @@
                   "fill": "#F3F6FB",
                   "content": "取消下载",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -8976,7 +9046,8 @@
           "fill": "#A0AAB8",
           "content": "源音频",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -9040,7 +9111,8 @@
           "fill": "#A0AAB8",
           "content": "进度与速度为界面示例，实际时间取决于音频长度与设备。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -9065,7 +9137,8 @@
               "fill": "#F3F6FB",
               "content": "返回工作台",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -9361,7 +9434,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -9541,7 +9615,8 @@
           "fill": "#A0AAB8",
           "content": "音轨  /  01",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -9552,7 +9627,8 @@
           "fill": "#A0AAB8",
           "content": "−   100%   +",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -9878,7 +9954,8 @@
               "fill": "#8D9BAD",
               "content": "原始音频",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -10143,7 +10220,8 @@
               "fill": "#B6A0EA",
               "content": "主唱",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -10408,7 +10486,8 @@
               "fill": "#E8B76A",
               "content": "鼓组",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -10673,7 +10752,8 @@
               "fill": "#55C4B0",
               "content": "贝斯",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -10938,7 +11018,8 @@
               "fill": "#70ABEC",
               "content": "电吉他",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -11203,7 +11284,8 @@
               "fill": "#D991AA",
               "content": "钢琴",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -11292,7 +11374,8 @@
           "fill": "#A0AAB8",
           "content": "播放状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11304,7 +11387,8 @@
           "fill": "#75D8BC",
           "content": "● 就绪",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -11436,7 +11520,8 @@
           "fill": "#A0AAB8",
           "content": "循环  00:48 — 01:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -11539,7 +11624,8 @@
           "fill": "#8593A7",
           "content": "设计示例 · 导入后仅显示原始音频",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -11632,7 +11718,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11643,7 +11730,8 @@
           "fill": "#75D8BC",
           "content": "原始音频",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11654,7 +11742,8 @@
           "fill": "#A0AAB8",
           "content": "时长",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11677,7 +11766,8 @@
           "fill": "#A0AAB8",
           "content": "采样率",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11700,7 +11790,8 @@
           "fill": "#A0AAB8",
           "content": "声道",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11723,7 +11814,8 @@
           "fill": "#A0AAB8",
           "content": "模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11759,7 +11851,8 @@
           "fill": "#A0AAB8",
           "content": "试听结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -11799,7 +11892,8 @@
               "fill": "#F3F6FB",
               "content": "在文件夹中显示",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -11826,7 +11920,8 @@
               "content": "导出此音轨",
               "textAlign": "center",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -11883,7 +11978,8 @@
                   "fill": "#F3F6FB",
                   "content": "原始",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -11909,7 +12005,8 @@
                   "fill": "#F3F6FB",
                   "content": "分轨",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -12142,7 +12239,8 @@
           "fill": "#A0AAB8",
           "content": "模型管理",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -12250,7 +12348,8 @@
               "fill": "#F3F6FB",
               "content": "返回工作台",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12299,7 +12398,8 @@
           "fill": "#A0AAB8",
           "content": "模型存储位置",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -12310,7 +12410,8 @@
           "fill": "#E8ECF2",
           "content": "默认应用数据目录 / Printemps / models",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -12335,7 +12436,8 @@
               "fill": "#F3F6FB",
               "content": "更改位置",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12374,7 +12476,8 @@
           "fill": "#A0AAB8",
           "content": "搜索模型名称或乐器",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -12385,7 +12488,8 @@
           "fill": "#A0AAB8",
           "content": "声部 / 模型文件",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -12408,7 +12512,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -12419,7 +12524,8 @@
           "fill": "#A0AAB8",
           "content": "操作",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -12477,7 +12583,8 @@
           "fill": "#75D8BC",
           "content": "● 已缓存",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -12502,7 +12609,8 @@
               "fill": "#F3F6FB",
               "content": "删除缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12562,7 +12670,8 @@
           "fill": "#75D8BC",
           "content": "● 已缓存",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -12587,7 +12696,8 @@
               "fill": "#F3F6FB",
               "content": "删除缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12647,7 +12757,8 @@
           "fill": "#75D8BC",
           "content": "● 已缓存",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -12672,7 +12783,8 @@
               "fill": "#F3F6FB",
               "content": "删除缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12732,7 +12844,8 @@
           "fill": "#A0AAB8",
           "content": "未下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -12757,7 +12870,8 @@
               "fill": "#F3F6FB",
               "content": "下载",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12817,7 +12931,8 @@
           "fill": "#A0AAB8",
           "content": "未下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -12842,7 +12957,8 @@
               "fill": "#F3F6FB",
               "content": "下载",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12866,7 +12982,8 @@
           "fill": "#A0AAB8",
           "content": "每个模型附带约 1.6 kB 配置文件。删除缓存不会删除音频或分离结果。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -12933,7 +13050,8 @@
                   "fill": "#F3F6FB",
                   "content": "全部",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -12959,7 +13077,8 @@
                   "fill": "#F3F6FB",
                   "content": "已缓存",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -12985,7 +13104,8 @@
                   "fill": "#F3F6FB",
                   "content": "未下载",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -13160,7 +13280,8 @@
           "width": 206,
           "content": "每个声部保存为单独文件，\n保持原始时间对齐。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -13183,7 +13304,8 @@
           "fill": "#A0AAB8",
           "content": "选择要导出的音轨与格式。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -13220,7 +13342,8 @@
               "fill": "#F3F6FB",
               "content": "全选",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -13540,7 +13663,8 @@
           "fill": "#E8ECF2",
           "content": "音频格式",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -13551,7 +13675,8 @@
           "fill": "#E8ECF2",
           "content": "输出规格",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -13574,7 +13699,8 @@
           "fill": "#E8ECF2",
           "content": "保存至",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -13599,7 +13725,8 @@
           "fill": "#E8ECF2",
           "content": "音乐 / Printemps / Midnight Session",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -13624,7 +13751,8 @@
               "fill": "#F3F6FB",
               "content": "选择文件夹",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -13639,7 +13767,8 @@
           "width": 346,
           "content": "导出完整长度，保持各轨对齐。\n试听时的独奏、静音和音量不影响导出。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -13661,7 +13790,8 @@
           "fill": "#A0AAB8",
           "content": "5 个独立音轨 · WAV",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -13686,7 +13816,8 @@
               "fill": "#F3F6FB",
               "content": "取消",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -13713,7 +13844,8 @@
               "fill": "#F3F6FB",
               "content": "导出 5 个音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -13853,7 +13985,8 @@
           "fill": "#A0AAB8",
           "content": "设置",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -13923,7 +14056,8 @@
           "fill": "#A0AAB8",
           "content": "语言、处理设备与存储位置",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -13946,7 +14080,8 @@
           "fill": "#A0AAB8",
           "content": "即时切换界面语言，不影响文件名。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -13971,7 +14106,8 @@
           "fill": "#E8ECF2",
           "content": "简体中文",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -14017,7 +14153,8 @@
           "fill": "#A0AAB8",
           "content": "优先使用可用加速设备；不可用时使用 CPU。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -14042,7 +14179,8 @@
           "fill": "#E8ECF2",
           "content": "自动选择",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -14088,7 +14226,8 @@
           "fill": "#A0AAB8",
           "content": "仅下载所选声部模型，可在模型管理中清理缓存。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -14113,7 +14252,8 @@
           "fill": "#E8ECF2",
           "content": "默认应用数据目录 / Printemps / models",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -14159,7 +14299,8 @@
           "fill": "#A0AAB8",
           "content": "每次导出仍可选择其他文件夹。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -14184,7 +14325,8 @@
           "fill": "#E8ECF2",
           "content": "音乐 / Printemps",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -14218,7 +14360,8 @@
           "fill": "#A0AAB8",
           "content": "语言选项：简体中文 / English",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -14229,7 +14372,8 @@
           "fill": "#A0AAB8",
           "content": "设备选项：自动选择 / CPU / 可用的 GPU",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -14254,7 +14398,8 @@
               "fill": "#F3F6FB",
               "content": "完成",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -14321,7 +14466,8 @@
           "fill": "#A0AAB8",
           "content": "下载异常留在 05 弹窗；推理失败显示于工作区任务音轨。以下为状态组件示例。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -14372,7 +14518,8 @@
               "width": 600,
               "content": "连接已断开，电吉他模型尚未下载完成。\n已缓存的 3 个模型可继续使用。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -14397,7 +14544,8 @@
                   "fill": "#F3F6FB",
                   "content": "重试下载",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -14424,7 +14572,8 @@
                   "fill": "#F3F6FB",
                   "content": "取消任务",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -14479,7 +14628,8 @@
               "width": 600,
               "content": "钢琴模型尚未缓存（77.6 MB）。\n连接网络后重试，或仅分离已缓存声部。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -14504,7 +14654,8 @@
                   "fill": "#F3F6FB",
                   "content": "仅使用已缓存",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -14531,7 +14682,8 @@
                   "fill": "#F3F6FB",
                   "content": "重试连接",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -14586,7 +14738,8 @@
               "width": 600,
               "content": "当前目录剩余空间不足以保存所选结果。\n请选择其他目录，或清理不再需要的模型缓存。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -14611,7 +14764,8 @@
                   "fill": "#F3F6FB",
                   "content": "更改存储位置",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -14638,7 +14792,8 @@
                   "fill": "#F3F6FB",
                   "content": "管理模型",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -14693,7 +14848,8 @@
               "width": 600,
               "content": "3 个声部已完成并保留。\n可以重试此声部，或使用 CPU 再试一次。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -14718,7 +14874,8 @@
                   "fill": "#F3F6FB",
                   "content": "重试此声部",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -14745,7 +14902,8 @@
                   "fill": "#F3F6FB",
                   "content": "切换 CPU 重试",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -14800,7 +14958,8 @@
               "width": 600,
               "content": "目标目录不可写，尚未完成本次导出。\n已生成的分离结果仍保留在项目中。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -14825,7 +14984,8 @@
                   "fill": "#F3F6FB",
                   "content": "选择其他目录",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -14852,7 +15012,8 @@
                   "fill": "#F3F6FB",
                   "content": "重试导出",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -14907,7 +15068,8 @@
               "width": 600,
               "content": "已保存到：音乐 / Printemps / Midnight Session\n所有音轨保持完整长度与时间对齐。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -14932,7 +15094,8 @@
                   "fill": "#F3F6FB",
                   "content": "打开文件夹",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -14959,7 +15122,8 @@
                   "fill": "#F3F6FB",
                   "content": "返回工作台",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -15194,7 +15358,8 @@
           "width": 650,
           "content": "选择单个音频后直接进入工作区；选中已就绪音轨，右侧点击分离。\n04 选择声部弹窗锁定来源轨道，保留原音轨及所有试听状态。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -15230,7 +15395,8 @@
           "width": 650,
           "content": "已缓存模型直接开始；缺少模型打开 05 下载弹窗。\n下载完成关闭弹窗，在工作区显示 loading 音轨，不跳转推理页。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -15266,7 +15432,8 @@
           "width": 650,
           "content": "所有音轨共享游标与循环范围；Space 播放/暂停，点击标尺定位。\nS 支持多个声部独奏；M 始终静音该轨。原始与分轨互斥试听。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -15302,7 +15469,8 @@
           "width": 650,
           "content": "音轨音量仅用于试听；导出不应用独奏、静音与试听增益。\nWAV / FLAC、24-bit、44.1 kHz，保持声部长度与时间对齐。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -15338,7 +15506,8 @@
           "width": 650,
           "content": "简体中文 / English 即时切换，不修改文件名与声部标识。\nRadix UI Primitives + Radix Icons；紧凑版收起音轨详情。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -15374,7 +15543,8 @@
           "width": 650,
           "content": "下载失败留在 05 弹窗重试；取消不启动分离。\n推理失败显示在任务音轨；保留完成结果，仅重试受影响声部。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -15396,7 +15566,8 @@
           "fill": "#A0AAB8",
           "content": "示例源音频：midnight-session.wav · 示例波形与性能数据不用于推断模型效果。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         }
       ]
     },
@@ -16157,7 +16328,8 @@
           "fill": "#A0AAB8",
           "content": "历史记录",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16276,7 +16448,8 @@
               "fill": "#F3F6FB",
               "content": "新建项目",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -16315,7 +16488,8 @@
           "fill": "#A0AAB8",
           "content": "搜索音频名称、文件名或声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -16340,7 +16514,8 @@
               "fill": "#F3F6FB",
               "content": "全部状态",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -16367,7 +16542,8 @@
               "fill": "#F3F6FB",
               "content": "最近处理 ↓",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -16380,7 +16556,8 @@
           "fill": "#A0AAB8",
           "content": "共 24 条记录",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16391,7 +16568,8 @@
           "fill": "#A0AAB8",
           "content": "音频 / 分离结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16402,7 +16580,8 @@
           "fill": "#A0AAB8",
           "content": "处理时间",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16413,7 +16592,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -16483,7 +16663,8 @@
           "fill": "#A0AAB8",
           "content": "其它 · 主唱 · 鼓组 · 贝斯 · 电吉他 · 钢琴",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16494,7 +16675,8 @@
           "fill": "#A0AAB8",
           "content": "今天 14:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16505,7 +16687,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -16530,7 +16713,8 @@
               "fill": "#F3F6FB",
               "content": "试听",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -16603,7 +16787,8 @@
           "fill": "#A0AAB8",
           "content": "其它 · 木吉他 · 主唱 · 贝斯",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16614,7 +16799,8 @@
           "fill": "#A0AAB8",
           "content": "昨天 18:06",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16625,7 +16811,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -16650,7 +16837,8 @@
               "fill": "#F3F6FB",
               "content": "试听",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -16723,7 +16911,8 @@
           "fill": "#A0AAB8",
           "content": "已完成 3 / 6 个声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16746,7 +16935,8 @@
           "fill": "#E8B76A",
           "content": "部分完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -16771,7 +16961,8 @@
               "fill": "#F3F6FB",
               "content": "试听",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -16844,7 +17035,8 @@
           "fill": "#A0AAB8",
           "content": "其它 · 钢琴 · 弦乐",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16867,7 +17059,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -16892,7 +17085,8 @@
               "fill": "#F3F6FB",
               "content": "试听",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -16929,7 +17123,8 @@
           "fill": "#A0AAB8",
           "content": "记录详情",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16987,7 +17182,8 @@
           "fill": "#E8ECF2",
           "content": "主唱",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -16998,7 +17194,8 @@
           "fill": "#A0AAB8",
           "content": "已就绪 · 可试听",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17009,7 +17206,8 @@
           "fill": "#E8ECF2",
           "content": "鼓组",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17020,7 +17218,8 @@
           "fill": "#A0AAB8",
           "content": "已就绪 · 可试听",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17031,7 +17230,8 @@
           "fill": "#E8ECF2",
           "content": "贝斯",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17042,7 +17242,8 @@
           "fill": "#A0AAB8",
           "content": "已就绪 · 可试听",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17053,7 +17254,8 @@
           "fill": "#E8ECF2",
           "content": "电吉他",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17064,7 +17266,8 @@
           "fill": "#A0AAB8",
           "content": "已就绪 · 可试听",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17075,7 +17278,8 @@
           "fill": "#E8ECF2",
           "content": "钢琴",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17086,7 +17290,8 @@
           "fill": "#A0AAB8",
           "content": "已就绪 · 可试听",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -17111,7 +17316,8 @@
               "fill": "#F3F6FB",
               "content": "继续试听",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -17138,7 +17344,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -17177,7 +17384,8 @@
               "fill": "#F3F6FB",
               "content": "上一页",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -17204,7 +17412,8 @@
               "fill": "#F3F6FB",
               "content": "下一页",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -17247,7 +17456,8 @@
               "fill": "#F3F6FB",
               "content": "已删除",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -17260,7 +17470,8 @@
           "fill": "#E8ECF2",
           "content": "其它",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17271,7 +17482,8 @@
           "fill": "#A0AAB8",
           "content": "已就绪 · 可试听",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         }
       ]
     },
@@ -17394,7 +17606,8 @@
               "fill": "#A0AAB8",
               "content": "找到 1 条记录",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -17417,7 +17630,8 @@
               "fill": "#A0AAB8",
               "content": "midnight-session.wav · 5 个声部 · 已完成",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -17442,7 +17656,8 @@
                   "fill": "#F3F6FB",
                   "content": "继续试听",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -17559,7 +17774,8 @@
                   "fill": "#F3F6FB",
                   "content": "清空搜索",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -17662,7 +17878,8 @@
               "width": 558,
               "content": "默认不勾选。原始音频及已导出的副本不会删除。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -17687,7 +17904,8 @@
                   "fill": "#F3F6FB",
                   "content": "取消",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -17714,7 +17932,8 @@
                   "fill": "#F3F6FB",
                   "content": "删除记录",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -17793,7 +18012,8 @@
                   "fill": "#F3F6FB",
                   "content": "新建分离",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -17953,7 +18173,8 @@
           "fill": "#4C9AFF",
           "content": "选择声部 · 弹窗",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -17976,7 +18197,8 @@
           "fill": "#A0AAB8",
           "content": "选择目标声部；开始后在工作区查看进度。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -18050,7 +18272,8 @@
               "fill": "#F3F6FB",
               "content": "更换文件",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -18115,7 +18338,8 @@
               "fill": "#F3F6FB",
               "content": "乐队组合",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -18142,7 +18366,8 @@
               "fill": "#F3F6FB",
               "content": "人声组合",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -18169,7 +18394,8 @@
               "fill": "#F3F6FB",
               "content": "清空选择",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -18194,7 +18420,8 @@
           "fill": "#8FC0FF",
           "content": "全部声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -18205,7 +18432,8 @@
           "fill": "#A0AAB8",
           "content": "人声",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -18216,7 +18444,8 @@
           "fill": "#A0AAB8",
           "content": "鼓与打击乐",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -18227,7 +18456,8 @@
           "fill": "#A0AAB8",
           "content": "弦乐与吉他",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -18238,7 +18468,8 @@
           "fill": "#A0AAB8",
           "content": "键盘",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -18249,7 +18480,8 @@
           "fill": "#A0AAB8",
           "content": "管乐",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -18323,7 +18555,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -18399,7 +18632,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -18475,7 +18709,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -19131,7 +19366,8 @@
           "fill": "#A0AAB8",
           "content": "3 个已缓存 · 2 个待下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -19153,7 +19389,8 @@
           "fill": "#A0AAB8",
           "content": "本次下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19188,7 +19425,8 @@
           "fill": "#A0AAB8",
           "content": "处理设备  自动选择",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19201,7 +19439,8 @@
           "width": 300,
           "content": "下载完成后自动开始分离。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -19223,7 +19462,8 @@
           "fill": "#A0AAB8",
           "content": "已选声部在搜索和分类切换后保留。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -19248,7 +19488,8 @@
               "fill": "#F3F6FB",
               "content": "取消",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -19271,7 +19512,8 @@
           "fill": "#A0AAB8",
           "content": "“guitar” 的搜索结果 · 3 个声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -19358,7 +19600,8 @@
           "fill": "#9EC9FF",
           "content": "已选 5 个声部，其中 4 个不在当前搜索结果中。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19369,7 +19612,8 @@
           "fill": "#A0AAB8",
           "content": "支持中文名称、英文名称和类别；清空搜索可查看全部声部。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "rectangle",
@@ -19541,7 +19785,8 @@
           "fill": "#4C9AFF",
           "content": "选择声部 · 弹窗",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19564,7 +19809,8 @@
           "fill": "#A0AAB8",
           "content": "选择目标声部；开始后在工作区查看进度。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -19638,7 +19884,8 @@
               "fill": "#F3F6FB",
               "content": "更换文件",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -19703,7 +19950,8 @@
               "fill": "#F3F6FB",
               "content": "乐队组合",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -19730,7 +19978,8 @@
               "fill": "#F3F6FB",
               "content": "人声组合",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -19757,7 +20006,8 @@
               "fill": "#F3F6FB",
               "content": "清空选择",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -19782,7 +20032,8 @@
           "fill": "#8FC0FF",
           "content": "全部声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19793,7 +20044,8 @@
           "fill": "#A0AAB8",
           "content": "人声",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19804,7 +20056,8 @@
           "fill": "#A0AAB8",
           "content": "鼓与打击乐",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19815,7 +20068,8 @@
           "fill": "#A0AAB8",
           "content": "弦乐与吉他",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19826,7 +20080,8 @@
           "fill": "#A0AAB8",
           "content": "键盘",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -19837,7 +20092,8 @@
           "fill": "#A0AAB8",
           "content": "管乐",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -19911,7 +20167,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -19987,7 +20244,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -20063,7 +20321,8 @@
               "fill": "#75D8BC",
               "content": "已缓存",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -20721,7 +20980,8 @@
           "fill": "#A0AAB8",
           "content": "3 个已缓存 · 2 个待下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -20743,7 +21003,8 @@
           "fill": "#A0AAB8",
           "content": "本次下载",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -20778,7 +21039,8 @@
           "fill": "#A0AAB8",
           "content": "处理设备  自动选择",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -20791,7 +21053,8 @@
           "width": 300,
           "content": "下载完成后自动开始分离。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -20813,7 +21076,8 @@
           "fill": "#A0AAB8",
           "content": "已选声部在搜索和分类切换后保留。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -20838,7 +21102,8 @@
               "fill": "#F3F6FB",
               "content": "取消",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -20861,7 +21126,8 @@
           "fill": "#A0AAB8",
           "content": "没有找到“theremin”相关声部",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -20949,7 +21215,8 @@
           "fill": "#9EC9FF",
           "content": "已选的 5 个声部仍保留，可以继续分离。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -20960,7 +21227,8 @@
           "fill": "#A0AAB8",
           "content": "尝试其他关键词，或清空搜索查看全部声部。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "rectangle",
@@ -23580,7 +23848,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -23760,7 +24029,8 @@
           "fill": "#A0AAB8",
           "content": "音轨 / 07",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -23771,7 +24041,8 @@
           "fill": "#A0AAB8",
           "content": "−   100%   +",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -24110,7 +24381,8 @@
               "fill": "#8D9BAD",
               "content": "原始音频",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -24672,7 +24944,8 @@
               "fill": "#B6A0EA",
               "content": "主唱",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -25234,7 +25507,8 @@
               "fill": "#E8B76A",
               "content": "鼓组",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -25796,7 +26070,8 @@
               "fill": "#55C4B0",
               "content": "贝斯",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -26358,7 +26633,8 @@
               "fill": "#70ABEC",
               "content": "电吉他",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -26920,7 +27196,8 @@
               "fill": "#D991AA",
               "content": "钢琴",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -27295,7 +27572,8 @@
           "fill": "#A0AAB8",
           "content": "播放状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27307,7 +27585,8 @@
           "fill": "#75D8BC",
           "content": "● 就绪",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -27438,7 +27717,8 @@
           "fill": "#A0AAB8",
           "content": "循环  00:48 — 01:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -27541,7 +27821,8 @@
           "fill": "#8593A7",
           "content": "示例：120 BPM · 4/4 · 第一拍 00:00 · 节拍器与拍线已开启",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -27633,7 +27914,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27644,7 +27926,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27655,7 +27938,8 @@
           "fill": "#A0AAB8",
           "content": "时长",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27678,7 +27962,8 @@
           "fill": "#A0AAB8",
           "content": "采样率",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27701,7 +27986,8 @@
           "fill": "#A0AAB8",
           "content": "声道",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27724,7 +28010,8 @@
           "fill": "#A0AAB8",
           "content": "模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27760,7 +28047,8 @@
           "fill": "#A0AAB8",
           "content": "试听结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -27801,7 +28089,8 @@
               "fill": "#F3F6FB",
               "content": "在文件夹中显示",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -27828,7 +28117,8 @@
               "content": "导出此音轨",
               "textAlign": "center",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -27885,7 +28175,8 @@
                   "fill": "#F3F6FB",
                   "content": "原始",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -27911,7 +28202,8 @@
                   "fill": "#F3F6FB",
                   "content": "分轨",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -28186,7 +28478,8 @@
               "fill": "#91A9BC",
               "content": "其它",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -28770,7 +29063,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -28950,7 +29244,8 @@
           "fill": "#A0AAB8",
           "content": "音轨  /  01",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -28961,7 +29256,8 @@
           "fill": "#A0AAB8",
           "content": "−   100%   +",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -29287,7 +29583,8 @@
               "fill": "#8D9BAD",
               "content": "原始音频",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -29552,7 +29849,8 @@
               "fill": "#B6A0EA",
               "content": "主唱",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -29817,7 +30115,8 @@
               "fill": "#E8B76A",
               "content": "鼓组",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -30082,7 +30381,8 @@
               "fill": "#55C4B0",
               "content": "贝斯",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -30347,7 +30647,8 @@
               "fill": "#70ABEC",
               "content": "电吉他",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -30612,7 +30913,8 @@
               "fill": "#D991AA",
               "content": "钢琴",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -30701,7 +31003,8 @@
           "fill": "#A0AAB8",
           "content": "播放状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -30713,7 +31016,8 @@
           "fill": "#75D8BC",
           "content": "● 就绪",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -30845,7 +31149,8 @@
           "fill": "#A0AAB8",
           "content": "循环  00:48 — 01:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -30948,7 +31253,8 @@
           "fill": "#8593A7",
           "content": "设计示例 · 导入后仅显示原始音频",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -31041,7 +31347,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -31052,7 +31359,8 @@
           "fill": "#75D8BC",
           "content": "原始音频",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -31063,7 +31371,8 @@
           "fill": "#A0AAB8",
           "content": "时长",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -31086,7 +31395,8 @@
           "fill": "#A0AAB8",
           "content": "采样率",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -31109,7 +31419,8 @@
           "fill": "#A0AAB8",
           "content": "声道",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -31132,7 +31443,8 @@
           "fill": "#A0AAB8",
           "content": "模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -31168,7 +31480,8 @@
           "fill": "#A0AAB8",
           "content": "试听结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -31208,7 +31521,8 @@
               "fill": "#F3F6FB",
               "content": "在文件夹中显示",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -31235,7 +31549,8 @@
               "content": "导出此音轨",
               "textAlign": "center",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -31292,7 +31607,8 @@
                   "fill": "#F3F6FB",
                   "content": "原始",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -31318,7 +31634,8 @@
                   "fill": "#F3F6FB",
                   "content": "分轨",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -31861,7 +32178,8 @@
           "fill": "#A0AAB8",
           "content": "全部项目",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -32457,7 +32775,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -32637,7 +32956,8 @@
           "fill": "#A0AAB8",
           "content": "音轨 / 07",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -32648,7 +32968,8 @@
           "fill": "#A0AAB8",
           "content": "滚轮 / 捏合缩放",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 11
+          "fontSize": 11,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -32979,7 +33300,8 @@
               "fill": "#8D9BAD",
               "content": "原始音频",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -33245,7 +33567,8 @@
               "fill": "#B6A0EA",
               "content": "主唱",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -33511,7 +33834,8 @@
               "fill": "#E8B76A",
               "content": "鼓组",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -33777,7 +34101,8 @@
               "fill": "#55C4B0",
               "content": "贝斯",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -34043,7 +34368,8 @@
               "fill": "#70ABEC",
               "content": "电吉他",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -34309,7 +34635,8 @@
               "fill": "#D991AA",
               "content": "钢琴",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -34398,7 +34725,8 @@
           "fill": "#A0AAB8",
           "content": "播放状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34410,7 +34738,8 @@
           "fill": "#75D8BC",
           "content": "● 就绪",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -34542,7 +34871,8 @@
           "fill": "#A0AAB8",
           "content": "循环  00:48 — 01:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -34645,7 +34975,8 @@
           "fill": "#8593A7",
           "content": "示例波形 · 非模型实测结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -34737,7 +35068,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34748,7 +35080,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34759,7 +35092,8 @@
           "fill": "#A0AAB8",
           "content": "时长",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34782,7 +35116,8 @@
           "fill": "#A0AAB8",
           "content": "采样率",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34805,7 +35140,8 @@
           "fill": "#A0AAB8",
           "content": "声道",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34828,7 +35164,8 @@
           "fill": "#A0AAB8",
           "content": "模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34864,7 +35201,8 @@
           "fill": "#A0AAB8",
           "content": "试听结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -34905,7 +35243,8 @@
               "fill": "#F3F6FB",
               "content": "在文件夹中显示",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -34932,7 +35271,8 @@
               "content": "导出此音轨",
               "textAlign": "center",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -34989,7 +35329,8 @@
                   "fill": "#F3F6FB",
                   "content": "原始",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -35015,7 +35356,8 @@
                   "fill": "#F3F6FB",
                   "content": "分轨",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -35281,7 +35623,8 @@
               "fill": "#4DD6BA",
               "content": "其它",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -35720,7 +36063,8 @@
               "fill": "#70ABEC",
               "content": "节拍参考",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -36315,7 +36659,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -36495,7 +36840,8 @@
           "fill": "#A0AAB8",
           "content": "音轨 / 07",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -36506,7 +36852,8 @@
           "fill": "#A0AAB8",
           "content": "滚轮 / 捏合缩放",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 11
+          "fontSize": 11,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -36836,7 +37183,8 @@
               "fill": "#8D9BAD",
               "content": "原始音频",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -37101,7 +37449,8 @@
               "fill": "#B6A0EA",
               "content": "主唱",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -37366,7 +37715,8 @@
               "fill": "#E8B76A",
               "content": "鼓组",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -37631,7 +37981,8 @@
               "fill": "#55C4B0",
               "content": "贝斯",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -37896,7 +38247,8 @@
               "fill": "#70ABEC",
               "content": "电吉他",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -38161,7 +38513,8 @@
               "fill": "#D991AA",
               "content": "钢琴",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -38250,7 +38603,8 @@
           "fill": "#A0AAB8",
           "content": "播放状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38262,7 +38616,8 @@
           "fill": "#75D8BC",
           "content": "● 就绪",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -38394,7 +38749,8 @@
           "fill": "#A0AAB8",
           "content": "循环  00:48 — 01:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -38497,7 +38853,8 @@
           "fill": "#8593A7",
           "content": "示例波形 · 非模型实测结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -38589,7 +38946,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38600,7 +38958,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38611,7 +38970,8 @@
           "fill": "#A0AAB8",
           "content": "时长",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38634,7 +38994,8 @@
           "fill": "#A0AAB8",
           "content": "采样率",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38657,7 +39018,8 @@
           "fill": "#A0AAB8",
           "content": "声道",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38680,7 +39042,8 @@
           "fill": "#A0AAB8",
           "content": "模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38716,7 +39079,8 @@
           "fill": "#A0AAB8",
           "content": "试听结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -38757,7 +39121,8 @@
               "fill": "#F3F6FB",
               "content": "在文件夹中显示",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -38784,7 +39149,8 @@
               "content": "导出此音轨",
               "textAlign": "center",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -38841,7 +39207,8 @@
                   "fill": "#F3F6FB",
                   "content": "原始",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -38867,7 +39234,8 @@
                   "fill": "#F3F6FB",
                   "content": "分轨",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -39131,7 +39499,8 @@
               "fill": "#4DD6BA",
               "content": "其它",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -39285,7 +39654,8 @@
               "fill": "#E8ECF2",
               "content": "所有音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 22
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -39297,7 +39667,8 @@
               "fill": "#A0AAB8",
               "content": "拖动调整顺序；隐藏音轨可随时恢复。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -39318,7 +39689,8 @@
                   "fill": "#8492A6",
                   "content": "⠿",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 20
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
@@ -39346,7 +39718,8 @@
                       "fill": "#E8ECF2",
                       "content": "原始音频",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -39355,7 +39728,8 @@
                       "fill": "#A0AAB8",
                       "content": "显示 · 原始",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 11
+                      "fontSize": 11,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -39454,7 +39828,8 @@
                   "fill": "#8492A6",
                   "content": "⠿",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 20
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
@@ -39482,7 +39857,8 @@
                       "fill": "#E8ECF2",
                       "content": "其它 · 上次来源",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -39491,7 +39867,8 @@
                       "fill": "#A0AAB8",
                       "content": "隐藏 · 二次分离来源",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 11
+                      "fontSize": 11,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -39589,7 +39966,8 @@
                   "fill": "#8492A6",
                   "content": "⠿",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 20
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
@@ -39617,7 +39995,8 @@
                       "fill": "#E8ECF2",
                       "content": "其它",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -39626,7 +40005,8 @@
                       "fill": "#A0AAB8",
                       "content": "显示 · 剩余音轨",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 11
+                      "fontSize": 11,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -39724,7 +40104,8 @@
                   "fill": "#8492A6",
                   "content": "⠿",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 20
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
@@ -39752,7 +40133,8 @@
                       "fill": "#E8ECF2",
                       "content": "主唱",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -39761,7 +40143,8 @@
                       "fill": "#A0AAB8",
                       "content": "显示 · 分离结果",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 11
+                      "fontSize": 11,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -39859,7 +40242,8 @@
                   "fill": "#8492A6",
                   "content": "⠿",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 20
+                  "fontSize": 20,
+                  "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
@@ -39887,7 +40271,8 @@
                       "fill": "#E8ECF2",
                       "content": "鼓组",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 14
+                      "fontSize": 14,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "text",
@@ -39896,7 +40281,8 @@
                       "fill": "#A0AAB8",
                       "content": "显示 · 分离结果",
                       "fontFamily": "Noto Sans SC",
-                      "fontSize": 11
+                      "fontSize": 11,
+                      "fontWeight": "normal"
                     }
                   ]
                 },
@@ -39985,7 +40371,8 @@
               "fill": "#A0AAB8",
               "content": "删除前确认；不能删除原始音频或正在分离的来源。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -39997,7 +40384,8 @@
               "fill": "#70ABEC",
               "content": "完成",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -40304,7 +40692,8 @@
               "fill": "#F3F6FB",
               "content": "导出音轨",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -40484,7 +40873,8 @@
           "fill": "#A0AAB8",
           "content": "音轨 / 07",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -40495,7 +40885,8 @@
           "fill": "#A0AAB8",
           "content": "滚轮 / 捏合缩放",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 11
+          "fontSize": 11,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -40825,7 +41216,8 @@
               "fill": "#8D9BAD",
               "content": "原始音频",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -41090,7 +41482,8 @@
               "fill": "#B6A0EA",
               "content": "主唱",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -41355,7 +41748,8 @@
               "fill": "#E8B76A",
               "content": "鼓组",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -41620,7 +42014,8 @@
               "fill": "#55C4B0",
               "content": "贝斯",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -41885,7 +42280,8 @@
               "fill": "#70ABEC",
               "content": "电吉他",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -42150,7 +42546,8 @@
               "fill": "#D991AA",
               "content": "钢琴",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -42239,7 +42636,8 @@
           "fill": "#A0AAB8",
           "content": "播放状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42251,7 +42649,8 @@
           "fill": "#75D8BC",
           "content": "● 就绪",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -42383,7 +42782,8 @@
           "fill": "#A0AAB8",
           "content": "循环  00:48 — 01:32",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "icon",
@@ -42486,7 +42886,8 @@
           "fill": "#8593A7",
           "content": "示例波形 · 非模型实测结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "frame",
@@ -42578,7 +42979,8 @@
           "fill": "#A0AAB8",
           "content": "状态",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42589,7 +42991,8 @@
           "fill": "#75D8BC",
           "content": "已完成",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42600,7 +43003,8 @@
           "fill": "#A0AAB8",
           "content": "时长",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42623,7 +43027,8 @@
           "fill": "#A0AAB8",
           "content": "采样率",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42646,7 +43051,8 @@
           "fill": "#A0AAB8",
           "content": "声道",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42669,7 +43075,8 @@
           "fill": "#A0AAB8",
           "content": "模型",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42705,7 +43112,8 @@
           "fill": "#A0AAB8",
           "content": "试听结果",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 12
+          "fontSize": 12,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -42746,7 +43154,8 @@
               "fill": "#F3F6FB",
               "content": "在文件夹中显示",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -42773,7 +43182,8 @@
               "content": "导出此音轨",
               "textAlign": "center",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -42830,7 +43240,8 @@
                   "fill": "#F3F6FB",
                   "content": "原始",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -42856,7 +43267,8 @@
                   "fill": "#F3F6FB",
                   "content": "分轨",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 12
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             }
@@ -43120,7 +43532,8 @@
               "fill": "#4DD6BA",
               "content": "其它",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "path",
@@ -43274,7 +43687,8 @@
               "fill": "#E8ECF2",
               "content": "节奏与调性",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 22
+              "fontSize": 22,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43286,7 +43700,8 @@
               "fill": "#A0AAB8",
               "content": "调整节拍参考，不改变音频速度或音高。",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43297,7 +43712,8 @@
               "fill": "#70ABEC",
               "content": "节奏",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43308,7 +43724,8 @@
               "fill": "#A0AAB8",
               "content": "速度 BPM",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -43330,7 +43747,8 @@
                   "fill": "#E8ECF2",
                   "content": "120",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 17
+                  "fontSize": 17,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -43343,7 +43761,8 @@
               "fill": "#A0AAB8",
               "content": "拍号",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -43365,7 +43784,8 @@
                   "fill": "#E8ECF2",
                   "content": "4/4  ★",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 17
+                  "fontSize": 17,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -43378,7 +43798,8 @@
               "fill": "#A0AAB8",
               "content": "第一拍位置 · 秒",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -43400,7 +43821,8 @@
                   "fill": "#E8ECF2",
                   "content": "0.120",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 17
+                  "fontSize": 17,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -43413,7 +43835,8 @@
               "fill": "#70ABEC",
               "content": "设为游标位置",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43424,7 +43847,8 @@
               "fill": "#B49BEF",
               "content": "调性",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43435,7 +43859,8 @@
               "fill": "#A0AAB8",
               "content": "调性",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -43457,7 +43882,8 @@
                   "fill": "#E8ECF2",
                   "content": "C 大调  ★",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 17
+                  "fontSize": 17,
+                  "fontWeight": "normal"
                 }
               ]
             },
@@ -43470,7 +43896,8 @@
               "fill": "#A0AAB8",
               "content": "★ 分析推荐值",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43482,7 +43909,8 @@
               "fill": "#70ABEC",
               "content": "重新分析",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43493,7 +43921,8 @@
               "fill": "#E8ECF2",
               "content": "节拍器",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43505,7 +43934,8 @@
               "fill": "#A0AAB8",
               "content": "音量在节拍器轨道调整",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 12
+              "fontSize": 12,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43517,7 +43947,8 @@
               "fill": "#70ABEC",
               "content": "● 开启",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 13
+              "fontSize": 13,
+              "fontWeight": "normal"
             },
             {
               "type": "text",
@@ -43529,7 +43960,8 @@
               "fill": "#E8ECF2",
               "content": "完成",
               "fontFamily": "Noto Sans SC",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -43612,7 +44044,8 @@
           "fill": "#E8ECF2",
           "content": "快捷键",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 22
+          "fontSize": 22,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43624,7 +44057,8 @@
           "fill": "#A0AAB8",
           "content": "在工作区生效；输入框与弹窗保留自身键盘操作。",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43635,7 +44069,8 @@
           "fill": "#E8ECF2",
           "content": "播放 / 暂停",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43646,7 +44081,8 @@
           "fill": "#70ABEC",
           "content": "Space",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43657,7 +44093,8 @@
           "fill": "#E8ECF2",
           "content": "返回起点",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43668,7 +44105,8 @@
           "fill": "#70ABEC",
           "content": "Home",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43679,7 +44117,8 @@
           "fill": "#E8ECF2",
           "content": "前后移动 1 秒",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43690,7 +44129,8 @@
           "fill": "#70ABEC",
           "content": "← / →",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43701,7 +44141,8 @@
           "fill": "#E8ECF2",
           "content": "前后移动 10 秒",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43712,7 +44153,8 @@
           "fill": "#70ABEC",
           "content": "Shift + ← / →",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43723,7 +44165,8 @@
           "fill": "#E8ECF2",
           "content": "设置入点 / 出点",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43734,7 +44177,8 @@
           "fill": "#70ABEC",
           "content": "I / O",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43745,7 +44189,8 @@
           "fill": "#E8ECF2",
           "content": "开启 / 关闭循环",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43756,7 +44201,8 @@
           "fill": "#70ABEC",
           "content": "L",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43767,7 +44213,8 @@
           "fill": "#E8ECF2",
           "content": "放大 / 缩小",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43778,7 +44225,8 @@
           "fill": "#70ABEC",
           "content": "+ / −",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43789,7 +44237,8 @@
           "fill": "#E8ECF2",
           "content": "显示完整音频",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43800,7 +44249,8 @@
           "fill": "#70ABEC",
           "content": "0",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43811,7 +44261,8 @@
           "fill": "#E8ECF2",
           "content": "音轨列表",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43822,7 +44273,8 @@
           "fill": "#70ABEC",
           "content": "T",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43833,7 +44285,8 @@
           "fill": "#E8ECF2",
           "content": "快捷键说明",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43844,7 +44297,8 @@
           "fill": "#70ABEC",
           "content": "?",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 13
+          "fontSize": 13,
+          "fontWeight": "normal"
         },
         {
           "type": "text",
@@ -43856,7 +44310,8 @@
           "fill": "#E8ECF2",
           "content": "关闭",
           "fontFamily": "Noto Sans SC",
-          "fontSize": 14
+          "fontSize": 14,
+          "fontWeight": "normal"
         },
         {
           "id": "tVPTy",
@@ -43884,7 +44339,8 @@
       "fill": "#8593A7",
       "content": "A · 当前主流程",
       "fontFamily": "Noto Sans SC",
-      "fontSize": 30
+      "fontSize": 30,
+      "fontWeight": "normal"
     },
     {
       "type": "text",
@@ -43895,7 +44351,8 @@
       "fill": "#8593A7",
       "content": "B · 操作弹窗",
       "fontFamily": "Noto Sans SC",
-      "fontSize": 30
+      "fontSize": 30,
+      "fontWeight": "normal"
     },
     {
       "type": "text",
@@ -43906,7 +44363,8 @@
       "fill": "#8593A7",
       "content": "C · 进度、搜索与恢复",
       "fontFamily": "Noto Sans SC",
-      "fontSize": 30
+      "fontSize": 30,
+      "fontWeight": "normal"
     },
     {
       "type": "text",
@@ -43917,7 +44375,8 @@
       "fill": "#8593A7",
       "content": "D · 设计系统与品牌",
       "fontFamily": "Noto Sans SC",
-      "fontSize": 30
+      "fontSize": 30,
+      "fontWeight": "normal"
     },
     {
       "type": "text",
@@ -43928,7 +44387,75 @@
       "fill": "#8593A7",
       "content": "E · 早期方案与参考（保留）",
       "fontFamily": "Noto Sans SC",
-      "fontSize": 30
+      "fontSize": 30,
+      "fontWeight": "normal"
+    },
+    {
+      "type": "frame",
+      "id": "GYMp2",
+      "x": 2300,
+      "y": 4452,
+      "name": "27 · 紧凑任务提示 / Cancelled",
+      "context": "工作区取消/失败提示使用紧凑横条。最小高度52px；文字13/12px；按钮28px；长错误可换行，不能截断恢复信息。",
+      "width": 1160,
+      "height": 64,
+      "fill": "#1C2835",
+      "cornerRadius": 9,
+      "stroke": "#3A526D",
+      "strokeWidth": 1,
+      "gap": 16,
+      "padding": 12,
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "VRIPe",
+          "name": "Cancelled title",
+          "fill": "#CBD5E3",
+          "content": "分离已取消",
+          "fontFamily": "Noto Sans SC",
+          "fontSize": 13,
+          "fontWeight": "600"
+        },
+        {
+          "type": "text",
+          "id": "IVMb6",
+          "name": "Source retained note",
+          "fill": "#A0AAB8",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "源音轨已保留",
+          "fontFamily": "Noto Sans SC",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "id": "f0MXRJ",
+          "type": "ref",
+          "ref": "e2kkX",
+          "name": "Retry compact",
+          "width": 56,
+          "height": 28,
+          "descendants": {
+            "g1K0Dt": {
+              "content": "重试"
+            }
+          }
+        },
+        {
+          "id": "Cuqzy",
+          "type": "ref",
+          "ref": "e2kkX",
+          "name": "Dismiss compact",
+          "width": 56,
+          "height": 28,
+          "descendants": {
+            "g1K0Dt": {
+              "content": "关闭"
+            }
+          }
+        }
+      ]
     }
   ],
   "variables": {

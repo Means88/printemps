@@ -149,3 +149,8 @@ header>button{flex-shrink:0}
 .save-status{min-width:80px;color:#a0aab8}.track-list-row>button{flex-shrink:0}
 .dialog .track-list-row>button:not(.switch){background:transparent;border-color:transparent;color:#8492a6}
 .dialog .track-list-row>button:not(.switch):hover:not(:disabled){background:#354253;color:#e8ecf2}
+.separation-loading.task-recovery{min-height:52px;padding:10px 12px;gap:10px;background:#1c2835;border-color:#3a526d}
+.task-recovery>div{display:flex;align-items:center;flex-wrap:wrap;gap:4px 16px;min-width:0}
+.task-recovery strong{font-size:13px;font-weight:600;color:#cbd5e3}.task-recovery p{margin:0;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.task-recovery>button{min-height:28px;padding:4px 10px;font-size:12px;line-height:18px;flex-shrink:0}
+.task-recovery .error-notice{flex-basis:100%;font-size:12px}
