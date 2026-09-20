@@ -173,5 +173,12 @@
     "title": "发布页 printemps.dev",
     "png": "exports/33-website.png",
     "html": "../site/index.html"
+  },
+  {
+    "nodeId": "VE9BB",
+    "slug": "34-privacy",
+    "title": "隐私政策页 printemps.dev/privacy",
+    "png": "exports/34-privacy.png",
+    "html": "../site/privacy.html"
   }
 ]
