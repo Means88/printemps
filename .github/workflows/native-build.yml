@@ -47,7 +47,8 @@ jobs:
       - run: npm run test:integration
       - name: Release downloaded wheel cache before copying runtime into package
         run: uv cache clean
-      - run: npm run package -- ${{ matrix.package_args }}
+      - name: Build platform installers without publishing
+        run: npm run dist -- ${{ matrix.package_args }}
       - name: Verify packaged analysis runtime
         run: npm run test:integration
         env:
