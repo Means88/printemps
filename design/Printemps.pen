@@ -6151,19 +6151,6 @@
           "fontWeight": "500"
         },
         {
-          "type": "text",
-          "id": "yTOc7",
-          "x": 16,
-          "y": 704,
-          "name": "Demo caption",
-          "fill": "#8593A7",
-          "content": "Illustrative waveforms · not a measured result",
-          "lineHeight": 1,
-          "fontFamily": "Nunito Sans",
-          "fontSize": 10,
-          "fontWeight": "600"
-        },
-        {
           "type": "frame",
           "id": "oltgN",
           "x": 496.2352941176471,
@@ -6549,7 +6536,7 @@
               "context": "模型管理；悬停显示同名提示；键盘焦点可见；点击打开对应页面。",
               "width": 36,
               "height": 36,
-              "fill": "#20252D",
+              "fill": "#00000000",
               "cornerRadius": 10,
               "layout": "none",
               "children": [
@@ -6576,7 +6563,7 @@
               "context": "设置；悬停显示同名提示；键盘焦点可见；点击打开对应页面。",
               "width": 36,
               "height": 36,
-              "fill": "#20252D",
+              "fill": "#00000000",
               "cornerRadius": 10,
               "layout": "none",
               "children": [
@@ -6827,7 +6814,7 @@
           "type": "icon",
           "id": "wzhDV",
           "x": 1003,
-          "y": 403,
+          "y": 461,
           "name": "Recent icon 0",
           "width": 22,
           "height": 22,
@@ -6839,7 +6826,7 @@
           "type": "text",
           "id": "ZXLvp",
           "x": 1042,
-          "y": 400,
+          "y": 458,
           "name": "Recent title 0",
           "fill": "#E8ECF2",
           "content": "Midnight Session",
@@ -6851,10 +6838,10 @@
           "type": "text",
           "id": "yjyes",
           "x": 1042,
-          "y": 427,
+          "y": 485,
           "name": "Recent info 0",
           "fill": "#A0AAB8",
-          "content": "5 个声部 · 03:24",
+          "content": "5 音轨 · 03:24",
           "fontFamily": "Noto Sans SC",
           "fontSize": 12,
           "fontWeight": "normal"
@@ -6863,7 +6850,7 @@
           "type": "icon",
           "id": "uOskI",
           "x": 1303,
-          "y": 413,
+          "y": 471,
           "name": "Open recent 0",
           "width": 18,
           "height": 18,
@@ -6875,7 +6862,7 @@
           "type": "frame",
           "id": "ZPcyv",
           "x": 1000,
-          "y": 469,
+          "y": 527,
           "name": "Divider",
           "width": 324,
           "height": 1,
@@ -6886,7 +6873,7 @@
           "type": "icon",
           "id": "n7FXg8",
           "x": 1003,
-          "y": 492,
+          "y": 550,
           "name": "Recent icon 1",
           "width": 22,
           "height": 22,
@@ -6898,7 +6885,7 @@
           "type": "text",
           "id": "rNe1x",
           "x": 1042,
-          "y": 489,
+          "y": 547,
           "name": "Recent title 1",
           "fill": "#E8ECF2",
           "content": "Acoustic Sketch",
@@ -6910,10 +6897,10 @@
           "type": "text",
           "id": "S7itkL",
           "x": 1042,
-          "y": 516,
+          "y": 574,
           "name": "Recent info 1",
           "fill": "#A0AAB8",
-          "content": "3 个声部 · 02:18",
+          "content": "3 音轨 · 02:18",
           "fontFamily": "Noto Sans SC",
           "fontSize": 12,
           "fontWeight": "normal"
@@ -6922,7 +6909,7 @@
           "type": "icon",
           "id": "Z3rIb2",
           "x": 1303,
-          "y": 502,
+          "y": 560,
           "name": "Open recent 1",
           "width": 18,
           "height": 18,
@@ -6934,7 +6921,7 @@
           "type": "frame",
           "id": "ySREq",
           "x": 1000,
-          "y": 558,
+          "y": 616,
           "name": "Divider",
           "width": 324,
           "height": 1,
@@ -6945,7 +6932,7 @@
           "type": "icon",
           "id": "JPDrO",
           "x": 1003,
-          "y": 581,
+          "y": 639,
           "name": "Recent icon 2",
           "width": 22,
           "height": 22,
@@ -6957,7 +6944,7 @@
           "type": "text",
           "id": "u5s72",
           "x": 1042,
-          "y": 578,
+          "y": 636,
           "name": "Recent title 2",
           "fill": "#E8ECF2",
           "content": "Sunday Live",
@@ -6969,10 +6956,10 @@
           "type": "text",
           "id": "v9QDG",
           "x": 1042,
-          "y": 605,
+          "y": 663,
           "name": "Recent info 2",
           "fill": "#A0AAB8",
-          "content": "6 个声部 · 04:52",
+          "content": "6 音轨 · 04:52",
           "fontFamily": "Noto Sans SC",
           "fontSize": 12,
           "fontWeight": "normal"
@@ -6981,7 +6968,7 @@
           "type": "icon",
           "id": "s86ib7",
           "x": 1303,
-          "y": 591,
+          "y": 649,
           "name": "Open recent 2",
           "width": 18,
           "height": 18,
@@ -6993,7 +6980,7 @@
           "type": "frame",
           "id": "iJd4r",
           "x": 1000,
-          "y": 647,
+          "y": 705,
           "name": "Divider",
           "width": 324,
           "height": 1,
@@ -7074,6 +7061,65 @@
           },
           "width": 34,
           "height": 34
+        },
+        {
+          "type": "frame",
+          "id": "O8r6T",
+          "x": 1066,
+          "y": 15,
+          "name": "Keyboard shortcuts header button",
+          "width": 30,
+          "height": 30,
+          "fill": "#00000000",
+          "cornerRadius": 8,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "xHkLZ",
+              "name": "Keyboard shortcuts top right",
+              "context": "快捷键帮助移至右上角，与模型管理、设置及侧栏开关同组。",
+              "fill": "#A0AAB8",
+              "textGrowth": "fixed-width-height",
+              "width": 18,
+              "height": 20,
+              "content": "?",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "psmOX",
+          "x": 1000,
+          "y": 386,
+          "name": "Search projects field",
+          "width": 324,
+          "height": 40,
+          "fill": "#141A22",
+          "cornerRadius": 8,
+          "stroke": "#3A4350",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "cvW4p",
+              "x": 14,
+              "y": 11,
+              "name": "Search placeholder",
+              "fill": "#6F7A8A",
+              "content": "搜索项目",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
         }
       ]
     },
@@ -7234,18 +7280,6 @@
         },
         {
           "type": "text",
-          "id": "qBufo",
-          "x": 48,
-          "y": 80,
-          "name": "Section number",
-          "fill": "#4C9AFF",
-          "content": "选择声部 · 弹窗",
-          "fontFamily": "Noto Sans SC",
-          "fontSize": 12,
-          "fontWeight": "normal"
-        },
-        {
-          "type": "text",
           "id": "M0jFK",
           "x": 48,
           "y": 119,
@@ -7318,35 +7352,6 @@
         },
         {
           "type": "frame",
-          "id": "E5OAtW",
-          "x": 1256,
-          "y": 236,
-          "name": "更换文件",
-          "enabled": false,
-          "width": 112,
-          "height": 34,
-          "fill": "#292F38",
-          "cornerRadius": 9,
-          "stroke": "#3A4350",
-          "strokeWidth": 0.6,
-          "gap": 6,
-          "justifyContent": "center",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "text",
-              "id": "UVnP0",
-              "name": "更换文件 label",
-              "fill": "#F3F6FB",
-              "content": "更换文件",
-              "fontFamily": "Noto Sans SC",
-              "fontSize": 12,
-              "fontWeight": "normal"
-            }
-          ]
-        },
-        {
-          "type": "frame",
           "id": "TyJwx",
           "x": 48,
           "y": 317,
@@ -7389,9 +7394,9 @@
           "x": 686,
           "y": 319,
           "name": "乐队组合",
-          "width": 96,
+          "width": 72,
           "height": 34,
-          "fill": "#287CDD",
+          "fill": "#292F38",
           "cornerRadius": 9,
           "stroke": "#4998F1",
           "strokeWidth": 0.6,
@@ -7404,7 +7409,7 @@
               "id": "HnEqR",
               "name": "乐队组合 label",
               "fill": "#F3F6FB",
-              "content": "乐队组合",
+              "content": "乐队",
               "fontFamily": "Noto Sans SC",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -7414,10 +7419,10 @@
         {
           "type": "frame",
           "id": "tH2S9",
-          "x": 792,
+          "x": 768,
           "y": 319,
           "name": "人声组合",
-          "width": 96,
+          "width": 104,
           "height": 34,
           "fill": "#292F38",
           "cornerRadius": 9,
@@ -7432,35 +7437,7 @@
               "id": "lrz53",
               "name": "人声组合 label",
               "fill": "#F3F6FB",
-              "content": "人声组合",
-              "fontFamily": "Noto Sans SC",
-              "fontSize": 12,
-              "fontWeight": "normal"
-            }
-          ]
-        },
-        {
-          "type": "frame",
-          "id": "OPOnY",
-          "x": 898,
-          "y": 319,
-          "name": "清空选择",
-          "width": 96,
-          "height": 34,
-          "fill": "#292F38",
-          "cornerRadius": 9,
-          "stroke": "#3A4350",
-          "strokeWidth": 0.6,
-          "gap": 6,
-          "justifyContent": "center",
-          "alignItems": "center",
-          "children": [
-            {
-              "type": "text",
-              "id": "wZCTI",
-              "name": "清空选择 label",
-              "fill": "#F3F6FB",
-              "content": "清空选择",
+              "content": "主唱与和声",
               "fontFamily": "Noto Sans SC",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -7486,7 +7463,7 @@
           "y": 397,
           "name": "Category 0",
           "fill": "#8FC0FF",
-          "content": "全部声部",
+          "content": "全部",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -7510,7 +7487,7 @@
           "y": 503,
           "name": "Category 2",
           "fill": "#A0AAB8",
-          "content": "鼓与打击乐",
+          "content": "吉他与拨弦",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -7522,7 +7499,7 @@
           "y": 556,
           "name": "Category 3",
           "fill": "#A0AAB8",
-          "content": "弦乐与吉他",
+          "content": "键盘与合成器",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -7534,7 +7511,7 @@
           "y": 609,
           "name": "Category 4",
           "fill": "#A0AAB8",
-          "content": "键盘",
+          "content": "鼓与打击乐",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -7546,7 +7523,7 @@
           "y": 662,
           "name": "Category 5",
           "fill": "#A0AAB8",
-          "content": "管乐",
+          "content": "弦乐",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -8512,18 +8489,6 @@
           "layout": "none"
         },
         {
-          "type": "text",
-          "id": "KPNVL",
-          "x": 48,
-          "y": 836,
-          "name": "Footer note",
-          "fill": "#A0AAB8",
-          "content": "已选声部在搜索和分类切换后保留。",
-          "fontFamily": "Noto Sans SC",
-          "fontSize": 12,
-          "fontWeight": "normal"
-        },
-        {
           "type": "frame",
           "id": "L9fDW",
           "x": 1092,
@@ -8576,6 +8541,46 @@
           },
           "width": 34,
           "height": 34
+        },
+        {
+          "type": "frame",
+          "id": "jUL9V",
+          "x": 882,
+          "y": 319,
+          "name": "鼓组细分",
+          "width": 96,
+          "height": 34,
+          "fill": "#292F38",
+          "cornerRadius": 9,
+          "stroke": "#3A4350",
+          "strokeWidth": 0.6,
+          "gap": 6,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "M0ukY",
+              "name": "人声组合 label",
+              "fill": "#F3F6FB",
+              "content": "鼓组细分",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "hmefK",
+          "x": 64,
+          "y": 715,
+          "name": "Category 6",
+          "fill": "#A0AAB8",
+          "content": "管乐",
+          "fontFamily": "Noto Sans SC",
+          "fontSize": 13,
+          "fontWeight": "normal"
         }
       ]
     },
@@ -13384,7 +13389,7 @@
               "x": 1040,
               "y": 72,
               "name": "导出音轨",
-              "width": 106,
+              "width": 82,
               "height": 30,
               "fill": "#292F38",
               "cornerRadius": 9,
@@ -13399,7 +13404,7 @@
                   "id": "KlQmM",
                   "name": "导出音轨 label",
                   "fill": "#F3F6FB",
-                  "content": "导出音轨",
+                  "content": "导出",
                   "fontFamily": "Noto Sans SC",
                   "fontSize": 12,
                   "fontWeight": "normal"
@@ -13583,18 +13588,6 @@
               "content": "音轨 / 07",
               "fontFamily": "Noto Sans SC",
               "fontSize": 12,
-              "fontWeight": "normal"
-            },
-            {
-              "type": "text",
-              "id": "cgRsW",
-              "x": 980,
-              "y": 134,
-              "name": "Time zoom",
-              "fill": "#A0AAB8",
-              "content": "滚轮 / 捏合缩放",
-              "fontFamily": "Noto Sans SC",
-              "fontSize": 11,
               "fontWeight": "normal"
             },
             {
@@ -15593,18 +15586,6 @@
               "fontWeight": "500"
             },
             {
-              "type": "text",
-              "id": "HbPZ8",
-              "x": 16,
-              "y": 793,
-              "name": "Demo caption",
-              "fill": "#8593A7",
-              "content": "示例波形 · 非模型实测结果",
-              "fontFamily": "Noto Sans SC",
-              "fontSize": 12,
-              "fontWeight": "normal"
-            },
-            {
               "type": "frame",
               "id": "GOBEM",
               "x": 468,
@@ -16983,18 +16964,6 @@
                   "fontWeight": "500"
                 }
               ]
-            },
-            {
-              "type": "text",
-              "id": "PxDIS",
-              "x": 260,
-              "y": 799,
-              "name": "Clip design note",
-              "fill": "#A0AAB8",
-              "content": "点击片段选中 · 拖动首尾裁剪 · S 在游标处分割 · 分离结果保持片段 offset",
-              "fontFamily": "Noto Sans SC",
-              "fontSize": 11,
-              "fontWeight": "normal"
             },
             {
               "type": "frame",
@@ -19914,7 +19883,7 @@
           "y": 22,
           "name": "Project title",
           "fill": "#A0AAB8",
-          "content": "历史记录",
+          "content": "全部项目",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -19996,7 +19965,7 @@
           "y": 122,
           "name": "Heading",
           "fill": "#E8ECF2",
-          "content": "历史工作记录",
+          "content": "全部项目",
           "fontFamily": "Noto Sans SC",
           "fontSize": 28,
           "fontWeight": "500"
@@ -20047,7 +20016,7 @@
           "x": 48,
           "y": 224,
           "name": "History search",
-          "width": 686,
+          "width": 566,
           "height": 42,
           "fill": "#101419",
           "cornerRadius": 10,
@@ -20074,7 +20043,7 @@
           "y": 235,
           "name": "History search placeholder",
           "fill": "#A0AAB8",
-          "content": "搜索音频名称、文件名或声部",
+          "content": "搜索项目、音频或声部",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -21086,6 +21055,34 @@
           "fontFamily": "Noto Sans SC",
           "fontSize": 12,
           "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "qrill",
+          "x": 640,
+          "y": 228,
+          "name": "全部结果",
+          "width": 112,
+          "height": 34,
+          "fill": "#292F38",
+          "cornerRadius": 9,
+          "stroke": "#3A4350",
+          "strokeWidth": 0.6,
+          "gap": 6,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "GzoZY",
+              "name": "全部状态 label",
+              "fill": "#F3F6FB",
+              "content": "全部结果",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
         }
       ]
     },

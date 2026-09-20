@@ -664,3 +664,29 @@ Decisions (Pen first, then code), all on board 30 `ymoeh`; the Pen file was save
 
 - Fresh `Insert` of text nodes into board 30 reported a +50 px y offset and rendered off-position; copying the existing Split label with new content positioned correctly, so labels were created by `Copy`. Recorded here so the next Pen session does not re-debug it.
 - Verification on the rebuilt `out/` in Chinese with the isolated profile: 1440×900 and 1280×800 screenshots show the speaker icon + inline `-30.0 dB`, 起始位置 in the clip colour, the loop line `循环 00:00.000 — 00:10.000` with the loop region shaded, and Home listing `5 音轨`. No horizontal overflow at either size (footer 1264 px wide at 1280; transport right edge 810 px, master starts at 1062 px). Tests 95 passed / 3 conditional skipped (36 files); production build passed. Not yet in a signed package or CI.
+
+### 2026-09-20 · Boards 03 / 04 / 08 / 13 / 02 compared and aligned
+
+Method as before: Chinese isolated-profile window driven through CDP, screenshots against the board PNGs; Pen edited first, then code. Pen saved natively; PNGs re-exported to `design/exports/03-import.png`, `04-separation-setup.png`, `02-workbench-en-compact.png`, `design/workspace-revision/u1mPk.png`, `design/history-clips/b1tMnW.png`, `design/clip-export/S5oPw.png`.
+
+| Board | Deviation | Decision | Where |
+| --- | --- | --- | --- |
+| 03 Home | Intro copy under the headline missing | Follow board | App: two-line intro |
+| 03 | Three-step footer (01 导入音频 · 02 选择声部 · 03 试听并导出 · 支持格式) missing | Follow board (empty-state orientation, not a tutorial) | App: `home-steps` row; vertical spacing tightened so it fits at 1440×900 without inner scroll |
+| 03 | “查看全部项目” lacked the arrow | Follow board | App: arrow icon |
+| 03 | Header icon order ? / models / settings vs models / settings / ? | Follow boards 03 and 30 | App: reordered |
+| 03 | Board said “5 个声部”, had no search field, boxed header icons | App is right (count is tracks; search exists; plain icons) | Pen: “音轨”, search field added, icons plain, rows shifted |
+| 04 Stems | Title/subtitle “你想听见哪些声部？ / 选择目标声部；开始后在工作区查看进度。” | Follow board | App |
+| 04 | Source row: icon + “分离来源：…” + duration · 44.1 kHz · Stereo | Follow board | App |
+| 04 | Search placeholder and icon | Follow board | App |
+| 04 | Selected category style: filled primary vs tinted | Follow board (tinted #253954 / #8FC0FF) | App CSS |
+| 04 | Summary lacked 处理设备 line and download note | Follow board; device read from settings when the dialog opens | App |
+| 04 | Board had “更换文件”, “清空选择”, footer hint, “选择声部 · 弹窗” eyebrow, old preset/category names | App is right | Pen: removed / renamed to 乐队 · 主唱与和声 · 鼓组细分 and the seven catalog categories |
+| 08 Export | Dialog matches; background used stale board-30 texts | — | Pen: 导出 label, stale hints removed |
+| 13 History | Title “历史工作记录” vs “全部项目”; app lacked subtitle and 新建项目 primary; back arrow instead | Keep 全部项目 (matches entry link), add subtitle, replace arrow with 新建项目 primary at the right | App + Pen title |
+| 13 | “共 N 条记录”, “分离结果 · N 个剪辑” wording | Follow board | App |
+| 13 | Board lacked 全部结果 filter and used a different search placeholder | App is right | Pen |
+| 02 English compact | Board predates clip details / split / metronome lane; app follows board 30 at 1280×800 with no overflow | Board 02 kept only as a size reference; not restructured | Pen: stale caption removed |
+
+- Pen note: siblings on boards 04/13 are direct children of the board frame, not of the dialog panel frame; copies must be placed in the same parent or they render offset. Recorded so the “+50 px” confusion from board 30 is understood as parent mismatch, not a renderer bug.
+- Native checks after rebuild (Chinese, isolated profile): Home 1440×900 shows intro, steps row, arrow link, `5 音轨`; stem chooser shows the new title, source row `分离来源：权限恢复验证 / 00:00.750 · 44.1 kHz · Stereo`, tinted 全部 category, `处理设备 CPU`; All projects shows subtitle, 已删除 + 新建项目, `共 1 条记录`, `分离结果 · 4 个剪辑`; export dialog unchanged. English 1280×800 workspace has no horizontal overflow. Tests 95 passed / 3 conditional skipped; typecheck clean. Not yet in a signed package or CI.
