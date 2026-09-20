@@ -576,3 +576,15 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Extended Pen31 (`OspP2`) with Chinese/English import failure rows, exported updated PNG, and saved the Pen source using its native File → Save command. Existing save-recovery rows were preserved.
 - Replaced import's raw global error with a dedicated compact banner, optional technical details and Choose another file. Known disk, permission, missing-file, and decoding errors have separate recovery copy; unknown errors do not assert that the audio is damaged. A failed pending save continues to use the save banner rather than being mislabeled as import failure.
 - English1280×800 browser fixture: failed first import produced a52px collapsed banner with no horizontal overflow; choosing another file opened the workspace and removed the banner. Typecheck passed. Native invalid-file rollback was verified in the preceding signed9564b98 run; this new copy is not yet included in that package.
+
+### 2026-09-20 · Three-platform 9564b98 CI complete
+
+Workflow https://github.com/Means88/printemps/actions/runs/35496338370 completed successfully on exact SHA `9564b9800a815aa46807678c136a796814cdae6d`. All three jobs passed tests, installer build, packaged real analysis and artifact upload. Artifact API confirmed non-expired archives (7-day retention):
+
+| Platform | Artifact ID | Archive bytes | Archive SHA256 |
+| --- | --- | --- | --- |
+| macOS ARM64 | 10601595254 | 765599903 | 027976dd74f6eae57f0cd71a85857d8360313659d4ac9bd1db8f71479051fdfb |
+| Linux X64 | 10601135792 | 3045452019 | 27e9dfe5441ef1273f563cf6de1900a0dad679b89e79a370b60a9dc7d5ebcd00 |
+| Windows X64 | 10601086130 | 344763284 | 56f05080eddffcbf8dd2c7da5e879537485db7962f1b761689a982b5ec411dd3 |
+
+Hashes identify uploaded artifact archives, not individual installers. macOS CI uses ad-hoc signing. No public release was created. Subsequent 14a80a3 import-recovery copy/design is not in these archives. Per user direction, prioritize macOS acceptance while Windows/Linux GUI acceptance is deferred for lack of an available environment.
