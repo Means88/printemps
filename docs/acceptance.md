@@ -313,3 +313,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 复用一次性 `printemps-linux-amd64-verify` 容器，源码只读挂载。首次失败于旧npm依赖残留的electron-vite入口权限；修复验证脚本，在pnpm冻结安装前仅清理容器 `/work/node_modules`。第二次完整脚本exit0：75项测试、更新器回退、真实分析、AppImage构建、包内分析全部通过。包含当前剪辑拖动、采样边界与缓存释放修复。AppImage保存在容器 `/work/release/Printemps-0.1.1.AppImage`，3,045,434,915字节，blockMap3,143,223字节。构建日志和更新元数据已保存到 `.cache/linux-verification/current-clips/`。
 
 此为Linux x64容器运行及打包证据，非Linux桌面安装/GUI/设备声音验收，也不是当前构建对的真实差分升级证据；Windows当前版本仍待构建，macOS完整release包仍早于最新修复。
+
+### 当前提交三平台 CI 通过（2026-09-20）
+
+提交 `98ab5ab7617e631ab269159a64ad7ca0ed3b9b14` 的 [Native build verification #35490330246](https://github.com/Means88/printemps/actions/runs/35490330246) 已完成，Windows 2025、macOS 15、Ubuntu 24.04 三个作业均为 success。工作流覆盖冻结 pnpm 安装、普通测试、运行时准备、真实分析、平台安装包构建及包内分析；Linux 另验证更新器全量回退。Windows 日志确认 75 项测试通过、2 项条件测试跳过，生成 `Printemps Setup 0.1.1.exe`，包内分析测试通过（8.65秒）。
+
+本次覆盖最新剪辑拖动提交、采样边界和解码缓存释放修复，解除此前“当前 Windows 未构建”的限制。CI macOS 使用 ad-hoc 签名，不是 Developer ID 公证验证；工作流没有上传安装包产物，不能据此声称已交付可下载安装包。三平台实际安装、Windows/Linux GUI、设备听音及当前版本真实差分升级仍未验收。仓库本地 `release/mac-arm64` 仍是较早构建，不因远端 CI 成功而变为最新。
