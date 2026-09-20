@@ -4,7 +4,7 @@ import { createInterface } from 'node:readline'
 export function runJsonWorker<T>(python:string,script:string,request:unknown,signal:AbortSignal,onEvent:(event:any)=>T|undefined,interpreterArgs:string[]=['-u']):Promise<T> {
  return new Promise((resolve,reject)=>{
   if(signal.aborted){reject(new Error('Task cancelled'));return}
-  const environment:NodeJS.ProcessEnv={...process.env,PYTHONUNBUFFERED:'1',PYTHONNOUSERSITE:'1',PYTHONDONTWRITEBYTECODE:'1'}
+  const environment:NodeJS.ProcessEnv={...process.env,PYTHONUNBUFFERED:'1',PYTHONNOUSERSITE:'1',PYTHONDONTWRITEBYTECODE:'1',PRINTEMPS_PARENT_PID:String(process.pid)}
   delete environment.PYTHONHOME;delete environment.PYTHONPATH
   const child=spawn(python,[...interpreterArgs,script],{windowsHide:true,stdio:['pipe','pipe','pipe'],env:environment})
   let result:T|undefined,error='',diagnostics='',aborted=false,killTimer:ReturnType<typeof setTimeout>|undefined

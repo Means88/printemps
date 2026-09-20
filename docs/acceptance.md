@@ -588,3 +588,10 @@ Workflow https://github.com/Means88/printemps/actions/runs/35496338370 completed
 | Windows X64 | 10601086130 | 344763284 | 56f05080eddffcbf8dd2c7da5e879537485db7962f1b761689a982b5ec411dd3 |
 
 Hashes identify uploaded artifact archives, not individual installers. macOS CI uses ad-hoc signing. No public release was created. Subsequent 14a80a3 import-recovery copy/design is not in these archives. Per user direction, prioritize macOS acceptance while Windows/Linux GUI acceptance is deferred for lack of an available environment.
+
+### 2026-09-20 · Forced-owner-exit worker protection
+
+- Audit found JSON Python workers only handled graceful AbortSignal cancellation; a forcibly killed main process could leave analysis/separation running. Added a daemon parent-lifetime guard before heavy imports to both Python entry points. The main runner passes its PID explicitly. POSIX detects parent reassignment; Windows waits on a SYNCHRONIZE-only parent process handle. Standalone CLI use without the environment variable remains unchanged.
+- Real subprocess regression force-kills a Node owner after Python reports ready, then requires the inherited output pipe to close within5seconds, proving the Python task also exited. Passed on this macOS host, alongside normal worker completion/error/cancellation coverage. Windows implementation has not yet run in CI.
+- Real Beat This/Essentia source integration passed (`/tmp/printemps-parent-analysis.log`). Full tests:91 passed,3 conditional skipped (`/tmp/printemps-parent-full-tests.log`); production build passed (`/tmp/printemps-parent-build.log`).
+- This verifies worker lifetime, not a complete native UI crash/restart of a live separation task. New guard and import recovery are later than signed/CI9564b98 and require a future packaged build.

@@ -86,6 +86,8 @@ def run(request):
     emit(type='complete', outputs=outputs, other=other)
 
 if __name__ == '__main__':
+    from parent_lifetime import watch_parent
+    watch_parent()
     try:
         run(json.loads(sys.stdin.readline()))
     except Exception as error:

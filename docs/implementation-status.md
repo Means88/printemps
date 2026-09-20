@@ -7,7 +7,7 @@
 - **新构建**：9564b98 的本机包已完成，Developer ID 严格签名及包内真实分析通过。三平台 CI [35496338370](https://github.com/Means88/printemps/actions/runs/35496338370) 已全部通过并上传安装包。后续14a80a3导入恢复提示尚未纳入此轮产物。
 
 - 应用 0.1.1，仓库 `Means88/printemps`，应用标识 `com.means88.printemps`，统一 pnpm 11.6.0。
-- 最近普通测试：90 项通过、3 项条件跳过（`/tmp/printemps-save-track-full-tests.log`）；9564b98已通过生产构建，后续14a80a3通过类型检查和英文导入恢复预览。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
+- 最近普通测试：91 项通过、3 项条件跳过（`/tmp/printemps-parent-full-tests.log`）；当前源码（含导入恢复与Python父进程退出保护）已通过生产构建；退出保护另通过真实子进程及真实分析测试。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
 - 本地完整包：`release/mac-arm64/Printemps.app`，功能内容截至 `9564b98`，包含模型管理、设置整页、历史分栏、剪辑导出弹窗、IME 键盘保护、统一保存队列及紧凑保存恢复提示。Developer ID 深度严格签名校验与包内真实分析通过；公证跳过。此签名包已验证真实音轨写入失败→恢复重试→排序重启保留，以及损坏音频导入回滚。中文剪辑改名、裁剪及0.75秒FLAC原生导出证据来自此前9995a92包，不能混同。
 - 最近三平台 CI：[35496338370](https://github.com/Means88/printemps/actions/runs/35496338370)，提交 `9564b98`，Windows、macOS、Linux 的测试、安装包构建、包内分析及产物上传全部成功；产物保存7天。macOS CI包为 ad-hoc 签名，本机包为 Developer ID 签名。
 - 未创建公开 Release，未完成真实发布服务、安装升级或公证验收。
