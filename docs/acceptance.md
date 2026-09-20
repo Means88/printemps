@@ -341,3 +341,7 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 `pnpm run package` exit0，`release/mac-arm64/Printemps.app` 已更新，包含截至 ad90484 的功能代码（后续95f8b05仅README）。包标识为 `com.means88.printemps`；app.asar SHA256为 `f447748c6cb2d4d8538a7cf95af51a4dff0552703776ca8964e34f48b0a77eb4`。Developer ID签名完成，`codesign --verify --deep --strict --verbose=2` exit0，结果valid on disk / satisfies its Designated Requirement。
 
 使用包内资源运行真实分析测试通过，总耗时5.75秒，覆盖Beat This与Essentia推荐结果。日志 `/tmp/printemps-latest-package.log`、`/tmp/printemps-latest-package-analysis.log`、`/tmp/printemps-latest-signature.log`。这解除此前本地完整release包陈旧的限制；当前公证仍因配置不可生成而跳过，尚未生成本次DMG或证明外部机器安装。当前Windows/Linux CI证据仍对应98ab5ab，未覆盖其后的缓冲复用和时间码显示改动。
+
+### 工作台工具栏还原（2026-09-20）
+
+继续对比画板30：顶栏导出恢复secondary，分割移至节拍器右侧；补回可见音轨数量，将列表按钮组与244px轨道头对应，试听模式控件从x255开始。底部时间模式读数和总时长恢复毫秒时间码，拍子模式保留小节拍数格式。英文1280×800实屏检查控件无重叠，播放、循环、出入点、总音量均可见，生产构建通过。此为已有设计还原，未修改Pen；本次样式与展示改动晚于上述完整macOS包。
