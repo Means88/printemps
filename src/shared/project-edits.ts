@@ -1,4 +1,5 @@
 import {z} from 'zod'
+import {validateProjectClips} from './clips'
 import {musicalSchema,projectSchema,trackSchema,type Project} from './domain'
 
 const trackEditsSchema=trackSchema.pick({id:true,assetId:true,name:true,gain:true,muted:true,solo:true,hidden:true}).partial({name:true,gain:true,muted:true,solo:true,hidden:true}).strict()
@@ -41,7 +42,10 @@ export function applyProjectEdits(current:Project,input:ProjectEdits):Project {
   const edit=byId.get(track.id);if(!edit)return track
   if(edit.assetId!==track.assetId)throw new Error('Track identity is immutable')
   const {id,assetId,...values}=edit
-  return {...track,...values}
+  // Showing a fully consumed source must restore its retained clips too.
+  // Ordinary hide/show of a partially consumed track preserves its clip choices.
+  const restoreClips=track.hidden&&values.hidden===false&&track.clips?.length&&track.clips.every(c=>c.hidden)
+  return {...track,...values,...(restoreClips?{clips:track.clips!.map(c=>({...c,hidden:false}))}:{})}
  })
- return {...current,...edits,music:{...current.music,...music},tracks,updatedAt:new Date().toISOString()}
+ return validateProjectClips({...current,...edits,music:{...current.music,...music},tracks,updatedAt:new Date().toISOString()})
 }

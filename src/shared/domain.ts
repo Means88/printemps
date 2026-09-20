@@ -1,3 +1,4 @@
+import {clipSchema,trackClips,type Clip} from './clips'
 import { z } from 'zod'
 export const musicalSchema = z.object({
   bpm: z.number().min(20).max(400).nullable(),
@@ -11,6 +12,7 @@ export const trackSchema = z.object({
   role: z.enum(['original', 'stem', 'other']), stem: z.string(),
   assetId: z.string().uuid(), parentId: z.string().uuid().optional(),
   color: z.string(), gain: z.number().min(-60).max(6), muted: z.boolean(), solo: z.boolean(), hidden: z.boolean().optional(),
+  clips: z.array(clipSchema).optional(),
   peaks: z.array(z.number().min(0).max(1)), duration: z.number().nonnegative(),
   sampleRate: z.number().positive(), channels: z.number().int().min(1).max(32)
 })
@@ -21,7 +23,7 @@ export const projectSchema = z.object({
   tracks: z.array(trackSchema), music: musicalSchema,
   recommendation: musicalSchema.partial().nullable(),
   lastSeparation: z.object({
-    id:z.string().uuid(),sourceId:z.string().uuid(),retrySourceId:z.string().uuid().optional(),targets:z.array(z.string()),
+    id:z.string().uuid(),sourceId:z.string().uuid(),retrySourceId:z.string().uuid().optional(),clipId:z.string().uuid().optional(),targets:z.array(z.string()),
     state:z.enum(['running','complete','failed','cancelled','interrupted']),
     completed:z.number().int().nonnegative(),startedAt:z.string(),finishedAt:z.string().optional(),error:z.string().optional()
   }).optional(),
@@ -41,7 +43,7 @@ export function rename(value: string): string {
   return z.string().trim().min(1, 'Name cannot be empty').max(80).parse(value)
 }
 /** Commit only a complete task. Never expose partial replacement of a source stem. */
-export function commitSeparation(project: Project, sourceId: string, outputs: Track[]): Project {
+export function commitSeparation(project: Project, sourceId: string, outputs: Track[], clip?:Clip): Project {
   const index = project.tracks.findIndex(t => t.id === sourceId)
   if (index < 0) throw new Error('Source track no longer exists')
   const source = project.tracks[index]
@@ -49,13 +51,16 @@ export function commitSeparation(project: Project, sourceId: string, outputs: Tr
   if (others.length !== 1 || !outputs.some(t => t.role === 'stem') || outputs.some(t => t.role === 'original'))
     throw new Error('Separation must contain stems and exactly one remainder')
   const ordered = [others[0], ...outputs.filter(t => t.role === 'stem')].map(t => trackSchema.parse({
-    ...t, name: t.role==='other'&&source.role!=='original' ? `${source.name.slice(0,Math.max(0,80-t.name.length-3))} - ${t.name}` : t.name, hidden:false, parentId: source.id, gain: source.gain, muted: source.muted, solo: source.solo
+    ...t, ...(clip?{clips:[{id:t.id,name:t.name,start:0,end:t.duration,offset:clip.offset}]}:{}), name: t.role==='other'&&source.role!=='original' ? `${(clip?.name??source.name).slice(0,Math.max(0,80-t.name.length-3))} - ${t.name}` : t.name, hidden:false, parentId: source.id, gain: source.gain, muted: source.muted, solo: source.solo
   }))
+  for(const t of ordered)if(t.clips)t.clips=t.clips.map(c=>({...c,name:t.name}))
+  const sourceClips=trackClips(source)
+  const retainedSource=clip?{...source,clips:sourceClips.map(c=>c.id===clip.id?{...c,hidden:true}:c),hidden:sourceClips.every(c=>c.hidden||c.id===clip.id)}:{...source,hidden:true}
   const retained = project.tracks
   const ids = new Set(retained.map(t => t.id))
   for (const t of ordered) { if (ids.has(t.id)) throw new Error('Duplicate track'); ids.add(t.id) }
   const tracks = [...project.tracks]
-  tracks.splice(source.role === 'original' ? tracks.length : index, source.role === 'original' ? 0 : 1, ...ordered, ...(source.role === 'original' ? [] : [{...source,hidden:true}]))
+  tracks.splice(source.role === 'original' ? tracks.length : index, source.role === 'original' ? 0 : 1, ...ordered, ...(source.role === 'original' ? [] : [retainedSource]))
   return {...project, tracks, updatedAt: new Date().toISOString()}
 }
 export function restoreRecommendation(project: Project): Project {

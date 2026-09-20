@@ -8,6 +8,7 @@ import {ModelCache} from '../src/main/models'
 import {SeparationService} from '../src/main/separation'
 import {inspectWave} from '../src/main/audio'
 import {exportTracks} from '../src/main/export'
+import {trackClips,applyClipAction} from '../src/shared/clips'
 import {stemColor} from '../src/shared/stems'
 import type {SeparationTask} from '../src/shared/api'
 
@@ -62,29 +63,32 @@ test.runIf(!!modelDirectory)('real progressive and secondary separation preserve
   // without changing its neighbours, user mix settings or private source bytes.
   const source=project.tracks[3],sourceBytes=await readFile(store.assetPath(id,source.assetId))
   await store.update(id,current=>({...current,tracks:current.tracks.map(t=>t.id===source.id?{...t,name:'Edited bass',gain:-7,muted:true}:t)}))
+  const current=await store.load(id),originalClip=trackClips(current.tracks.find(t=>t.id===source.id)!)[0]
+  const trimmed=await store.update(id,p=>applyClipAction(p,{kind:'trim',trackId:source.id,clipId:originalClip.id,expected:originalClip,start:.25,end:.75},randomUUID))
+  const selected=trackClips(trimmed.tracks.find(t=>t.id===source.id)!)[0]
   const secondaryDone=new Promise<SeparationTask>(resolve=>{finish=resolve})
-  await service.start(id,source.id,['drums'],cache,'cpu')
+  await service.start(id,source.id,['drums'],cache,'cpu',selected.id)
   const secondaryTask=await secondaryDone
   expect(secondaryTask.error).toBeUndefined();expect(secondaryTask.phase).toBe('complete')
   await expect.poll(()=>service!.busy,{timeout:5000}).toBe(false)
   const secondary=await store.load(id)
   expect(secondary.tracks.slice(0,3)).toEqual(project.tracks.slice(0,3))
   expect(secondary.tracks.map(t=>t.stem)).toEqual(['original','other','drums','other','drums','bass'])
-  expect(secondary.tracks[5]).toEqual({...source,name:'Edited bass',gain:-7,muted:true,hidden:true})
+  expect(secondary.tracks[5]).toEqual({...trimmed.tracks.find(t=>t.id===source.id)!,hidden:true,clips:[{...selected,hidden:true}]})
   const outputs=secondary.tracks.slice(3,5)
-  expect(outputs[0].name).toBe('Edited bass - 其它')
+  expect(outputs[0].name).toBe(`${selected.name} - 其它`)
   expect(outputs.every(track=>!track.hidden)).toBe(true)
   for(const track of outputs){
    expect(track.parentId).toBe(source.id);expect(track.gain).toBe(-7);expect(track.muted).toBe(true)
-   expect(track.color).toBe(stemColor(track.stem));expect(track.duration).toBe(1)
+   expect(track.color).toBe(stemColor(track.stem));expect(track.duration).toBe(.5);expect(trackClips(track)[0].offset).toBe(.25)
   }
   expect(secondary.tracks[2].color).toBe(secondary.tracks[4].color)
   const samples=(wav:Buffer)=>{
    let offset=12
    while(offset+8<wav.length&&wav.toString('ascii',offset,offset+4)!=='data'){const size=wav.readUInt32LE(offset+4);offset+=8+size+(size%2)}
-   return Array.from({length:frames*2},(_,i)=>wav.readFloatLE(offset+8+i*4))
+   return Array.from({length:wav.readUInt32LE(offset+4)/4},(_,i)=>wav.readFloatLE(offset+8+i*4))
   }
-  const before=samples(sourceBytes),parts=await Promise.all(outputs.map(async t=>samples(await readFile(store.assetPath(id,t.assetId)))))
+  const before=samples(sourceBytes).slice(44100*.25*2,44100*.75*2),parts=await Promise.all(outputs.map(async t=>samples(await readFile(store.assetPath(id,t.assetId)))))
   const secondaryError=Math.max(...before.map((value,i)=>Math.abs(value-parts[0][i]-parts[1][i])))
   expect(secondaryError).toBeLessThan(1e-5)
   expect(await readFile(store.assetPath(id,source.assetId))).toEqual(sourceBytes)
@@ -94,7 +98,7 @@ test.runIf(!!modelDirectory)('real progressive and secondary separation preserve
    const wavs=await exportTracks(store,id,outputs.map(t=>t.id),exportDirectory,'wav')
    const flacs=await exportTracks(store,id,outputs.map(t=>t.id),exportDirectory,'flac')
    expect(wavs).toHaveLength(2);expect(flacs).toHaveLength(2)
-   expect((await inspectWave(wavs[0])).duration).toBe(1)
+   expect((await inspectWave(wavs[0])).duration).toBe(.5)
    expect((await readFile(flacs[0])).subarray(0,4).toString()).toBe('fLaC')
    await writeFile(wavs[0],Buffer.from('External edit to exported copy'))
    expect(await readFile(store.assetPath(id,outputs[0].assetId))).toEqual(privateBytes)

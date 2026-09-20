@@ -1,3 +1,4 @@
+import {validateProjectClips} from '../shared/clips'
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { randomUUID } from 'node:crypto'
@@ -26,14 +27,14 @@ export class ProjectStore {
     return path.join(this.projectDirectory(projectId), 'assets', `${assetId}.wav`)
   }
   async save(project: Project) {
-    const valid=projectSchema.parse(project)
+    const valid=validateProjectClips(projectSchema.parse(project))
     const dir=this.projectDirectory(valid.id)
     await fs.mkdir(dir,{recursive:true})
     await this.atomicWrite(path.join(dir,'project.json'),valid)
     return valid
   }
   async load(id: string): Promise<Project> {
-    return projectSchema.parse(JSON.parse(await fs.readFile(path.join(this.projectDirectory(id),'project.json'),'utf8')))
+    return validateProjectClips(projectSchema.parse(JSON.parse(await fs.readFile(path.join(this.projectDirectory(id),'project.json'),'utf8'))))
   }
   async list(): Promise<Project[]> {
     await this.initialize()
@@ -62,7 +63,7 @@ export class ProjectStore {
   private async loadArchived(archiveId:string) {
     const directory=this.archiveDirectory(archiveId)
     if(!(await fs.lstat(directory)).isDirectory())throw new Error('Invalid archived project directory')
-    const project=projectSchema.parse(JSON.parse(await fs.readFile(path.join(directory,'project.json'),'utf8')))
+    const project=validateProjectClips(projectSchema.parse(JSON.parse(await fs.readFile(path.join(directory,'project.json'),'utf8'))))
     if(project.id!==archiveId.slice(0,36))throw new Error('Archived project identity mismatch')
     return project
   }

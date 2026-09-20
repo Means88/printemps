@@ -252,3 +252,64 @@ c7d60f0 已完成 macOS arm64 打包、`codesign --verify --deep --strict` 及�
 `release-revision/mac-arm64/Printemps.app` 打包 exit 0；打包结束后 `codesign --verify --deep --strict` exit 0。包内主进程、preload、renderer JS/CSS 的 SHA-256 与当前生产构建全部相同。包内真实分析1项通过（5.60秒）。日志 `/tmp/printemps-48e049c-package.log`、`/tmp/printemps-48e049c-analysis.log`。Developer ID 签名，未公证或发布。
 
 通过应用菜单退出旧包，启动新包，原生 AX 确认 URL 来自 release-revision。打开已有16秒合成验收项目，验证新音乐工具栏、顶部帮助/模型/设置/侧栏入口、最上方节拍器音轨及推子、详情真实参数、非监听组禁用、底部无常驻就绪。所有音轨弹窗实屏确认操作右对齐、透明图标按钮与蓝色完成按钮。未改变用户音乐项目。随后修复列表副标题使用原始 stem ID 的本地化遗漏；该文本修复尚未纳入此包。
+
+
+## pnpm 迁移（2026-09-20）
+
+固定 pnpm 11.6.0，使用 `pnpm-lock.yaml`；保留直接依赖版本，CI 与 Linux 容器使用 `pnpm install --frozen-lockfile`。上文 npm/npx 命令是历史执行记录，当前开发命令以 README 和 AGENTS.md 为准。
+
+macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条件跳过）、生产构建与真实分析集成测试通过。electron-builder 已识别 pnpm，打包依赖检查通过：主进程、preload、updater、可执行 ffmpeg、Essentia WASM 资源均存在。此检查包省略未改动的多 GB Python 运行时，不作为完整发行包；本次尚未重新进行 Windows/Linux 打包或 GUI 验收。
+
+## 2026-09-20 · 多剪辑更新
+
+- 新增非破坏式分割、首尾裁剪、剪辑名称和详情；试听按源范围与时间轴 offset 渲染，间隙静音。S 在游标处分割，输入框内不触发。
+- 分离和 WAV/FLAC 导出只处理选中片段；主进程裁剪源音频，结果继承 offset。二次分离保留同轨其它片段，隐藏本次来源剪辑。旧项目无需迁移即可按单剪辑打开。
+- 70 项测试通过，2 项条件运行时测试跳过；生产构建和 TypeScript 通过。新增测试包括源范围/重叠/过期编辑校验、样本级试听映射、真实 FFmpeg 裁剪及 WAV/FLAC 导出、首轮及二次分离 offset。分离测试使用注入式测试 runner，未宣称新剪辑路径经过真实模型推理。
+- 浏览器英文 1280×800 验证分割、源入点编辑、键盘裁剪手柄和导出时长：5秒处分割，右片段入点调到5.1秒，offset5.1秒、时长4.9秒；导出对话框同步显示4.9秒，无横向溢出。Pen 画板30已保存并导出PNG。
+- 此更新尚未重新构建完整安装包或进行真实设备听音、三平台原生剪辑操作验收；此前安装包证据不覆盖此改动。编辑后的试听缓冲目前按项目时长生成，长音频多轨场景仍需做内存压力验收。
+
+### 剪辑保存与恢复补验
+
+2026-09-20：新增独立 ProjectStore 重开、元数据更新、归档和恢复测试，确认剪辑范围/offset 不被项目改名或增益保存覆盖。归档恢复同样校验范围，损坏记录不能恢复。新增播放中改剪辑名测试，确认不重解码、不停止现有 voice。当前 72 项测试通过、2 项条件测试跳过；生产构建通过。此为存储和引擎调度证据，不替代真实设备听音与三平台桌面验收。
+
+### 2026-09-20 · 真实模型裁剪片段验证
+
+当前工作树执行 `PRINTEMPS_TEST_MODELS=.cache/model-reference/v1 pnpm exec vitest run tests/progressive-runtime.test.ts` 通过，146.12秒，日志 `/tmp/printemps-real-clip-runtime.log`。使用已有固定版本鼓组、贝斯模型和托管 CPU Python 运行时；先分离1秒合成输入，再将贝斯裁剪为源范围0.25–0.75秒后执行二次鼓组分离。断言输出时长0.5秒、剪辑offset0.25秒、来源片段保留隐藏、混音继承、其它/目标顺序及重建误差<1e-5均通过。WAV/FLAC导出与私有文件副本隔离也通过。TypeScript 检查通过。该证据补充此前模拟 runner 测试，仍不代表真实歌曲质量、扬声器听音或三平台 GUI 验收。
+
+### 来源轨恢复显示修复（2026-09-20）
+
+剪辑化后，二次分离会同时隐藏来源剪辑和无可见片段的来源轨。修复音轨列表“显示”开关仅恢复整轨但留下空白/静音的问题：当显示原本隐藏且全部片段隐藏的来源轨时，同时恢复其保留剪辑。部分消耗的轨道普通隐藏/显示仍保留逐剪辑隐藏状态，避免重新叠加已分离片段。新增领域测试验证恢复后的 source range、波形所用 clips、其它结果不变以及部分来源不误恢复。73项测试及生产构建通过；该修复沿用设计稿已有显示开关，无新增界面。
+
+### 当前完整 macOS 包（2026-09-20）
+
+`pnpm run package` 已完成，产物 `release/mac-arm64/Printemps.app`，包含本次剪辑、恢复显示、pnpm迁移和顶栏调整的当前工作树。Bundle ID读取为 `com.means88.printemps`；app.asar 的主进程与 preload/index.cjs 均包含 clips:edit。构建使用本机可用 Developer ID 签名，`codesign --verify --deep --strict`通过。公证因缺少可生成的notarize配置被跳过，尚不是正式分发验收。
+
+包内资源运行 `PRINTEMPS_TEST_RESOURCES=release/mac-arm64/Printemps.app/Contents/Resources pnpm run test:integration` 通过（5.43秒），验证 Beat This / Essentia 的BPM、拍号、调性与首拍输出。日志：`/tmp/printemps-current-package.log`、`/tmp/printemps-current-package-analysis.log`、`/tmp/printemps-current-signature.log`。该包尚需原生剪辑操作和真实听音验证；Windows/Linux新版本未构建验收。
+
+### 原生剪辑操作验收尝试（2026-09-20）
+
+当前签名包使用 `--user-data-dir=/tmp/printemps-clips-native-qa` 启动，独立10秒合成音频项目。进程及子进程确认使用独立目录，启动日志无错误。CUA 对新Bundle ID返回Invalid app；刷新LaunchServices及独立副本路径后，读取窗口连续两次超时。因此此次没有原生点击/裁剪/保存的通过证据，不能把启动成功作为GUI验收。仅关闭了本轮独立测试进程，未操作用户音乐项目或旧版应用实例；保留fixture供工具恢复后继续。
+
+### 剪辑采样边界一致性（2026-09-20）
+
+修复试听按时长取整而FFmpeg按首尾分别取整导致的一采样差异；两者统一使用 `clipSampleRange` 的独立边界取整、exclusive end。整段缓冲复用也改为比较实际末尾采样，避免小于一采样的尾部裁剪被忽略。新增低采样率确定性用例验证源0.14–0.36秒对应采样[1,4)，及0.94秒尾点不误包含第10采样。74项测试与生产构建通过。现有 release/mac-arm64 应用包早于此修复；后续分发前需重新打包。
+
+### 删除音轨的解码缓存释放（2026-09-20）
+
+修复项目内删除音轨后原始解码缓冲仍保留到关闭项目的问题。成功载入新音轨集合后，仅保留仍被项目引用的asset缓存；隐藏的来源轨仍保留缓存以便恢复。新增播放中删除/重新加入测试，验证被删音轨停止、重新加入重新解码、未删除音轨持续播放。75项测试与生产构建通过。此为引用释放和调度验证，不声称已完成长音频内存压力实测；现有桌面包需随最终改动重新构建。
+
+### macOS 原生剪辑流程通过（2026-09-20）
+
+解决窗口连接阻碍：从独立副本 `/tmp/Printemps-Clips-QA.app` 启动并按同一路径绑定CUA，可正确读取/操作新Bundle ID窗口。该副本与12:31完成的签名包一致，早于后续采样边界与缓存释放修复。
+
+独立数据 `/tmp/printemps-clips-native-qa` 的10秒合成项目：原生UI点击波形定位5秒→分割→选择右片段→源入点改6秒，详情显示offset6秒、时长4秒。原生目录选择器导出到 `/tmp/printemps-clips-native-export`，UI显示完成，读取实际WAV为4.0秒/24-bit。Cmd+Q正常退出、重启打开项目后，AX及磁盘均确认两片段[0,5)、[6,10)，offset0/6。原生鼠标拖动尾部显示预览约9.505208秒，但磁盘未保存，判定未通过；正在修复释放事件提交。截图检查剪辑间隙、选中边框和右侧详情一致。测试实例已正常退出；未改用户音乐数据。此证据解除此前原生分割/精确裁剪/导出/重开未验限制，仍未进行设备听音或Windows/Linux GUI验收。
+
+### 拖动裁剪释放提交修复通过（2026-09-20）
+
+原生验收发现真实缺陷：React手柄自身pointerup处理在该拖动场景没有提交，只有预览变化。改为拖动期间注册窗口级pointermove/pointerup/pointercancel，结束或组件卸载时清理监听。使用最新 `.cache/pnpm-package-check/mac-arm64/Printemps.app`（不含Python的UI验证包）重复同一原生拖动，详情同步3.245秒，磁盘源出点为9.244791666666666秒、offset6秒，明确验证已提交。测试应用正常退出。75项测试、构建通过；完整release包早于本修复，仍需重建。
+
+### 当前 Linux x64 构建通过（2026-09-20）
+
+复用一次性 `printemps-linux-amd64-verify` 容器，源码只读挂载。首次失败于旧npm依赖残留的electron-vite入口权限；修复验证脚本，在pnpm冻结安装前仅清理容器 `/work/node_modules`。第二次完整脚本exit0：75项测试、更新器回退、真实分析、AppImage构建、包内分析全部通过。包含当前剪辑拖动、采样边界与缓存释放修复。AppImage保存在容器 `/work/release/Printemps-0.1.1.AppImage`，3,045,434,915字节，blockMap3,143,223字节。构建日志和更新元数据已保存到 `.cache/linux-verification/current-clips/`。
+
+此为Linux x64容器运行及打包证据，非Linux桌面安装/GUI/设备声音验收，也不是当前构建对的真实差分升级证据；Windows当前版本仍待构建，macOS完整release包仍早于最新修复。

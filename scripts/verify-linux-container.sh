@@ -5,7 +5,7 @@ test "$(uname -s)" = Linux
 test "$(node -p 'process.arch')" = x64
 test -f /source/package.json
 mkdir -p /work
-cp /source/package.json /source/package-lock.json /source/tsconfig.json /source/electron.vite.config.ts /source/index.html /work/
+cp /source/package.json /source/pnpm-lock.yaml /source/pnpm-workspace.yaml /source/tsconfig.json /source/electron.vite.config.ts /source/index.html /work/
 cp -R /source/src /source/tests /source/scripts /source/public /source/worker /work/
 cd /work
 export DEBIAN_FRONTEND=noninteractive PYTHONDONTWRITEBYTECODE=1 CSC_IDENTITY_AUTO_DISCOVERY=false
@@ -14,11 +14,15 @@ apt-get install -y --no-install-recommends python3-venv libgtk-3-0 libnss3 libas
 python3 -m venv /opt/printemps-uv
 /opt/printemps-uv/bin/pip install --disable-pip-version-check uv==0.12.17
 export PRINTEMPS_UV=/opt/printemps-uv/bin/uv
-npm ci --no-audit --no-fund
-npm test
+corepack enable
+# This disposable container may have been used before the npm -> pnpm migration.
+# Never reuse another package manager's executable links or module permissions.
+rm -rf /work/node_modules
+pnpm install --frozen-lockfile
+pnpm test
 node scripts/verify-linux-update-fallback.mjs
-npm run runtime:prepare
-npm run test:integration
-npm run dist -- --linux AppImage --x64
-PRINTEMPS_TEST_RESOURCES=/work/release/linux-unpacked/resources npm run test:integration
+pnpm run runtime:prepare
+pnpm run test:integration
+pnpm run dist --linux AppImage --x64
+PRINTEMPS_TEST_RESOURCES=/work/release/linux-unpacked/resources pnpm run test:integration
 printf '\nLinux x64 package and packaged analysis verification completed.\n'

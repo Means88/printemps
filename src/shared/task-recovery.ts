@@ -10,5 +10,5 @@ export function recoverSeparationTask(project:Project):SeparationTask|null{
  if(!remaining.length||!project.tracks.some(track=>track.id===sourceId))return null
  // Never restart an original partial task from the full mix if its remainder was not recorded.
  if(record.completed>0&&!record.retrySourceId)return null
- return {id:record.id,projectId:project.id,sourceId,phase:record.state==='cancelled'?'cancelled':'failed',progress:record.completed/record.targets.length,targets:record.targets,completedStems:record.completed,retrySourceId:sourceId,remainingTargets:remaining,error:record.error||(record.state==='interrupted'?'Separation interrupted before completion':'Separation failed')}
+ return {id:record.id,projectId:project.id,sourceId,clipId:record.retrySourceId?undefined:record.clipId,phase:record.state==='cancelled'?'cancelled':'failed',progress:record.completed/record.targets.length,targets:record.targets,completedStems:record.completed,retrySourceId:sourceId,remainingTargets:remaining,error:record.error||(record.state==='interrupted'?'Separation interrupted before completion':'Separation failed')}
 }

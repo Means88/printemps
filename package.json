@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "description": "A local audio separation and listening workspace",
-  "desktopName": "com.printemps.audio.desktop",
+  "desktopName": "com.means88.printemps.desktop",
   "main": "out/main/index.js",
   "type": "module",
   "scripts": {
@@ -12,15 +12,15 @@
     "preview": "electron-vite preview",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "package": "node scripts/verify-package-inputs.mjs && npm run build && electron-builder --dir --publish never",
+    "package": "node scripts/verify-package-inputs.mjs && pnpm run build && electron-builder --dir --publish never",
     "postinstall": "node node_modules/electron/install.js",
-    "dist": "node scripts/verify-package-inputs.mjs && npm run build && electron-builder --publish never",
+    "dist": "node scripts/verify-package-inputs.mjs && pnpm run build && electron-builder --publish never",
     "runtime:prepare": "node scripts/prepare-runtime.mjs",
     "test:integration": "node scripts/test-integration.mjs",
     "preview:ui": "vite --config scripts/preview.vite.mjs"
   },
   "build": {
-    "appId": "com.printemps.audio",
+    "appId": "com.means88.printemps",
     "productName": "Printemps",
     "files": [
       "out/**"
@@ -128,5 +128,10 @@
     "typescript": "^7.0.2",
     "vite": "^7.3.6",
     "vitest": "^5.0.1"
+  },
+  "packageManager": "pnpm@11.6.0",
+  "engines": {
+    "node": ">=22.12.0",
+    "pnpm": "11.6.0"
   }
 }

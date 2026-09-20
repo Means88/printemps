@@ -140,3 +140,33 @@ test('enabling clicks during playback schedules audible gain, volume changes rea
  expect(context.gains.at(-1)!.gain.setValueAtTime.mock.calls[0][0]).toBeCloseTo(Math.pow(10,-6/20)*.7)
  engine.applyMix(song);expect(context.oscillators.at(-1)!.stop).toHaveBeenLastCalledWith()
 })
+
+test('renaming a clip during playback preserves its voice and decoded audio',async()=>{
+ const original=track('original','original'),stem=track('stem')
+ stem.clips=[{id:'clip',name:'Before',start:0,end:10,offset:0}]
+ await engine.load(project([original,stem]));await engine.play()
+ const context=Context.current,voices=[...context.voices]
+ context.currentTime=2
+ await engine.load(project([original,{...stem,clips:[{...stem.clips[0],name:'After'}]}]))
+ expect(context.decodeAudioData).toHaveBeenCalledTimes(2)
+ expect(context.voices).toEqual(voices)
+ for(const voice of voices)expect(voice.stop).not.toHaveBeenCalled()
+ expect(engine.playing).toBe(true)
+})
+
+
+test('deleted tracks release decoded assets while retained tracks keep playing',async()=>{
+ const original=track('original','original'),stem=track('stem')
+ await engine.load(project([original,stem]));await engine.play()
+ const context=Context.current,[originalVoice,stemVoice]=context.voices
+ context.currentTime=2
+ await engine.load(project([original]))
+ expect(originalVoice.stop).not.toHaveBeenCalled()
+ expect(stemVoice.stop).toHaveBeenCalledWith(2.025)
+ expect(context.decodeAudioData).toHaveBeenCalledTimes(2)
+ // Reintroducing that asset must decode it again: no stale retained raw buffer.
+ await engine.load(project([original,stem]))
+ expect(context.decodeAudioData).toHaveBeenCalledTimes(3)
+ expect(originalVoice.stop).not.toHaveBeenCalled()
+ expect(engine.playing).toBe(true)
+})

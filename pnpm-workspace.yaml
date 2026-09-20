@@ -1,0 +1,7 @@
+# Flat dependencies preserve Electron packaging and worker resource paths.
+nodeLinker: hoisted
+allowBuilds:
+  electron: true
+  electron-winstaller: true
+  esbuild: true
+  ffmpeg-static: true

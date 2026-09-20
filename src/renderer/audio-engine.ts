@@ -1,3 +1,5 @@
+import {clipBuffer} from './clip-buffer'
+import {timelineDuration,trackClips} from '../shared/clips'
 import {playbackPosition,validateLoop,clickEvents,type LoopRange} from '../shared/playback'
 import { audibleTracks, type Project, type Track } from '../shared/domain'
 type Voice={source:AudioBufferSourceNode;gain:GainNode}
@@ -6,6 +8,8 @@ export class AudioEngine {
  private context = new AudioContext()
  private master = this.context.createGain()
  private buffers = new Map<string, AudioBuffer>()
+ private signatures=new Map<string,string>()
+ private rawBuffers=new Map<string,AudioBuffer>()
  private sources = new Map<string, Voice>()
  private retiring = new Set<Voice>()
  private clickSources = new Set<OscillatorNode>()
@@ -20,23 +24,28 @@ export class AudioEngine {
  private loop:LoopRange|null=null
  constructor(){this.master.connect(this.context.destination)}
  get playing(){return this.running}
- get duration(){return this.project?.tracks[0]?.duration ?? 0}
+ get duration(){return this.project?timelineDuration(this.project):0}
  get position(){return playbackPosition(this.running?this.context.currentTime-this.started:0,this.offset,this.duration,this.loop)}
  async setLoop(range:LoopRange|null){validateLoop(range,this.duration);const playing=this.running;this.pause();this.loop=range;if(range&&(this.offset<range.start||this.offset>=range.end))this.offset=range.start;if(playing)await this.play()}
  async load(project:Project){
   const sameProject=this.project?.id===project.id
-  if(!sameProject){this.pause();this.offset=0;this.loop=null;this.buffers.clear()}
+  if(!sameProject){this.pause();this.offset=0;this.loop=null;this.buffers.clear();this.rawBuffers.clear();this.signatures.clear()}
   const generation=++this.generation;this.project=project
+  const changed=new Set<string>(),signatures=new Map<string,string>()
+  const duration=timelineDuration(project)
   const buffers=await Promise.all(project.tracks.map(async t=>{
-   const key=`${project.id}/${t.id}`
+   const key=`${project.id}/${t.id}`,signature=JSON.stringify([t.assetId,trackClips(t).map(({start,end,offset,hidden})=>({start,end,offset,hidden})),duration]);signatures.set(key,signature)
    const cached=this.buffers.get(key)
-   if(cached)return [key,cached] as const
-   const response=await fetch(`printemps://audio/${key}`)
-   if(!response.ok)throw new Error(`Audio unavailable: ${t.name}`)
-   return [key,await this.context.decodeAudioData(await response.arrayBuffer())] as const
+   if(cached&&this.signatures.get(key)===signature)return [key,cached] as const
+   changed.add(t.id)
+   let raw=this.rawBuffers.get(`${project.id}/${t.assetId}`)
+   if(!raw){const response=await fetch(`printemps://audio/${key}`);if(!response.ok)throw new Error(`Audio unavailable: ${t.name}`);raw=await this.context.decodeAudioData(await response.arrayBuffer());if(generation===this.generation)this.rawBuffers.set(`${project.id}/${t.assetId}`,raw)}
+   return [key,clipBuffer(this.context,raw,t,duration)] as const
   }))
   if(generation!==this.generation)return
-  this.buffers=new Map(buffers)
+  this.buffers=new Map(buffers);this.signatures=signatures
+  const retainedAssets=new Set(project.tracks.map(t=>`${project.id}/${t.assetId}`))
+  for(const key of this.rawBuffers.keys())if(!retainedAssets.has(key))this.rawBuffers.delete(key)
   // Decode new results while existing voices keep playing. Replace only changed
   // voices at one future audio-clock boundary, using the current seek/loop state.
   let mixAt=this.context.currentTime
@@ -45,7 +54,7 @@ export class AudioEngine {
    mixAt=at
    const position=playbackPosition(at-this.started,this.offset,this.duration,this.loop)
    const ids=new Set(project.tracks.map(t=>t.id))
-   for(const [id,voice] of this.sources){if(!ids.has(id)){
+   for(const [id,voice] of this.sources){if(!ids.has(id)||changed.has(id)){
     this.sources.delete(id);this.retiring.add(voice)
     voice.source.onended=()=>{voice.source.disconnect();voice.gain.disconnect();this.retiring.delete(voice)}
     voice.source.stop(at)
@@ -120,6 +129,6 @@ export class AudioEngine {
    this.clickSources.add(osc);osc.onended=()=>{this.clickSources.delete(osc);osc.disconnect();gain.disconnect()}
   }
  }
- unload(){this.generation++;this.pause();this.project=null;this.buffers.clear();this.offset=0;this.loop=null}
- async dispose(){this.generation++;this.pause();this.buffers.clear();await this.context.close()}
+ unload(){this.generation++;this.pause();this.project=null;this.buffers.clear();this.rawBuffers.clear();this.signatures.clear();this.offset=0;this.loop=null}
+ async dispose(){this.generation++;this.pause();this.buffers.clear();this.rawBuffers.clear();this.signatures.clear();await this.context.close()}
 }

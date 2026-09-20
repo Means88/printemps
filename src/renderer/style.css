@@ -154,3 +154,34 @@ header>button{flex-shrink:0}
 .task-recovery strong{font-size:13px;font-weight:600;color:#cbd5e3}.task-recovery p{margin:0;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
 .task-recovery>button{min-height:28px;padding:4px 10px;font-size:12px;line-height:18px;flex-shrink:0}
 .task-recovery .error-notice{flex-basis:100%;font-size:12px}
+
+/* Native controls overlay the same 66px header; never draw substitute controls. */
+.titlebar{user-select:none;min-width:0;-webkit-app-region:drag}
+.titlebar img{flex-shrink:0;pointer-events:none}
+.titlebar>span{min-width:0}
+.titlebar :is(button,input,select,a,[role=button],.app-tools){-webkit-app-region:no-drag}
+.titlebar[data-platform=darwin]{padding-left:max(104px,calc(env(titlebar-area-x,80px) + 24px))}
+.titlebar:is([data-platform=win32],[data-platform=linux]){padding-right:max(162px,calc(100vw - env(titlebar-area-x,0px) - env(titlebar-area-width,100vw) + 24px))}
+.titlebar[data-platform=browser]{-webkit-app-region:no-drag}
+.multi-clip-wave{border:0;background:transparent;border-radius:0;overflow:visible;margin:6px 8px;min-height:90px}
+.clip-lane{position:absolute;inset:0;cursor:crosshair}
+.audio-clip{position:absolute;top:0;bottom:0;border:1px solid color-mix(in srgb,var(--clip-color) 45%,transparent);background:color-mix(in srgb,var(--clip-color) 14%,#191e24);border-radius:8px;overflow:hidden;min-width:2px}
+.audio-clip.clip-selected{border-color:var(--clip-color);box-shadow:inset 0 0 0 1px var(--clip-color)}
+.audio-clip>span{position:absolute;left:10px;right:10px;top:5px;font-size:12px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;color:var(--clip-color);pointer-events:none}
+.audio-clip svg{pointer-events:none}
+.clip-handle{position:absolute;top:0;bottom:0;width:10px;cursor:ew-resize;touch-action:none;z-index:2;opacity:0;transition:opacity .12s}
+.clip-handle.start{left:0}.clip-handle.end{right:0}
+.clip-handle::after{content:'';position:absolute;top:30%;bottom:30%;left:3px;width:3px;background:var(--clip-color);border-radius:3px}
+.audio-clip:hover .clip-handle,.clip-selected .clip-handle,.clip-handle:focus-visible{opacity:1}
+.track-inactive .clip-handle{pointer-events:none}.multi-clip-wave>.playhead,.multi-clip-wave>.loop-region{pointer-events:none}
+.inspector-identity>input{width:100%;font-size:22px;padding:4px 0;background:transparent;border-color:transparent;text-overflow:ellipsis}
+.inspector-identity>input:hover,.inspector-identity>input:focus{border-color:#46505e}.clip-metadata input{width:108px;padding:6px 8px}
+
+/* Match the titlebar brand to each page's content gutter at every window width. */
+.titlebar{--content-gutter:20px;--window-left:0px;--window-right:0px;padding-left:max(var(--content-gutter),var(--window-left));padding-right:max(var(--content-gutter),var(--window-right))}
+.titlebar[data-page=home]{--content-gutter:max(40px,calc((100% - 1320px)/2 + 40px))}
+.titlebar[data-page=history]{--content-gutter:max(40px,calc((100% - 1120px)/2 + 40px))}
+.titlebar[data-platform=darwin]{--window-left:max(104px,calc(env(titlebar-area-x,80px) + 24px));padding-left:max(var(--content-gutter),var(--window-left))}
+.titlebar:is([data-platform=win32],[data-platform=linux]){--window-right:max(162px,calc(100vw - env(titlebar-area-x,0px) - env(titlebar-area-width,100vw) + 24px));padding-right:max(var(--content-gutter),var(--window-right))}
+@media(max-width:1280px){.titlebar[data-page=workspace]{--content-gutter:16px}}
+@media(max-width:900px){.titlebar[data-page=history]{--content-gutter:24px}}

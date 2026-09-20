@@ -1,6 +1,7 @@
 import { contextBridge, ipcRenderer, webUtils } from 'electron'
 import type { DesktopAPI } from '../shared/api'
 const api:DesktopAPI={
+ platform:process.platform,
  onMenuCommand:callback=>{const listener=(_event:unknown,command:import('../shared/native-menu').MenuCommand)=>callback(command);ipcRenderer.on('menu:command',listener);return()=>ipcRenderer.removeListener('menu:command',listener)},
  syncMenu:state=>ipcRenderer.invoke('menu:state',state),
  onCloseRequest:callback=>{const listener=async(_event:unknown,token:string)=>{try{await callback();ipcRenderer.send('window:flushed',token)}catch(error){ipcRenderer.send('window:flushed',token,error instanceof Error?error.message:String(error))}};ipcRenderer.on('window:flush',listener);return()=>ipcRenderer.removeListener('window:flush',listener)},
@@ -13,7 +14,7 @@ const api:DesktopAPI={
  analysisStatus:()=>ipcRenderer.invoke('analysis:status'),
  cancelAnalysis:id=>ipcRenderer.invoke('analysis:cancel',id),
  onAnalysis:callback=>{const listener=(_event:unknown,data:Parameters<typeof callback>[0])=>callback(data);ipcRenderer.on('analysis:progress',listener);return()=>ipcRenderer.removeListener('analysis:progress',listener)},
- startSeparation:(projectId,sourceId,targets)=>ipcRenderer.invoke('separation:start',projectId,sourceId,targets),
+ startSeparation:(projectId,sourceId,targets,clipId)=>ipcRenderer.invoke('separation:start',projectId,sourceId,targets,clipId),
  separationStatus:()=>ipcRenderer.invoke('separation:status'),
  cancelSeparation:id=>ipcRenderer.invoke('separation:cancel',id),
  onSeparation:callback=>{const listener=(_event:unknown,data:Parameters<typeof callback>[0])=>callback(data);ipcRenderer.on('separation:progress',listener);return()=>ipcRenderer.removeListener('separation:progress',listener)},
@@ -25,9 +26,10 @@ const api:DesktopAPI={
  importDroppedAudio:file=>{const source=webUtils.getPathForFile(file);if(!source)return Promise.reject(new Error('Choose a local audio file'));return ipcRenderer.invoke('projects:import-dropped',source)},
  importAudio:()=>ipcRenderer.invoke('projects:import'),
  saveProject:(id,edits)=>ipcRenderer.invoke('projects:save',id,edits),
+ editClip:(id,action)=>ipcRenderer.invoke('clips:edit',id,action),
  editTrack:(id,action)=>ipcRenderer.invoke('tracks:edit',id,action),
  deleteProject:(id,purge)=>ipcRenderer.invoke('projects:delete',id,purge),
- exportTracks:(id,tracks,format)=>ipcRenderer.invoke('tracks:export',id,tracks,format),
+ exportTracks:(id,tracks,format,clipIds)=>ipcRenderer.invoke('tracks:export',id,tracks,format,clipIds),
  openExportDirectory:directory=>ipcRenderer.invoke('exports:open-directory',directory),
  listModels:()=>ipcRenderer.invoke('models:list'),
  downloadModel:(id)=>ipcRenderer.invoke('models:download',id),

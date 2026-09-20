@@ -1,3 +1,4 @@
+import {applyClipAction,clipActionSchema} from '../shared/clips'
 import {installNativeMenu} from './native-menu'
 import {menuStateSchema} from '../shared/native-menu'
 import {applyTrackAction,trackActionSchema} from '../shared/track-actions'
@@ -76,7 +77,7 @@ function handle(channel:string,fn:(...args:any[])=>unknown){
   if(event.sender!==win.webContents||event.senderFrame!==win.webContents.mainFrame)throw new Error('Unauthorized request')
   if(quitting&&channel!=='projects:save')throw new Error('Application is finishing active tasks before quitting')
   if(updates.status().phase==='installing'&&channel!=='projects:save')throw new Error('Application is restarting to install an update')
-  const tracked=['projects:import','projects:import-dropped','projects:save','tracks:edit','tracks:export','settings:save','settings:choose-directory','settings:reset-directory','projects:delete','projects:restore','projects:purge-archived'].includes(channel)
+  const tracked=['projects:import','projects:import-dropped','projects:save','tracks:edit','clips:edit','tracks:export','settings:save','settings:choose-directory','settings:reset-directory','projects:delete','projects:restore','projects:purge-archived'].includes(channel)
   if(tracked)ioTasks++
   try{return await fn(...args)}finally{if(tracked)ioTasks--}
  })
@@ -90,6 +91,7 @@ handle('projects:save',async (id:string,input:unknown)=>{
  const edits=projectEditsSchema.parse(input)
  return store.update(id,current=>applyProjectEdits(current,edits))
 })
+handle('clips:edit',(id:string,input:unknown)=>store.update(id,p=>{if(separation.busy||exportingProjects.has(id))throw new Error('Wait for processing to finish before editing clips');return applyClipAction(p,clipActionSchema.parse(input),randomUUID)}))
 handle('tracks:edit',async(id:string,input:unknown)=>{
  const action=trackActionSchema.parse(input)
  return store.update(id,current=>{
@@ -98,11 +100,11 @@ handle('tracks:edit',async(id:string,input:unknown)=>{
  })
 })
 handle('projects:delete',(id:string,purge:boolean)=>{if(separation.busy||analysis.busy||exportingProjects.has(id))throw new Error('Wait for active tasks or export to finish before deleting a project');return store.remove(id,purge===true)})
-handle('tracks:export',async(id:string,trackIds:string[],format:'wav'|'flac')=>{
+handle('tracks:export',async(id:string,trackIds:string[],format:'wav'|'flac',clipIds?:string[])=>{
  if(exportingProjects.has(id))throw new Error('This project is already being exported')
  exportingProjects.add(id)
  try{
- const plan=await prepareExport(store,id,trackIds,format)
+ const plan=await prepareExport(store,id,trackIds,format,clipIds)
  const result=await dialog.showOpenDialog(win,{properties:['openDirectory','createDirectory'],defaultPath:(await store.settings()).exportDirectory||undefined})
  if(result.canceled)return null
  const directory=result.filePaths[0]
@@ -137,10 +139,10 @@ handle('models:download',async(id:string)=>{
 })
 handle('models:cancel',()=>{download?.abort()})
 handle('models:delete',async(id:string)=>{const cache=await models();if(separation.busy||download)throw new Error('Model is in use');return cache.remove(id)})
-handle('separation:start',async(projectId:string,sourceId:string,ids:string[])=>{
+handle('separation:start',async(projectId:string,sourceId:string,ids:string[],clipId?:string)=>{
  const cache=await models(),settings=await store.settings()
  if(download)throw new Error('Wait for model download to finish')
- return separation.start(projectId,sourceId,ids,cache,settings.device)
+ return separation.start(projectId,sourceId,ids,cache,settings.device,clipId)
 })
 handle('separation:status',()=>separation.status())
 handle('separation:cancel',(id:string)=>separation.cancel(id))
@@ -168,7 +170,7 @@ const syncMenu=installNativeMenu(command=>{if(win&&!win.isDestroyed())win.webCon
 handle('menu:state',state=>{syncMenu(menuStateSchema.parse(state))})
 function createWindow(){
  syncMenu()
- win=new BrowserWindow({width:1440,height:900,minWidth:1000,minHeight:700,backgroundColor:'#14171b',title:'Printemps',webPreferences:{preload:path.join(here,'../preload/index.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,backgroundThrottling:false}})
+ win=new BrowserWindow({width:1440,height:900,minWidth:1000,minHeight:700,backgroundColor:'#14171b',title:'Printemps',titleBarStyle:'hidden',titleBarOverlay:process.platform==='darwin'?true:{color:'#101216',symbolColor:'#a0aab8',height:66},...(process.platform==='darwin'?{trafficLightPosition:{x:20,y:27}}:{}),webPreferences:{preload:path.join(here,'../preload/index.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,backgroundThrottling:false}})
  let closeReady=false
  const window=win
  window.on('closed',()=>syncMenu())

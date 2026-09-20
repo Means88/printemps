@@ -1,9 +1,10 @@
 import type { Project, Settings } from './domain'
 import type {ProjectEdits} from './project-edits'
-export type SeparationTask={id:string;projectId:string;sourceId:string;phase:'waiting'|'downloading'|'separating'|'complete'|'cancelled'|'failed';progress:number;stem?:string;targets?:string[];completedStems?:number;retrySourceId?:string;remainingTargets?:string[];error?:string}
+export type SeparationTask={id:string;projectId:string;sourceId:string;clipId?:string;phase:'waiting'|'downloading'|'separating'|'complete'|'cancelled'|'failed';progress:number;stem?:string;targets?:string[];completedStems?:number;retrySourceId?:string;remainingTargets?:string[];error?:string}
 export type AnalysisTask={id:string;projectId:string;phase:'waiting'|'analyzing'|'complete'|'cancelled'|'failed';stage:'beats'|'key';error?:string}
 export type UpdateState={phase:'development'|'idle'|'checking'|'available'|'current'|'downloading'|'ready'|'installing'|'error';currentVersion:string;version?:string;percent?:number;transferred?:number;total?:number;error?:string}
 export interface DesktopAPI {
+ readonly platform: string
   onMenuCommand(callback:(command:import('./native-menu').MenuCommand)=>void):()=>void
   syncMenu(state:import('./native-menu').MenuState):Promise<void>
   onCloseRequest(callback:()=>Promise<void>):()=>void
@@ -16,7 +17,7 @@ export interface DesktopAPI {
   analysisStatus():Promise<AnalysisTask|null>
   cancelAnalysis(id:string):Promise<void>
   onAnalysis(callback:(task:AnalysisTask)=>void):()=>void
-  startSeparation(projectId:string,sourceId:string,targets:string[]):Promise<SeparationTask>
+  startSeparation(projectId:string,sourceId:string,targets:string[],clipId?:string):Promise<SeparationTask>
   separationStatus():Promise<SeparationTask|null>
   cancelSeparation(id:string):Promise<void>
   onSeparation(callback:(task:SeparationTask)=>void):()=>void
@@ -28,9 +29,10 @@ export interface DesktopAPI {
   importDroppedAudio(file:File):Promise<Project>
   importAudio(): Promise<Project | null>
   saveProject(id:string,edits:ProjectEdits): Promise<Project>
+  editClip(id:string,action:import('./clips').ClipAction):Promise<Project>
   editTrack(id:string,action:import('./track-actions').TrackAction):Promise<Project>
   deleteProject(id: string, purge: boolean): Promise<void>
-  exportTracks(projectId:string, trackIds:string[], format:'wav'|'flac'): Promise<{count:number;directory:string;failure?:{remainingIds:string[];trackName:string;message:string}}|null>
+  exportTracks(projectId:string, trackIds:string[], format:'wav'|'flac',clipIds?:string[]): Promise<{count:number;directory:string;failure?:{remainingIds:string[];trackName:string;message:string}}|null>
   openExportDirectory(directory:string):Promise<void>
   listModels(): Promise<{id:string;bytes:number;cached:boolean}[]>
   downloadModel(id:string): Promise<void>
