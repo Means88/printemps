@@ -570,3 +570,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - FFmpeg rejected the file. Choose audio remained enabled; dismissing the error and opening the existing synthetic project succeeded, retaining its reordered tracks. The app then quit with exit 0.
 - Filesystem assertion confirmed the QA projects directory contained exactly the original project and no partial import directory.
 - Remaining UI issue observed: import failures still use the generic raw diagnostic banner. They need concise localized recovery copy with optional technical details; this acceptance only proves import rollback and continued navigation.
+
+### 2026-09-20 · Designed import recovery copy
+
+- Extended Pen31 (`OspP2`) with Chinese/English import failure rows, exported updated PNG, and saved the Pen source using its native File → Save command. Existing save-recovery rows were preserved.
+- Replaced import's raw global error with a dedicated compact banner, optional technical details and Choose another file. Known disk, permission, missing-file, and decoding errors have separate recovery copy; unknown errors do not assert that the audio is damaged. A failed pending save continues to use the save banner rather than being mislabeled as import failure.
+- English1280×800 browser fixture: failed first import produced a52px collapsed banner with no horizontal overflow; choosing another file opened the workspace and removed the banner. Typecheck passed. Native invalid-file rollback was verified in the preceding signed9564b98 run; this new copy is not yet included in that package.

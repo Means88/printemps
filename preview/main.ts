@@ -7,6 +7,7 @@ import manifest from '../src/shared/model-manifest.json'
 import {stemColor} from '../src/shared/stems'
 import {applyProjectEdits} from '../src/shared/project-edits'
 const uuid=()=>crypto.randomUUID(),en=new URLSearchParams(location.search).get('lang')==='en'
+let failNextImport=new URLSearchParams(location.search).get('importFailure')==='once'
 let failNextTrackSave=new URLSearchParams(location.search).get('trackSaveFailure')==='once'
 let failNextClipSave=new URLSearchParams(location.search).get('clipSaveFailure')==='once'
 let failNextSave=new URLSearchParams(location.search).get('saveFailure')==='once'
@@ -40,7 +41,7 @@ const partial:Partial<DesktopAPI>={
  editClip:async(id,action)=>{if(failNextClipSave){failNextClipSave=false;throw new Error('Fixture clip write failed')}const p=projects.find(p=>p.id===id)!;const next=applyClipAction(p,action,uuid);projects=projects.map(p=>p.id===id?next:p);return next},
  editTrack:async(id,action)=>{if(failNextTrackSave){failNextTrackSave=false;throw new Error('Fixture track write failed')}project=applyTrackAction(project,action);projects=projects.map(p=>p.id===id?project:p);return structuredClone(project)},
  listArchivedProjects:async()=>structuredClone(archived),restoreArchivedProject:async id=>{const item=archived.find(p=>p.archiveId===id);if(!item)throw new Error('Project not found');projects.push(item.project);archived=archived.filter(p=>p.archiveId!==id);return structuredClone(item.project)},purgeArchivedProject:async id=>{archived=archived.filter(p=>p.archiveId!==id)},
- listProjects:async()=>structuredClone(projects),openProject:async id=>{const found=projects.find(p=>p.id===id);if(!found)throw new Error('Project not found');project=found;return structuredClone(project)},importAudio:async()=>structuredClone(project),
+ listProjects:async()=>structuredClone(projects),openProject:async id=>{const found=projects.find(p=>p.id===id);if(!found)throw new Error('Project not found');project=found;return structuredClone(project)},importAudio:async()=>{if(failNextImport){failNextImport=false;throw new Error('/private/fixture.wav: Invalid data found when processing input')}return structuredClone(project)},
  saveProject:async (id,edits)=>{if(id!==project.id)throw new Error('Project not found');if(failNextSave){failNextSave=false;throw new Error(en?'Fixture: saving failed. Retry to keep your changes.':'测试示例：保存失败，请重试以保留修改。')}project=applyProjectEdits(project,edits);projects=projects.map(p=>p.id===project.id?project:p);return structuredClone(project)},deleteProject:async(id,purge)=>{const item=projects.find(p=>p.id===id);if(item&&!purge)archived.push({archiveId:uuid(),project:item});projects=projects.filter(p=>p.id!==id)},
  getSettings:async()=>settings,saveSettings:async p=>settings={...settings,...p},settingsDirectories:async()=>({modelDirectory:'/example/model-cache',exportDirectory:'/example/exports'}),
  listModels:async()=>manifest.models.map(m=>({id:m.id,bytes:m.totalBytes,cached:cachedModels.has(m.id)})),separationStatus:async()=>null,analysisStatus:async()=>null,

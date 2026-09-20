@@ -53823,11 +53823,11 @@
       "id": "OspP2",
       "x": 4800,
       "y": 11324,
-      "name": "31 · 保存失败 / Compact recovery banners",
+      "name": "31 · 保存与导入失败 / Compact recovery banners",
       "context": "工作区顶栏下的保存失败提示。原因简短，右侧重试保存；技术详情默认折叠，展开后最多120px滚动。保存成功移除。不得关闭提示而丢弃待保存修改。",
       "clip": true,
       "width": 1440,
-      "height": 176,
+      "height": 328,
       "fill": "#14171b",
       "layout": "none",
       "children": [
@@ -53941,6 +53941,122 @@
               "descendants": {
                 "g1K0Dt": {
                   "content": "Retry save",
+                  "fontSize": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ospLi",
+          "x": 24,
+          "y": 176,
+          "name": "导入失败恢复",
+          "width": 1392,
+          "height": 52,
+          "fill": "#30282b",
+          "cornerRadius": 9,
+          "stroke": "#65414c",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "cRHbb",
+              "x": 12,
+              "y": 16,
+              "name": "Recovery reason",
+              "fill": "#efc7ce",
+              "textGrowth": "fixed-width",
+              "width": 1020,
+              "content": "无法导入 · 音频损坏或格式不受支持，请选择其它音频。",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "A1SFZQ",
+              "x": 1080,
+              "y": 17,
+              "name": "Collapsed technical details",
+              "fill": "#a0aab8",
+              "content": "技术详情 ▸",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "id": "D2gJQ",
+              "type": "ref",
+              "ref": "e2kkX",
+              "x": 1216,
+              "width": 164,
+              "name": "Retry saving",
+              "height": 30,
+              "y": 11,
+              "descendants": {
+                "g1K0Dt": {
+                  "content": "选择其它音频",
+                  "fontSize": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Cn2MP",
+          "x": 24,
+          "y": 252,
+          "name": "Import failure recovery",
+          "width": 1392,
+          "height": 52,
+          "fill": "#30282b",
+          "cornerRadius": 9,
+          "stroke": "#65414c",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "WuT6d",
+              "x": 12,
+              "y": 16,
+              "name": "Recovery reason",
+              "fill": "#efc7ce",
+              "textGrowth": "fixed-width",
+              "width": 1020,
+              "content": "Cannot import · The audio is damaged or unsupported. Choose another file.",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "GFy7M",
+              "x": 1080,
+              "y": 17,
+              "name": "Collapsed technical details",
+              "fill": "#a0aab8",
+              "content": "Technical details ▸",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "id": "x1j0Ic",
+              "type": "ref",
+              "ref": "e2kkX",
+              "x": 1216,
+              "width": 164,
+              "name": "Retry saving",
+              "height": 30,
+              "y": 11,
+              "descendants": {
+                "g1K0Dt": {
+                  "content": "Choose another file",
                   "fontSize": 12
                 }
               }
