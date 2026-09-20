@@ -35,6 +35,22 @@ test('secondary separation hides only the source clip and aligns new tracks at i
  expect(out.tracks[0].name).toBe('Audio - 其它');expect(out.tracks[0].clips![0].name).toBe(out.tracks[0].name)
 })
 function buffer(data:number[],rate=4){const samples=Float32Array.from(data);return {duration:data.length/rate,length:data.length,sampleRate:rate,numberOfChannels:1,getChannelData:()=>samples} as unknown as AudioBuffer}
+test('splitting an unchanged source reuses its decode, but hidden or displaced clips preserve gaps',()=>{
+ const source=buffer([1,2,3,4,5,6,7,8]),clips=[
+  {id:randomUUID(),name:'Right',start:1,end:2,offset:1},
+  {id:randomUUID(),name:'Left',start:0,end:1,offset:0}
+ ]
+ let allocations=0
+ const context={createBuffer:(_channels:number,length:number,rate:number)=>{allocations++;return buffer(Array(length).fill(0),rate)}}
+ const t={...track(),duration:2,sampleRate:4,channels:1,clips}
+ expect(clipBuffer(context,source,t,2)).toBe(source)
+ expect(allocations).toBe(0)
+ const hidden={...t,clips:[{...clips[0],hidden:true},clips[1]]}
+ expect([...clipBuffer(context,source,hidden,2).getChannelData(0)]).toEqual([1,2,3,4,0,0,0,0])
+ const moved={...t,clips:[{...clips[0],offset:2},clips[1]]}
+ expect([...clipBuffer(context,source,moved,3).getChannelData(0)]).toEqual([1,2,3,4,0,0,0,0,5,6,7,8])
+ expect(allocations).toBe(2)
+})
 test('playback puts trimmed source samples at the timeline offset, leaves gaps silent, and never writes the original',()=>{
  const source=buffer([1,2,3,4,5,6,7,8]),t={...track(),duration:2,sampleRate:4,channels:1,clips:[{id:randomUUID(),name:'A',start:.5,end:1,offset:1},{id:randomUUID(),name:'B',start:1.5,end:2,offset:2}]}
  const context={createBuffer:(_channels:number,length:number,rate:number)=>buffer(Array(length).fill(0),rate)}
