@@ -62,6 +62,8 @@ Local equivalent: `pnpm install --frozen-lockfile`, `pnpm test`, `pnpm run runti
 
 To verify real progressive separation, explicitly provide a local directory containing the pinned drums and bass weights/configs: `PRINTEMPS_TEST_MODELS=/absolute/path/to/models pnpm exec vitest run tests/progressive-runtime.test.ts`. The test verifies cached checksums before starting, uses the managed CPU runtime, and checks intermediate visibility, aligned outputs and residual reconstruction on a synthetic one-second input. It then trims the bass clip to 0.25–0.75 seconds and runs real secondary separation, verifies 0.5-second results at offset 0.25, source retention and inherited mix settings, exports WAV/FLAC, and verifies that editing an export leaves the private audio unchanged. It is skipped by default and is not a perceptual-quality benchmark. `PRINTEMPS_TEST_RESOURCES` optionally points this test at packaged worker/runtime resources too.
 
+Clip buffer allocation across six ten-minute stereo tracks is checked by `PRINTEMPS_TEST_CLIP_MEMORY=1 pnpm exec vitest run tests/clip-memory.test.ts`. It allocates about 1.5 GB of PCM and is skipped by default; it does not verify a real audio device or Electron's overall memory peak.
+
 ### UI fixture preview
 
 `pnpm run preview:ui` serves `http://127.0.0.1:5174/preview.html` using the actual renderer components with isolated in-memory example projects. Add `?lang=en` for English. This entry is excluded from the production build. Waveforms are schematic and playback is silent; model, export and native folder operations are deliberately unavailable. Use it for layout/focus review, not as evidence of Electron IPC, persistence, audio output or inference behavior. Add `&saveFailure=once` after `?lang=en` to simulate one failed save and inspect the Retry save flow; this flag exists only in the isolated preview.
@@ -79,9 +81,3 @@ The script installs dependencies inside the container, runs tests, prepares the 
 Linux x64 version 0.1.1 has passed the locked-runtime build and packaged analysis check. Its artifact, runtime manifest, metadata and build log are in `.cache/linux-verification/0.1.1`. The CUDA-enabled AppImage is 3,045,394,056 bytes (about 3.05 GB), so the tiny analysis checkpoint does not imply a tiny application installer. A local HTTP Range test using electron-updater reconstructed this artifact from the 0.1.0 package with 4,042,905 downloaded bytes, including blockmap metadata (99.867% saved), and passed SHA-512 validation. The report is `.cache/linux-verification/delta-0.1.0-to-0.1.1.json`; this verifies this pair of builds, not installation, release hosting or future update ratios.
 
 The latest verified Linux build includes retained-project recovery and the AppImage desktop-argument fix. Evidence is in `.cache/linux-verification/history-recovery/` (49 regular tests, updater fallback/corruption checks, source and packaged analysis). Its locally reconstructed update from 0.1.0 downloaded 10,940,143 bytes of a 3,045,393,708-byte artifact, saving 99.641%; this supersedes the earlier pair above for the latest source snapshot. Installation and desktop runtime checks remain outstanding.
-
-### 剪辑编辑
-
-点击波形选择剪辑，在游标处使用“分割”或快捷键 **S**；拖动片段左右边缘调整首尾，或在右侧剪辑详情输入源入点/出点（秒数或 `mm:ss.mmm` / `hh:mm:ss.mmm` 时间码）。一个音轨可包含多个片段，编辑不改写私有源音频。分离及导出仅处理所选剪辑；分离结果保持原时间轴位置，导出文件从片段自身起点开始。二次分离隐藏被处理的来源片段，同轨其它片段继续保留。
-
-开发时可运行 `PRINTEMPS_TEST_CLIP_MEMORY=1 pnpm exec vitest run tests/clip-memory.test.ts` 检查六条十分钟立体声音轨的缓冲分配。此测试约分配1.5GB PCM，默认跳过；它不验证真实音频设备或Electron整体内存峰值。
