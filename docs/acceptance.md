@@ -502,3 +502,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Isolated synthetic-only profile: `/var/folders/hh/0nr41s6j25d6xp6g97dq9m0w0000gn/T/printemps-close-native-xa56q9gc`. Set clip name to `Saved by quit handshake` while focused, without Enter/blur, then CmdQ. App exited0 and on-disk clip name matched, with source range/offset unchanged.
 - Relaunched, temporarily made only the synthetic project directory read-only, entered `Recovered after disk failure` and CmdQ. Native EACCES dialog appeared; window stayed open. Disk retained previous name and UI retained unsaved draft. Restored original directory permissions, acknowledged error, used Retry save; UI returned to editable state and disk contained new name. Subsequent CmdQ exited0. Original QA directory permissions verified restored; user app/project untouched.
 - Native failure dialog currently exposes the underlying technical error; the retry path is functional. This does not verify OS IME candidate composition or physical audio output.
+
+### 2026-09-20 · Native close-save recovery wording
+
+- Replaced raw native close-error text with localized concise recovery guidance. Disk-full, write-permission, and renderer-save timeout have separate next actions; the alert does not display private project paths or suggest changing the model cache for a project-save failure.
+- Concurrent close/quit error handlers share one visible alert guard. Existing flush failure semantics still prevent close and retain pending changes.
+- Focused validation: `pnpm exec vitest run tests/save-failure.test.ts tests/project-session.test.ts tests/shutdown.test.ts` — 10 passed; `pnpm typecheck` passed.
+- This is source-level validation of the copy and existing save queue. The new wording has not yet been included in a signed package or rechecked in a native error dialog; earlier real EACCES recovery evidence remains separate.

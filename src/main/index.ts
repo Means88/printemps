@@ -4,6 +4,7 @@ import {menuStateSchema} from '../shared/native-menu'
 import {applyTrackAction,trackActionSchema} from '../shared/track-actions'
 import {randomUUID} from 'node:crypto'
 import {ShutdownCoordinator} from './shutdown'
+import {closeSaveFailure} from '../shared/save-failure'
 import electronUpdater from 'electron-updater'
 import {SettingsService,type DirectoryKind} from './settings'
 import {UpdateService} from './updates'
@@ -51,7 +52,16 @@ function flushRenderer():Promise<void>{
  }).finally(()=>{flushInProgress=null})
  return flushInProgress
 }
-function showCloseError(error:unknown){dialog.showErrorBox('Printemps',error instanceof Error?error.message:String(error))}
+let closeErrorVisible=false
+async function showCloseError(error:unknown){
+ if(closeErrorVisible)return
+ closeErrorVisible=true
+ try{
+  const language=await store.settings().then(settings=>settings.language).catch(()=>app.getLocale().startsWith('zh')?'zh':'en')
+  const copy=closeSaveFailure(error,language==='en')
+  dialog.showErrorBox(copy.title,copy.message)
+ }finally{closeErrorVisible=false}
+}
 app.on('before-quit',event=>{if(!quitReady){event.preventDefault();void flushRenderer().then(()=>shutdown.request()).catch(showCloseError)}})
 const updates=new UpdateService(electronUpdater.autoUpdater,app.getVersion(),app.isPackaged,()=>separation.busy||analysis.busy||!!download||ioTasks>0,state=>{if(win&&!win.isDestroyed())win.webContents.send('updates:progress',state)})
 handle('updates:status',()=>updates.status())
