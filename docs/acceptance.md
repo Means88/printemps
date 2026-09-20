@@ -524,3 +524,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Implemented `SaveRecovery` with concise reason, collapsed diagnostics and right-aligned secondary retry. Removed duplicate footer retry action; pending edits and existing retry queue behavior remain unchanged.
 - English 1280×800 fixture: induced one clip-save failure, confirmed 52px collapsed banner, no horizontal overflow, retained draft, disabled clip editing. Expanded diagnostic measured 72.5px total banner height. Retry committed the name and removed the banner; clip controls re-enabled.
 - `pnpm typecheck` passed. Preview uses synthetic in-memory state; native persistence recovery is covered by the separate preceding production-window record, not by this UI fixture.
+
+### 2026-09-20 · Track mutations join close/save recovery
+
+- Routed track move/place/delete through `ProjectSession.mutate` instead of direct renderer IPC plus an unawaited refresh. Close/export/separation flushes now include outstanding track mutations, and failed mutations remain retryable.
+- Track-manager mutation controls disable on save failure; Done remains available so the workspace retry action is reachable. The dialog explains that recovery step without showing a long raw path.
+- Added regression coverage for failed deletion → close blocked → retry followed by metadata edits, proving deleted tracks are not resurrected. Related session/track suites: 11 passed; typecheck passed.
+- Browser fixture `trackSaveFailure=once`: Lead vocal Move down fails once, controls disable and Done remains enabled. Closing and Retry save succeeds; reopening shows Original, Drums, Lead vocal, Bass, Electric guitar, Other in order with controls restored. This is UI fixture evidence, not native persistence validation.

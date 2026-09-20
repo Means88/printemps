@@ -1,3 +1,4 @@
+import {applyTrackAction} from '../src/shared/track-actions'
 import {expect,test,vi} from 'vitest'
 import {randomUUID} from 'node:crypto'
 import {mkdtemp,rm} from 'node:fs/promises'
@@ -125,4 +126,22 @@ test('failed clip mutations remain retryable and prevent closing instead of bein
  fail=false;session.retry();await session.flush()
  expect(attempts).toBe(2);expect(visible!.name).toBe('Mutation saved')
  expect(status).toEqual({pending:0,error:null})
+})
+
+
+test('failed track deletion blocks close and retries before later metadata without resurrecting the track',async()=>{
+ const base=make();let stored=base,fail=true,visible:Project|null=null
+ const session=new ProjectSession({read:async()=>stored,save:async(_id,edits)=>stored=applyProjectEdits(stored,edits)},p=>{visible=p},()=>{},()=>{})
+ session.open(base)
+ session.mutate(base.id,async()=>{if(fail)throw new Error('EACCES');return stored=applyTrackAction(stored,{kind:'delete',id:base.tracks[1].id})})
+ await expect(session.flush()).rejects.toThrow('EACCES')
+ expect(()=>session.open(null)).toThrow('Save pending')
+ expect(stored.tracks).toHaveLength(2)
+ fail=false
+ session.edit(base,{...base,name:'Keep project rename',tracks:base.tracks.map(t=>({...t,gain:-9}))})
+ await session.flush()
+ expect(visible!.tracks.map(t=>t.role)).toEqual(['original'])
+ expect(visible!.tracks[0].gain).toBe(-9)
+ expect(visible!.name).toBe('Keep project rename')
+ expect(stored).toEqual(visible)
 })
