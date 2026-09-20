@@ -41,7 +41,7 @@ export interface DesktopAPI {
   onModelProgress(callback:(progress:{modelId:string;received:number;total:number})=>void):()=>void
   getSettings(): Promise<Settings>
   probeDevice(): Promise<DeviceProbe>
-  saveSettings(settings: Partial<Pick<Settings,'language'|'device'>>): Promise<Settings>
+  saveSettings(settings: Partial<Pick<Settings,'language'|'device'|'proxyMode'|'proxyUrl'>>): Promise<Settings>
   settingsDirectories():Promise<{modelDirectory:string;exportDirectory:string}>
   chooseSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings|null>
   resetSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings>

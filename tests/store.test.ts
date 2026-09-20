@@ -8,7 +8,7 @@ test('persists validated settings and rejects arbitrary asset paths',async()=>{
  const root=await mkdtemp(path.join(tmpdir(),'printemps-'))
  try {const store=new ProjectStore(root);await store.initialize()
  expect((await store.settings()).language).toBe('zh')
- await store.saveSettings({language:'en',device:'cpu',modelDirectory:'',exportDirectory:''})
+ await store.saveSettings({language:'en',device:'cpu',modelDirectory:'',exportDirectory:'',proxyMode:'system',proxyUrl:''})
  expect((await new ProjectStore(root).settings()).language).toBe('en')
  expect(()=>store.assetPath('../escape',randomUUID())).toThrow()
  expect(()=>store.assetPath(randomUUID(),'../../secrets')).toThrow()

@@ -47,6 +47,7 @@ export class ModelCache {
     const temp=this.location(file)+`.${randomUUID()}.part`
     try{
      const response=await this.fetcher(this.base+file.path,{signal})
+     if(response.status===407)throw new Error('Proxy authentication failed (407): check the proxy address and credentials in Settings')
      if(!response.ok||!response.body)throw new Error(`Model download failed (${response.status})`)
      const hash=createHash(file.checksumAlgorithm==='git-sha1'?'sha1':'sha256')
      if(file.checksumAlgorithm==='git-sha1')hash.update(`blob ${file.bytes}\0`)

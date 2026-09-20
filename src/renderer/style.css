@@ -298,7 +298,8 @@ header>button{flex-shrink:0}
 .preferences-fields{min-height:0;overflow:auto;flex:1}
 .preference-row,.preferences-page .directory-setting{display:grid;grid-template-columns:55% minmax(0,45%);align-items:center;min-height:112px;gap:0;margin:0;padding:24px 8px 24px 0;border-bottom:1px solid var(--hairline)}
 .preference-row>span,.preferences-page .directory-setting>strong,.preferences-page .directory-label{font-size:16px;font-weight:500}.preference-row>span,.directory-label{display:flex;flex-direction:column;gap:8px;padding-right:32px}.preference-row>span small,.directory-label small{font-size:13px;font-weight:400;color:var(--text-muted);line-height:1.5}.preferences-lead{margin:-14px 0 6px;color:var(--text-muted);font-size:13px}
-.preference-row select,.directory-path{width:100%;height:44px;background:var(--panel);border:1px solid var(--border);border-radius:10px;font-size:13px}
+.preference-row select,.preference-row input[type=text],.directory-path{width:100%;height:44px;background:var(--panel);border:1px solid var(--border);border-radius:10px;font-size:13px}
+.proxy-row{align-items:start}.proxy-fields{display:flex;flex-direction:column;gap:8px;min-width:0}.preference-row input[type=text]{padding:0 var(--space-3);color:var(--text)}.preference-row input[type=text]::placeholder{color:var(--text-faint)}
 .preferences-page .directory-settings{border:0;padding:0}
 .directory-path{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:10px 16px}
 .directory-path>span{margin-left:auto;flex-shrink:0}

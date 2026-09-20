@@ -58,6 +58,13 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 - `site/` 是 printemps.dev 静态站（画板 33 `f2cQi`），`pages.yml` 部署（Pages 已启用并首次部署成功，Custom domain 已设为 printemps.dev，DNS 已于 2026-09-20 切到 Cloudflare 代理并生效，站点与 `/privacy` 在线；CSS/JS/主视觉带 `?v=<commit>` 缓存戳），`release.yml` 按 `v*` tag 出三平台草稿 Release；流程与 DNS 见 `docs/RELEASE.md`。`site/privacy.html` 是独立隐私政策页（画板 34 `VE9BB`，1440×2295），按 Apple App 隐私详情的数据类型分类写成 13 节（结论“不收集数据”，列出设备上处理的数据、Hugging Face/GitHub 两类联网、保留与删除、权限、追踪、儿童、权利、网站、变更、联系），中英双语共用 `printemps-lang` 语言偏好；导航“隐私”、首页隐私摘要与页脚均链到它，供以后上架需要隐私条款链接的渠道使用。首页 GitHub 链接改为图标。`site/guide.html` 是完整使用说明页（画板 35 `VeLMf`，14 节，中英，含快捷键表），导航/页脚/首页按钮均已链接；改功能或快捷键时要同步这页。**仓库仍是 private**：Pages 与匿名下载需要公开仓库或付费计划，这是待用户决定的事项。公证暂不处理。
 
+## 网络代理（模型下载）
+
+- 设置新增「网络代理」：`proxyMode` = `system` / `direct` / `manual` + `proxyUrl`（`src/shared/domain.ts`），`SettingsService.save` 用 `normalizeProxyUrl` 规范化地址（支持 http/https/socks4/socks5，可带用户名密码，无路径）。
+- 主进程用独立 session `printemps-downloads` 承载模型下载：`applyProxy()` 在启动与每次 `settings:save` 后调用 `session.setProxy(proxyConfig(...))`；`ModelCache` 的 fetcher 换成 `createDownloadFetcher(net.request)`（`src/main/download-fetch.ts`），走 session 代理、回答代理 `login` 挑战（凭据来自地址）、支持 AbortSignal。更新检查仍走默认 session（系统代理），未纳入此设置。
+- 画板 09 `WbwXU` 增加代理行（高度改为 1000），设置页副标题同步为「语言、处理设备、网络代理与存储位置」；使用说明 §12/§14、隐私政策 §5 已提及。
+- 验证：单元测试（`tests/proxy.test.ts`、`tests/download-fetch.test.ts`、`tests/settings.test.ts`）+ 真实 Electron 运行时端到端（scratch 脚本起本地 HTTP 代理与源站：manual 经代理、direct 不经代理、地址带凭据时 407 → login → 带 Basic 重试成功、无凭据时返回 407）。注意 Chromium 默认不代理 loopback 地址，测试时需 `proxyBypassRules:'<-loopback>'`；真实下载目标是 huggingface.co，不受影响。未在真实上游代理软件上验证。
+
 ## 处理设备
 
 - MPS 曾“卡死”：20 秒推理 chunk 的注意力激活超出统一内存导致抖动。`worker/separate.py` 的 `select_chunk` 在 MPS 上封顶为 10 秒（`audio.chunk_size`），显存预算 <12 GB 时 5 秒；每个声部后 `torch.mps.empty_cache()`。实测 MPS 19.7 s vs CPU 45.3 s（10 秒合成音频，drums），应用内真实分离 25 s 完成。仍标“实验性”，`自动选择` 不会选 MPS。

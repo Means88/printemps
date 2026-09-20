@@ -8,8 +8,11 @@ import {ShutdownCoordinator} from './shutdown'
 import {closeSaveFailure} from '../shared/save-failure'
 import electronUpdater from 'electron-updater'
 import {SettingsService,type DirectoryKind} from './settings'
+import type {Settings} from '../shared/domain'
 import {UpdateService} from './updates'
-import { app, BrowserWindow, dialog, ipcMain, protocol, net, shell } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, protocol, net, session, shell } from 'electron'
+import {proxyConfig,proxyCredentials} from './proxy'
+import {createDownloadFetcher} from './download-fetch'
 import {ExportFolders} from './export-folders'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import path from 'node:path'
@@ -135,9 +138,15 @@ handle('exports:open-directory',async(directory:string)=>{
 })
 let modelCache:ModelCache|null=null
 let download:AbortController|null=null
+// Model downloads run on their own session so the proxy preference applies to them and nothing else.
+const downloadSession=session.fromPartition('printemps-downloads',{cache:false})
+let proxySettings:Pick<Settings,'proxyMode'|'proxyUrl'>={proxyMode:'system',proxyUrl:''}
+async function applyProxy(){const settings=await store.settings();proxySettings={proxyMode:settings.proxyMode,proxyUrl:settings.proxyUrl};await downloadSession.setProxy(proxyConfig(proxySettings))}
+const downloadFetcher=createDownloadFetcher(options=>net.request({...options,session:downloadSession}),()=>proxyCredentials(proxySettings))
+await applyProxy()
 async function models(){
  const settings=await store.settings(),directory=settings.modelDirectory||path.join(store.root,'models')
- if(!modelCache||modelCache.directory!==directory){if(download||separation.busy)throw new Error('Wait for active task to finish');modelCache=new ModelCache(directory)}
+ if(!modelCache||modelCache.directory!==directory){if(download||separation.busy)throw new Error('Wait for active task to finish');modelCache=new ModelCache(directory,undefined,undefined,downloadFetcher as unknown as typeof fetch)}
  return modelCache
 }
 handle('models:list',async()=> (await models()).list())
@@ -161,7 +170,7 @@ handle('settings:get',()=>store.settings())
 let deviceProbe:Promise<{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}>|null=null
 handle('device:probe',()=>{deviceProbe??=runJsonWorker<{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}>(python,path.join(runtimeRoot,'worker/device_probe.py'),{},new AbortController().signal,event=>event.type==='result'?{cuda:!!event.cuda,mps:!!event.mps,auto:event.auto==='cuda'?'cuda':'cpu'}:undefined).catch(e=>{deviceProbe=null;throw e});return deviceProbe})
 const settingsService=new SettingsService(store,()=>!!download||separation.busy)
-handle('settings:save',(value)=>settingsService.save(value))
+handle('settings:save',async(value)=>{const saved=await settingsService.save(value);await applyProxy();return saved})
 handle('settings:directories',()=>settingsService.directories())
 handle('settings:reset-directory',(kind:DirectoryKind)=>settingsService.setDirectory(kind,''))
 handle('settings:choose-directory',async(kind:DirectoryKind)=>{
