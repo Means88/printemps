@@ -384,3 +384,14 @@ header>button{flex-shrink:0}
 .clip-export-dialog .dialog-actions>button{min-width:88px}
 .clip-export-dialog .export-success{margin:0;font-size:12px;color:#65d8be}
 @media(prefers-reduced-motion:reduce){.export-format-options::before{transition:none}}
+
+/* Pen 31: compact save recovery; diagnostics expand without widening the workspace. */
+.save-recovery{position:relative;flex-shrink:0;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:start;gap:8px 16px;margin:8px 20px;padding:10px 12px;min-height:52px;background:#30282b;border:1px solid #65414c;border-radius:9px;color:#efc7ce}
+.save-recovery>p{margin:5px 0;font-size:13px;line-height:20px;color:inherit}
+.save-recovery>button{height:30px;min-width:108px;padding:4px 12px;font-size:12px;line-height:20px}
+.save-recovery details{padding-top:6px;font-size:12px;color:#a0aab8}
+.save-recovery summary{cursor:pointer;white-space:nowrap}
+.save-recovery details[open]{display:contents}
+.save-recovery details[open]>summary{grid-column:2;grid-row:1;padding-top:6px}
+.save-recovery pre{grid-column:1/-1;grid-row:2;margin:0;max-height:120px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;user-select:text}
+.save-recovery>button{grid-column:3;grid-row:1}

@@ -517,3 +517,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Native accessibility output confirmed “Changes have not been saved”, the window-retention message, and the write-access / Retry save instruction. No private path was present in this native alert. The process stayed alive; the old saved project was unchanged.
 - Restored the exact original directory mode, dismissed the alert, and clicked Retry save. The editable name and waveform label updated; Cmd+Q then exited with code 0. Disk assertions confirmed the new name and unchanged source range 1.25–2.0s / timeline offset 4.25s, plus restored directory permissions.
 - This validates the current unpackaged production Electron window. It does not update the signed artifact or prove Windows/Linux native rendering. The workspace error banner still exposes the raw diagnostic; a future design-aligned recovery banner should keep details collapsed.
+
+### 2026-09-20 · Compact workspace save recovery
+
+- Added and saved Pen board `OspP2` (31), preserving existing boards. Chinese/English compact banner designs and PNG are in `design/save-recovery/`; final Pen layout reported no clipping.
+- Implemented `SaveRecovery` with concise reason, collapsed diagnostics and right-aligned secondary retry. Removed duplicate footer retry action; pending edits and existing retry queue behavior remain unchanged.
+- English 1280×800 fixture: induced one clip-save failure, confirmed 52px collapsed banner, no horizontal overflow, retained draft, disabled clip editing. Expanded diagnostic measured 72.5px total banner height. Retry committed the name and removed the banner; clip controls re-enabled.
+- `pnpm typecheck` passed. Preview uses synthetic in-memory state; native persistence recovery is covered by the separate preceding production-window record, not by this UI fixture.

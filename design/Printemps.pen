@@ -17302,222 +17302,222 @@
               "fontFamily": "Nunito Sans",
               "fontSize": 12,
               "fontWeight": "600"
-            }
-          ]
-        },
-        {
-          "type": "rectangle",
-          "id": "X7d8n",
-          "x": 0,
-          "y": 0,
-          "name": "Modal scrim",
-          "fill": "#00000099",
-          "width": 1440,
-          "height": 900
-        },
-        {
-          "type": "frame",
-          "id": "QY6ti",
-          "x": 460,
-          "y": 278,
-          "name": "Selected clip export dialog",
-          "width": 520,
-          "height": 345,
-          "fill": "#202630",
-          "cornerRadius": 16,
-          "stroke": "#46505E",
-          "strokeWidth": 1,
-          "layout": "none",
-          "children": [
+            },
             {
-              "type": "text",
-              "id": "SiNQR",
-              "x": 28,
-              "y": 28,
-              "name": "Export dialog title",
-              "fill": "#E8ECF2",
-              "content": "导出剪辑",
-              "fontFamily": "Noto Sans SC",
-              "fontSize": 20,
-              "fontWeight": "normal"
+              "type": "rectangle",
+              "id": "X7d8n",
+              "x": 0,
+              "y": 0,
+              "name": "Modal scrim",
+              "fill": "#00000099",
+              "width": 1440,
+              "height": 900
             },
             {
               "type": "frame",
-              "id": "vgmxG",
-              "x": 28,
-              "y": 80,
-              "name": "Selected clip summary",
-              "width": 464,
-              "height": 79,
-              "fill": "#141A22",
-              "cornerRadius": 10,
+              "id": "QY6ti",
+              "x": 460,
+              "y": 278,
+              "name": "Selected clip export dialog",
+              "width": 520,
+              "height": 345,
+              "fill": "#202630",
+              "cornerRadius": 16,
+              "stroke": "#46505E",
+              "strokeWidth": 1,
               "layout": "none",
               "children": [
                 {
                   "type": "text",
-                  "id": "L8qMAt",
-                  "x": 16,
-                  "y": 16,
-                  "name": "Selected clip name",
-                  "fill": "#B6A0EA",
-                  "textGrowth": "fixed-width",
-                  "width": 432,
-                  "content": "主唱 · 副歌",
+                  "id": "SiNQR",
+                  "x": 28,
+                  "y": 28,
+                  "name": "Export dialog title",
+                  "fill": "#E8ECF2",
+                  "content": "导出剪辑",
                   "fontFamily": "Noto Sans SC",
-                  "fontSize": 15,
-                  "fontWeight": "normal"
-                },
-                {
-                  "type": "text",
-                  "id": "oec3A",
-                  "x": 16,
-                  "y": 46,
-                  "name": "Exported clip duration",
-                  "fill": "#A0AAB8",
-                  "content": "时长 00:24.000",
-                  "fontFamily": "Noto Sans SC",
-                  "fontSize": 12,
-                  "fontWeight": "normal"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "I5pM8w",
-              "x": 28,
-              "y": 183,
-              "name": "Format row",
-              "width": 464,
-              "height": 36,
-              "layout": "none",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "cVnCB",
-                  "x": 0,
-                  "y": 9,
-                  "name": "Format label",
-                  "fill": "#A0AAB8",
-                  "content": "格式",
-                  "fontFamily": "Noto Sans SC",
-                  "fontSize": 13,
+                  "fontSize": 20,
                   "fontWeight": "normal"
                 },
                 {
                   "type": "frame",
-                  "id": "U4DC0",
-                  "x": 256,
-                  "y": 0,
-                  "name": "WAV FLAC segmented control",
-                  "width": 208,
-                  "height": 36,
-                  "fill": "#292F38",
+                  "id": "vgmxG",
+                  "x": 28,
+                  "y": 80,
+                  "name": "Selected clip summary",
+                  "width": 464,
+                  "height": 79,
+                  "fill": "#141A22",
                   "cornerRadius": 10,
                   "layout": "none",
                   "children": [
                     {
-                      "type": "frame",
-                      "id": "MAipb",
-                      "x": 3,
-                      "y": 3,
-                      "name": "WAV option",
-                      "width": 101,
-                      "height": 30,
-                      "fill": "#287CDD",
-                      "cornerRadius": 7,
-                      "justifyContent": "center",
-                      "alignItems": "center",
-                      "children": [
-                        {
-                          "type": "text",
-                          "id": "X5RsjG",
-                          "name": "WAV label",
-                          "fill": "#E8ECF2",
-                          "content": "WAV",
-                          "fontFamily": "Nunito Sans",
-                          "fontSize": 12,
-                          "fontWeight": "normal"
-                        }
-                      ]
+                      "type": "text",
+                      "id": "L8qMAt",
+                      "x": 16,
+                      "y": 16,
+                      "name": "Selected clip name",
+                      "fill": "#B6A0EA",
+                      "textGrowth": "fixed-width",
+                      "width": 432,
+                      "content": "主唱 · 片段 2",
+                      "fontFamily": "Noto Sans SC",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "oec3A",
+                      "x": 16,
+                      "y": 46,
+                      "name": "Exported clip duration",
+                      "fill": "#A0AAB8",
+                      "content": "时长 00:44.000",
+                      "fontFamily": "Noto Sans SC",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "I5pM8w",
+                  "x": 28,
+                  "y": 183,
+                  "name": "Format row",
+                  "width": 464,
+                  "height": 36,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cVnCB",
+                      "x": 0,
+                      "y": 9,
+                      "name": "Format label",
+                      "fill": "#A0AAB8",
+                      "content": "格式",
+                      "fontFamily": "Noto Sans SC",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
                     },
                     {
                       "type": "frame",
-                      "id": "t9rUYc",
-                      "x": 104,
-                      "y": 3,
-                      "name": "FLAC option",
-                      "width": 101,
-                      "height": 30,
+                      "id": "U4DC0",
+                      "x": 256,
+                      "y": 0,
+                      "name": "WAV FLAC segmented control",
+                      "width": 208,
+                      "height": 36,
                       "fill": "#292F38",
-                      "cornerRadius": 7,
-                      "justifyContent": "center",
-                      "alignItems": "center",
+                      "cornerRadius": 10,
+                      "layout": "none",
                       "children": [
                         {
-                          "type": "text",
-                          "id": "BUAJ8",
-                          "name": "FLAC label",
-                          "fill": "#E8ECF2",
-                          "content": "FLAC",
-                          "fontFamily": "Nunito Sans",
-                          "fontSize": 12,
-                          "fontWeight": "normal"
+                          "type": "frame",
+                          "id": "MAipb",
+                          "x": 3,
+                          "y": 3,
+                          "name": "WAV option",
+                          "width": 101,
+                          "height": 30,
+                          "fill": "#287CDD",
+                          "cornerRadius": 7,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "X5RsjG",
+                              "name": "WAV label",
+                              "fill": "#E8ECF2",
+                              "content": "WAV",
+                              "fontFamily": "Nunito Sans",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "t9rUYc",
+                          "x": 104,
+                          "y": 3,
+                          "name": "FLAC option",
+                          "width": 101,
+                          "height": 30,
+                          "fill": "#292F38",
+                          "cornerRadius": 7,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "BUAJ8",
+                              "name": "FLAC label",
+                              "fill": "#E8ECF2",
+                              "content": "FLAC",
+                              "fontFamily": "Nunito Sans",
+                              "fontSize": 12,
+                              "fontWeight": "normal"
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
-                }
-              ]
-            },
-            {
-              "type": "text",
-              "id": "IfhsH",
-              "x": 28,
-              "y": 243,
-              "name": "Output specification",
-              "fill": "#A0AAB8",
-              "content": "24-bit PCM · 44.1 kHz · Stereo",
-              "fontFamily": "Nunito Sans",
-              "fontSize": 12,
-              "fontWeight": "normal"
-            },
-            {
-              "type": "frame",
-              "id": "HaohL",
-              "x": 28,
-              "y": 283,
-              "name": "Export actions",
-              "width": 464,
-              "height": 34,
-              "layout": "none",
-              "children": [
-                {
-                  "id": "YbJTI",
-                  "type": "ref",
-                  "ref": "e2kkX",
-                  "name": "Close export",
-                  "width": 88,
-                  "x": 280,
-                  "y": 0,
-                  "descendants": {
-                    "g1K0Dt": {
-                      "content": "关闭"
-                    }
-                  }
                 },
                 {
-                  "id": "Anzcq",
-                  "type": "ref",
-                  "ref": "p2Q6Q5",
-                  "name": "Export selected clip",
-                  "width": 88,
-                  "x": 376,
-                  "y": 0,
-                  "descendants": {
-                    "ZqL57": {
-                      "content": "导出"
+                  "type": "text",
+                  "id": "IfhsH",
+                  "x": 28,
+                  "y": 243,
+                  "name": "Output specification",
+                  "fill": "#A0AAB8",
+                  "content": "24-bit PCM · 44.1 kHz · Stereo",
+                  "fontFamily": "Nunito Sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "HaohL",
+                  "x": 28,
+                  "y": 283,
+                  "name": "Export actions",
+                  "width": 464,
+                  "height": 34,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "id": "YbJTI",
+                      "type": "ref",
+                      "ref": "e2kkX",
+                      "name": "Close export",
+                      "width": 88,
+                      "x": 280,
+                      "y": 0,
+                      "descendants": {
+                        "g1K0Dt": {
+                          "content": "关闭"
+                        }
+                      }
+                    },
+                    {
+                      "id": "Anzcq",
+                      "type": "ref",
+                      "ref": "p2Q6Q5",
+                      "name": "Export selected clip",
+                      "width": 88,
+                      "x": 376,
+                      "y": 0,
+                      "descendants": {
+                        "ZqL57": {
+                          "content": "导出"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }
@@ -53813,6 +53813,137 @@
                   "fontWeight": "600"
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "OspP2",
+      "x": 4800,
+      "y": 11324,
+      "name": "31 · 保存失败 / Compact recovery banners",
+      "context": "工作区顶栏下的保存失败提示。原因简短，右侧重试保存；技术详情默认折叠，展开后最多120px滚动。保存成功移除。不得关闭提示而丢弃待保存修改。",
+      "clip": true,
+      "width": 1440,
+      "height": 176,
+      "fill": "#14171b",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "b2QiC",
+          "x": 24,
+          "y": 24,
+          "name": "保存失败 · 无法写入项目目录，请检查写入权限。",
+          "width": 1392,
+          "height": 52,
+          "fill": "#30282b",
+          "cornerRadius": 9,
+          "stroke": "#65414c",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "cVa0c",
+              "x": 12,
+              "y": 16,
+              "name": "Recovery reason",
+              "fill": "#efc7ce",
+              "textGrowth": "fixed-width",
+              "width": 1080,
+              "content": "保存失败 · 无法写入项目目录，请检查写入权限。",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "J4BLrA",
+              "x": 1120,
+              "y": 17,
+              "name": "Collapsed technical details",
+              "fill": "#a0aab8",
+              "content": "技术详情 ▸",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "id": "Y8G6bZ",
+              "type": "ref",
+              "ref": "e2kkX",
+              "name": "Retry saving",
+              "width": 108,
+              "height": 30,
+              "x": 1272,
+              "y": 11,
+              "descendants": {
+                "g1K0Dt": {
+                  "content": "重试保存",
+                  "fontSize": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "YREsH",
+          "x": 24,
+          "y": 100,
+          "name": "Save failed · Cannot write to the project folder. Check write access.",
+          "width": 1392,
+          "height": 52,
+          "fill": "#30282b",
+          "cornerRadius": 9,
+          "stroke": "#65414c",
+          "strokeWidth": 1,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "h6xPl",
+              "x": 12,
+              "y": 16,
+              "name": "Recovery reason",
+              "fill": "#efc7ce",
+              "textGrowth": "fixed-width",
+              "width": 1080,
+              "content": "Save failed · Cannot write to the project folder. Check write access.",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "U2ZnQt",
+              "x": 1120,
+              "y": 17,
+              "name": "Collapsed technical details",
+              "fill": "#a0aab8",
+              "content": "Technical details ▸",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "id": "Tn8Je",
+              "type": "ref",
+              "ref": "e2kkX",
+              "name": "Retry saving",
+              "width": 108,
+              "height": 30,
+              "x": 1272,
+              "y": 11,
+              "descendants": {
+                "g1K0Dt": {
+                  "content": "Retry save",
+                  "fontSize": 12
+                }
+              }
             }
           ]
         }
