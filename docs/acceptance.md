@@ -551,3 +551,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - `PRINTEMPS_TEST_RESOURCES=.../Printemps.app/Contents/Resources pnpm test:integration` passed with the package's Python, Beat This checkpoint and Essentia WASM; `/tmp/printemps-current-analysis.log` (6.91s test-run duration, synthetic pipeline check rather than hardware/music-quality benchmark).
 - app.asar SHA256: `d35fa658dc7bf095491d9f691a4cf4e715fab80db07eabf096e5c555b2a20a49`.
 - Recent original/clip native checks predate this signed package and remain distinct; this turn proves package signing and bundled analysis, not all native UI or physical audio behaviors.
+
+### 2026-09-20 · 9564b98 signed native track retry / restart
+
+- Launched an APFS clone of the verified signed package (`/private/tmp/Printemps-9564-QA.app`) with the isolated synthetic close-test profile. CUA initially opened an additional idle default-profile window; it was closed without opening or editing a project, then the synthetic-profile window was explicitly verified before testing.
+- Made only the QA project directory temporarily read-only. Moving Synthetic result above Original failed with real EACCES; the saved order stayed unchanged. Done remained available, and the workspace displayed the compact localized permission message, collapsed Technical details, and Retry save.
+- Restored original directory permissions, retried, and quit normally (exit 0). Disk data showed Synthetic result before Original. Relaunched the signed package with the same QA profile: recent-project duration remained 00:10 and workspace order remained Synthetic result, Original. Normal exit again returned 0.
+- This fixture's tracks both have 10-second source duration; it proves order persistence and native recovery, not the separate short-first-track edge case covered by the domain regression test.
