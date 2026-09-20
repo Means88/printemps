@@ -419,3 +419,12 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Extracted Preferences from the main workspace. Language/device changes now send only the changed field, disable while saving and apply returned settings after success; rejected saves retain the prior value and show an in-page error. Directory controls invoke the existing native chooser.
 - English 1280×800 rendered verification showed all main controls and Done. Changed CPU→Automatic and English→Chinese in the fixture, then checked 1440×900 DOM bounds (page 0..1440, Done right 1384/bottom 868, body width 1440) and Done returned to the Chinese home. Temporary tab closed and viewport reset. Production build passed (`/tmp/printemps-preferences-build.log`). No new native directory-picker test was performed.
 - CI 35492712177 Windows and macOS succeeded; Linux installer step remains live. That run covers 9e21ead, before library/preferences revisions.
+
+### Three-platform artifacts and history audit — 2026-09-20
+
+- Run https://github.com/Means88/printemps/actions/runs/35492712177 completed successfully for all three platforms at 9e21ead. GitHub artifact API confirms all three artifacts present and unexpired:
+  - Windows X64: 10600230393, 344,758,985 bytes, SHA256 539dd91313a0f37b6eeade5c25e92644d6bb2dd6ae5002a514557dda294e2f12.
+  - macOS ARM64: 10600205263, 765,586,979 bytes, SHA256 3dd8f90d12420897ad9c39135939e41f2ae6295c9a99f823888288307bd54ae4.
+  - Linux X64: 10600190699, 3,045,443,686 bytes, SHA256 4a1e00be0b2c910ee6b1d801d0045cc73ddbe2dfa5596bff6ba91b44526fbffe.
+- Digests describe GitHub's artifact archives, not individual installer hashes. Installer execution/install/upgrade still requires desktop acceptance. Later model-library/preferences changes are not included.
+- History audit against board13 found the inspector still renders ExportDialog without trackId/clipId, leaving it permanently disabled after clip-scoped export was introduced. Next work must design and implement explicit clip selection there, preserving the user's selected-clip-only export requirement. Do not mark history export complete based on the separate workspace export tests.
