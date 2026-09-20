@@ -21,7 +21,7 @@ export const projectSchema = z.object({
   tracks: z.array(trackSchema), music: musicalSchema,
   recommendation: musicalSchema.partial().nullable(),
   lastSeparation: z.object({
-    id:z.string().uuid(),sourceId:z.string().uuid(),targets:z.array(z.string()),
+    id:z.string().uuid(),sourceId:z.string().uuid(),retrySourceId:z.string().uuid().optional(),targets:z.array(z.string()),
     state:z.enum(['running','complete','failed','cancelled','interrupted']),
     completed:z.number().int().nonnegative(),startedAt:z.string(),finishedAt:z.string().optional(),error:z.string().optional()
   }).optional(),

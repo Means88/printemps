@@ -8,6 +8,7 @@ import {ModelCache} from '../src/main/models'
 import {SeparationService} from '../src/main/separation'
 import type {runSeparation} from '../src/main/inference-worker'
 import type {SeparationTask} from '../src/shared/api'
+import {recoverSeparationTask} from '../src/shared/task-recovery'
 
 test('original separation publishes complete stem/residual pairs before later targets finish and preserves edits',async()=>{
  const root=await mkdtemp(path.join(tmpdir(),'printemps-progressive-'))
@@ -47,11 +48,15 @@ test('original separation publishes complete stem/residual pairs before later ta
   const failed=await run(),partial=await store.load(id)
   expect(failed.phase).toBe('failed');expect(partial.tracks.map(t=>t.stem)).toEqual(['original','other','drums'])
   expect(partial.lastSeparation).toMatchObject({state:'failed',completed:1,error:'Second target failed'})
+  expect(recoverSeparationTask(partial)).toMatchObject({sourceId:partial.tracks[1].id,remainingTargets:['bass']})
+  expect(recoverSeparationTask(result)).toBeNull()
   expect(failed.remainingTargets).toEqual(['bass']);expect(failed.retrySourceId).toBe(partial.tracks[1].id)
   await store.update(id,p=>({...p,lastSeparation:{...p.lastSeparation!,state:'running',finishedAt:undefined}}))
   await store.recoverInterruptedTasks()
   const recovered=await store.load(id)
   expect(recovered.lastSeparation).toMatchObject({state:'interrupted',completed:1})
   expect(recovered.tracks).toEqual(partial.tracks)
+  expect(recoverSeparationTask(recovered)).toMatchObject({phase:'failed',remainingTargets:['bass'],retrySourceId:partial.tracks[1].id})
+  expect(recoverSeparationTask({...recovered,tracks:[recovered.tracks[0]]})).toBeNull()
  }finally{await rm(root,{recursive:true,force:true})}
 })

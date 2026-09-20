@@ -7,6 +7,7 @@ import { ExportDialog } from './export-dialog'
 import * as Dialog from '@radix-ui/react-dialog'
 import type { Project } from '../shared/domain'
 import type { SeparationTask } from '../shared/api'
+import {recoverSeparationTask} from '../shared/task-recovery'
 
 export function SeparationPanel({project,sourceId,en,onComplete,beforeExport}:{project:Project;sourceId:string;en:boolean;onComplete:(id:string)=>void;beforeExport:()=>Promise<void>}){
  const [category,setCategory]=useState<StemCategory>('all')
@@ -26,7 +27,7 @@ export function SeparationPanel({project,sourceId,en,onComplete,beforeExport}:{p
    if(refresh)onComplete(project.id)
   }
   const unsubscribe=window.printemps.onSeparation(next=>{receivedEvent=true;receive(next)})
-  window.printemps.separationStatus().then(next=>{if(mounted&&!receivedEvent&&next)receive(next)}).catch(e=>{if(mounted)setError(String(e))})
+  window.printemps.separationStatus().then(next=>{if(mounted&&!receivedEvent){const current=next?.projectId===project.id?next:recoverSeparationTask(project);if(current)receive(current)}}).catch(e=>{if(mounted)setError(String(e))})
   return ()=>{mounted=false;unsubscribe()}
  },[project.id,onComplete])
  const active=task&&(task.phase==='waiting'||task.phase==='downloading'||task.phase==='separating')

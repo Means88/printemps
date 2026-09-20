@@ -111,13 +111,13 @@ export class SeparationService {
     await this.store.update(projectId,current=>{
      signal.throwIfAborted()
      if(current.tracks.find(t=>t.id===source.id)?.assetId!==source.assetId)throw new Error('Source track changed')
-     if(!previousRemainder)return {...commitSeparation(current,source.id,outputs),monitor:'stems',lastSeparation:{...current.lastSeparation!,completed:index+1}}
+     if(!previousRemainder)return {...commitSeparation(current,source.id,outputs),monitor:'stems',lastSeparation:{...current.lastSeparation!,completed:index+1,retrySourceId:outputs[0].id}}
      const position=current.tracks.findIndex(t=>t.id===previousRemainder.id),last=current.tracks.findIndex(t=>t.id===lastStemId)
      if(position<0||last<0)throw new Error('Progressive results changed')
      const tracks=[...current.tracks],old=tracks[position]
      tracks[position]={...outputs[0],name:old.name,gain:old.gain,muted:old.muted,solo:old.solo}
      tracks.splice(last+1,0,outputs[1])
-     return {...current,tracks,lastSeparation:{...current.lastSeparation!,completed:index+1},updatedAt:new Date().toISOString()}
+     return {...current,tracks,lastSeparation:{...current.lastSeparation!,completed:index+1,retrySourceId:outputs[0].id},updatedAt:new Date().toISOString()}
     })
     published=true;remainder=outputs[0];lastStemId=outputs[1].id
     this.emit({phase:'separating',stem:target.id,progress:(index+1)/targets.length,completedStems:index+1,retrySourceId:remainder.id,remainingTargets:targets.slice(index+1).map(t=>t.id)})
