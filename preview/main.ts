@@ -14,13 +14,26 @@ const count=Math.min(40,Math.max(1,Number(new URLSearchParams(location.search).g
 let projects=Array.from({length:count},(_,i)=>i===0?project:{...structuredClone(project),id:uuid(),name:`${en?'Layout fixture':'布局示例'} ${String(i+1).padStart(2,'0')}`,updatedAt:new Date(Date.now()-i*60000).toISOString()}),settings:Settings={language:en?'en':'zh',device:'cpu',modelDirectory:'',exportDirectory:''}
 let archived:{archiveId:string;project:Project}[]=[]
 const noopSubscription=()=>()=>{}
+const modelListeners=new Set<Parameters<DesktopAPI['onModelProgress']>[0]>()
+const cachedModels=new Set(manifest.models.filter((_,i)=>i%4===0).map(m=>m.id))
+let cancelDownload:(()=>void)|undefined
+
 const partial:Partial<DesktopAPI>={
  listArchivedProjects:async()=>structuredClone(archived),restoreArchivedProject:async id=>{const item=archived.find(p=>p.archiveId===id);if(!item)throw new Error('Project not found');projects.push(item.project);archived=archived.filter(p=>p.archiveId!==id);return structuredClone(item.project)},purgeArchivedProject:async id=>{archived=archived.filter(p=>p.archiveId!==id)},
  listProjects:async()=>structuredClone(projects),openProject:async id=>{const found=projects.find(p=>p.id===id);if(!found)throw new Error('Project not found');project=found;return structuredClone(project)},importAudio:async()=>structuredClone(project),
  saveProject:async (id,edits)=>{if(id!==project.id)throw new Error('Project not found');if(failNextSave){failNextSave=false;throw new Error(en?'Fixture: saving failed. Retry to keep your changes.':'测试示例：保存失败，请重试以保留修改。')}project=applyProjectEdits(project,edits);projects=projects.map(p=>p.id===project.id?project:p);return structuredClone(project)},deleteProject:async(id,purge)=>{const item=projects.find(p=>p.id===id);if(item&&!purge)archived.push({archiveId:uuid(),project:item});projects=projects.filter(p=>p.id!==id)},
  getSettings:async()=>settings,saveSettings:async p=>settings={...settings,...p},settingsDirectories:async()=>({modelDirectory:'/example/model-cache',exportDirectory:'/example/exports'}),
- listModels:async()=>manifest.models.map((m,i)=>({id:m.id,bytes:m.totalBytes,cached:i%4===0})),separationStatus:async()=>null,analysisStatus:async()=>null,
- updateStatus:async()=>({phase:'development',currentVersion:'UI fixture'}),onAnalysis:noopSubscription,onSeparation:noopSubscription,onModelProgress:noopSubscription,onUpdate:noopSubscription,onCloseRequest:noopSubscription
+ listModels:async()=>manifest.models.map(m=>({id:m.id,bytes:m.totalBytes,cached:cachedModels.has(m.id)})),separationStatus:async()=>null,analysisStatus:async()=>null,
+ updateStatus:async()=>({phase:'development',currentVersion:'UI fixture'}),onAnalysis:noopSubscription,onSeparation:noopSubscription,onModelProgress:listener=>{modelListeners.add(listener);return()=>{modelListeners.delete(listener)}},onUpdate:noopSubscription,onCloseRequest:noopSubscription
+}
+if(new URLSearchParams(location.search).get('downloadPreview')==='1'){
+ partial.downloadModel=id=>new Promise<void>((resolve,reject)=>{
+  if(cancelDownload){reject(new Error('Fixture: download already running'));return}
+  let received=0
+  const timer=setInterval(()=>{received+=1;for(const listener of modelListeners)listener({modelId:id,received,total:30});if(received===30){clearInterval(timer);cancelDownload=undefined;cachedModels.add(id);resolve()}},1000)
+  cancelDownload=()=>{clearInterval(timer);cancelDownload=undefined;reject(new Error('Fixture: download cancelled'))}
+ })
+ partial.cancelModelDownload=async()=>{cancelDownload?.()}
 }
 window.printemps=new Proxy(partial,{get(target,key){return target[key as keyof DesktopAPI]||(()=>Promise.reject(new Error(en?'UI preview only: this operation requires Electron.':'仅供界面预览：此操作需在 Electron 中验证。')))}}) as DesktopAPI
 const originalFetch=window.fetch.bind(window)
