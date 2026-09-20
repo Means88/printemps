@@ -595,3 +595,11 @@ Hashes identify uploaded artifact archives, not individual installers. macOS CI 
 - Real subprocess regression force-kills a Node owner after Python reports ready, then requires the inherited output pipe to close within5seconds, proving the Python task also exited. Passed on this macOS host, alongside normal worker completion/error/cancellation coverage. Windows implementation has not yet run in CI.
 - Real Beat This/Essentia source integration passed (`/tmp/printemps-parent-analysis.log`). Full tests:91 passed,3 conditional skipped (`/tmp/printemps-parent-full-tests.log`); production build passed (`/tmp/printemps-parent-build.log`).
 - This verifies worker lifetime, not a complete native UI crash/restart of a live separation task. New guard and import recovery are later than signed/CI9564b98 and require a future packaged build.
+
+### 2026-09-20 · Native separation crash recovery and clip retry
+
+- In the isolated synthetic macOS QA profile, force-killed the owning Electron process during real cached drums inference. The Python worker exited; restarting recovered the task as interrupted and retained its source clip.
+- Found and fixed recovery incorrectly inventing `retrySourceId` before the first result, which discarded the selected clip when retrying a multi-clip source. The recovered initial task now preserves its `clipId`; a regression covers this case.
+- Native retry completed real inference. Persisted Other and Drums outputs each have a 0.75-second source range and offset 4.25. The selected source clip is hidden, while another visible two-second clip on the same source track remains. Final completion visuals still need inspection.
+- Current production build passed. Full regression on `9a23dd8`: 92 passed, 3 conditional skipped, 34 test files passed (`/tmp/printemps-handoff-tests.log`). This used current unpackaged production output; the signed package and CI artifacts remain at 9564b98.
+- Continuation details and exact isolated paths are in `docs/HANDOFF.md`.

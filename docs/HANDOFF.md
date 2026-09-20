@@ -35,7 +35,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 修复后原生界面重试成功，真实 drums 推理完成，磁盘 task 为 complete。输出 Other 和 Drums 均为 0.75 秒，offset 4.25；来源片段隐藏，同轨另一段 2 秒片段仍可见。源名称为 `Localized recovery verified`，剩余名称为 `Localized recovery verified - Other`。最终完成态尚未做新一轮视觉检查。
 
-验证范围：本次聚焦测试 2 项通过、生产构建通过，日志 `/tmp/printemps-retry-clip-build.log`。本次小修后没有重跑全量；此前 `ba56fca` 全量 **91 passed / 3 skipped**，日志 `/tmp/printemps-parent-full-tests.log`。真实 Beat This/Essentia 管线通过，日志 `/tmp/printemps-parent-analysis.log`。合成音频仅证明管线，不能证明歌曲识别质量或设备性能。
+验证范围：本次聚焦测试 2 项通过、生产构建通过，日志 `/tmp/printemps-retry-clip-build.log`。交接后对 `9a23dd8` 补跑全量，**92 passed / 3 skipped**（34 个测试文件通过），日志 `/tmp/printemps-handoff-tests.log`。真实 Beat This/Essentia 管线此前通过，日志 `/tmp/printemps-parent-analysis.log`。合成音频仅证明管线，不能证明歌曲识别质量或设备性能。
 
 `ba56fca` 在 `json-worker.ts` 注入 `PRINTEMPS_PARENT_PID`，`worker/parent_lifetime.py` 在重型导入前启动父进程监视：POSIX 检查父 PID，Windows 等待父进程句柄。独立 CLI 无该环境变量时不变。Windows 分支尚未经过新 CI 验证。
 
