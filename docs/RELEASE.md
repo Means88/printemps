@@ -25,12 +25,12 @@ pnpm dist --mac && gh release upload v0.1.2 release/*.dmg release/*.zip release/
 
 ## 站点与域名
 
-- 站点是 `site/` 下的纯静态文件（无构建步骤），`.github/workflows/pages.yml` 在 `site/**` 变更推到 `main` 时部署。首次需在仓库 Settings › Pages 把 Source 设为 **GitHub Actions**。
+- 站点是 `site/` 下的纯静态文件（无构建步骤），`.github/workflows/pages.yml` 在 `site/**` 变更推到 `main` 时部署。2026-09-20 已通过 API 创建 Pages 站点（Source = GitHub Actions，`public: true`）、首次部署成功，并把 Custom domain 设为 `printemps.dev`；GitHub 侧已把 `means88.github.io/printemps/` 301 到 `printemps.dev`。
 - 自定义域名：`site/CNAME` 已写 `printemps.dev`。在 DNS 侧添加：
   - `printemps.dev` A 记录 → `185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153`
   - `printemps.dev` AAAA 记录 → `2606:50c0:8000::153`、`2606:50c0:8001::153`、`2606:50c0:8002::153`、`2606:50c0:8003::153`
   - `www.printemps.dev` CNAME → `means88.github.io`
-- 部署一次后，在 Settings › Pages 的 Custom domain 填 `printemps.dev`，等 DNS 检查通过后勾选 **Enforce HTTPS**。
+- `printemps.dev` 的 DNS 托管在 Cloudflare（nile/aliza.ns.cloudflare.com），当前 A/AAAA 仍指向 Cloudflare 代理地址，站点尚未生效。需要在 Cloudflare 把根域改为上面的 GitHub A/AAAA 记录（或 CNAME 到 `means88.github.io`），并把代理设为 **DNS only**（灰云）；若保留橙云代理，SSL/TLS 模式需为 Full。DNS 生效、GitHub 签发证书后，再在 Settings › Pages 勾选 **Enforce HTTPS**（API `https_enforced` 在证书签发前会返回 404）。
 - 本地预览：`python3 -m http.server 8080 --directory site`。
 
 ## 公证（暂不处理，记录步骤）

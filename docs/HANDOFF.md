@@ -56,7 +56,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 发布页与发布流程
 
-- `site/` 是 printemps.dev 静态站（画板 33 `f2cQi`），`pages.yml` 部署，`release.yml` 按 `v*` tag 出三平台草稿 Release；流程与 DNS 见 `docs/RELEASE.md`。**仓库仍是 private**：Pages 与匿名下载需要公开仓库或付费计划，这是待用户决定的事项。公证暂不处理。
+- `site/` 是 printemps.dev 静态站（画板 33 `f2cQi`），`pages.yml` 部署（Pages 已启用并首次部署成功，Custom domain 已设为 printemps.dev，**等待用户在 Cloudflare 改 DNS**），`release.yml` 按 `v*` tag 出三平台草稿 Release；流程与 DNS 见 `docs/RELEASE.md`。**仓库仍是 private**：Pages 与匿名下载需要公开仓库或付费计划，这是待用户决定的事项。公证暂不处理。
 
 ## 处理设备
 
