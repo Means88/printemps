@@ -1,3 +1,5 @@
+import {installNativeMenu} from './native-menu'
+import {menuStateSchema} from '../shared/native-menu'
 import {applyTrackAction,trackActionSchema} from '../shared/track-actions'
 import {randomUUID} from 'node:crypto'
 import {ShutdownCoordinator} from './shutdown'
@@ -162,10 +164,14 @@ handle('projects:import',async()=>{
  return importer.import(result.filePaths[0])
 })
 handle('projects:import-dropped',(source:string)=>importer.import(source))
+const syncMenu=installNativeMenu(command=>{if(win&&!win.isDestroyed())win.webContents.send('menu:command',command)})
+handle('menu:state',state=>{syncMenu(menuStateSchema.parse(state))})
 function createWindow(){
+ syncMenu()
  win=new BrowserWindow({width:1440,height:900,minWidth:1000,minHeight:700,backgroundColor:'#14171b',title:'Printemps',webPreferences:{preload:path.join(here,'../preload/index.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,backgroundThrottling:false}})
  let closeReady=false
  const window=win
+ window.on('closed',()=>syncMenu())
  window.on('close',event=>{if(quitReady||closeReady)return;event.preventDefault();void flushRenderer().then(()=>{if(!window.isDestroyed()){closeReady=true;window.close()}}).catch(showCloseError)})
  win.webContents.setWindowOpenHandler(()=>({action:'deny'}))
  win.webContents.on('will-navigate',(event)=>event.preventDefault())

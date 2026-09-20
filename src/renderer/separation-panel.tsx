@@ -1,3 +1,4 @@
+import {useMenuCommand} from './native-menu'
 import {ErrorNotice} from './error-notice'
 import { useEffect,useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -8,7 +9,7 @@ import type { Project } from '../shared/domain'
 import type { SeparationTask } from '../shared/api'
 import {recoverSeparationTask} from '../shared/task-recovery'
 
-export function SeparationPanel({project,sourceId,en,onComplete,beforeExport,collapsed}:{project:Project;sourceId:string;en:boolean;onComplete:(id:string)=>void;beforeExport:()=>Promise<void>;collapsed:boolean}){
+export function SeparationPanel({project,sourceId,en,onComplete,beforeExport,collapsed,onBusyChange}:{project:Project;sourceId:string;en:boolean;onComplete:(id:string)=>void;beforeExport:()=>Promise<void>;collapsed:boolean;onBusyChange:(busy:boolean)=>void}){
  const [category,setCategory]=useState<StemCategory>('all')
  const [configuredSource,setConfiguredSource]=useState('')
  const [open,setOpen]=useState(false),[models,setModels]=useState<{id:string;bytes:number;cached:boolean}[]>([]),[selected,setSelected]=useState<string[]>([]),[query,setQuery]=useState(''),[task,setTask]=useState<SeparationTask|null>(null),[error,setError]=useState(''),[starting,setStarting]=useState(false)
@@ -30,8 +31,10 @@ export function SeparationPanel({project,sourceId,en,onComplete,beforeExport,col
   return ()=>{mounted=false;unsubscribe()}
  },[project.id,onComplete])
  const active=task&&(task.phase==='waiting'||task.phase==='downloading'||task.phase==='separating')
+ useEffect(()=>{onBusyChange(!!active||starting);return()=>onBusyChange(false)},[!!active,starting,onBusyChange])
  async function configure(id=source.id,retain=false){setConfiguredSource(id);setError('');if(!retain){setSelected([]);setTask(null)}else if(task?.targets)setSelected(task.remainingTargets?.length?task.remainingTargets:task.targets);setQuery('');setCategory('all');setOpen(true);try{setModels(await window.printemps.listModels())}catch(e){setError(String(e))}}
  async function start(){setStarting(true);setError('');try{await window.printemps.startSeparation(project.id,configuredSource,selected);const next=await window.printemps.separationStatus();setTask(next);setOpen(next?.phase==='downloading')}catch(e){setError(String(e))}finally{setStarting(false)}}
+ useMenuCommand('separate',()=>{if(!active&&!starting&&!source.hidden&&((project.monitor==='original')===(source.role==='original')))void configure()})
  const recoverySummary=task&&(task.completedStems||0)>0?t(`已保留 ${task.completedStems} 个声部。重试将从剩余音轨继续。`,`${task.completedStems} completed stem${task.completedStems===1?'':'s'} retained. Retry continues from the remaining audio.`):''
  const taskHost=document.getElementById(`task-after-${project.tracks.find(t=>t.id===task?.sourceId)?.role==='original'?'original':task?.sourceId}`)
  const bytes=models.filter(m=>selected.includes(m.id)&&!m.cached).reduce((s,m)=>s+m.bytes,0)

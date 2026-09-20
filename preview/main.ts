@@ -50,6 +50,8 @@ if(new URLSearchParams(location.search).get('downloadPreview')==='1'){
  })
  partial.cancelModelDownload=async()=>{cancelDownload?.()}
 }
+partial.onMenuCommand=()=>()=>{}
+partial.syncMenu=async()=>{}
 window.printemps=new Proxy(partial,{get(target,key){return target[key as keyof DesktopAPI]||(()=>Promise.reject(new Error(en?'UI preview only: this operation requires Electron.':'仅供界面预览：此操作需在 Electron 中验证。')))}}) as DesktopAPI
 const originalFetch=window.fetch.bind(window)
 const samples=44100*10,wav=new ArrayBuffer(44+samples*8),view=new DataView(wav)

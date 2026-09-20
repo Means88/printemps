@@ -4,6 +4,8 @@ export type SeparationTask={id:string;projectId:string;sourceId:string;phase:'wa
 export type AnalysisTask={id:string;projectId:string;phase:'waiting'|'analyzing'|'complete'|'cancelled'|'failed';stage:'beats'|'key';error?:string}
 export type UpdateState={phase:'development'|'idle'|'checking'|'available'|'current'|'downloading'|'ready'|'installing'|'error';currentVersion:string;version?:string;percent?:number;transferred?:number;total?:number;error?:string}
 export interface DesktopAPI {
+  onMenuCommand(callback:(command:import('./native-menu').MenuCommand)=>void):()=>void
+  syncMenu(state:import('./native-menu').MenuState):Promise<void>
   onCloseRequest(callback:()=>Promise<void>):()=>void
   updateStatus():Promise<UpdateState>
   checkForUpdates():Promise<UpdateState>

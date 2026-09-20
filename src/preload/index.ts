@@ -1,6 +1,8 @@
 import { contextBridge, ipcRenderer, webUtils } from 'electron'
 import type { DesktopAPI } from '../shared/api'
 const api:DesktopAPI={
+ onMenuCommand:callback=>{const listener=(_event:unknown,command:import('../shared/native-menu').MenuCommand)=>callback(command);ipcRenderer.on('menu:command',listener);return()=>ipcRenderer.removeListener('menu:command',listener)},
+ syncMenu:state=>ipcRenderer.invoke('menu:state',state),
  onCloseRequest:callback=>{const listener=async(_event:unknown,token:string)=>{try{await callback();ipcRenderer.send('window:flushed',token)}catch(error){ipcRenderer.send('window:flushed',token,error instanceof Error?error.message:String(error))}};ipcRenderer.on('window:flush',listener);return()=>ipcRenderer.removeListener('window:flush',listener)},
  updateStatus:()=>ipcRenderer.invoke('updates:status'),
  checkForUpdates:()=>ipcRenderer.invoke('updates:check'),

@@ -1,3 +1,4 @@
+import {useMenuCommand} from './native-menu'
 import { useEffect,useRef,useState } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import type { Project } from '../shared/domain'
@@ -6,6 +7,7 @@ export function ExportDialog({project,en,trackId,beforeExport,disabled=false}:{p
  const [exportDirectory,setExportDirectory]=useState('')
  const t=(a:string,b:string)=>en?b:a
  const latestProject=useRef(project);latestProject.current=project
+ useMenuCommand('export',()=>{if(trackId||disabled||busy)return;setMessage('');setExportDirectory('');setSelected(project.tracks.filter(t=>t.role!=='original'&&!t.hidden).map(t=>t.id));setOpen(true)})
  const currentSelection=selected.filter(id=>project.tracks.some(track=>track.id===id))
  const replacedMessage=t('部分音轨已被分离结果替换，请重新确认要导出的音轨。','Some tracks were replaced by separation results. Review the tracks to export.')
  useEffect(()=>{
