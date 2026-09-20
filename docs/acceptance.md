@@ -412,3 +412,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Library download progress now reuses the animated rounded task-progress component. Header progress text stays inline with its icon instead of wrapping beneath the titlebar.
 - English 1280×800 simulated download observed at 87%, then completion updated cached count 14→15 and restored actions. A second simulated download was cancelled and restored Change location / row actions with cancellation guidance. The list scrolls independently while the progress strip and cancel control stay visible. Preview did not download model weights.
 - Production build passed (`/tmp/printemps-library-progress-build.log`). CI run 35492712177 macOS job succeeded and artifact 10600205263 was verified present/unexpired, 765,586,979 bytes, for commit 9e21ead. Windows/Linux were still running; this does not cover subsequent library changes.
+
+### Preferences page fidelity — 2026-09-20
+
+- Restored Pen 09's full-page settings layout below the native titlebar with aligned language/device/directory rows and right-aligned Done. Kept directory reset and existing updater controls; omitted the old board's instructional paragraphs in accordance with the user's reduced-copy requirement.
+- Extracted Preferences from the main workspace. Language/device changes now send only the changed field, disable while saving and apply returned settings after success; rejected saves retain the prior value and show an in-page error. Directory controls invoke the existing native chooser.
+- English 1280×800 rendered verification showed all main controls and Done. Changed CPU→Automatic and English→Chinese in the fixture, then checked 1440×900 DOM bounds (page 0..1440, Done right 1384/bottom 868, body width 1440) and Done returned to the Chinese home. Temporary tab closed and viewport reset. Production build passed (`/tmp/printemps-preferences-build.log`). No new native directory-picker test was performed.
+- CI 35492712177 Windows and macOS succeeded; Linux installer step remains live. That run covers 9e21ead, before library/preferences revisions.
