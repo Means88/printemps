@@ -309,3 +309,9 @@ header>button{flex-shrink:0}
 .preferences-actions{margin-top:20px}.preferences-actions button{min-width:140px}
 .titlebar[data-page=settings]{--content-gutter:56px}
 @media(max-width:1280px){.preferences-page{padding:24px 32px}.titlebar[data-page=settings]{--content-gutter:32px}.preference-row,.preferences-page .directory-setting{min-height:96px;padding-top:18px;padding-bottom:18px;grid-template-columns:48% minmax(0,52%)}.preferences-page .update-panel{grid-template-columns:48% minmax(0,52%)}}
+/* Pen 13: select a concrete result clip before exporting from history. */
+.history-inspector li{margin:6px 0}
+.history-result-clip{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-width:0;padding:8px;border:1px solid transparent;background:transparent;font-size:13px;text-align:left}
+.history-result-clip>span{border-left:3px solid;padding-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.history-result-clip[aria-pressed=true]{background:#24364d;border-color:#4975a5}
+.history-result-clip[aria-pressed=true] small{color:#70abec}

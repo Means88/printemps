@@ -428,3 +428,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
   - Linux X64: 10600190699, 3,045,443,686 bytes, SHA256 4a1e00be0b2c910ee6b1d801d0045cc73ddbe2dfa5596bff6ba91b44526fbffe.
 - Digests describe GitHub's artifact archives, not individual installer hashes. Installer execution/install/upgrade still requires desktop acceptance. Later model-library/preferences changes are not included.
 - History audit against board13 found the inspector still renders ExportDialog without trackId/clipId, leaving it permanently disabled after clip-scoped export was introduced. Next work must design and implement explicit clip selection there, preserving the user's selected-clip-only export requirement. Do not mark history export complete based on the separate workspace export tests.
+
+### History clip selection and export — 2026-09-20
+
+- Updated Pen board13 first: selected clip row, clip duration, Export clip label and interaction context. Exported `design/history-clips/b1tMnW.png`, refreshed `design/exports/13-history.png`, and saved `design/Printemps.pen` through Pen (Edited indicator cleared). No encrypted file parsing used.
+- History inspector now lists visible result clips individually, excludes hidden tracks/source clips, and supplies explicit track/clip IDs to ExportDialog. Initial export is disabled until a clip is selected; changing project resets the selection. This repairs the previously permanently-disabled history export action.
+- English 1280×800 fixture: selected Drums 00:10.000, Export clip became enabled, modal identified Drums · 10.000 s, simulated failure recovered to Export complete on retry. Production build passed (`/tmp/printemps-history-clips-build.log`). This UI check does not replace real native export verification.

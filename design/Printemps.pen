@@ -16287,6 +16287,7 @@
       "x": 1600,
       "y": 1136,
       "name": "13 · 历史工作记录 / History",
+      "context": "历史结果列表按可用剪辑展示，单击选择一段后才启用导出剪辑。切换项目清除剪辑选择。隐藏音轨/隐藏来源剪辑不列为可导出结果；多片段分别列出并显示片段时长。导出使用该片段源范围，不补齐时间轴前导静音。",
       "clip": true,
       "width": 1440,
       "height": 900,
@@ -17168,10 +17169,24 @@
           "y": 386,
           "name": "Result heading",
           "fill": "#E8ECF2",
-          "content": "分离结果 · 6 条音轨",
+          "content": "分离结果 · 6 个剪辑",
           "fontFamily": "Noto Sans SC",
           "fontSize": 15,
           "fontWeight": "500"
+        },
+        {
+          "type": "frame",
+          "id": "clNlX",
+          "x": 1042,
+          "y": 454,
+          "name": "Selected result clip / click to export",
+          "width": 338,
+          "height": 36,
+          "fill": "#24364D",
+          "cornerRadius": 8,
+          "stroke": "#4975A5",
+          "strokeWidth": 1,
+          "layout": "none"
         },
         {
           "type": "text",
@@ -17179,8 +17194,8 @@
           "x": 1054,
           "y": 465,
           "name": "Result 0",
-          "fill": "#E8ECF2",
-          "content": "主唱",
+          "fill": "#B6A0EA",
+          "content": "主唱 · 副歌",
           "fontFamily": "Noto Sans SC",
           "fontSize": 13,
           "fontWeight": "normal"
@@ -17188,11 +17203,11 @@
         {
           "type": "text",
           "id": "WA0PH",
-          "x": 1250,
+          "x": 1280,
           "y": 465,
           "name": "Result status 0",
-          "fill": "#A0AAB8",
-          "content": "已就绪 · 可试听",
+          "fill": "#70ABEC",
+          "content": "00:24.000",
           "fontFamily": "Noto Sans SC",
           "fontSize": 12,
           "fontWeight": "normal"
@@ -17342,7 +17357,7 @@
               "id": "utvCS",
               "name": "查看文件位置 label",
               "fill": "#F3F6FB",
-              "content": "导出音轨",
+              "content": "导出剪辑",
               "fontFamily": "Noto Sans SC",
               "fontSize": 12,
               "fontWeight": "normal"
