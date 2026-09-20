@@ -8,7 +8,7 @@ describe('Project invariants',()=>{
  it('inserts remainder C then B at A, retaining A hidden and keeping neighbours',()=>{
   const p=make();p.tracks[2].muted=true
   const next=commitSeparation(p,p.tracks[2].id,[track('stem','B'),track('other','C')])
-  expect(next.tracks.map(t=>t.name)).toEqual(['Original','X','C','B','A','Y'])
+  expect(next.tracks.map(t=>t.name)).toEqual(['Original','X','A - C','B','A','Y'])
   expect(next.tracks[2].muted).toBe(true);expect(p.tracks.map(t=>t.name)).toContain('A')
  })
  it('preserves the original and rejects incomplete replacement',()=>{
@@ -40,7 +40,7 @@ it('merges delayed metadata edits without removing new results or revealing hidd
  const pending={...before,name:'Edited project',tracks:before.tracks.map(t=>t.id===before.tracks[1].id?{...t,name:'Renamed X',gain:-9}:t)}
  const merged=applyProjectEdits(current,diffProjectEdits(before,pending))
  expect(merged.name).toBe('Edited project')
- expect(merged.tracks.map(t=>t.name)).toEqual(['Original','Renamed X','C','B','A','Y'])
+ expect(merged.tracks.map(t=>t.name)).toEqual(['Original','Renamed X','A - C','B','A','Y'])
  expect(merged.tracks[1].gain).toBe(-9)
  expect(merged.tracks[2]).toEqual(current.tracks[2]);expect(merged.recommendation).toEqual({bpm:132})
  expect(()=>applyProjectEdits(current,{tracks:[{id:before.tracks[0].id,assetId:randomUUID(),name:'Changed'}]})).toThrow('immutable')
@@ -50,7 +50,19 @@ it('keeps secondary sources hidden and excludes hidden solo tracks from the mix'
  const p=make(),source=p.tracks[2];source.solo=true
  const next=commitSeparation(p,source.id,[track('stem','B'),track('other','C')])
  expect(next.tracks.find(t=>t.id===source.id)).toEqual({...source,hidden:true})
- expect(next.tracks.filter(t=>!t.hidden).map(t=>t.name)).toEqual(['Original','X','C','B','Y'])
+ expect(next.tracks.filter(t=>!t.hidden).map(t=>t.name)).toEqual(['Original','X','A - C','B','Y'])
  const hiddenSolo={...p,tracks:p.tracks.map(t=>t.id===source.id?{...t,hidden:true}:t)}
  expect(audibleTracks(hiddenSolo).map(t=>t.name)).toEqual(['X','Y'])
 })
+
+ it('names secondary remainder from current source and preserves the localized suffix',()=>{
+  for(const label of ['其它','Other']){
+   const p=make();p.tracks[2].name='自定义主唱'
+   const result=commitSeparation(p,p.tracks[2].id,[track('other',label),track('stem','B')])
+   expect(result.tracks[2].name).toBe(`自定义主唱 - ${label}`)
+   expect(commitSeparation(p,p.tracks[0].id,[track('other',label),track('stem','B')]).tracks[4].name).toBe(label)
+   p.tracks[2].name='长'.repeat(80)
+   const long=commitSeparation(p,p.tracks[2].id,[track('other',label),track('stem','B')]).tracks[2].name
+   expect(long).toHaveLength(80);expect(long.endsWith(` - ${label}`)).toBe(true)
+  }
+ })

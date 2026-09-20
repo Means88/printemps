@@ -49,7 +49,7 @@ export function commitSeparation(project: Project, sourceId: string, outputs: Tr
   if (others.length !== 1 || !outputs.some(t => t.role === 'stem') || outputs.some(t => t.role === 'original'))
     throw new Error('Separation must contain stems and exactly one remainder')
   const ordered = [others[0], ...outputs.filter(t => t.role === 'stem')].map(t => trackSchema.parse({
-    ...t, hidden:false, parentId: source.id, gain: source.gain, muted: source.muted, solo: source.solo
+    ...t, name: t.role==='other'&&source.role!=='original' ? `${source.name.slice(0,Math.max(0,80-t.name.length-3))} - ${t.name}` : t.name, hidden:false, parentId: source.id, gain: source.gain, muted: source.muted, solo: source.solo
   }))
   const retained = project.tracks
   const ids = new Set(retained.map(t => t.id))

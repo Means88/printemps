@@ -240,3 +240,9 @@ c7d60f0 已完成 macOS arm64 打包、`codesign --verify --deep --strict` 及�
 ## 2026-09-20 Pen 全文档边界检查
 
 通过 Pen MCP 遍历当前可编辑文档，不读取加密文件。排除 enabled=false 的节点及后代后，可见边界报告共 342 项，全部属于 Time grid、Bar reference 或 unity reference；未发现其它可见文字/操作框越界。抽查 mnZnS：网格线高 98、父波形区域高 84 且 clip=true，视觉受父区域裁切；总音量 0 dB 参考线从 6px 滑轨向上下延伸，父轨未启用 clip，属于预期显示。五个越界时间格式文本均为隐藏旧标签。此为结构检查，不替代全部画板视觉/交互一致性验收；未为清除告警改变已批准设计。
+
+## 2026-09-20 最新隐藏来源与命名真实验证
+
+`PRINTEMPS_TEST_MODELS=.cache/model-reference/v1 npx vitest run tests/progressive-runtime.test.ts` 通过（190.05秒，日志 `/tmp/printemps-named-remainder-runtime.log`）。真实鼓组/贝斯模型验证二次分离后来源保留并隐藏、结果原位插入、继承混音设置、剩余轨名为 `Edited bass - 其它`。重建误差仍低于 1e-5，WAV/FLAC 导出和副本修改不影响私有文件检查通过。输入为1秒合成音频，不是歌曲质量/性能基准。
+
+当前普通测试63项通过；生产构建通过。最新英文1280×800弹窗检查确认分析/完成按钮右对齐、列表操作靠右，常驻就绪与私有结果说明已移除。桌面打包尚需包含最后几轮样式更新后再验收，不能借用先前包的结果。

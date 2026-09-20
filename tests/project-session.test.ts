@@ -37,7 +37,7 @@ test('a background refresh preserves optimistic edits, new results and recommend
  session.edit(base,{...base,name:'Latest name',music:{...base.music,meter:'3/4'}})
  read.resolve(snapshot);await session.flush()
  expect(visible!.name).toBe('Latest name');expect(visible!.music.meter).toBe('3/4')
- expect(visible!.tracks.map(t=>t.name)).toEqual(['Original','Other','B','A'])
+ expect(visible!.tracks.map(t=>t.name)).toEqual(['Original','A - Other','B','A'])
  expect(visible!.monitor).toBe('stems');expect(visible!.recommendation).toEqual({bpm:132})
  expect(stored).toEqual(visible)
 })
@@ -72,7 +72,7 @@ test('metadata patches cannot change assets or overwrite analysis and ignore ret
  next.recommendation={bpm:130}
  const edits=diffProjectEdits(base,{...base,tracks:base.tracks.map(t=>({...t,name:`Edited ${t.name}`}))})
  const merged=applyProjectEdits(next,edits)
- expect(merged.tracks.map(t=>t.name)).toEqual(['Edited Original','Other','B','Edited A'])
+ expect(merged.tracks.map(t=>t.name)).toEqual(['Edited Original','A - Other','B','Edited A'])
  expect(merged.recommendation).toEqual({bpm:130})
  expect(()=>projectEditsSchema.parse({recommendation:{bpm:90}})).toThrow()
  expect(()=>projectEditsSchema.parse({tracks:[{...edits.tracks![0],role:'stem'}]})).toThrow()
@@ -93,7 +93,7 @@ test('queued field edits and a concurrent task commit survive reopening the on-d
   await session.flush();session.open(null)
   const reopened=await new ProjectStore(root).load(base.id)
   expect(reopened.name).toBe('Saved name');expect(reopened.music.bpm).toBe(128);expect(reopened.music.meter).toBe('3/4')
-  expect(reopened.tracks.map(t=>t.name)).toEqual(['Reference','Other','B','A'])
+  expect(reopened.tracks.map(t=>t.name)).toEqual(['Reference','A - Other','B','A'])
   expect(reopened.tracks[0].gain).toBe(-6);expect(reopened.recommendation).toEqual({bpm:134});expect(reopened.monitor).toBe('stems')
  }finally{await rm(root,{recursive:true,force:true})}
 })

@@ -58,7 +58,7 @@ test.runIf(!!modelDirectory)('real progressive and secondary separation preserve
   for(let i=0;i<sum.length;i++)maxError=Math.max(maxError,Math.abs(sum[i]-audio.readFloatLE(44+i*4)))
   expect(maxError).toBeLessThan(1e-5);console.info({maxReconstructionError:maxError})
   await expect.poll(()=>service!.busy,{timeout:5000}).toBe(false)
-  // A real secondary extraction must atomically replace A with [Other, B]
+  // A real secondary extraction inserts [Other, B] at A and retains A hidden
   // without changing its neighbours, user mix settings or private source bytes.
   const source=project.tracks[3],sourceBytes=await readFile(store.assetPath(id,source.assetId))
   await store.update(id,current=>({...current,tracks:current.tracks.map(t=>t.id===source.id?{...t,name:'Edited bass',gain:-7,muted:true}:t)}))
@@ -69,9 +69,11 @@ test.runIf(!!modelDirectory)('real progressive and secondary separation preserve
   await expect.poll(()=>service!.busy,{timeout:5000}).toBe(false)
   const secondary=await store.load(id)
   expect(secondary.tracks.slice(0,3)).toEqual(project.tracks.slice(0,3))
-  expect(secondary.tracks.map(t=>t.stem)).toEqual(['original','other','drums','other','drums'])
-  expect(secondary.tracks.some(t=>t.id===source.id)).toBe(false)
-  const outputs=secondary.tracks.slice(3)
+  expect(secondary.tracks.map(t=>t.stem)).toEqual(['original','other','drums','other','drums','bass'])
+  expect(secondary.tracks[5]).toEqual({...source,name:'Edited bass',gain:-7,muted:true,hidden:true})
+  const outputs=secondary.tracks.slice(3,5)
+  expect(outputs[0].name).toBe('Edited bass - 其它')
+  expect(outputs.every(track=>!track.hidden)).toBe(true)
   for(const track of outputs){
    expect(track.parentId).toBe(source.id);expect(track.gain).toBe(-7);expect(track.muted).toBe(true)
    expect(track.color).toBe(stemColor(track.stem));expect(track.duration).toBe(1)
