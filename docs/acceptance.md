@@ -773,3 +773,7 @@ Implemented from user feedback on the local 9da5785 build and verified on the re
 - Board 10's action buttons hug their labels (secondary + primary, right-aligned) instead of 180/192 px slabs; all 49 off-scale text sizes across boards 03–16, 29–32 were snapped to the type scale (34→30, 27/28→22, 24→20, 25→18, 23→22, 21→20, 19→18, 17→16, 15→14). PNGs re-exported for every touched board.
 - App icon rebuilt on Apple's 1024 template: the artwork is an 824 px squircle with transparent margins. On macOS 26 the light rim the user saw is the system's Liquid Glass treatment of legacy icons; with the inset shape the mask now matches the artwork. The definitive fix is an Icon Composer `.icon` bundle, which needs Xcode and is recorded as follow-up.
 - Tests 97 passed / 3 conditional skipped; `pnpm lint` clean; production build passed.
+
+### 2026-09-20 · Inactive traffic lights legibility
+
+- On macOS 26 the inactive window buttons render as dark glass dots and disappeared against the `--bg-titlebar` ground. `setWindowButtonVisibility(true)` on blur/focus makes them appear; a soft radial glow (`--raised-hover` → `--panel` → transparent, 160×66 px behind the buttons, drag region preserved) now gives them contrast without a hard-edged patch. Native button rendering is not visible in CDP page captures and `screencapture` is not permitted for this session, so the final check is the user's.

@@ -449,3 +449,6 @@ header>button{flex-shrink:0}
 
 /* One back control everywhere: the workspace projectbar arrow is the reference (41×30, raised, md radius). */
 .back-button{display:grid;place-items:center;width:41px;height:30px;min-height:30px;padding:0;background:var(--raised);border:1px solid var(--border);border-radius:var(--radius-md)}.back-button svg{width:15px;height:15px}.back-button:focus:not(:focus-visible){outline:none}.history-heading>.back-button{align-self:flex-start;margin-top:var(--space-1);min-width:0}.model-library-intro>.model-library-back{margin-top:var(--space-6)}
+
+/* macOS 26 draws inactive traffic lights as dark glass dots; a slightly lighter well behind them keeps them legible on the darkest ground (user report 2026-09-20). */
+.titlebar[data-platform=darwin]::before{content:'';position:absolute;left:0;top:0;bottom:0;width:160px;background:radial-gradient(ellipse 96px 40px at 56px 50%,var(--raised-hover) 0%,var(--panel) 45%,transparent 100%);pointer-events:none;-webkit-app-region:drag}
