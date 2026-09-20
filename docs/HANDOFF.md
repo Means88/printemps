@@ -54,6 +54,12 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 本机另有一个不属于本轮的旧开发实例在运行：`node node_modules/.bin/electron . --user-data-dir=/tmp/printemps-native-menu-qa`（PID 51019/51020，已运行 4 小时以上），进程名也叫 Electron。没有动它；如确认无用可由用户关闭。
 - 临时路径可能被系统清理；不要提交缓存、私有音频、运行时或安装包。
 
+## 处理设备
+
+- MPS 曾“卡死”：20 秒推理 chunk 的注意力激活超出统一内存导致抖动。`worker/separate.py` 的 `select_chunk` 在 MPS 上封顶为 10 秒（`audio.chunk_size`），显存预算 <12 GB 时 5 秒；每个声部后 `torch.mps.empty_cache()`。实测 MPS 19.7 s vs CPU 45.3 s（10 秒合成音频，drums），应用内真实分离 25 s 完成。仍标“实验性”，`自动选择` 不会选 MPS。
+- 进度：Transformer 层 forward hook 发出 chunk 内子进度；协议事件写 `sys.__stdout__`（模型输出被重定向到 stderr 时也不丢）。
+- 备选：pymss 的 MLX 后端（`mlx>=0.31.0`，失败回退 Torch MPS）。若需更快或更稀释内存，可评估 MLX 版 BS-Roformer；未开始。
+
 ## 设计系统与 lint
 
 - 规范：`docs/DESIGN.md`（宏观规则）+ `AGENTS.md` “设计系统与规范”；token 在 `src/renderer/tokens.css`，`style.css` 只引用 `var(--token)`。
