@@ -3,7 +3,7 @@ import {randomUUID} from 'node:crypto'
 import {mkdtemp,mkdir,writeFile,readFile,copyFile,rm} from 'node:fs/promises'
 import {tmpdir} from 'node:os'
 import path from 'node:path'
-import {applyClipAction,trackClips,clipPlaybackRanges,validateProjectClips} from '../src/shared/clips'
+import {applyClipAction,trackClips,clipPlaybackRanges,validateProjectClips,timelineDuration} from '../src/shared/clips'
 import {commitSeparation,type Project,type Track} from '../src/shared/domain'
 import {clipBuffer} from '../src/renderer/clip-buffer'
 import {ProjectStore} from '../src/main/store'
@@ -156,4 +156,13 @@ test('fractional sample boundaries retain exactly the same samples in playback a
  expect([...clipBuffer(context,source,t,1).getChannelData(0)]).toEqual([0,0,0,0,0,2,3,4,0,0])
  const short={...t,clips:[{...clip,start:0,end:.94,offset:0}]}
  expect([...clipBuffer(context,source,short,1).getChannelData(0)]).toEqual([1,2,3,4,5,6,7,8,9,0])
+})
+
+
+test('project duration is independent of track order and includes offset result clips',()=>{
+ const original=track(),stem={...track('stem'),duration:.5,clips:[{id:randomUUID(),name:'Excerpt',start:0,end:.5,offset:3}]}
+ const p={...project(original),tracks:[stem,original]}
+ expect(timelineDuration(p)).toBe(4)
+ expect(timelineDuration({...p,tracks:[original,stem]})).toBe(4)
+ expect(timelineDuration({...p,tracks:[{...stem,clips:[{...stem.clips[0],offset:5}]},original]})).toBe(5.5)
 })

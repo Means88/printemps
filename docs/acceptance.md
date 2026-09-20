@@ -531,3 +531,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Track-manager mutation controls disable on save failure; Done remains available so the workspace retry action is reachable. The dialog explains that recovery step without showing a long raw path.
 - Added regression coverage for failed deletion → close blocked → retry followed by metadata edits, proving deleted tracks are not resurrected. Related session/track suites: 11 passed; typecheck passed.
 - Browser fixture `trackSaveFailure=once`: Lead vocal Move down fails once, controls disable and Done remains enabled. Closing and Retry save succeeds; reopening shows Original, Drums, Lead vocal, Bass, Electric guitar, Other in order with controls restored. This is UI fixture evidence, not native persistence validation.
+
+### 2026-09-20 · Reordering preserves project time bounds
+
+- Removed the assumption that `tracks[0]` is the original audio from recent-project duration and first-beat validation/input bounds. Both now use the same `timelineDuration` as playback; setting first beat to the playhead also clamps to that range.
+- Regression covers a 0.5-second separated excerpt placed before the 4-second original, both orderings, and a result offset extending the project to 5.5 seconds. This is a behavior correction with no design/layout changes.
+- Full current source validation: 90 tests passed, 3 conditional integration tests skipped (`/tmp/printemps-save-track-full-tests.log`); production build passed (`/tmp/printemps-save-track-build.log`). These checks cover the accumulated save-recovery/track-queue changes; they do not establish physical audio or other-platform GUI acceptance.
