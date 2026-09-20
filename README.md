@@ -4,7 +4,7 @@ An Electron audio separation and listening workspace, based on the approved Pen 
 
 ## Development
 
-Requires Node.js 22.12+ and npm. The current verified development host is macOS arm64. A Linux x64 container has passed packaging and real analysis checks; Windows and native GUI validation remain outstanding. The current macOS arm64 package requires macOS 14 or later because of its bundled NumPy wheel; this is a packaging floor, not a claim that every supported OS release has been tested.
+Requires Node.js 22.12+ and npm. The current verified development host is macOS arm64. Windows, macOS and Linux CI have passed installer builds and packaged analysis checks. macOS native import, separation, project persistence and export have also been exercised; Windows/Linux desktop and actual audio-device validation remain outstanding. The current macOS arm64 package requires macOS 14 or later because of its bundled NumPy wheel; this is a packaging floor, not a claim that every supported OS release has been tested.
 
 ```sh
 npm install
@@ -53,7 +53,7 @@ For a real analysis smoke test after runtime preparation, run `npm run test:inte
 
 ### Native build verification
 
-`.github/workflows/native-build.yml` runs tests, prepares the native Python runtime, builds an unpacked application, and executes real beat/key analysis from its packaged resources on Windows, macOS, and Linux. It runs for pull requests or manual dispatch; it does not publish releases. macOS builds use ad-hoc signing for these checks. The workflow has not yet been run on the remote runners, so it is not evidence of platform compatibility by itself.
+`.github/workflows/native-build.yml` runs tests, prepares the native Python runtime, builds platform installers, and executes real beat/key analysis from their staged packaged resources on Windows, macOS, and Linux. It runs for pull requests or manual dispatch; it does not publish releases. macOS builds use ad-hoc signing for these checks. Run [35482306981](https://github.com/Means88/printemps/actions/runs/35482306981) passed all three platforms at e29bc55, including NSIS, DMG/ZIP and AppImage creation. Later commits and native GUI/install/upgrade behavior require their own evidence; see the implementation status rather than treating a past green build as proof of the current tree.
 
 Local equivalent: `npm ci`, `npm test`, `npm run runtime:prepare`, `npm run test:integration`, and `npm run package`. Set `PRINTEMPS_UV` to the uv executable if it is not in `.venv`. Run `npm run test:integration` again with `PRINTEMPS_TEST_RESOURCES` pointing to the unpacked app's `resources` directory (`Printemps.app/Contents/Resources` on macOS). Signing, notarization, GUI/audio-device checks, and release-to-release update verification are separate release gates.
 
