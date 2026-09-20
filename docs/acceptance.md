@@ -180,3 +180,7 @@ c7d60f0 已完成 macOS arm64 打包、`codesign --verify --deep --strict` 及�
 ## 安装包 CI 的 Linux 空间修复
 
 35482009303 的 macOS 安装包及包内分析 job 已 success；Linux 在 AppImage 临时目录复制 CUDA NCCL 库时 ENOSPC，runner 仅剩 6 MB，日志保存在 `/tmp/printemps-installer-linux-failure.log`。解包目录构建成功不代表 AppImage 所需峰值空间足够。工作流新增仅 Linux hosted runner 的预装 Android/.NET SDK 清理，保留项目和所需 Node/Python 运行时，后续重跑验证。Windows 同轮 job 在检查时仍运行，不因 Linux 失败视作整体终止。
+
+## 导出副本目录入口
+
+导出完整或部分成功且至少写入一条音轨后显示“打开文件夹”。主进程保存本次会话实际输出的规范化目录，只允许打开这些位置；未知目录、相对路径、已删除目录会拒绝，应用私有目录不因 renderer 传参而获得访问入口。已有导出服务禁止向应用私有目录写入。新增目录注册/解析测试与现有导出测试共 3 项通过，类型检查通过；弹窗操作区允许换行以容纳较长英文按钮。原生文件管理器打开操作尚待解锁后验收。

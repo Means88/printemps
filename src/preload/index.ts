@@ -25,6 +25,7 @@ const api:DesktopAPI={
  saveProject:(id,edits)=>ipcRenderer.invoke('projects:save',id,edits),
  deleteProject:(id,purge)=>ipcRenderer.invoke('projects:delete',id,purge),
  exportTracks:(id,tracks,format)=>ipcRenderer.invoke('tracks:export',id,tracks,format),
+ openExportDirectory:directory=>ipcRenderer.invoke('exports:open-directory',directory),
  listModels:()=>ipcRenderer.invoke('models:list'),
  downloadModel:(id)=>ipcRenderer.invoke('models:download',id),
  cancelModelDownload:()=>ipcRenderer.invoke('models:cancel'),

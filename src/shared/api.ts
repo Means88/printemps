@@ -28,6 +28,7 @@ export interface DesktopAPI {
   saveProject(id:string,edits:ProjectEdits): Promise<Project>
   deleteProject(id: string, purge: boolean): Promise<void>
   exportTracks(projectId:string, trackIds:string[], format:'wav'|'flac'): Promise<{count:number;directory:string;failure?:{remainingIds:string[];trackName:string;message:string}}|null>
+  openExportDirectory(directory:string):Promise<void>
   listModels(): Promise<{id:string;bytes:number;cached:boolean}[]>
   downloadModel(id:string): Promise<void>
   cancelModelDownload(): Promise<void>

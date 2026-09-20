@@ -3,7 +3,8 @@ import {ShutdownCoordinator} from './shutdown'
 import electronUpdater from 'electron-updater'
 import {SettingsService,type DirectoryKind} from './settings'
 import {UpdateService} from './updates'
-import { app, BrowserWindow, dialog, ipcMain, protocol, net } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, protocol, net, shell } from 'electron'
+import {ExportFolders} from './export-folders'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import path from 'node:path'
 import { ProjectStore } from './store'
@@ -19,6 +20,7 @@ protocol.registerSchemesAsPrivileged([{scheme:'printemps',privileges:{standard:t
 let win:BrowserWindow
 let ioTasks=0
 const exportingProjects=new Set<string>()
+const exportFolders=new ExportFolders()
 const primaryInstance=app.requestSingleInstanceLock()
 if(!primaryInstance)app.quit()
 app.on('second-instance',()=>{if(win&&!win.isDestroyed()){if(win.isMinimized())win.restore();win.show();win.focus()}})
@@ -96,12 +98,17 @@ handle('tracks:export',async(id:string,trackIds:string[],format:'wav'|'flac')=>{
  const directory=result.filePaths[0]
  try{
   const files=await exportPreparedTracks(store,plan,directory)
+  exportFolders.remember(files)
   return {count:files.length,directory}
  }catch(error){
-  if(error instanceof PartialExportError)return {count:error.files.length,directory,failure:{remainingIds:error.remainingIds,trackName:error.trackName,message:error.message}}
+  if(error instanceof PartialExportError){exportFolders.remember(error.files);return {count:error.files.length,directory,failure:{remainingIds:error.remainingIds,trackName:error.trackName,message:error.message}}}
   throw error
  }
  }finally{exportingProjects.delete(id)}
+})
+handle('exports:open-directory',async(directory:string)=>{
+ const error=await shell.openPath(await exportFolders.resolve(directory))
+ if(error)throw new Error(error)
 })
 let modelCache:ModelCache|null=null
 let download:AbortController|null=null
