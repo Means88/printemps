@@ -335,3 +335,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 对比 `design/workspace-revision/ymoeh.png`，修正详情曾使用小数秒、名称下显示轨名、末行显示采样率的偏差：现在位置/时长/源入出点使用毫秒时间码，名称下显示项目时间范围，末行显示源音轨。编辑支持秒数或 mm:ss.mmm / hh:mm:ss.mmm，拒绝非法时间分量，保留主进程范围校验。
 
 英文1280×800预览输入00:02.125后，波形入点、offset00:02.125、时长00:07.875同步正确；中文1440×900重新打开验证默认入出点时间码及源音轨显示。输入与分离/导出、播放区均可见。77项普通测试通过、3项条件跳过，生产构建通过。沿用已有Pen设计，无设计意图变更；预览证据不代替原生IPC或真实音频验证。
+
+### 最新完整 macOS 包重建完成（2026-09-20）
+
+`pnpm run package` exit0，`release/mac-arm64/Printemps.app` 已更新，包含截至 ad90484 的功能代码（后续95f8b05仅README）。包标识为 `com.means88.printemps`；app.asar SHA256为 `f447748c6cb2d4d8538a7cf95af51a4dff0552703776ca8964e34f48b0a77eb4`。Developer ID签名完成，`codesign --verify --deep --strict --verbose=2` exit0，结果valid on disk / satisfies its Designated Requirement。
+
+使用包内资源运行真实分析测试通过，总耗时5.75秒，覆盖Beat This与Essentia推荐结果。日志 `/tmp/printemps-latest-package.log`、`/tmp/printemps-latest-package-analysis.log`、`/tmp/printemps-latest-signature.log`。这解除此前本地完整release包陈旧的限制；当前公证仍因配置不可生成而跳过，尚未生成本次DMG或证明外部机器安装。当前Windows/Linux CI证据仍对应98ab5ab，未覆盖其后的缓冲复用和时间码显示改动。
