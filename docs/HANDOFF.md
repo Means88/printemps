@@ -56,7 +56,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 发布页与发布流程
 
-- `site/` 是 printemps.dev 静态站（画板 33 `f2cQi`），`pages.yml` 部署（Pages 已启用并首次部署成功，Custom domain 已设为 printemps.dev，**等待用户在 Cloudflare 改 DNS**），`release.yml` 按 `v*` tag 出三平台草稿 Release；流程与 DNS 见 `docs/RELEASE.md`。`site/privacy.html` 是独立隐私政策页（画板 34 `VE9BB`，1440×2295），按 Apple App 隐私详情的数据类型分类写成 13 节（结论“不收集数据”，列出设备上处理的数据、Hugging Face/GitHub 两类联网、保留与删除、权限、追踪、儿童、权利、网站、变更、联系），中英双语共用 `printemps-lang` 语言偏好；导航“隐私”、首页隐私摘要与页脚均链到它，供以后上架需要隐私条款链接的渠道使用。首页 GitHub 链接改为图标。**仓库仍是 private**：Pages 与匿名下载需要公开仓库或付费计划，这是待用户决定的事项。公证暂不处理。
+- `site/` 是 printemps.dev 静态站（画板 33 `f2cQi`），`pages.yml` 部署（Pages 已启用并首次部署成功，Custom domain 已设为 printemps.dev，DNS 已于 2026-09-20 切到 Cloudflare 代理并生效，站点与 `/privacy` 在线；CSS/JS/主视觉带 `?v=<commit>` 缓存戳），`release.yml` 按 `v*` tag 出三平台草稿 Release；流程与 DNS 见 `docs/RELEASE.md`。`site/privacy.html` 是独立隐私政策页（画板 34 `VE9BB`，1440×2295），按 Apple App 隐私详情的数据类型分类写成 13 节（结论“不收集数据”，列出设备上处理的数据、Hugging Face/GitHub 两类联网、保留与删除、权限、追踪、儿童、权利、网站、变更、联系），中英双语共用 `printemps-lang` 语言偏好；导航“隐私”、首页隐私摘要与页脚均链到它，供以后上架需要隐私条款链接的渠道使用。首页 GitHub 链接改为图标。**仓库仍是 private**：Pages 与匿名下载需要公开仓库或付费计划，这是待用户决定的事项。公证暂不处理。
 
 ## 处理设备
 
