@@ -5,7 +5,7 @@ import manifest from '../shared/model-manifest.json'
 export type ModelFile={path:string;bytes:number;checksum:string;checksumAlgorithm:string}
 export type ModelEntry={id:string;weight:ModelFile;config:ModelFile;totalBytes:number}
 export type ModelStatus={id:string;bytes:number;cached:boolean}
-export type DownloadProgress={modelId:string;received:number;total:number}
+export type DownloadProgress={modelId:string;received:number;total:number;phase:'cached'|'downloading'}
 export class ModelCache {
  private active=new Set<string>()
  constructor(readonly directory:string,private catalog:ModelEntry[]=manifest.models,private base=`https://huggingface.co/${manifest.repository}/resolve/${manifest.revision}/`,private fetcher:typeof fetch=fetch){}
@@ -39,7 +39,9 @@ export class ModelCache {
    let received=0
    for(const file of [model.weight,model.config]){
     signal.throwIfAborted()
-    if(await this.verified(file)){received+=file.bytes;onProgress({modelId:id,received,total:model.totalBytes});continue}
+    if(await this.verified(file)){received+=file.bytes;onProgress({modelId:id,received,total:model.totalBytes,phase:'cached'});continue}
+    signal.throwIfAborted()
+    onProgress({modelId:id,received,total:model.totalBytes,phase:'downloading'})
     const disk=await fs.statfs(this.directory)
     if(disk.bavail*disk.bsize<file.bytes+1024*1024)throw new Error('Insufficient disk space for model')
     const temp=this.location(file)+`.${randomUUID()}.part`
@@ -50,7 +52,7 @@ export class ModelCache {
      if(file.checksumAlgorithm==='git-sha1')hash.update(`blob ${file.bytes}\0`)
      const handle=await fs.open(temp,'wx',0o600);let written=0
      try{
-      for await(const chunk of response.body){signal.throwIfAborted();written+=chunk.length;if(written>file.bytes)throw new Error('Model size mismatch');hash.update(chunk);await handle.writeFile(chunk);onProgress({modelId:id,received:received+written,total:model.totalBytes})}
+      for await(const chunk of response.body){signal.throwIfAborted();written+=chunk.length;if(written>file.bytes)throw new Error('Model size mismatch');hash.update(chunk);await handle.writeFile(chunk);onProgress({modelId:id,received:received+written,total:model.totalBytes,phase:'downloading'})}
      }finally{await handle.close()}
      if(written!==file.bytes||hash.digest('hex')!==file.checksum)throw new Error('Model integrity check failed')
      signal.throwIfAborted();await fs.rename(temp,this.location(file));received+=written

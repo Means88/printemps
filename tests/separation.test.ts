@@ -37,6 +37,8 @@ test('separation commits residual first, preserves concurrent edits, and failed/
   const completed=await run(sourceId);expect(completed.phase).toBe('complete');expect(completed.targets).toEqual(['drums'])
   expect(completed.downloadModels).toEqual([{id:'drums',received:bytes.length*2,total:bytes.length*2,ready:true}])
   expect(snapshots.some(task=>task.downloadModels?.some(row=>row.received===bytes.length&&!row.ready))).toBe(true)
+  expect(snapshots.some(task=>task.phase==='downloading')).toBe(false)
+  expect(snapshots.some(task=>task.phase==='separating')).toBe(true)
   const result=await store.load(id)
   expect(result.lastSeparation).toMatchObject({state:'complete',completed:1,targets:['drums']})
   expect(result.name).toBe('During inference');expect(result.tracks.map(t=>t.role)).toEqual(['original','other','stem','stem']);expect(result.tracks.find(t=>t.id===sourceId)?.hidden).toBe(true)

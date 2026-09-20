@@ -61,7 +61,7 @@ export class SeparationService {
     failurePhase='downloading'
     const files=await cache.ensure(stem,signal,p=>{
      downloadModels=downloadModels.map(row=>row.id===stem?{...row,received:p.received,total:p.total}:row)
-     this.emit({phase:'downloading',stem,progress:(received+p.received)/total,downloadModels})
+     this.emit({...(p.phase==='downloading'?{phase:'downloading' as const}:{}),stem,progress:(received+p.received)/total,downloadModels})
     })
     downloadModels=downloadModels.map(row=>row.id===stem?{...row,received:row.total,ready:true}:row)
     this.emit({downloadModels})

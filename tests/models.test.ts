@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os'
 import path from 'node:path'
 import {createServer} from 'node:http'
 import {once} from 'node:events'
-import {ModelCache,type ModelEntry} from '../src/main/models'
+import {ModelCache,type ModelEntry,type DownloadProgress} from '../src/main/models'
 const data=Buffer.from('model test bytes')
 const file={path:'v1/test.ckpt',bytes:data.length,checksum:createHash('sha256').update(data).digest('hex'),checksumAlgorithm:'sha256'}
 const model:ModelEntry={id:'test',weight:file,config:{...file,path:'v1/test.yaml'},totalBytes:data.length*2}
@@ -15,8 +15,13 @@ test('only selected models download, verified cache is reused and corruption is 
  try{
   await expect(cache.ensure('unknown',new AbortController().signal,()=>{})).rejects.toThrow('Unknown')
   await cache.ensure('test',new AbortController().signal,()=>{});expect(calls).toBe(2);expect((await cache.list())[0].cached).toBe(true)
-  await cache.ensure('test',new AbortController().signal,()=>{});expect(calls).toBe(2)
-  await writeFile(cache.location(file),'corrupt');await cache.ensure('test',new AbortController().signal,()=>{});expect(calls).toBe(3)
+  const cachedProgress:DownloadProgress[]=[]
+  await cache.ensure('test',new AbortController().signal,p=>cachedProgress.push(p));expect(calls).toBe(2)
+  expect(cachedProgress.map(p=>p.phase)).toEqual(['cached','cached'])
+  const repairProgress:DownloadProgress[]=[]
+  await writeFile(cache.location(file),'corrupt');await cache.ensure('test',new AbortController().signal,p=>repairProgress.push(p));expect(calls).toBe(3)
+  expect(repairProgress[0]).toMatchObject({phase:'downloading',received:0})
+  expect(repairProgress.at(-1)).toMatchObject({phase:'cached',received:model.totalBytes})
  }finally{await rm(dir,{recursive:true,force:true})}
 })
 test('bad checksum never becomes cached and cancelled downloads leave no partial files',async()=>{

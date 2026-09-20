@@ -373,3 +373,8 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 05弹窗恢复宽布局：左侧当前模型、真实文件名、百分比、字节进度与模型队列，右侧来源剪辑名称/时长/采样率/声道及范围波形。服务为每个模型发送received/total/ready，ensure完成校验后才ready；逐次更新创建新记录，历史事件不被后续修改。未知字节显示破折号，不制造速度值。测试验证配置/权重中间进度未标ready，完成后字节和ready正确；普通套件77项通过、3项条件跳过，构建和类型检查通过。
 
 英文1280×800模拟下载视觉检查通过，四模型队列与底部操作均可见；失败显示Interrupted和已接收字节，重试恢复下载。取消后dialog计数为0，补齐上一条取消关闭复验。浏览器数据为明确标注的fixture；真实服务字节事件由模型缓存回调及服务测试验证，未在本轮重新下载真实模型。
+
+### Cached separation preparation — 2026-09-20
+
+- Model cache progress now distinguishes verified cached files from real downloads. A fully cached separation remains in preparation until inference, without opening the model download dialog. Missing/corrupt files emit download state before requesting network data; byte counts and per-model readiness remain available.
+- Validation: `pnpm exec vitest run tests/models.test.ts tests/separation.test.ts` passed 5 tests, covering cached-only task phases, corruption repair, interrupted transfers, retry, and source preservation. `pnpm run build` passed. This is code-level coverage; no new packaged desktop build or device-audio verification was performed for this change.
