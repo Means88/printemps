@@ -22,7 +22,8 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 代码检查点：**签名包与三平台 CI 对应 `049a3d8`**。其后有两批用户反馈修正（见 acceptance.md “Workspace feedback fixes” 与 “Second feedback round”），本地包 `9da5785` 含第一批；第二批（顶栏图标固定、logo 回首页、设备探测、导出对齐/导出音轨、字号缩小、返回箭头等）与设计系统 token 化**尚未进包**（本轮末尾会再打一次本地包），CI 按用户要求暂不触发。049a3d8 所含改动：画板 30/03/04/13/05/07/09/10/14/15/16 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`、首页引导文案与步骤行、顶栏图标顺序、声部弹窗标题/来源行/搜索/分类选中态/处理设备行、历史页副标题与“新建项目”主按钮、模型管理排序/主按钮/页脚、设置说明文字、声部搜索结果/空态、删除弹窗与空态卡、模型下载弹窗标题/计数/已缓存行、错误提示标题+图标与下载失败动作）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，96 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点（其后提交只改 docs）。
 - **最后推送、签名包和三平台 CI 现在都对应 `049a3d8876a57a7fd42fac5ea4c1224d48299fa4`**。18799ce 的原生回归证据仍有效（源码只在 UI 层变化），但其包与 CI 已被覆盖。
 - CI：https://github.com/Means88/printemps/actions/runs/35501611789 ，三平台成功；产物 ID/哈希见 acceptance.md 最后一节，2026-09-27 过期。workflow 只在 `pull_request` 和 `workflow_dispatch` 触发，推送不会自动跑；用 `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`。
-- **最新本地包（2026-09-20，提交 b17e7bb）**：`release-b17e7bb/`（`pnpm run dist --mac -c.directories.output=release-b17e7bb`）：`mac-arm64/Printemps.app`、`Printemps-0.1.1-arm64.dmg`（373.6 MB）、`-mac.zip`（383.7 MB）、两份 blockmap、`latest-mac.yml`。Developer ID 签名，`codesign --verify --deep --strict` 通过，`spctl` 为 Unnotarized Developer ID（未公证，预期）。`app.asar` SHA256 `8ec1ff2a9c2a5f3c5f86f642de7f6bf8de978ca22a4914eab6f355aae7383693`，含网络代理、导出音轨/对齐、MPS 修复等 a0328d6 之后的全部改动；包内 worker 为 select_chunk 版本。隔离 profile 启动包内应用：设置页出现「网络代理」，切自定义并填 socks5 地址后 settings.json 落盘 `proxyMode:manual`。**注意**：第一次 `pnpm run dist` 用默认输出目录时 electron-builder 清理 `release/mac-arm64` 报 ENOTEMPTY 失败，旧 049a3d8/a0328d6 包已被清掉；以后打包请用 `-c.directories.output=release-<commit>`（`.gitignore` 已加 `release-*/`），不要覆盖正在运行的包目录。
+- **最新本地包（2026-09-20，提交 05ea070）**：`release-05ea070/`（DMG 373.6 MB、zip 383.7 MB、blockmap、latest-mac.yml），Developer ID 签名、深度严格校验通过、未公证；`app.asar` SHA256 `bff7c4f81e57d5671a4b…`，包内 `out/main/index.js` 与本地构建逐字节一致，含分析结果直接应用、36px 控件与 14px 箭头、网络代理。
+- 上一包（提交 b17e7bb）：`release-b17e7bb/`（`pnpm run dist --mac -c.directories.output=release-b17e7bb`）：`mac-arm64/Printemps.app`、`Printemps-0.1.1-arm64.dmg`（373.6 MB）、`-mac.zip`（383.7 MB）、两份 blockmap、`latest-mac.yml`。Developer ID 签名，`codesign --verify --deep --strict` 通过，`spctl` 为 Unnotarized Developer ID（未公证，预期）。`app.asar` SHA256 `8ec1ff2a9c2a5f3c5f86f642de7f6bf8de978ca22a4914eab6f355aae7383693`，含网络代理、导出音轨/对齐、MPS 修复等 a0328d6 之后的全部改动；包内 worker 为 select_chunk 版本。隔离 profile 启动包内应用：设置页出现「网络代理」，切自定义并填 socks5 地址后 settings.json 落盘 `proxyMode:manual`。**注意**：第一次 `pnpm run dist` 用默认输出目录时 electron-builder 清理 `release/mac-arm64` 报 ENOTEMPTY 失败，旧 049a3d8/a0328d6 包已被清掉；以后打包请用 `-c.directories.output=release-<commit>`（`.gitignore` 已加 `release-*/`），不要覆盖正在运行的包目录。
 - 本地签名包 `release/mac-arm64/Printemps.app`（Developer ID，未公证），`app.asar` SHA256 `2004d3f922567161422afd9b181a6ea7f8ae7c16c107dc6a2e785c7aa57d5cf6`。日志：`/tmp/printemps-049a3d8-package.log`、`-signature.log`、`-packaged-analysis.log`；18799ce 的日志 `/tmp/printemps-18799-*.log` 仍在。
 - `out/` 由本轮 `pnpm package` 重建，与源码一致。
 
@@ -54,6 +55,13 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 损坏音频夹具 `/tmp/printemps-invalid-audio-qa.wav`（40 字节）。
 - 本机另有一个不属于本轮的旧开发实例在运行：`node node_modules/.bin/electron . --user-data-dir=/tmp/printemps-native-menu-qa`（PID 51019/51020，已运行 4 小时以上），进程名也叫 Electron。没有动它；如确认无用可由用户关闭。
 - 临时路径可能被系统清理；不要提交缓存、私有音频、运行时或安装包。
+
+## Pen 设计稿整理（2026-09-20）
+
+- 删除：空画板 `bi8Au`、`k5wPO`（08 archive 整轨导出旧稿）、`mnZnS`（01 旧工作台）、`TrsWn`（19 早期分析页方案）、`Ac4ta`（23 中间修订稿）。对应的 `exports/01-*`、`exports/19-*`、`screens/01|19|06|20|21-*.html`（过时静态导出）与 `workspace-revision/*.png` 副本已删；旧稿仍可从 git 历史取回。
+- 重建（Copy 自画板 30 再改内容，因此 nodeId 变了）：06 `ZGUWf`（紧凑分离进度行 60px，鼓组/贝斯 42%）、20 `KeoeE`（刻度改小节 1,9,17…，时间格式"小节与拍"）、21 `chmaD`（仅原始音轨，剪辑详情为原始音频）、24 `Z3F6dz`（所有音轨弹窗覆盖在 30 上）、25 `W5oeKw`（节奏与调性弹窗，字段 36px）。22B `lcLVd` 顶栏与返回箭头改为画板 13 样式。
+- 登记：`screens.json` 现有 34 条，新增 22B、24–31；PNG 全部在 `design/exports/`，`design/index.html` 按钮已改指向。画板 30 `ymoeh` 仍是工作台基准；02 `aA8yW` 仅作 1280×800 尺寸参考。
+- 已知：画板 30 内有若干 `enabled:false` 的历史节点（试听结果、在文件夹中显示、Other 轨等），复制出的新板也带着，不影响渲染；如需彻底清理可在 30 上删除后再同步。
 
 ## 发布页与发布流程
 

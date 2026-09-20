@@ -7,13 +7,6 @@
     "html": "screens/00-foundations.html"
   },
   {
-    "nodeId": "mnZnS",
-    "slug": "01-workbench-zh",
-    "title": "中文多轨工作台",
-    "png": "exports/01-workbench-zh.png",
-    "html": "screens/01-workbench-zh.html"
-  },
-  {
     "nodeId": "aA8yW",
     "slug": "02-workbench-en-compact",
     "title": "英文紧凑工作台",
@@ -42,11 +35,10 @@
     "html": "screens/05-model-download.html"
   },
   {
-    "nodeId": "UB3LA",
+    "nodeId": "ZGUWf",
     "slug": "06-processing",
     "title": "工作区内分离进度",
-    "png": "exports/06-processing.png",
-    "html": "screens/06-processing.html"
+    "png": "exports/06-processing.png"
   },
   {
     "nodeId": "N9u2S",
@@ -133,25 +125,16 @@
     "html": "screens/18-motion.html"
   },
   {
-    "nodeId": "TrsWn",
-    "slug": "19-music-analysis",
-    "title": "BPM 与调性分析",
-    "png": "exports/19-music-analysis.png",
-    "html": "screens/19-music-analysis.html"
-  },
-  {
-    "nodeId": "u5qmD",
+    "nodeId": "KeoeE",
     "slug": "20-beat-timeline",
     "title": "节拍器与小节刻度",
-    "png": "exports/20-beat-timeline.png",
-    "html": "screens/20-beat-timeline.html"
+    "png": "exports/20-beat-timeline.png"
   },
   {
-    "nodeId": "SJya2",
+    "nodeId": "chmaD",
     "slug": "21-imported-workspace",
     "title": "导入后工作区",
-    "png": "exports/21-imported-workspace.png",
-    "html": "screens/21-imported-workspace.html"
+    "png": "exports/21-imported-workspace.png"
   },
   {
     "nodeId": "QmQ6L",
@@ -159,6 +142,60 @@
     "title": "二次分离与其它音轨",
     "png": "exports/22-secondary-separation.png",
     "html": "screens/22-secondary-separation.html"
+  },
+  {
+    "nodeId": "lcLVd",
+    "slug": "22b-deleted-projects",
+    "title": "已删除项目",
+    "png": "exports/22b-deleted-projects.png"
+  },
+  {
+    "nodeId": "Z3F6dz",
+    "slug": "24-all-tracks",
+    "title": "所有音轨弹窗",
+    "png": "exports/24-all-tracks.png"
+  },
+  {
+    "nodeId": "W5oeKw",
+    "slug": "25-rhythm-key",
+    "title": "节奏与调性弹窗",
+    "png": "exports/25-rhythm-key.png"
+  },
+  {
+    "nodeId": "cFom6",
+    "slug": "26-shortcuts",
+    "title": "快捷键说明",
+    "png": "exports/26-shortcuts.png"
+  },
+  {
+    "nodeId": "GYMp2",
+    "slug": "27-compact-task-notice",
+    "title": "紧凑任务提示",
+    "png": "exports/27-compact-task-notice.png"
+  },
+  {
+    "nodeId": "Hq9L2",
+    "slug": "28-native-menus",
+    "title": "原生菜单栏",
+    "png": "exports/28-native-menus.png"
+  },
+  {
+    "nodeId": "x0yR1",
+    "slug": "29-native-titlebar",
+    "title": "平台融合顶栏",
+    "png": "exports/29-native-titlebar.png"
+  },
+  {
+    "nodeId": "ymoeh",
+    "slug": "30-multi-clip-workspace",
+    "title": "多剪辑工作台（当前）",
+    "png": "exports/30-multi-clip-workspace.png"
+  },
+  {
+    "nodeId": "OspP2",
+    "slug": "31-recovery-banners",
+    "title": "保存与导入失败提示",
+    "png": "exports/31-recovery-banners.png"
   },
   {
     "nodeId": "b8troH",
