@@ -23,6 +23,7 @@ const api:DesktopAPI={
  importDroppedAudio:file=>{const source=webUtils.getPathForFile(file);if(!source)return Promise.reject(new Error('Choose a local audio file'));return ipcRenderer.invoke('projects:import-dropped',source)},
  importAudio:()=>ipcRenderer.invoke('projects:import'),
  saveProject:(id,edits)=>ipcRenderer.invoke('projects:save',id,edits),
+ editTrack:(id,action)=>ipcRenderer.invoke('tracks:edit',id,action),
  deleteProject:(id,purge)=>ipcRenderer.invoke('projects:delete',id,purge),
  exportTracks:(id,tracks,format)=>ipcRenderer.invoke('tracks:export',id,tracks,format),
  openExportDirectory:directory=>ipcRenderer.invoke('exports:open-directory',directory),

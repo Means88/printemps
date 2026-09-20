@@ -13,7 +13,7 @@ export function rulerTicks(duration:number,music:Musical,format:'time'|'beats',m
   for(let bar=0;bar<count;bar+=stride)ticks.push({seconds:music.firstBeat+bar*barSeconds,label:`${bar+1}.1`})
   return ticks
  }
- return Array.from({length:limit},(_,i)=>({seconds:i*duration/(limit-1),label:formatPosition(i*duration/(limit-1),music,'time')}))
+ return Array.from({length:limit},(_,i)=>({seconds:i*duration/(limit-1),label:formatPosition(i*duration/(limit-1),music,'time')+(duration/(limit-1)<1?'.'+Math.floor((i*duration/(limit-1)%1)*1000).toString().padStart(3,'0'):'')}))
 }
 export function formatPosition(seconds:number,music:Musical,format:'time'|'beats'){
  if(format==='beats'){

@@ -10,7 +10,7 @@ export const trackSchema = z.object({
   id: z.string().uuid(), name: z.string().trim().min(1).max(80),
   role: z.enum(['original', 'stem', 'other']), stem: z.string(),
   assetId: z.string().uuid(), parentId: z.string().uuid().optional(),
-  color: z.string(), gain: z.number().min(-60).max(6), muted: z.boolean(), solo: z.boolean(),
+  color: z.string(), gain: z.number().min(-60).max(6), muted: z.boolean(), solo: z.boolean(), hidden: z.boolean().optional(),
   peaks: z.array(z.number().min(0).max(1)), duration: z.number().nonnegative(),
   sampleRate: z.number().positive(), channels: z.number().int().min(1).max(32)
 })
@@ -49,13 +49,13 @@ export function commitSeparation(project: Project, sourceId: string, outputs: Tr
   if (others.length !== 1 || !outputs.some(t => t.role === 'stem') || outputs.some(t => t.role === 'original'))
     throw new Error('Separation must contain stems and exactly one remainder')
   const ordered = [others[0], ...outputs.filter(t => t.role === 'stem')].map(t => trackSchema.parse({
-    ...t, parentId: source.id, gain: source.gain, muted: source.muted, solo: source.solo
+    ...t, hidden:false, parentId: source.id, gain: source.gain, muted: source.muted, solo: source.solo
   }))
-  const retained = source.role === 'original' ? project.tracks : project.tracks.filter(t => t.id !== sourceId)
+  const retained = project.tracks
   const ids = new Set(retained.map(t => t.id))
   for (const t of ordered) { if (ids.has(t.id)) throw new Error('Duplicate track'); ids.add(t.id) }
   const tracks = [...project.tracks]
-  tracks.splice(source.role === 'original' ? tracks.length : index, source.role === 'original' ? 0 : 1, ...ordered)
+  tracks.splice(source.role === 'original' ? tracks.length : index, source.role === 'original' ? 0 : 1, ...ordered, ...(source.role === 'original' ? [] : [{...source,hidden:true}]))
   return {...project, tracks, updatedAt: new Date().toISOString()}
 }
 export function restoreRecommendation(project: Project): Project {
@@ -64,7 +64,7 @@ export function restoreRecommendation(project: Project): Project {
   return {...project, music: musicalSchema.parse({...project.music, ...valid}), updatedAt: new Date().toISOString()}
 }
 export function audibleTracks(project: Project): Track[] {
-  const tracks = project.tracks.filter(t => project.monitor === 'original' ? t.role === 'original' : t.role !== 'original')
+  const tracks = project.tracks.filter(t => !t.hidden && (project.monitor === 'original' ? t.role === 'original' : t.role !== 'original'))
   const solo = tracks.some(t => t.solo)
   return tracks.filter(t => !t.muted && (!solo || t.solo))
 }

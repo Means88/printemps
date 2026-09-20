@@ -8,7 +8,7 @@ const names:Record<string,[string,string,Exclude<StemCategory,'all'>]>={
 export function stemLabel(id:string,en=false){return id==='other'?(en?'Other':'其它'):id==='original'?(en?'Original':'原始音频'):names[id]?.[en?1:0]||id}
 // Persist instrument colors by identity, independent of selection/extraction order.
 const colors:Record<string,string>={
- original:'#9aaabb',other:'#91a9bc',
+ original:'#9aaabb',other:'#4dd6ba',
  vocal:'#b395e6','lead-vocal':'#ad91e4','back-vocal':'#d0a1ed',
  bass:'#51c3b6','acoustic-guitar':'#91bfe8','electric-guitar':'#6caff0',guitar:'#77a0e5',
  banjo:'#99c6db',dobro:'#78bbc9',mandolin:'#89aed6',sitar:'#729cc2',ukulele:'#a3d0e6',

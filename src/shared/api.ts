@@ -26,6 +26,7 @@ export interface DesktopAPI {
   importDroppedAudio(file:File):Promise<Project>
   importAudio(): Promise<Project | null>
   saveProject(id:string,edits:ProjectEdits): Promise<Project>
+  editTrack(id:string,action:import('./track-actions').TrackAction):Promise<Project>
   deleteProject(id: string, purge: boolean): Promise<void>
   exportTracks(projectId:string, trackIds:string[], format:'wav'|'flac'): Promise<{count:number;directory:string;failure?:{remainingIds:string[];trackName:string;message:string}}|null>
   openExportDirectory(directory:string):Promise<void>

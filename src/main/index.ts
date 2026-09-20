@@ -1,3 +1,4 @@
+import {applyTrackAction,trackActionSchema} from '../shared/track-actions'
 import {randomUUID} from 'node:crypto'
 import {ShutdownCoordinator} from './shutdown'
 import electronUpdater from 'electron-updater'
@@ -73,7 +74,7 @@ function handle(channel:string,fn:(...args:any[])=>unknown){
   if(event.sender!==win.webContents||event.senderFrame!==win.webContents.mainFrame)throw new Error('Unauthorized request')
   if(quitting&&channel!=='projects:save')throw new Error('Application is finishing active tasks before quitting')
   if(updates.status().phase==='installing'&&channel!=='projects:save')throw new Error('Application is restarting to install an update')
-  const tracked=['projects:import','projects:import-dropped','projects:save','tracks:export','settings:save','settings:choose-directory','settings:reset-directory','projects:delete','projects:restore','projects:purge-archived'].includes(channel)
+  const tracked=['projects:import','projects:import-dropped','projects:save','tracks:edit','tracks:export','settings:save','settings:choose-directory','settings:reset-directory','projects:delete','projects:restore','projects:purge-archived'].includes(channel)
   if(tracked)ioTasks++
   try{return await fn(...args)}finally{if(tracked)ioTasks--}
  })
@@ -86,6 +87,13 @@ handle('projects:open',(id:string)=>store.load(id))
 handle('projects:save',async (id:string,input:unknown)=>{
  const edits=projectEditsSchema.parse(input)
  return store.update(id,current=>applyProjectEdits(current,edits))
+})
+handle('tracks:edit',async(id:string,input:unknown)=>{
+ const action=trackActionSchema.parse(input)
+ return store.update(id,current=>{
+  if(action.kind==='delete'&&(separation.busy||analysis.busy||exportingProjects.has(id)))throw new Error('Wait for active tasks or export to finish before deleting a track')
+  return applyTrackAction(current,action)
+ })
 })
 handle('projects:delete',(id:string,purge:boolean)=>{if(separation.busy||analysis.busy||exportingProjects.has(id))throw new Error('Wait for active tasks or export to finish before deleting a project');return store.remove(id,purge===true)})
 handle('tracks:export',async(id:string,trackIds:string[],format:'wav'|'flac')=>{
@@ -155,7 +163,7 @@ handle('projects:import',async()=>{
 })
 handle('projects:import-dropped',(source:string)=>importer.import(source))
 function createWindow(){
- win=new BrowserWindow({width:1440,height:900,minWidth:1000,minHeight:700,backgroundColor:'#14171b',title:'Printemps',webPreferences:{preload:path.join(here,'../preload/index.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true}})
+ win=new BrowserWindow({width:1440,height:900,minWidth:1000,minHeight:700,backgroundColor:'#14171b',title:'Printemps',webPreferences:{preload:path.join(here,'../preload/index.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,backgroundThrottling:false}})
  let closeReady=false
  const window=win
  window.on('close',event=>{if(quitReady||closeReady)return;event.preventDefault();void flushRenderer().then(()=>{if(!window.isDestroyed()){closeReady=true;window.close()}}).catch(showCloseError)})

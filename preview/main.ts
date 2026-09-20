@@ -1,3 +1,4 @@
+import {applyTrackAction} from '../src/shared/track-actions'
 // Development-only UI fixture. Never imported by the production renderer entry.
 import type {DesktopAPI} from '../src/shared/api'
 import type {Project,Settings,Track} from '../src/shared/domain'
@@ -32,6 +33,7 @@ const cachedModels=new Set(manifest.models.filter((_,i)=>i%4===0).map(m=>m.id))
 let cancelDownload:(()=>void)|undefined
 
 const partial:Partial<DesktopAPI>={
+ editTrack:async(id,action)=>{project=applyTrackAction(project,action);projects=projects.map(p=>p.id===id?project:p);return structuredClone(project)},
  listArchivedProjects:async()=>structuredClone(archived),restoreArchivedProject:async id=>{const item=archived.find(p=>p.archiveId===id);if(!item)throw new Error('Project not found');projects.push(item.project);archived=archived.filter(p=>p.archiveId!==id);return structuredClone(item.project)},purgeArchivedProject:async id=>{archived=archived.filter(p=>p.archiveId!==id)},
  listProjects:async()=>structuredClone(projects),openProject:async id=>{const found=projects.find(p=>p.id===id);if(!found)throw new Error('Project not found');project=found;return structuredClone(project)},importAudio:async()=>structuredClone(project),
  saveProject:async (id,edits)=>{if(id!==project.id)throw new Error('Project not found');if(failNextSave){failNextSave=false;throw new Error(en?'Fixture: saving failed. Retry to keep your changes.':'测试示例：保存失败，请重试以保留修改。')}project=applyProjectEdits(project,edits);projects=projects.map(p=>p.id===project.id?project:p);return structuredClone(project)},deleteProject:async(id,purge)=>{const item=projects.find(p=>p.id===id);if(item&&!purge)archived.push({archiveId:uuid(),project:item});projects=projects.filter(p=>p.id!==id)},

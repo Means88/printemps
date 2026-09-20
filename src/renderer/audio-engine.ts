@@ -65,7 +65,7 @@ export class AudioEngine {
   const waitingForFirstStem=project.monitor==='stems'&&!project.tracks.some(t=>t.role!=='original'&&this.buffers.has(`${project.id}/${t.id}`))
   const audible=new Set(audibleTracks(waitingForFirstStem?{...project,monitor:'original'}:project).map(t=>t.id))
   for(const t of project.tracks){const node=this.sources.get(t.id);if(node)node.gain.gain.setTargetAtTime(audible.has(t.id)?Math.pow(10,t.gain/20):0,at,.008)}
-  if(previous && (JSON.stringify(previous.music)!==JSON.stringify(project.music)||previous.metronome!==project.metronome))this.resetClicks()
+  if(previous && (JSON.stringify(previous.music)!==JSON.stringify(project.music)||previous.metronome!==project.metronome||previous.clickGain!==project.clickGain)){this.resetClicks();if(this.running)this.tick()}
  }
  async play(){
   if(this.running||!this.project)return
@@ -107,15 +107,16 @@ export class AudioEngine {
   if(!this.loop&&this.position>=this.duration){this.pause();return}
   const {music,metronome,clickGain}=this.project
   if(!metronome||!music.bpm)return
-  const denominator=Number(music.meter.split('/')[1]),until=this.context.currentTime+.1
+  const denominator=Number(music.meter.split('/')[1]),until=this.context.currentTime+.2
   const events=clickEvents(Math.max(this.context.currentTime,this.started,this.clickUntil),until,music,at=>playbackPosition(at-this.started,this.offset,this.duration,this.loop),this.duration,this.loop)
   this.clickUntil=until
   for(const {at,beat} of events){
    const osc=this.context.createOscillator(),gain=this.context.createGain()
+   osc.type='triangle'
    osc.frequency.value=beat===0?1500:denominator===8&&beat%3===0?1100:800
-   gain.gain.setValueAtTime(Math.pow(10,clickGain/20)*.3,at)
-   gain.gain.exponentialRampToValueAtTime(.0001,at+.035)
-   osc.connect(gain).connect(this.master);osc.start(at);osc.stop(at+.04)
+   gain.gain.setValueAtTime(Math.pow(10,clickGain/20)*.7,at)
+   gain.gain.exponentialRampToValueAtTime(.0001,at+.055)
+   osc.connect(gain).connect(this.master);osc.start(at);osc.stop(at+.06)
    this.clickSources.add(osc);osc.onended=()=>{this.clickSources.delete(osc);osc.disconnect();gain.disconnect()}
   }
  }

@@ -1,7 +1,7 @@
 import {z} from 'zod'
 import {musicalSchema,projectSchema,trackSchema,type Project} from './domain'
 
-const trackEditsSchema=trackSchema.pick({id:true,assetId:true,name:true,gain:true,muted:true,solo:true}).partial({name:true,gain:true,muted:true,solo:true}).strict()
+const trackEditsSchema=trackSchema.pick({id:true,assetId:true,name:true,gain:true,muted:true,solo:true,hidden:true}).partial({name:true,gain:true,muted:true,solo:true,hidden:true}).strict()
 export const projectEditsSchema=projectSchema.pick({name:true,metronome:true,clickGain:true,timeFormat:true,monitor:true,masterGain:true}).partial().extend({
  music:musicalSchema.partial().strict().optional(),
  tracks:z.array(trackEditsSchema).optional()
@@ -9,7 +9,7 @@ export const projectEditsSchema=projectSchema.pick({name:true,metronome:true,cli
 export type ProjectEdits=z.infer<typeof projectEditsSchema>
 const fields=['name','metronome','clickGain','timeFormat','monitor','masterGain'] as const
 const musicFields=['bpm','key','meter','firstBeat'] as const
-const trackFields=['name','gain','muted','solo'] as const
+const trackFields=['name','gain','muted','solo','hidden'] as const
 
 /** Compare against the render that produced the edit, not a newer async snapshot. */
 export function diffProjectEdits(base:Project,next:Project):ProjectEdits {

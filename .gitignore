@@ -10,3 +10,4 @@ coverage/
 worker/assets/*.ckpt
 .runtime/
 release-status/
+release-revision/

@@ -19,3 +19,9 @@ test('musical ruler labels align with real downbeats instead of rounded arbitrar
  expect(rulerTicks(36000,music,'beats').length).toBeLessThanOrEqual(7)
  expect(rulerTicks(16,{...music,bpm:null},'beats')).toEqual(rulerTicks(16,music,'time'))
 })
+
+test('sub-second zoom labels remain distinct',()=>{
+ const ticks=rulerTicks(10,{bpm:null,key:null,meter:'4/4',firstBeat:0},'time',100)
+ expect(new Set(ticks.map(t=>t.label)).size).toBe(ticks.length)
+ expect(ticks[1].label).toContain('.')
+})

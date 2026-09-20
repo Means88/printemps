@@ -36,7 +36,7 @@ test('separation commits residual first, preserves concurrent edits, and failed/
   const completed=await run(sourceId);expect(completed.phase).toBe('complete');expect(completed.targets).toEqual(['drums'])
   const result=await store.load(id)
   expect(result.lastSeparation).toMatchObject({state:'complete',completed:1,targets:['drums']})
-  expect(result.name).toBe('During inference');expect(result.tracks.map(t=>t.role)).toEqual(['original','other','stem']);expect(result.tracks.some(t=>t.id===sourceId)).toBe(false)
+  expect(result.name).toBe('During inference');expect(result.tracks.map(t=>t.role)).toEqual(['original','other','stem','stem']);expect(result.tracks.find(t=>t.id===sourceId)?.hidden).toBe(true)
   expect(await readFile(store.assetPath(id,assetId))).toEqual(audio)
   const assets=await readdir(path.dirname(store.assetPath(id,assetId)))
   mode='failure';expect((await run(result.tracks[1].id)).phase).toBe('failed')

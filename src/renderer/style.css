@@ -79,3 +79,25 @@ header>button{flex-shrink:0}
 .model-active-task{display:flex;align-items:center;gap:12px;margin-top:16px;padding:12px;background:#172536;border:1px solid #355274;border-radius:10px;font-size:12px;flex-wrap:wrap}.model-active-task progress{flex:1;min-width:80px}.model-active-task button{margin:0}
 
 .history-tools{flex-wrap:wrap}.history-tools input{min-width:220px}.history-inspector details{font-size:12px;color:#a0aab8}
+/* Workspace revision: compact actions, consistent track states and transport. */
+.projectbar button:not(.switch),.inspector>button,.inspector>.secondary{font-size:13px;padding:5px 12px;min-height:30px}
+.transport button{height:32px;min-width:32px;padding:6px 9px;display:inline-flex;align-items:center;justify-content:center;gap:4px}
+.transport svg{width:18px;height:18px;display:block;flex-shrink:0}.transport{gap:10px}.transport .primary{width:36px}
+.loop-controls{display:flex;align-items:center;gap:4px;margin-left:4px}.loop-controls button{font-size:12px}
+.track-head{margin:0;min-width:0;border:0;border-left:4px solid;padding:12px 16px;background:#252d38}
+.track-inactive{opacity:.38;filter:grayscale(1)}.track-inactive .wave{cursor:default}.track-inactive .track-head{pointer-events:none}
+.track-muted .wave{filter:grayscale(1);opacity:.48}
+.track-controls>button:not(:disabled):hover{background:#4b416b;color:#e1ccff;border-color:#9980c4}.track-controls>button:nth-child(2):not(:disabled):hover{background:#644931;color:#ffd5a0;border-color:#bd925f}
+.task-progress{height:6px;background:#121a24;border-radius:999px;overflow:hidden;margin:10px 0}.task-progress>div{height:100%;background:#4c9aff;border-radius:999px;transition:width 240ms ease-out}
+.track-manager{width:min(620px,92vw)}.track-list{max-height:50vh;overflow:auto;margin:20px 0;display:flex;flex-direction:column;gap:8px}
+.track-list-row{display:flex;gap:10px;align-items:center;background:#181e26;border-radius:9px;padding:10px;border-top:2px solid transparent}.track-list-row.drop-target{border-top-color:#70abec;background:#24374f}
+.track-list-row>span{flex:1;min-width:0;border-left:4px solid;padding-left:12px}.track-list-row strong{font-size:14px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.track-list-row small{font-size:11px;margin-top:4px}
+.track-list-row>button:not(.switch){padding:5px;width:28px;height:28px;display:grid;place-items:center}.track-list-row .drag-handle{cursor:grab;background:transparent;border:0;color:#8492a6}.drag-handle:active{cursor:grabbing}.delete-confirm{background:#38282b;border-radius:10px;padding:12px;font-size:13px}
+.shortcut-row{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:10px 0;border-bottom:1px solid #303640;font-size:13px}kbd{background:#151c24;border:1px solid #3a4350;border-radius:5px;padding:3px 8px;font:12px Inter,sans-serif}
+.music-dialog{width:min(580px,92vw);padding:24px}.music-dialog h3{font-size:14px;font-weight:500;margin:24px 0 16px;color:#70abec}.music-fields{display:grid;grid-template-columns:1fr 1fr;gap:20px}.music-dialog .music-fields label,.music-dialog .first-beat-row label,.music-dialog .key-section label{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin:0;font-size:13px;color:#a0aab8}.music-dialog input[type=number],.music-dialog select{width:100%;min-width:0;height:46px;font-size:17px;color:#e8ecf2}.first-beat-row{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:20px;margin-top:24px}.first-beat-row>button{height:46px;border:0;background:transparent;color:#70abec;font-size:13px}.music-dialog .key-section{margin-top:28px}.music-dialog .key-section h3{color:#b49bef}.click-section{margin:24px 0;padding-top:16px;border-top:1px solid #354052;display:flex;align-items:center;justify-content:space-between;gap:20px}.click-section label{gap:20px!important;margin:0!important}.click-section small{font-size:12px}
+.metronome-track .track-head{border-left-color:#70abec}.metronome-track strong{font-size:14px}.click-wave{background:#192432}.click-mark{position:absolute;top:50%;height:26px;width:2px;background:#70abec80;border-radius:2px;transform:translateY(-50%)}.click-mark.downbeat{height:48px;width:3px;background:#70abec}
+@media(prefers-reduced-motion:reduce){.task-progress>div{transition:none}}
+.drag-handle{touch-action:none;user-select:none}.track-list-row:has(.drag-handle:active){opacity:.65}
+.range-marker{position:absolute;bottom:0;font:10px Inter,sans-serif;background:#287cdd;color:white;border-radius:3px 3px 0 0;padding:1px 3px;z-index:1}.range-marker.end{transform:translateX(-100%)}
+.track-list-trigger{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13px;padding:6px 11px;white-space:nowrap}.track-list-trigger svg{width:15px;height:15px;flex-shrink:0}
+.recommendation-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;min-height:28px}.recommendation-row p{font-size:12px;margin:0}.recommendation-row button{margin-left:auto;background:transparent;border:0;color:#70abec;font-size:12px;padding:4px 0}

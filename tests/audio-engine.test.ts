@@ -127,3 +127,16 @@ test('automatic first-stem monitoring waits for decoding before muting the origi
  expect(context.voices[1].start.mock.calls[0][0]).toBeCloseTo(1.025)
  expect(context.voices[1].start.mock.calls[0][1]).toBeCloseTo(1)
 })
+
+test('enabling clicks during playback schedules audible gain, volume changes reach following beats, and disabling stops them',async()=>{
+ const song={...project([track('original','original')]),music:{bpm:120,key:null,meter:'4/4' as const,firstBeat:.12}}
+ await engine.load(song);await engine.play();const context=Context.current
+ context.currentTime=.1;engine.applyMix({...song,metronome:true});await vi.advanceTimersByTimeAsync(25)
+ expect(context.oscillators).toHaveLength(1)
+ expect(context.oscillators[0].start).toHaveBeenCalledWith(.145)
+ expect(context.gains.at(-1)!.gain.setValueAtTime.mock.calls[0][0]).toBeGreaterThan(.05)
+ context.currentTime=.56;engine.applyMix({...song,metronome:true,clickGain:-6});await vi.advanceTimersByTimeAsync(25)
+ expect(context.oscillators).toHaveLength(2)
+ expect(context.gains.at(-1)!.gain.setValueAtTime.mock.calls[0][0]).toBeCloseTo(Math.pow(10,-6/20)*.7)
+ engine.applyMix(song);expect(context.oscillators.at(-1)!.stop).toHaveBeenLastCalledWith()
+})
