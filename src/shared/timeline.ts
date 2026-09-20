@@ -1,4 +1,20 @@
 import {beatPosition,type Musical} from './domain'
+/** Musical ruler labels sit on actual downbeats, including a non-zero first beat. */
+export function rulerTicks(duration:number,music:Musical,format:'time'|'beats',maxLabels=7){
+ if(!Number.isFinite(duration)||duration<=0)return [{seconds:0,label:formatPosition(0,music,format)}]
+ const limit=Math.max(2,Math.floor(maxLabels))
+ if(format==='beats'&&music.bpm){
+  const [numerator,denominator]=music.meter.split('/').map(Number)
+  const barSeconds=60/music.bpm*4/denominator*numerator
+  const count=Math.floor((duration-music.firstBeat)/barSeconds)+1
+  if(count<=0)return []
+  const stride=Math.max(1,Math.ceil(count/limit))
+  const ticks:{seconds:number;label:string}[]=[]
+  for(let bar=0;bar<count;bar+=stride)ticks.push({seconds:music.firstBeat+bar*barSeconds,label:`${bar+1}.1`})
+  return ticks
+ }
+ return Array.from({length:limit},(_,i)=>({seconds:i*duration/(limit-1),label:formatPosition(i*duration/(limit-1),music,'time')}))
+}
 export function formatPosition(seconds:number,music:Musical,format:'time'|'beats'){
  if(format==='beats'){
   const position=beatPosition(seconds,music)
