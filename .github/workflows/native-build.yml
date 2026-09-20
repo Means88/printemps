@@ -44,6 +44,8 @@ jobs:
         run: node scripts/verify-linux-update-fallback.mjs
       - run: npm run runtime:prepare
       - run: npm run test:integration
+      - name: Release downloaded wheel cache before copying runtime into package
+        run: uv cache clean
       - run: npm run package -- ${{ matrix.package_args }}
       - name: Verify packaged analysis runtime
         run: npm run test:integration
