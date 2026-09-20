@@ -246,3 +246,9 @@ c7d60f0 已完成 macOS arm64 打包、`codesign --verify --deep --strict` 及�
 `PRINTEMPS_TEST_MODELS=.cache/model-reference/v1 npx vitest run tests/progressive-runtime.test.ts` 通过（190.05秒，日志 `/tmp/printemps-named-remainder-runtime.log`）。真实鼓组/贝斯模型验证二次分离后来源保留并隐藏、结果原位插入、继承混音设置、剩余轨名为 `Edited bass - 其它`。重建误差仍低于 1e-5，WAV/FLAC 导出和副本修改不影响私有文件检查通过。输入为1秒合成音频，不是歌曲质量/性能基准。
 
 当前普通测试63项通过；生产构建通过。最新英文1280×800弹窗检查确认分析/完成按钮右对齐、列表操作靠右，常驻就绪与私有结果说明已移除。桌面打包尚需包含最后几轮样式更新后再验收，不能借用先前包的结果。
+
+## 2026-09-20 48e049c 最新桌面包验证
+
+`release-revision/mac-arm64/Printemps.app` 打包 exit 0；打包结束后 `codesign --verify --deep --strict` exit 0。包内主进程、preload、renderer JS/CSS 的 SHA-256 与当前生产构建全部相同。包内真实分析1项通过（5.60秒）。日志 `/tmp/printemps-48e049c-package.log`、`/tmp/printemps-48e049c-analysis.log`。Developer ID 签名，未公证或发布。
+
+通过应用菜单退出旧包，启动新包，原生 AX 确认 URL 来自 release-revision。打开已有16秒合成验收项目，验证新音乐工具栏、顶部帮助/模型/设置/侧栏入口、最上方节拍器音轨及推子、详情真实参数、非监听组禁用、底部无常驻就绪。所有音轨弹窗实屏确认操作右对齐、透明图标按钮与蓝色完成按钮。未改变用户音乐项目。随后修复列表副标题使用原始 stem ID 的本地化遗漏；该文本修复尚未纳入此包。
