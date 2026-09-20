@@ -378,3 +378,8 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 
 - Model cache progress now distinguishes verified cached files from real downloads. A fully cached separation remains in preparation until inference, without opening the model download dialog. Missing/corrupt files emit download state before requesting network data; byte counts and per-model readiness remain available.
 - Validation: `pnpm exec vitest run tests/models.test.ts tests/separation.test.ts` passed 5 tests, covering cached-only task phases, corruption repair, interrupted transfers, retry, and source preservation. `pnpm run build` passed. This is code-level coverage; no new packaged desktop build or device-audio verification was performed for this change.
+
+### Separation dialog source identity — 2026-09-20
+
+- Setup and interrupted-download dialog descriptions now resolve the configured/task clip, rather than always displaying the parent track name. Legacy single-clip tasks retain their fallback; selection elsewhere cannot change the configured source label.
+- `pnpm typecheck` passed. Browser fixture check: renamed the Lead vocal clip to Verse vocal (parent track remained Lead vocal), opened Choose stems, and confirmed its source description was Verse vocal. Temporary fixture tab closed; no user audio modified.
