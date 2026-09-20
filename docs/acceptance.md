@@ -563,3 +563,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 
 - User confirmed no Windows/Linux desktop environment is available and asked to complete macOS acceptance first. Their CI builds remain useful packaging evidence; GUI/device acceptance is explicitly deferred, not claimed complete.
 - Added Pen 31 save-recovery design to `design/index.html`. Browser navigation verified its title, original-PNG link, and successfully decoded 1440×176 PNG.
+
+### 2026-09-20 · Signed macOS corrupt-import recovery
+
+- In signed 9564b98 isolated synthetic QA, selected `/tmp/printemps-invalid-audio-qa.wav` (40-byte intentionally invalid fixture) with the native macOS open panel.
+- FFmpeg rejected the file. Choose audio remained enabled; dismissing the error and opening the existing synthetic project succeeded, retaining its reordered tracks. The app then quit with exit 0.
+- Filesystem assertion confirmed the QA projects directory contained exactly the original project and no partial import directory.
+- Remaining UI issue observed: import failures still use the generic raw diagnostic banner. They need concise localized recovery copy with optional technical details; this acceptance only proves import rollback and continued navigation.
