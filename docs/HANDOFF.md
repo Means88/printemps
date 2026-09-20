@@ -4,7 +4,7 @@
 
 ## 先读与当前目标
 
-- 仓库 `/Users/means88/x/stems`，远端 `git@github.com:Means88/printemps.git`，分支 `codex/clip-workspace-desktop`。
+- 仓库 `/Users/means88/x/stems`，远端 `git@github.com:Means88/printemps.git`，工作分支 `codex/clip-workspace-desktop`；2026-09-20 已快进合并到 `main`（`a0328d6`），之后两分支同步推进。
 - 先读根目录 `AGENTS.md`，再读本文件、`docs/implementation-status.md`、`docs/acceptance.md`。验收记录按时间追加，较新的证据覆盖旧的待办。
 - 总目标仍是忠实还原设计并完成应用，不能宣布全部完成。用户确认：没有 Windows/Linux 桌面环境，**先完成 macOS 验收**，另两平台 GUI 验收延期。
 - 所有 UI 变更先修改 Pen，再实现；不要重复询问已授权事项，不要用用户真实音频项目测试。
