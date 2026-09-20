@@ -1,0 +1,10 @@
+{
+  "model": "small0",
+  "package": "beat-this",
+  "packageVersion": "1.1.0",
+  "url": "https://cloud.cp.jku.at/public.php/dav/files/7ik4RrBKTS273gp/small0.ckpt",
+  "bytes": 8451101,
+  "sha256": "6074be2c4d490c5f6101fcc374a1ec72ae93456e23bb6019783b849f5dc7d47b",
+  "keyEngine": "Essentia.js WASM KeyExtractor",
+  "keyEngineVersion": "0.1.3"
+}

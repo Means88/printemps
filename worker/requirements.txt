@@ -1,0 +1,10 @@
+torch==2.11.0
+torchaudio==2.11.0
+beat-this==1.1.0
+numpy>=2,<3
+soundfile>=0.13,<1
+PyYAML>=6,<7
+einops>=0.8,<1
+rotary-embedding-torch>=0.8,<1
+beartype>=0.18,<1
+packaging>=24

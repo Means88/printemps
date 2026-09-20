@@ -1,0 +1,11 @@
+node_modules/
+out/
+release/
+.cache/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+coverage/
+worker/assets/*.ckpt
+.runtime/

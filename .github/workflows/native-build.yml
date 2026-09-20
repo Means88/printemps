@@ -1,0 +1,51 @@
+name: Native build verification
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            resources: release/linux-unpacked/resources
+            package_args: ''
+          - os: windows-2025
+            resources: release/win-unpacked/resources
+            package_args: ''
+          - os: macos-15
+            resources: release/mac-arm64/Printemps.app/Contents/Resources
+            package_args: --config.mac.identity=-
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    env:
+      PRINTEMPS_UV: uv
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.17'
+      - run: npm ci
+      - run: npm test
+      - name: Verify Linux updater full-download fallback
+        if: runner.os == 'Linux'
+        run: node scripts/verify-linux-update-fallback.mjs
+      - run: npm run runtime:prepare
+      - run: npm run test:integration
+      - run: npm run package -- ${{ matrix.package_args }}
+      - name: Verify packaged analysis runtime
+        run: npm run test:integration
+        env:
+          PRINTEMPS_TEST_RESOURCES: ${{ matrix.resources }}

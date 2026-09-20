@@ -1,0 +1,857 @@
+{
+  "repository": "noblebarkrr/BS-Roformer-MVSep-Mega-53-stems",
+  "revision": "0677941f9cdfd891a6bc3336229244e197035327",
+  "directory": "v1",
+  "verifiedAt": "2026-09-19",
+  "unit": "decimal bytes",
+  "models": [
+    {
+      "id": "accordion",
+      "weight": {
+        "path": "v1/bs_mega_53stem_accordion_mvsep.ckpt",
+        "bytes": 77619808,
+        "checksum": "aafcbe186aaec0489d28e388d9d1d3c12660c5640a8494bdaf3cbfee60c08c78",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_accordion_mvsep_config.yaml",
+        "bytes": 1572,
+        "checksum": "fbefb66d551af7ccf15462c65f5a75334532d1f2",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77621380
+    },
+    {
+      "id": "acoustic-guitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_acoustic-guitar_mvsep.ckpt",
+        "bytes": 77624038,
+        "checksum": "fa386b2e7b1ea4f12b9b5c557444c0dc78648ef4ee299de2759d86457e182b3e",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_acoustic-guitar_mvsep_config.yaml",
+        "bytes": 1584,
+        "checksum": "05961475316d570356ed3b30acfe1958133e565b",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77625622
+    },
+    {
+      "id": "back-vocal",
+      "weight": {
+        "path": "v1/bs_mega_53stem_back-vocal_mvsep.ckpt",
+        "bytes": 77620513,
+        "checksum": "9e60a9057340574977b0f858084113d952ba4731a7bbe054bf49d1d5338ca9d9",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_back-vocal_mvsep_config.yaml",
+        "bytes": 1574,
+        "checksum": "ee6565a1f8edd41a54334279fa680ea23be4739c",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "banjo",
+      "weight": {
+        "path": "v1/bs_mega_53stem_banjo_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "7f9d0ad56db9289c767d41104156c2dce5b88631e05958bc78479b77e62e4f0d",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_banjo_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "59ed55e5a63b62b3a3e7f868b50e25ff35427648",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "bass",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bass_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "b17600dd1c2027a72ab34180ff6191d3bdeb786db9fbb13c58337c33fc10163c",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bass_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "848e5bfd9b93080a4f28a12a15c9a4d0dc0e3369",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "bassoon",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bassoon_mvsep.ckpt",
+        "bytes": 77618398,
+        "checksum": "2d7329356a80027377e11d6d20c1c37a6b1c8a97e6fc502379142ba88773caae",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bassoon_mvsep_config.yaml",
+        "bytes": 1568,
+        "checksum": "c7b8dc0f13b1a43f39a9afb639a0e33676c9f48a",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "bells",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bells_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "6328f387259bb50ef12e36d3ef6cc5703520a0a89cd3bd743cf4f420f87701b8",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bells_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "bb45201b8d06bbfede1b376a29b079de32f6cdc1",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "bowed_strings",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bowed_strings_mvsep.ckpt",
+        "bytes": 77622628,
+        "checksum": "598a644d78dd6a385140b2134733eef42d9525805a84d55f224c80a1ca39ff61",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bowed_strings_mvsep_config.yaml",
+        "bytes": 1580,
+        "checksum": "6dec3da00bcd455c68c9bb04bc09e6b1f4ab474a",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77624208
+    },
+    {
+      "id": "brass",
+      "weight": {
+        "path": "v1/bs_mega_53stem_brass_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "e7d7bf86a031f3253019ff9dc424485d8085946fc428ab66522c568ee17b8027",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_brass_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "14ef57f750ae157a695f479cc935bb7acedaaa9d",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "cello",
+      "weight": {
+        "path": "v1/bs_mega_53stem_cello_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "bb6600ebc4dfe1d896d221073d114f51902a0b385afa23503034b9e8befba62c",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_cello_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "b91d8056ed5c576259b96062da3cc5359f1e8de2",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "clarinet",
+      "weight": {
+        "path": "v1/bs_mega_53stem_clarinet_mvsep.ckpt",
+        "bytes": 77619103,
+        "checksum": "3c4ac033c03727943a491e05dc9c9aebbd92afc3d8e83b3484881e9ed3f3dde7",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_clarinet_mvsep_config.yaml",
+        "bytes": 1570,
+        "checksum": "a649b85fb119f0a3da200b3c40a8ddab7861d49e",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "congas",
+      "weight": {
+        "path": "v1/bs_mega_53stem_congas_mvsep.ckpt",
+        "bytes": 77617693,
+        "checksum": "78885092a3fdf0f63f349ba34e8fa4ff1ef84959a7e94f544b437e2404af5287",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_congas_mvsep_config.yaml",
+        "bytes": 1566,
+        "checksum": "c216a8b42d3adefa804f94d64b5b52abd80c5cef",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619259
+    },
+    {
+      "id": "digital-piano",
+      "weight": {
+        "path": "v1/bs_mega_53stem_digital-piano_mvsep.ckpt",
+        "bytes": 77622628,
+        "checksum": "481c741ff36208c9b11860297ff5c9a502873662724d35a437bf64aaade890bd",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_digital-piano_mvsep_config.yaml",
+        "bytes": 1580,
+        "checksum": "d655c7bedb57a66e5249400f0d4d1720094e41fd",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77624208
+    },
+    {
+      "id": "dobro",
+      "weight": {
+        "path": "v1/bs_mega_53stem_dobro_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "a8b99b1b837f04200cbb5b99d33c0ea2ac46bb76424879385d8fc6dde8abfe0b",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_dobro_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "06c84248a952827754f31a7705d46e22ed6b90cc",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "double-bass",
+      "weight": {
+        "path": "v1/bs_mega_53stem_double-bass_mvsep.ckpt",
+        "bytes": 77621218,
+        "checksum": "731d7bcaae4ce02f5a19116c1b5c1004bfe7208d14cc6b93aaab2753c0302cfb",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_double-bass_mvsep_config.yaml",
+        "bytes": 1576,
+        "checksum": "c959eb27a27d568e99122867f73131041be45030",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "drums",
+      "weight": {
+        "path": "v1/bs_mega_53stem_drums_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "abfa64203417f0874aa3936320b1666364ef1badd917f5613a3017d0ea73c7a2",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_drums_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "cdf956eca7132071f06c74f018b67ba80d8b0388",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "electric-guitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_electric-guitar_mvsep.ckpt",
+        "bytes": 77624038,
+        "checksum": "cd506bfce9474f91a31001967f2c4935ce4e67f643da3df20d04058da927c553",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_electric-guitar_mvsep_config.yaml",
+        "bytes": 1584,
+        "checksum": "265a478e3c262290791c227c6a0f37d7f578c46f",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77625622
+    },
+    {
+      "id": "flute",
+      "weight": {
+        "path": "v1/bs_mega_53stem_flute_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "65dfa1e2c093165812cbdf8945715e7f71566bc3a8196ecad3edce1d29bb2e45",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_flute_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "165b61cc7ba07add2a732d5e87cdfb0ce847f94c",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "french-horn",
+      "weight": {
+        "path": "v1/bs_mega_53stem_french-horn_mvsep.ckpt",
+        "bytes": 77621218,
+        "checksum": "484b9e68a962891daffb1d671f847509a7e6c7f72de42c445c774881dfe2c420",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_french-horn_mvsep_config.yaml",
+        "bytes": 1576,
+        "checksum": "e560bcedeee3ddc4c879e90f9d44cacce2ef3356",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "glockenspiel",
+      "weight": {
+        "path": "v1/bs_mega_53stem_glockenspiel_mvsep.ckpt",
+        "bytes": 77621923,
+        "checksum": "dc18ac41fb8e0e1cf2dcb290d67c9e2f7a295f380e91864eda9f3cc805015231",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_glockenspiel_mvsep_config.yaml",
+        "bytes": 1578,
+        "checksum": "dc69af8e81d1426f55eef85e086ecff3cc3c65e8",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77623501
+    },
+    {
+      "id": "guitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_guitar_mvsep.ckpt",
+        "bytes": 77617693,
+        "checksum": "9e4524d60cc7eb01eae4048ecda6e3fbf9a9a404e12838f4ed58b8dfb733762d",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_guitar_mvsep_config.yaml",
+        "bytes": 1566,
+        "checksum": "cd0a71ced12bccc03cd209de29017e4fa2076943",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619259
+    },
+    {
+      "id": "harmonica",
+      "weight": {
+        "path": "v1/bs_mega_53stem_harmonica_mvsep.ckpt",
+        "bytes": 77619808,
+        "checksum": "90f9e794573c6492695efb18c5bd8967f28f7a1832aa9d237a2ebe53ffd7347c",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_harmonica_mvsep_config.yaml",
+        "bytes": 1572,
+        "checksum": "03ba1c8acfb998299d03d42c78c202f91f57ebe3",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77621380
+    },
+    {
+      "id": "harp",
+      "weight": {
+        "path": "v1/bs_mega_53stem_harp_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "5fde42f720b062391e5a62df3b0ab86244bb0a6471b4896db3677e88cbf90ef6",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_harp_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "91b3b3fbc9ccd7040d966a371610584ac9e0dac1",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "harpsichord",
+      "weight": {
+        "path": "v1/bs_mega_53stem_harpsichord_mvsep.ckpt",
+        "bytes": 77621218,
+        "checksum": "362f6c681a465aea21d3d4b8d8eba29e0e2ae41152bf0b8798201cfb00f32ee1",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_harpsichord_mvsep_config.yaml",
+        "bytes": 1576,
+        "checksum": "7555932788a848679f0a3c1df7efbcc54d25a6f0",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "hh",
+      "weight": {
+        "path": "v1/bs_mega_53stem_hh_mvsep.ckpt",
+        "bytes": 77614809,
+        "checksum": "94901a05d358f16b2de4064eec45f0947bb28bf239040a3fe79e2ae7fadd2984",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_hh_mvsep_config.yaml",
+        "bytes": 1558,
+        "checksum": "0dd40f5c73aa91c26e53a2a967e44de9b939e07c",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77616367
+    },
+    {
+      "id": "keys",
+      "weight": {
+        "path": "v1/bs_mega_53stem_keys_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "4bc2bde8c5b26d5e22720304deace45dfeaffb2d02dc07922a8f2be17d82c844",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_keys_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "b3ac15ad8cfcf963c7952fe90fd4843ccc091b12",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "kick",
+      "weight": {
+        "path": "v1/bs_mega_53stem_kick_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "ad914b83f9ef13bedf9608771f4f1a86174e27a84f7f235dc2d1dd91bab85fbc",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_kick_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "5dc89a40fe36dd9daa1d898592f259f5a8e0d200",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "lead-vocal",
+      "weight": {
+        "path": "v1/bs_mega_53stem_lead-vocal_mvsep.ckpt",
+        "bytes": 77620513,
+        "checksum": "7622ef83040f3a1e683d4250af10bcc52ebc36f0b4188ff2101d23c6dae310ce",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_lead-vocal_mvsep_config.yaml",
+        "bytes": 1574,
+        "checksum": "fb07cda1f65eadb0c2816fc13138edd075494610",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "mandolin",
+      "weight": {
+        "path": "v1/bs_mega_53stem_mandolin_mvsep.ckpt",
+        "bytes": 77619103,
+        "checksum": "1a5589c6ee51a8f3f87f68e48aaf41792c31f63d5c0eaba497ae0ecd4bb6a675",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_mandolin_mvsep_config.yaml",
+        "bytes": 1570,
+        "checksum": "d516d350f27212bcba3569b561a9fdd089881b3f",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "marimba",
+      "weight": {
+        "path": "v1/bs_mega_53stem_marimba_mvsep.ckpt",
+        "bytes": 77618398,
+        "checksum": "559835d6525898228f1ebcfac770ed44185217e547159a3c0f836391637fc3e8",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_marimba_mvsep_config.yaml",
+        "bytes": 1568,
+        "checksum": "b47e3f26b5fa6d53e0693bdd1b54e38bd7781244",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "oboe",
+      "weight": {
+        "path": "v1/bs_mega_53stem_oboe_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "7de88790f82b86af910f943f5a31f30237c48997011e6123c5922449f2a22285",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_oboe_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "bac85e677a4ab28371b8d647fd225f68511c4ce4",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "organ",
+      "weight": {
+        "path": "v1/bs_mega_53stem_organ_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "14c1c2a26fbd5061be85a31a170b6989ba296871895905ea6a1a048d200895ba",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_organ_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "d8fba8f3fd3212c3efc3ceb53b461ed72859d394",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "percussion",
+      "weight": {
+        "path": "v1/bs_mega_53stem_percussion_mvsep.ckpt",
+        "bytes": 77620513,
+        "checksum": "82187665185d51e6050b4d6afaf45e7acafd85d1eefffd86c47ac0aa601e089f",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_percussion_mvsep_config.yaml",
+        "bytes": 1574,
+        "checksum": "1d1315da94e06c0640f827ec7b36a9c88d9fb96e",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "piano",
+      "weight": {
+        "path": "v1/bs_mega_53stem_piano_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "8e58ad544386136028ec1f5764bb95a235235492144112d94782ff1333905fe9",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_piano_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "242e6113954fbf6b0a9a3d7918a3f8db668596e9",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "saxophone",
+      "weight": {
+        "path": "v1/bs_mega_53stem_saxophone_mvsep.ckpt",
+        "bytes": 77619808,
+        "checksum": "7027da3852828194f224f5f822582a38015b0afc452fe3e407229084c10de6a9",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_saxophone_mvsep_config.yaml",
+        "bytes": 1572,
+        "checksum": "8b0511cea3d79b85ba7b1a858de119c2c3dc49c8",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77621380
+    },
+    {
+      "id": "sitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_sitar_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "32683e3fcddebe1a5605fb5cffc76f8e89ec19d35f0ed49fe6f0f31476fd37d1",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_sitar_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "1b3ff2718c4a2b249cd78bacd863119709bc4ce5",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "snare",
+      "weight": {
+        "path": "v1/bs_mega_53stem_snare_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "c4cde14867f1311836d4aa07649e39df4df43c4ba98780783fe96cd4fe8293bf",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_snare_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "a737b57db39aa47e03046abbc1352a89bed0f5bb",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "strings",
+      "weight": {
+        "path": "v1/bs_mega_53stem_strings_mvsep.ckpt",
+        "bytes": 77618398,
+        "checksum": "2e8b76ff287f6127e1f3dd927b56946784d368d5a40e7f4f74b1373a647675c5",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_strings_mvsep_config.yaml",
+        "bytes": 1568,
+        "checksum": "bbf583ee4b1e04f3fa78b71128844c50ddad93b2",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "synth",
+      "weight": {
+        "path": "v1/bs_mega_53stem_synth_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "04749df7e2fab770a0d26bf9aa4850c1a6cd89547fc8bfe9c9d223602c0afb82",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_synth_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "278b7004b6ee0e20c120068e2a7107fd548ce9bc",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "tambourine",
+      "weight": {
+        "path": "v1/bs_mega_53stem_tambourine_mvsep.ckpt",
+        "bytes": 77620513,
+        "checksum": "8e22d5e185ab3db1262f1fc6b98eff22d9f97fc6f6e7f381cacf4624e6b69ad2",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_tambourine_mvsep_config.yaml",
+        "bytes": 1574,
+        "checksum": "80d7631275dee1859dea239523f74d8251477219",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "timpani",
+      "weight": {
+        "path": "v1/bs_mega_53stem_timpani_mvsep.ckpt",
+        "bytes": 77618398,
+        "checksum": "a2f4813c366246f3af010340d9f1c7854bcb48e3187e51065dfaff34ca515b54",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_timpani_mvsep_config.yaml",
+        "bytes": 1568,
+        "checksum": "a4e07fd8234787e699ecf3e753aaba883a552034",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "toms",
+      "weight": {
+        "path": "v1/bs_mega_53stem_toms_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "ceb45bbc16419363bb842484dadcc786a9ca290c4553c9eced0e98dc8f0f2458",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_toms_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "c2a7ac406caac6218004b92fe70f38aa223169c6",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "triangle",
+      "weight": {
+        "path": "v1/bs_mega_53stem_triangle_mvsep.ckpt",
+        "bytes": 77619103,
+        "checksum": "8e3692157868c6c7d0d4d6f36be263ed363e01cf66e4c97a400acb8c05ca250f",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_triangle_mvsep_config.yaml",
+        "bytes": 1570,
+        "checksum": "e4f4ab5eacf1e6fc3ad9501bff32cc83615a3845",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "trombone",
+      "weight": {
+        "path": "v1/bs_mega_53stem_trombone_mvsep.ckpt",
+        "bytes": 77619103,
+        "checksum": "f50d2e13e3e02cd74c3a5e084975d64a2a1f2090757c64495944a00823947f0d",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_trombone_mvsep_config.yaml",
+        "bytes": 1570,
+        "checksum": "b0ee5f8bc1bb26569037c2940e35aa0c59ff7e18",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "trumpet",
+      "weight": {
+        "path": "v1/bs_mega_53stem_trumpet_mvsep.ckpt",
+        "bytes": 77618398,
+        "checksum": "47530e8c6ee14eb3f4469efc629b0a3942cfff062f3a7eb788cb15355fd7b724",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_trumpet_mvsep_config.yaml",
+        "bytes": 1568,
+        "checksum": "d3a16c60533de8968ca7c9fd52ec23a4c8138421",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "tuba",
+      "weight": {
+        "path": "v1/bs_mega_53stem_tuba_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "0bb341f247101ba9e723a57089e0bdade930eab9fa09c349d1d36c3272bce34f",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_tuba_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "9cc290856b70adf3dbe6c55aaf913545402caf37",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "ukulele",
+      "weight": {
+        "path": "v1/bs_mega_53stem_ukulele_mvsep.ckpt",
+        "bytes": 77618398,
+        "checksum": "56eb5a2cb4c3a45be630c27b03815ead66e9a892922b84f9ac27eeb1fe0be2f0",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_ukulele_mvsep_config.yaml",
+        "bytes": 1568,
+        "checksum": "9bd9f510571605ddb3a565ffca7bcfa9c5cdbbbc",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "viola",
+      "weight": {
+        "path": "v1/bs_mega_53stem_viola_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "41d47d879a45fe94bba0db01476cce5e93395b06c756b98463b1eda95a468354",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_viola_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "b02454b65987a5003847b2d2300ed65872f6b4ba",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "violin",
+      "weight": {
+        "path": "v1/bs_mega_53stem_violin_mvsep.ckpt",
+        "bytes": 77617693,
+        "checksum": "43dd11a1816ba7c58d74f4de1a48ffc05b98fc499dfb24cf8e71c5ba729f2ada",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_violin_mvsep_config.yaml",
+        "bytes": 1566,
+        "checksum": "cd82ae0de1d47c7cdf7b21bb654a03024e231056",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77619259
+    },
+    {
+      "id": "vocal",
+      "weight": {
+        "path": "v1/bs_mega_53stem_vocal_mvsep.ckpt",
+        "bytes": 77616988,
+        "checksum": "917580ad6a1bab75d1b438db537ab98387839efb1809e5a50c78b7afdb96c8af",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_vocal_mvsep_config.yaml",
+        "bytes": 1564,
+        "checksum": "9ff6c611962c17e7f101a4af06f82f99518556e2",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "wind-chimes",
+      "weight": {
+        "path": "v1/bs_mega_53stem_wind-chimes_mvsep.ckpt",
+        "bytes": 77621218,
+        "checksum": "9bcb89de76916a44243e89ffd02051b527848afd8d2d618bd82e04de3bd861f3",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_wind-chimes_mvsep_config.yaml",
+        "bytes": 1576,
+        "checksum": "cf7d4976f65e6b4909ff8f9225d61c77485b3105",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "wind",
+      "weight": {
+        "path": "v1/bs_mega_53stem_wind_mvsep.ckpt",
+        "bytes": 77616219,
+        "checksum": "c2ae2f8b7aa777dba3596fa8a8c0aec42b1bf3c493ebdc9aaf2daeffcab9d025",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_wind_mvsep_config.yaml",
+        "bytes": 1562,
+        "checksum": "377a454fa82f908c8c90980a02747e73bf31cc73",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "woodwind",
+      "weight": {
+        "path": "v1/bs_mega_53stem_woodwind_mvsep.ckpt",
+        "bytes": 77619103,
+        "checksum": "9a1335d2cd21cd4fdd6964e7ab96c9e9776b2643644f763e2f59bb6c53d39060",
+        "checksumAlgorithm": "sha256"
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_woodwind_mvsep_config.yaml",
+        "bytes": 1570,
+        "checksum": "e0d4b3cead3caa15dd203218dc70dc8f9d246476",
+        "checksumAlgorithm": "git-sha1"
+      },
+      "totalBytes": 77620673
+    }
+  ]
+}

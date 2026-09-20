@@ -1,0 +1,163 @@
+[
+  {
+    "nodeId": "a2Q2pM",
+    "slug": "00-foundations",
+    "title": "视觉规范与组件",
+    "png": "exports/00-foundations.png",
+    "html": "screens/00-foundations.html"
+  },
+  {
+    "nodeId": "mnZnS",
+    "slug": "01-workbench-zh",
+    "title": "中文多轨工作台",
+    "png": "exports/01-workbench-zh.png",
+    "html": "screens/01-workbench-zh.html"
+  },
+  {
+    "nodeId": "aA8yW",
+    "slug": "02-workbench-en-compact",
+    "title": "英文紧凑工作台",
+    "png": "exports/02-workbench-en-compact.png",
+    "html": "screens/02-workbench-en-compact.html"
+  },
+  {
+    "nodeId": "u1mPk",
+    "slug": "03-import",
+    "title": "导入与最近项目",
+    "png": "exports/03-import.png",
+    "html": "screens/03-import.html"
+  },
+  {
+    "nodeId": "rAm7a",
+    "slug": "04-separation-setup",
+    "title": "选择声部弹窗",
+    "png": "exports/04-separation-setup.png",
+    "html": "screens/04-separation-setup.html"
+  },
+  {
+    "nodeId": "RJx43",
+    "slug": "05-model-download",
+    "title": "模型下载弹窗",
+    "png": "exports/05-model-download.png",
+    "html": "screens/05-model-download.html"
+  },
+  {
+    "nodeId": "UB3LA",
+    "slug": "06-processing",
+    "title": "工作区内分离进度",
+    "png": "exports/06-processing.png",
+    "html": "screens/06-processing.html"
+  },
+  {
+    "nodeId": "N9u2S",
+    "slug": "07-model-library",
+    "title": "模型管理",
+    "png": "exports/07-model-library.png",
+    "html": "screens/07-model-library.html"
+  },
+  {
+    "nodeId": "S5oPw",
+    "slug": "08-export",
+    "title": "导出音轨",
+    "png": "exports/08-export.png",
+    "html": "screens/08-export.html"
+  },
+  {
+    "nodeId": "WbwXU",
+    "slug": "09-preferences",
+    "title": "设置",
+    "png": "exports/09-preferences.png",
+    "html": "screens/09-preferences.html"
+  },
+  {
+    "nodeId": "ypPrG",
+    "slug": "10-recovery-zh",
+    "title": "中文恢复与完成",
+    "png": "exports/10-recovery-zh.png",
+    "html": "screens/10-recovery-zh.html"
+  },
+  {
+    "nodeId": "SiCnS",
+    "slug": "11-interaction-map",
+    "title": "交互规范",
+    "png": "exports/11-interaction-map.png",
+    "html": "screens/11-interaction-map.html"
+  },
+  {
+    "nodeId": "M2t1RC",
+    "slug": "12-recovery-en",
+    "title": "英文长文案状态",
+    "png": "exports/12-recovery-en.png",
+    "html": "screens/12-recovery-en.html"
+  },
+  {
+    "nodeId": "b1tMnW",
+    "slug": "13-history",
+    "title": "历史工作记录",
+    "png": "exports/13-history.png",
+    "html": "screens/13-history.html"
+  },
+  {
+    "nodeId": "T3jqc",
+    "slug": "14-history-states",
+    "title": "历史搜索与删除",
+    "png": "exports/14-history-states.png",
+    "html": "screens/14-history-states.html"
+  },
+  {
+    "nodeId": "ZVa6i",
+    "slug": "15-stem-search",
+    "title": "声部弹窗 · 搜索结果",
+    "png": "exports/15-stem-search.png",
+    "html": "screens/15-stem-search.html"
+  },
+  {
+    "nodeId": "J9CBcJ",
+    "slug": "16-stem-search-empty",
+    "title": "声部弹窗 · 无结果",
+    "png": "exports/16-stem-search-empty.png",
+    "html": "screens/16-stem-search-empty.html"
+  },
+  {
+    "nodeId": "VBIQr",
+    "slug": "17-brand",
+    "title": "品牌标志与应用图标",
+    "png": "exports/17-brand.png",
+    "html": "screens/17-brand.html"
+  },
+  {
+    "nodeId": "KrFw2",
+    "slug": "18-motion",
+    "title": "统一交互与动效",
+    "png": "exports/18-motion.png",
+    "html": "screens/18-motion.html"
+  },
+  {
+    "nodeId": "TrsWn",
+    "slug": "19-music-analysis",
+    "title": "BPM 与调性分析",
+    "png": "exports/19-music-analysis.png",
+    "html": "screens/19-music-analysis.html"
+  },
+  {
+    "nodeId": "u5qmD",
+    "slug": "20-beat-timeline",
+    "title": "节拍器与小节刻度",
+    "png": "exports/20-beat-timeline.png",
+    "html": "screens/20-beat-timeline.html"
+  },
+  {
+    "nodeId": "SJya2",
+    "slug": "21-imported-workspace",
+    "title": "导入后工作区",
+    "png": "exports/21-imported-workspace.png",
+    "html": "screens/21-imported-workspace.html"
+  },
+  {
+    "nodeId": "QmQ6L",
+    "slug": "22-secondary-separation",
+    "title": "二次分离与其它音轨",
+    "png": "exports/22-secondary-separation.png",
+    "html": "screens/22-secondary-separation.html"
+  }
+]

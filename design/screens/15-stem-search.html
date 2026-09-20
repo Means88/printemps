@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter%3Awght%40100..900&family=Noto+Sans+SC%3Awght%40100..900&family=Nunito+Sans%3Awght%40200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *, ::before, ::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body style="background-color: #14171B">
+    <div
+      data-pencil-name="15 · 声部搜索结果 / Stem search"
+      style="background-color: #14171B; box-sizing: border-box; height: 900px; overflow: hidden; position: relative; width: 1440px"
+    >
+      <div
+        data-pencil-name="Underlying workspace"
+        style="background-image: url('../../../x/stems/design/exports/21-imported-workspace.png'); background-position: center; background-repeat: no-repeat; background-size: contain; box-sizing: border-box; height: 900px; left: 0px; position: absolute; top: 0px; width: 1440px; z-index: 0"
+      ></div>
+      <div
+        data-pencil-name="Workspace dim overlay"
+        style="background-color: #00000088; box-sizing: border-box; height: 900px; left: 0px; position: absolute; top: 0px; width: 1440px; z-index: 1"
+      ></div>
+      <div
+        data-pencil-name="Separation flow dialog"
+        style="background-color: #1C2026; border-radius: 16px; box-sizing: border-box; height: 812px; left: 24px; outline-offset: -0.5px; outline: 1px solid #3A4350; position: absolute; top: 68px; width: 1392px; z-index: 2"
+      ></div>
+      <div
+        data-pencil-name="Section number"
+        style='box-sizing: border-box; color: #4C9AFF; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 48px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 80px; white-space: nowrap; z-index: 3'
+      >
+        选择声部 · 弹窗
+      </div>
+      <div
+        data-pencil-name="Heading"
+        style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 28px; font-style: normal; font-weight: 500; left: 48px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 119px; white-space: nowrap; z-index: 4'
+      >
+        你想听见哪些声部？
+      </div>
+      <div
+        data-pencil-name="Description"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 48px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 168px; white-space: nowrap; z-index: 5'
+      >
+        选择目标声部；开始后在工作区查看进度。
+      </div>
+      <div
+        data-pencil-name="Source"
+        style="background-color: #20262F; border-radius: 10px; box-sizing: border-box; height: 64px; left: 48px; position: absolute; top: 221px; width: 1344px; z-index: 6"
+      ></div>
+      <svg
+        data-pencil-name="Source icon"
+        data-icon-name="audio-lines"
+        data-icon-set="lucide"
+        viewBox="0 0 13.99993896484375 14"
+        preserveAspectRatio="xMidYMid meet"
+        xmlns="http://www.w3.org/2000/svg"
+        style="box-sizing: border-box; height: 24px; left: 68px; position: absolute; top: 240px; width: 24px; z-index: 7"
+      >
+        <path
+          d="M5.62939 1.20313q-0.09912 0.04443-0.1914 0.12988-0.08887 0.08203-0.1333 0.16406l-0.04102 0.09912 0 10.80762 0.04102 0.09912q0.12646 0.2666 0.42041 0.31445 0.29395 0.04785 0.50586-0.14697 0.08203-0.08545 0.14013-0.18115l0.04102-0.1128 0-10.75292-0.04102-0.1128q-0.09912-0.19482-0.29394-0.29394-0.08545-0.04102-0.21875-0.04102-0.1333 0-0.22901 0.02734z m4.77149 1.14843q-0.0957 0.01367-0.17432 0.05127-0.07519 0.03418-0.15381 0.12647-0.0752 0.08887-0.11962 0.17431l-0.02735 0.09571 0 7.86816 0.04102 0.08545q0.04443 0.06836 0.12646 0.15381 0.08545 0.08203 0.16065 0.12646 0.07861 0.04102 0.24609 0.04102 0.16748 0 0.24268-0.04102 0.07861-0.04443 0.16064-0.12646 0.08545-0.08545 0.12988-0.15381l0.04102-0.08545 0-7.04102q0-0.65967-0.02734-0.84082-0.01367-0.14014-0.05811-0.19482l-0.02734-0.02734q-0.09912-0.12646-0.2461-0.18116-0.14697-0.05811-0.31445-0.03076z m-7.05469 0.58789q-0.25293 0.08545-0.37939 0.30762l-0.04102 0.08545 0 6.69238 0.02735 0.0957q0.08545 0.21192 0.29394 0.32471 0.09912 0.04102 0.25293 0.04102 0.15381 0 0.25293-0.04102 0.2085-0.11279 0.29395-0.32471l0.02734-0.0957 0-6.69238-0.04102-0.08545q-0.09912-0.18115-0.28027-0.2666-0.08545-0.04102-0.22559-0.04785-0.14014-0.00684-0.18115 0.00683z m4.73047 1.16211q-0.18115 0.01367-0.31445 0.14698-0.1333 0.1333-0.17432 0.31445-0.01367 0.11279 0 2.21142l0 2.10205 0.04102 0.1128q0.05811 0.0957 0.14013 0.18115 0.21191 0.19482 0.50586 0.14697 0.29395-0.04785 0.42041-0.31445l0.04102-0.09912 0.01367-4.34082-0.04102-0.0957q-0.08545-0.19824-0.25293-0.30079-0.16748-0.10596-0.37939-0.06494z m-7.05469 1.16211q-0.14014 0.04102-0.2666 0.16065-0.12646 0.11963-0.15381 0.30078-0.02734 0.08545-0.02734 0.97412 0 0.88867 0.02734 0.98779 0.04102 0.23584 0.23584 0.36914 0.19824 0.1333 0.4375 0.09229 0.0957-0.01367 0.16406-0.04785 0.07178-0.0376 0.14014-0.1128 0.07178-0.07861 0.11621-0.16064l0.04102-0.09912 0.01367-1.73633q-0.01367-0.22217-0.02734-0.29736-0.01367-0.07861-0.07178-0.16407-0.08203-0.15381-0.2666-0.229-0.18115-0.07861-0.36231-0.0376z m11.67578 0q-0.08545 0.02734-0.18457 0.09229-0.0957 0.06152-0.15039 0.1333-0.0581 0.08203-0.07861 0.16064-0.02051 0.0752-0.03418 0.31446l0.01367 1.76367 0.04102 0.09912q0.04443 0.08203 0.11279 0.16064 0.07178 0.0752 0.14014 0.1128 0.07178 0.03418 0.16748 0.04785 0.23926 0.04102 0.43408-0.09229 0.19824-0.1333 0.25293-0.36914 0.01367-0.09912 0.01367-0.98096 0-0.88184-0.02734-0.98095-0.02734-0.16748-0.15381-0.29395-0.09912-0.11279-0.25293-0.15381-0.15381-0.04102-0.29395-0.01367z"
+          fill="#8EB8EB"
+        ></path>
+      </svg>
+      <div
+        data-pencil-name="Source name"
+        style='box-sizing: border-box; color: #E8ECF2; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 600; left: 108px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 233px; white-space: nowrap; z-index: 8'
+      >
+        分离来源：原始音频 · midnight-session.wav
+      </div>
+      <div
+        data-pencil-name="Source details"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; left: 108px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 258px; white-space: nowrap; z-index: 9'
+      >
+        03:24 · 44.1 kHz · Stereo
+      </div>
+      <div
+        data-pencil-name="Search"
+        style="background-color: #101419; border-radius: 10px; box-sizing: border-box; height: 38px; left: 48px; outline-offset: -0.5px; outline: 1px solid #3A414D; position: absolute; top: 317px; width: 608px; z-index: 10"
+      ></div>
+      <svg
+        data-pencil-name="Search icon"
+        data-icon-name="search"
+        data-icon-set="lucide"
+        viewBox="0 0 13.99993896484375 14"
+        preserveAspectRatio="xMidYMid meet"
+        xmlns="http://www.w3.org/2000/svg"
+        style="box-sizing: border-box; height: 16px; left: 62px; position: absolute; top: 328px; width: 16px; z-index: 11"
+      >
+        <path
+          d="M6.00537 1.17578q-0.04102 0.01367-0.23584 0.02734-0.57422 0.07178-1.16211 0.29053-0.58789 0.21533-1.09375 0.5503-0.39307 0.2666-0.74853 0.61181-0.35547 0.3418-0.62207 0.7041-0.646 0.92285-0.86817 2.03028-0.05811 0.28027-0.07861 0.46142-0.02051 0.18115-0.02051 0.57422 0 0.43408 0.02734 0.68018 0.02734 0.24268 0.12647 0.59472 0.19482 0.75537 0.60156 1.43555 0.40674 0.67676 0.96729 1.18262 0.40674 0.3623 0.81689 0.60156 0.41357 0.23926 0.91944 0.43408 1.06299 0.39307 2.21826 0.29395 1.15527-0.09912 2.1499-0.65967 0.12646-0.06836 0.33496-0.2085 0.2085-0.14014 0.29395-0.21191l0.05468-0.05469 1.10743 1.10742q1.12109 1.104 1.20312 1.15528 0.08545 0.04785 0.23926 0.04785 0.15381 0 0.23584-0.03418 0.08545-0.0376 0.18115-0.1333 0.09912-0.09912 0.1333-0.18115 0.0376-0.08545 0.0376-0.23926 0-0.15381-0.05127-0.23584-0.04785-0.08545-1.15186-1.20654l-1.10742-1.10743 0.05469-0.06836q0.05811-0.05469 0.19824-0.25293 0.82373-1.23047 0.89209-2.70703 0.07178-1.47656-0.63916-2.76513-0.5332-0.96729-1.42187-1.64405-0.88867-0.68018-1.95508-0.9331-0.29395-0.06836-0.54004-0.09571-0.24268-0.03076-0.60498-0.04443-0.43408 0-0.49219 0z m0.7417 1.17578q0.37939 0.01367 0.79297 0.14014 0.41357 0.12646 0.78955 0.32129 0.7417 0.39307 1.28857 1.08008 0.54687 0.68359 0.75538 1.49707 0.07178 0.28027 0.09228 0.49902 0.02051 0.21533 0.02051 0.50928 0 0.70068-0.19483 1.30224-0.39307 1.16211-1.33984 1.91065-0.94336 0.74853-2.16016 0.875-0.19824 0.01367-0.49218 0.00683-0.29395-0.00684-0.48877-0.03418-0.5332-0.08545-1.03907-0.30761-0.50244-0.22559-0.93652-0.56055-0.14014-0.12646-0.35205-0.3418-0.2085-0.21875-0.33154-0.37256-0.57422-0.76904-0.7417-1.69531-0.08545-0.43408-0.06494-0.90918 0.02051-0.4751 0.11963-0.89551 0.29395-1.14844 1.18945-1.95849 0.89551-0.81348 2.05762-1.02539 0.18115-0.02734 0.42041-0.04102 0.23926-0.01367 0.34863-0.01367l0.2666 0.01367z"
+          fill="#A0AAB8"
+        ></path>
+      </svg>
+      <div
+        data-pencil-name="Search placeholder"
+        style='box-sizing: border-box; color: #E8ECF2; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; left: 90px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 326px; white-space: nowrap; z-index: 12'
+      >
+        guitar
+      </div>
+      <div
+        data-pencil-name="乐队组合"
+        style="align-items: center; background-color: #287CDD; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 686px; outline-offset: -0.3px; outline: 0.6px solid #4998F1; position: absolute; top: 319px; width: 96px; z-index: 13"
+      >
+        <div
+          data-pencil-name="乐队组合 label"
+          style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+        >
+          乐队组合
+        </div>
+      </div>
+      <div
+        data-pencil-name="人声组合"
+        style="align-items: center; background-color: #292F38; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 792px; outline-offset: -0.3px; outline: 0.6px solid #3A4350; position: absolute; top: 319px; width: 96px; z-index: 14"
+      >
+        <div
+          data-pencil-name="人声组合 label"
+          style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+        >
+          人声组合
+        </div>
+      </div>
+      <div
+        data-pencil-name="清空选择"
+        style="align-items: center; background-color: #292F38; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 898px; outline-offset: -0.3px; outline: 0.6px solid #3A4350; position: absolute; top: 319px; width: 96px; z-index: 15"
+      >
+        <div
+          data-pencil-name="清空选择 label"
+          style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+        >
+          清空选择
+        </div>
+      </div>
+      <div
+        data-pencil-name="Selected category"
+        style="background-color: #253954; border-radius: 10px; box-sizing: border-box; height: 39px; left: 48px; position: absolute; top: 388px; width: 164px; z-index: 16"
+      ></div>
+      <div
+        data-pencil-name="Category 0"
+        style='box-sizing: border-box; color: #8FC0FF; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 64px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 397px; white-space: nowrap; z-index: 17'
+      >
+        全部声部
+      </div>
+      <div
+        data-pencil-name="Category 1"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 64px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 450px; white-space: nowrap; z-index: 18'
+      >
+        人声
+      </div>
+      <div
+        data-pencil-name="Category 2"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 64px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 503px; white-space: nowrap; z-index: 19'
+      >
+        鼓与打击乐
+      </div>
+      <div
+        data-pencil-name="Category 3"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 64px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 556px; white-space: nowrap; z-index: 20'
+      >
+        弦乐与吉他
+      </div>
+      <div
+        data-pencil-name="Category 4"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 64px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 609px; white-space: nowrap; z-index: 21'
+      >
+        键盘
+      </div>
+      <div
+        data-pencil-name="Category 5"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 64px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 662px; white-space: nowrap; z-index: 22'
+      >
+        管乐
+      </div>
+      <div
+        data-pencil-name="Stem option electric-guitar"
+        style="background-color: #243044; border-radius: 10px; box-sizing: border-box; height: 77px; left: 240px; outline-offset: -0.3px; outline: 0.6px solid #436FA4; position: absolute; top: 430px; width: 231px; z-index: 23"
+      >
+        <div
+          data-pencil-name="Selection box"
+          style="background-color: #3489EA; border-radius: 4px; box-sizing: border-box; height: 14px; left: 13px; position: absolute; top: 16px; width: 14px; z-index: 0"
+        ></div>
+        <svg
+          data-pencil-name="Checked"
+          data-icon-name="check"
+          data-icon-set="lucide"
+          viewBox="0 0 13.99993896484375 14"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          style="box-sizing: border-box; height: 12px; left: 14px; position: absolute; top: 17px; width: 12px; z-index: 1"
+        >
+          <path
+            d="M11.48096 2.95313q-0.07178 0.01367-0.12989 0.0581-0.05469 0.04102-3.07617 3.06592l-3.0249 3.00781-1.28857-1.28857q-1.28857-1.28516-1.38086-1.32618-0.08887-0.04443-0.22217-0.04443-0.1333 0-0.23242 0.0376-0.0957 0.03418-0.18799 0.11279-0.08887 0.0752-0.1333 0.1709-0.02734 0.07178-0.03418 0.11279-0.00684 0.04102-0.00684 0.14014l0 0.04102q-0.01367 0.11279 0.04102 0.19824 0.07178 0.10938 0.36572 0.40332 0.19482 0.21191 0.96729 0.98096l1.49707 1.48339q0.28027 0.2666 0.38964 0.33838 0.07178 0.05469 0.18457 0.04102l0.09571 0.01367q0.07178 0 0.14013-0.02734 0.08545-0.07178 0.32129-0.28711 0.23926-0.21875 0.79981-0.76221l2.2832-2.2832q2.08496-2.09863 2.7002-2.71387 0.61524-0.61865 0.64599-0.68701 0.04102-0.08545 0.04102-0.23926 0-0.09912-0.00684-0.14014-0.00684-0.04102-0.03418-0.11279-0.04443-0.08203-0.13672-0.16406-0.08887-0.08545-0.18115-0.11963-0.08887-0.0376-0.20849-0.0376-0.11963 0-0.18799 0.02734z"
+            fill="#FFFFFF"
+          ></path>
+        </svg>
+        <div
+          data-pencil-name="Stem label"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 12px; white-space: nowrap; z-index: 2'
+        >
+          电吉他
+        </div>
+        <div
+          data-pencil-name="Model ID"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 36px; white-space: nowrap; z-index: 3'
+        >
+          electric-guitar
+        </div>
+        <div
+          data-pencil-name="Cache status"
+          style="box-sizing: border-box; color: #A0AAB8; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 500; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 56px; white-space: nowrap; z-index: 4"
+        >
+          77.6 MB
+        </div>
+      </div>
+      <div
+        data-pencil-name="Stem option acoustic-guitar"
+        style="background-color: #1C2026; border-radius: 10px; box-sizing: border-box; height: 77px; left: 487px; outline-offset: -0.3px; outline: 0.6px solid #303640; position: absolute; top: 430px; width: 231px; z-index: 24"
+      >
+        <div
+          data-pencil-name="Selection box"
+          style="background-color: #333B48; border-radius: 4px; box-sizing: border-box; height: 14px; left: 13px; position: absolute; top: 16px; width: 14px; z-index: 0"
+        ></div>
+        <div
+          data-pencil-name="Stem label"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 12px; white-space: nowrap; z-index: 1'
+        >
+          木吉他
+        </div>
+        <div
+          data-pencil-name="Model ID"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 36px; white-space: nowrap; z-index: 2'
+        >
+          acoustic-guitar
+        </div>
+        <div
+          data-pencil-name="Cache status"
+          style="box-sizing: border-box; color: #A0AAB8; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 500; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 56px; white-space: nowrap; z-index: 3"
+        >
+          77.6 MB
+        </div>
+      </div>
+      <div
+        data-pencil-name="Summary"
+        style="background-color: #20262F; border-radius: 16px; box-sizing: border-box; height: 453px; left: 1028px; position: absolute; top: 317px; width: 364px; z-index: 25"
+      ></div>
+      <div
+        data-pencil-name="Summary title"
+        style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 17px; font-style: normal; font-weight: 500; left: 1052px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 340px; white-space: nowrap; z-index: 26'
+      >
+        分离摘要
+      </div>
+      <div
+        data-pencil-name="Summary count"
+        style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 28px; font-style: normal; font-weight: 500; left: 1052px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 392px; white-space: nowrap; z-index: 27'
+      >
+        5 个声部
+      </div>
+      <div
+        data-pencil-name="Cached summary"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 1052px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 439px; white-space: nowrap; z-index: 28'
+      >
+        3 个已缓存 · 2 个待下载
+      </div>
+      <div
+        data-pencil-name="Divider"
+        style="background-color: #303640; box-sizing: border-box; height: 1px; left: 1052px; position: absolute; top: 480px; width: 316px; z-index: 29"
+      ></div>
+      <div
+        data-pencil-name="Download amount label"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 1052px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 501px; white-space: nowrap; z-index: 30'
+      >
+        本次下载
+      </div>
+      <div
+        data-pencil-name="Download amount"
+        style="box-sizing: border-box; color: #E8ECF2; font-family: Inter, system-ui, sans-serif; font-size: 19px; font-style: normal; font-weight: 500; left: 1227px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 497px; white-space: nowrap; z-index: 31"
+      >
+        155.2 MB
+      </div>
+      <div
+        data-pencil-name="Model line"
+        style='box-sizing: border-box; color: #E8ECF2; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 600; left: 1052px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 552px; white-space: nowrap; z-index: 32'
+      >
+        BS-Roformer Mega · v1
+      </div>
+      <div
+        data-pencil-name="Device"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 1052px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 590px; white-space: nowrap; z-index: 33'
+      >
+        处理设备 自动选择
+      </div>
+      <div
+        data-pencil-name="Local notice"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 1052px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 642px; width: 300px; z-index: 34'
+      >
+        下载完成后自动开始分离。
+      </div>
+      <div
+        data-pencil-name="Divider"
+        style="background-color: #303640; box-sizing: border-box; height: 1px; left: 48px; position: absolute; top: 807px; width: 1344px; z-index: 35"
+      ></div>
+      <div
+        data-pencil-name="Footer note"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 48px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 836px; white-space: nowrap; z-index: 36'
+      >
+        已选声部在搜索和分类切换后保留。
+      </div>
+      <div
+        data-pencil-name="返回"
+        style="align-items: center; background-color: #292F38; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 1092px; outline-offset: -0.3px; outline: 0.6px solid #3A4350; position: absolute; top: 827px; width: 110px; z-index: 37"
+      >
+        <div
+          data-pencil-name="返回 label"
+          style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+        >
+          取消
+        </div>
+      </div>
+      <div
+        data-pencil-name="Start separation"
+        style="align-items: center; background-color: #287CDD; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 1216px; outline-offset: -0.3px; outline: 0.6px solid #4998F1; position: absolute; top: 827px; width: 176px; z-index: 38"
+      >
+        <div
+          data-pencil-name="开始分离 label"
+          style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+        >
+          开始分离
+        </div>
+      </div>
+      <div
+        data-pencil-name="Search result count"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 240px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 389px; white-space: nowrap; z-index: 39'
+      >
+        “guitar” 的搜索结果 · 3 个声部
+      </div>
+      <svg
+        data-pencil-name="Clear stem search"
+        data-icon-name="x"
+        data-icon-set="lucide"
+        viewBox="0 0 13.99993896484375 14"
+        preserveAspectRatio="xMidYMid meet"
+        xmlns="http://www.w3.org/2000/svg"
+        style="box-sizing: border-box; height: 16px; left: 625px; position: absolute; top: 328px; width: 16px; z-index: 40"
+      >
+        <path
+          d="M3.34619 2.93945q-0.25293 0.08545-0.37939 0.30762-0.04102 0.08545-0.04102 0.25293 0 0.16748 0.04102 0.25293 0.04443 0.08203 1.62353 1.66455l1.58252 1.58252-1.58252 1.58252q-1.5791 1.58252-1.62353 1.66797-0.04102 0.08203-0.04102 0.23584 0 0.15381 0.03418 0.23926 0.0376 0.08203 0.1333 0.18115 0.09912 0.0957 0.18115 0.1333 0.08545 0.03418 0.23926 0.03418 0.15381 0 0.23584-0.04102 0.08545-0.04443 1.66797-1.62353l1.58252-1.58252 1.58252 1.58252q1.58252 1.5791 1.66455 1.62353 0.08545 0.04102 0.23926 0.04102 0.15381 0 0.23584-0.03418 0.08545-0.0376 0.18115-0.1333 0.09912-0.09912 0.1333-0.18115 0.0376-0.08545 0.0376-0.23926 0-0.15381-0.04443-0.23584-0.04101-0.08545-1.62012-1.66797l-1.58252-1.58252 1.58252-1.58252q1.5791-1.58252 1.62012-1.66455 0.04443-0.08545 0.04443-0.25293 0-0.16748-0.04102-0.25293-0.09912-0.16748-0.28027-0.2666-0.05811-0.02734-0.09912-0.04102-0.04102-0.01367-0.15381-0.01367-0.11279 0-0.15381 0.01367-0.04101 0.01367-0.11279 0.04102-0.09912 0.05811-1.66455 1.62695l-1.56885 1.56543-2.82666-2.81299q-0.31104-0.29395-0.42041-0.37939-0.08545-0.05469-0.19824-0.05469l-0.02735 0q-0.14014 0-0.18115 0.01367z"
+          fill="#A0AAB8"
+        ></path>
+      </svg>
+      <div
+        data-pencil-name="Stem option guitar"
+        style="background-color: #1C2026; border-radius: 10px; box-sizing: border-box; height: 77px; left: 734px; outline-offset: -0.3px; outline: 0.6px solid #303640; position: absolute; top: 430px; width: 231px; z-index: 41"
+      >
+        <div
+          data-pencil-name="Selection checkbox"
+          style="background-color: #333B48; border-radius: 4px; box-sizing: border-box; height: 14px; left: 13px; position: absolute; top: 16px; width: 14px; z-index: 0"
+        ></div>
+        <div
+          data-pencil-name="Stem label"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 12px; white-space: nowrap; z-index: 1'
+        >
+          吉他
+        </div>
+        <div
+          data-pencil-name="Model ID"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 36px; white-space: nowrap; z-index: 2'
+        >
+          guitar
+        </div>
+        <div
+          data-pencil-name="Size"
+          style="box-sizing: border-box; color: #A0AAB8; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 500; left: 39px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 56px; white-space: nowrap; z-index: 3"
+        >
+          77.6 MB
+        </div>
+      </div>
+      <div
+        data-pencil-name="Selection persists"
+        style='box-sizing: border-box; color: #9EC9FF; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 400; left: 240px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 554px; white-space: nowrap; z-index: 42'
+      >
+        已选 5 个声部，其中 4 个不在当前搜索结果中。
+      </div>
+      <div
+        data-pencil-name="Search hint"
+        style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 240px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 588px; white-space: nowrap; z-index: 43'
+      >
+        支持中文名称、英文名称和类别；清空搜索可查看全部声部。
+      </div>
+    </div>
+  </body>
+</html>

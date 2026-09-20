@@ -1,0 +1,9 @@
+{
+  "repository": "ZFTurbo/Music-Source-Separation-Training",
+  "revision": "050cae7345f4ac1e1e27e066c2c5cdc0a2cdb679",
+  "files": [
+    "models/bs_roformer/bs_roformer.py",
+    "models/bs_roformer/attend.py",
+    "LICENSE"
+  ]
+}

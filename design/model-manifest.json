@@ -1,0 +1,645 @@
+{
+  "repository": "noblebarkrr/BS-Roformer-MVSep-Mega-53-stems",
+  "revision": "0677941f9cdfd891a6bc3336229244e197035327",
+  "directory": "v1",
+  "verifiedAt": "2026-09-19",
+  "unit": "decimal bytes",
+  "models": [
+    {
+      "id": "accordion",
+      "weight": {
+        "path": "v1/bs_mega_53stem_accordion_mvsep.ckpt",
+        "bytes": 77619808
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_accordion_mvsep_config.yaml",
+        "bytes": 1572
+      },
+      "totalBytes": 77621380
+    },
+    {
+      "id": "acoustic-guitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_acoustic-guitar_mvsep.ckpt",
+        "bytes": 77624038
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_acoustic-guitar_mvsep_config.yaml",
+        "bytes": 1584
+      },
+      "totalBytes": 77625622
+    },
+    {
+      "id": "back-vocal",
+      "weight": {
+        "path": "v1/bs_mega_53stem_back-vocal_mvsep.ckpt",
+        "bytes": 77620513
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_back-vocal_mvsep_config.yaml",
+        "bytes": 1574
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "banjo",
+      "weight": {
+        "path": "v1/bs_mega_53stem_banjo_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_banjo_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "bass",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bass_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bass_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "bassoon",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bassoon_mvsep.ckpt",
+        "bytes": 77618398
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bassoon_mvsep_config.yaml",
+        "bytes": 1568
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "bells",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bells_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bells_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "bowed_strings",
+      "weight": {
+        "path": "v1/bs_mega_53stem_bowed_strings_mvsep.ckpt",
+        "bytes": 77622628
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_bowed_strings_mvsep_config.yaml",
+        "bytes": 1580
+      },
+      "totalBytes": 77624208
+    },
+    {
+      "id": "brass",
+      "weight": {
+        "path": "v1/bs_mega_53stem_brass_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_brass_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "cello",
+      "weight": {
+        "path": "v1/bs_mega_53stem_cello_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_cello_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "clarinet",
+      "weight": {
+        "path": "v1/bs_mega_53stem_clarinet_mvsep.ckpt",
+        "bytes": 77619103
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_clarinet_mvsep_config.yaml",
+        "bytes": 1570
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "congas",
+      "weight": {
+        "path": "v1/bs_mega_53stem_congas_mvsep.ckpt",
+        "bytes": 77617693
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_congas_mvsep_config.yaml",
+        "bytes": 1566
+      },
+      "totalBytes": 77619259
+    },
+    {
+      "id": "digital-piano",
+      "weight": {
+        "path": "v1/bs_mega_53stem_digital-piano_mvsep.ckpt",
+        "bytes": 77622628
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_digital-piano_mvsep_config.yaml",
+        "bytes": 1580
+      },
+      "totalBytes": 77624208
+    },
+    {
+      "id": "dobro",
+      "weight": {
+        "path": "v1/bs_mega_53stem_dobro_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_dobro_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "double-bass",
+      "weight": {
+        "path": "v1/bs_mega_53stem_double-bass_mvsep.ckpt",
+        "bytes": 77621218
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_double-bass_mvsep_config.yaml",
+        "bytes": 1576
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "drums",
+      "weight": {
+        "path": "v1/bs_mega_53stem_drums_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_drums_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "electric-guitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_electric-guitar_mvsep.ckpt",
+        "bytes": 77624038
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_electric-guitar_mvsep_config.yaml",
+        "bytes": 1584
+      },
+      "totalBytes": 77625622
+    },
+    {
+      "id": "flute",
+      "weight": {
+        "path": "v1/bs_mega_53stem_flute_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_flute_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "french-horn",
+      "weight": {
+        "path": "v1/bs_mega_53stem_french-horn_mvsep.ckpt",
+        "bytes": 77621218
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_french-horn_mvsep_config.yaml",
+        "bytes": 1576
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "glockenspiel",
+      "weight": {
+        "path": "v1/bs_mega_53stem_glockenspiel_mvsep.ckpt",
+        "bytes": 77621923
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_glockenspiel_mvsep_config.yaml",
+        "bytes": 1578
+      },
+      "totalBytes": 77623501
+    },
+    {
+      "id": "guitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_guitar_mvsep.ckpt",
+        "bytes": 77617693
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_guitar_mvsep_config.yaml",
+        "bytes": 1566
+      },
+      "totalBytes": 77619259
+    },
+    {
+      "id": "harmonica",
+      "weight": {
+        "path": "v1/bs_mega_53stem_harmonica_mvsep.ckpt",
+        "bytes": 77619808
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_harmonica_mvsep_config.yaml",
+        "bytes": 1572
+      },
+      "totalBytes": 77621380
+    },
+    {
+      "id": "harp",
+      "weight": {
+        "path": "v1/bs_mega_53stem_harp_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_harp_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "harpsichord",
+      "weight": {
+        "path": "v1/bs_mega_53stem_harpsichord_mvsep.ckpt",
+        "bytes": 77621218
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_harpsichord_mvsep_config.yaml",
+        "bytes": 1576
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "hh",
+      "weight": {
+        "path": "v1/bs_mega_53stem_hh_mvsep.ckpt",
+        "bytes": 77614809
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_hh_mvsep_config.yaml",
+        "bytes": 1558
+      },
+      "totalBytes": 77616367
+    },
+    {
+      "id": "keys",
+      "weight": {
+        "path": "v1/bs_mega_53stem_keys_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_keys_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "kick",
+      "weight": {
+        "path": "v1/bs_mega_53stem_kick_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_kick_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "lead-vocal",
+      "weight": {
+        "path": "v1/bs_mega_53stem_lead-vocal_mvsep.ckpt",
+        "bytes": 77620513
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_lead-vocal_mvsep_config.yaml",
+        "bytes": 1574
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "mandolin",
+      "weight": {
+        "path": "v1/bs_mega_53stem_mandolin_mvsep.ckpt",
+        "bytes": 77619103
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_mandolin_mvsep_config.yaml",
+        "bytes": 1570
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "marimba",
+      "weight": {
+        "path": "v1/bs_mega_53stem_marimba_mvsep.ckpt",
+        "bytes": 77618398
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_marimba_mvsep_config.yaml",
+        "bytes": 1568
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "oboe",
+      "weight": {
+        "path": "v1/bs_mega_53stem_oboe_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_oboe_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "organ",
+      "weight": {
+        "path": "v1/bs_mega_53stem_organ_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_organ_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "percussion",
+      "weight": {
+        "path": "v1/bs_mega_53stem_percussion_mvsep.ckpt",
+        "bytes": 77620513
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_percussion_mvsep_config.yaml",
+        "bytes": 1574
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "piano",
+      "weight": {
+        "path": "v1/bs_mega_53stem_piano_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_piano_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "saxophone",
+      "weight": {
+        "path": "v1/bs_mega_53stem_saxophone_mvsep.ckpt",
+        "bytes": 77619808
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_saxophone_mvsep_config.yaml",
+        "bytes": 1572
+      },
+      "totalBytes": 77621380
+    },
+    {
+      "id": "sitar",
+      "weight": {
+        "path": "v1/bs_mega_53stem_sitar_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_sitar_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "snare",
+      "weight": {
+        "path": "v1/bs_mega_53stem_snare_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_snare_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "strings",
+      "weight": {
+        "path": "v1/bs_mega_53stem_strings_mvsep.ckpt",
+        "bytes": 77618398
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_strings_mvsep_config.yaml",
+        "bytes": 1568
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "synth",
+      "weight": {
+        "path": "v1/bs_mega_53stem_synth_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_synth_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "tambourine",
+      "weight": {
+        "path": "v1/bs_mega_53stem_tambourine_mvsep.ckpt",
+        "bytes": 77620513
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_tambourine_mvsep_config.yaml",
+        "bytes": 1574
+      },
+      "totalBytes": 77622087
+    },
+    {
+      "id": "timpani",
+      "weight": {
+        "path": "v1/bs_mega_53stem_timpani_mvsep.ckpt",
+        "bytes": 77618398
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_timpani_mvsep_config.yaml",
+        "bytes": 1568
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "toms",
+      "weight": {
+        "path": "v1/bs_mega_53stem_toms_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_toms_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "triangle",
+      "weight": {
+        "path": "v1/bs_mega_53stem_triangle_mvsep.ckpt",
+        "bytes": 77619103
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_triangle_mvsep_config.yaml",
+        "bytes": 1570
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "trombone",
+      "weight": {
+        "path": "v1/bs_mega_53stem_trombone_mvsep.ckpt",
+        "bytes": 77619103
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_trombone_mvsep_config.yaml",
+        "bytes": 1570
+      },
+      "totalBytes": 77620673
+    },
+    {
+      "id": "trumpet",
+      "weight": {
+        "path": "v1/bs_mega_53stem_trumpet_mvsep.ckpt",
+        "bytes": 77618398
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_trumpet_mvsep_config.yaml",
+        "bytes": 1568
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "tuba",
+      "weight": {
+        "path": "v1/bs_mega_53stem_tuba_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_tuba_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "ukulele",
+      "weight": {
+        "path": "v1/bs_mega_53stem_ukulele_mvsep.ckpt",
+        "bytes": 77618398
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_ukulele_mvsep_config.yaml",
+        "bytes": 1568
+      },
+      "totalBytes": 77619966
+    },
+    {
+      "id": "viola",
+      "weight": {
+        "path": "v1/bs_mega_53stem_viola_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_viola_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "violin",
+      "weight": {
+        "path": "v1/bs_mega_53stem_violin_mvsep.ckpt",
+        "bytes": 77617693
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_violin_mvsep_config.yaml",
+        "bytes": 1566
+      },
+      "totalBytes": 77619259
+    },
+    {
+      "id": "vocal",
+      "weight": {
+        "path": "v1/bs_mega_53stem_vocal_mvsep.ckpt",
+        "bytes": 77616988
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_vocal_mvsep_config.yaml",
+        "bytes": 1564
+      },
+      "totalBytes": 77618552
+    },
+    {
+      "id": "wind-chimes",
+      "weight": {
+        "path": "v1/bs_mega_53stem_wind-chimes_mvsep.ckpt",
+        "bytes": 77621218
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_wind-chimes_mvsep_config.yaml",
+        "bytes": 1576
+      },
+      "totalBytes": 77622794
+    },
+    {
+      "id": "wind",
+      "weight": {
+        "path": "v1/bs_mega_53stem_wind_mvsep.ckpt",
+        "bytes": 77616219
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_wind_mvsep_config.yaml",
+        "bytes": 1562
+      },
+      "totalBytes": 77617781
+    },
+    {
+      "id": "woodwind",
+      "weight": {
+        "path": "v1/bs_mega_53stem_woodwind_mvsep.ckpt",
+        "bytes": 77619103
+      },
+      "config": {
+        "path": "v1/bs_mega_53stem_woodwind_mvsep_config.yaml",
+        "bytes": 1570
+      },
+      "totalBytes": 77620673
+    }
+  ]
+}

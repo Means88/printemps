@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC%3Awght%40100..900&family=Nunito+Sans%3Awght%40200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      *, ::before, ::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body style="background-color: #14171B">
+    <div
+      data-pencil-name="14 · 历史搜索与删除 / History states"
+      style="background-color: #14171B; box-sizing: border-box; height: 1000px; overflow: hidden; position: relative; width: 1440px"
+    >
+      <div
+        data-pencil-name="Eyebrow"
+        style='box-sizing: border-box; color: #4C9AFF; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 600; left: 40px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 30px; white-space: nowrap; z-index: 0'
+      >
+        HISTORY / SEARCH &amp; DELETE
+      </div>
+      <div
+        data-pencil-name="Title"
+        style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 27px; font-style: normal; font-weight: 500; left: 40px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 71px; white-space: nowrap; z-index: 1'
+      >
+        搜索历史，清理不再需要的记录。
+      </div>
+      <div
+        data-pencil-name="History filtered state"
+        style="background-color: #202630; border-radius: 16px; box-sizing: border-box; height: 335px; left: 40px; position: absolute; top: 144px; width: 660px; z-index: 2"
+      >
+        <div
+          data-pencil-name="Heading"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 500; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 23px; white-space: nowrap; z-index: 0'
+        >
+          搜索结果
+        </div>
+        <div
+          data-pencil-name="Search value field"
+          style="background-color: #12161C; border-radius: 10px; box-sizing: border-box; height: 40px; left: 24px; outline-offset: -0.5px; outline: 1px solid #3A414D; position: absolute; top: 68px; width: 612px; z-index: 1"
+        ></div>
+        <svg
+          data-pencil-name="Search icon"
+          data-icon-name="search"
+          data-icon-set="lucide"
+          viewBox="0 0 13.99993896484375 14"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          style="box-sizing: border-box; height: 16px; left: 36px; position: absolute; top: 80px; width: 16px; z-index: 2"
+        >
+          <path
+            d="M6.00537 1.17578q-0.04102 0.01367-0.23584 0.02734-0.57422 0.07178-1.16211 0.29053-0.58789 0.21533-1.09375 0.5503-0.39307 0.2666-0.74853 0.61181-0.35547 0.3418-0.62207 0.7041-0.646 0.92285-0.86817 2.03028-0.05811 0.28027-0.07861 0.46142-0.02051 0.18115-0.02051 0.57422 0 0.43408 0.02734 0.68018 0.02734 0.24268 0.12647 0.59472 0.19482 0.75537 0.60156 1.43555 0.40674 0.67676 0.96729 1.18262 0.40674 0.3623 0.81689 0.60156 0.41357 0.23926 0.91944 0.43408 1.06299 0.39307 2.21826 0.29395 1.15527-0.09912 2.1499-0.65967 0.12646-0.06836 0.33496-0.2085 0.2085-0.14014 0.29395-0.21191l0.05468-0.05469 1.10743 1.10742q1.12109 1.104 1.20312 1.15528 0.08545 0.04785 0.23926 0.04785 0.15381 0 0.23584-0.03418 0.08545-0.0376 0.18115-0.1333 0.09912-0.09912 0.1333-0.18115 0.0376-0.08545 0.0376-0.23926 0-0.15381-0.05127-0.23584-0.04785-0.08545-1.15186-1.20654l-1.10742-1.10743 0.05469-0.06836q0.05811-0.05469 0.19824-0.25293 0.82373-1.23047 0.89209-2.70703 0.07178-1.47656-0.63916-2.76513-0.5332-0.96729-1.42187-1.64405-0.88867-0.68018-1.95508-0.9331-0.29395-0.06836-0.54004-0.09571-0.24268-0.03076-0.60498-0.04443-0.43408 0-0.49219 0z m0.7417 1.17578q0.37939 0.01367 0.79297 0.14014 0.41357 0.12646 0.78955 0.32129 0.7417 0.39307 1.28857 1.08008 0.54687 0.68359 0.75538 1.49707 0.07178 0.28027 0.09228 0.49902 0.02051 0.21533 0.02051 0.50928 0 0.70068-0.19483 1.30224-0.39307 1.16211-1.33984 1.91065-0.94336 0.74853-2.16016 0.875-0.19824 0.01367-0.49218 0.00683-0.29395-0.00684-0.48877-0.03418-0.5332-0.08545-1.03907-0.30761-0.50244-0.22559-0.93652-0.56055-0.14014-0.12646-0.35205-0.3418-0.2085-0.21875-0.33154-0.37256-0.57422-0.76904-0.7417-1.69531-0.08545-0.43408-0.06494-0.90918 0.02051-0.4751 0.11963-0.89551 0.29395-1.14844 1.18945-1.95849 0.89551-0.81348 2.05762-1.02539 0.18115-0.02734 0.42041-0.04102 0.23926-0.01367 0.34863-0.01367l0.2666 0.01367z"
+            fill="#A0AAB8"
+          ></path>
+        </svg>
+        <div
+          data-pencil-name="Search value"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 600; left: 65px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 79px; white-space: nowrap; z-index: 3'
+        >
+          midnight
+        </div>
+        <svg
+          data-pencil-name="Clear search"
+          data-icon-name="x"
+          data-icon-set="lucide"
+          viewBox="0 0 13.99993896484375 14"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          style="box-sizing: border-box; height: 16px; left: 607px; position: absolute; top: 80px; width: 16px; z-index: 4"
+        >
+          <path
+            d="M3.34619 2.93945q-0.25293 0.08545-0.37939 0.30762-0.04102 0.08545-0.04102 0.25293 0 0.16748 0.04102 0.25293 0.04443 0.08203 1.62353 1.66455l1.58252 1.58252-1.58252 1.58252q-1.5791 1.58252-1.62353 1.66797-0.04102 0.08203-0.04102 0.23584 0 0.15381 0.03418 0.23926 0.0376 0.08203 0.1333 0.18115 0.09912 0.0957 0.18115 0.1333 0.08545 0.03418 0.23926 0.03418 0.15381 0 0.23584-0.04102 0.08545-0.04443 1.66797-1.62353l1.58252-1.58252 1.58252 1.58252q1.58252 1.5791 1.66455 1.62353 0.08545 0.04102 0.23926 0.04102 0.15381 0 0.23584-0.03418 0.08545-0.0376 0.18115-0.1333 0.09912-0.09912 0.1333-0.18115 0.0376-0.08545 0.0376-0.23926 0-0.15381-0.04443-0.23584-0.04101-0.08545-1.62012-1.66797l-1.58252-1.58252 1.58252-1.58252q1.5791-1.58252 1.62012-1.66455 0.04443-0.08545 0.04443-0.25293 0-0.16748-0.04102-0.25293-0.09912-0.16748-0.28027-0.2666-0.05811-0.02734-0.09912-0.04102-0.04102-0.01367-0.15381-0.01367-0.11279 0-0.15381 0.01367-0.04101 0.01367-0.11279 0.04102-0.09912 0.05811-1.66455 1.62695l-1.56885 1.56543-2.82666-2.81299q-0.31104-0.29395-0.42041-0.37939-0.08545-0.05469-0.19824-0.05469l-0.02735 0q-0.14014 0-0.18115 0.01367z"
+            fill="#A0AAB8"
+          ></path>
+        </svg>
+        <div
+          data-pencil-name="Result count"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 129px; white-space: nowrap; z-index: 5'
+        >
+          找到 1 条记录
+        </div>
+        <div
+          data-pencil-name="Search result"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 20px; font-style: normal; font-weight: 600; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 179px; white-space: nowrap; z-index: 6'
+        >
+          Midnight Session
+        </div>
+        <div
+          data-pencil-name="Search result detail"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 219px; white-space: nowrap; z-index: 7'
+        >
+          midnight-session.wav · 5 个声部 · 已完成
+        </div>
+        <div
+          data-pencil-name="打开结果"
+          style="align-items: center; background-color: #287CDD; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 24px; outline-offset: -0.3px; outline: 0.6px solid #4998F1; position: absolute; top: 269px; width: 146px; z-index: 8"
+        >
+          <div
+            data-pencil-name="打开结果 label"
+            style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+          >
+            继续试听
+          </div>
+        </div>
+        <svg
+          data-pencil-name="Delete result"
+          data-icon-name="trash-2"
+          data-icon-set="lucide"
+          viewBox="0 0 13.99993896484375 14"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          style="box-sizing: border-box; height: 18px; left: 598px; position: absolute; top: 278px; width: 18px; z-index: 9"
+        >
+          <path
+            d="M5.65674 0.60156q-0.44775 0.04102-0.84766 0.32129-0.3999 0.28027-0.58105 0.70069-0.08545 0.21191-0.1128 0.37939-0.02734 0.16748-0.02734 0.50244l-0.01367 0.42041-2.4917 0-0.08545 0.05469q-0.18115 0.09912-0.28027 0.2666-0.04102 0.08545-0.04102 0.25293 0 0.16748 0.04102 0.24609 0.04443 0.0752 0.12646 0.16065 0.08545 0.08203 0.14697 0.11963 0.06494 0.03418 0.13331 0.04101 0.07178 0.00684 0.33496 0.00684l0.36572 0 0.01367 7.84082 0.04102 0.16748q0.07178 0.25293 0.18115 0.44092 0.11279 0.18799 0.29394 0.37256 0.18457 0.18115 0.37256 0.29394 0.18799 0.10938 0.44092 0.18115l0.16748 0.04102 6.33008 0 0.16748-0.04102q0.25293-0.07178 0.44092-0.18115 0.18799-0.11279 0.36914-0.29394 0.18457-0.18457 0.29394-0.37256 0.11279-0.18799 0.18457-0.44092l0.04102-0.16748 0.01367-7.84082 0.36572 0q0.26318 0 0.33155-0.00684 0.07178-0.00684 0.1333-0.04101 0.06494-0.0376 0.14697-0.11963 0.08545-0.08545 0.12647-0.16065 0.04443-0.07861 0.04443-0.24609 0-0.16748-0.04102-0.25293-0.09912-0.16748-0.28027-0.2666l-0.08545-0.05469-2.4917 0-0.01367-0.42041q0-0.28027-0.00684-0.37598-0.00684-0.09912-0.03418-0.21191-0.15381-0.56055-0.57422-0.91602-0.42041-0.35889-0.99462-0.41357-0.16748-0.01367-1.31592-0.00684-1.14844 0.00684-1.32959 0.02051z m2.74463 1.20313q0.19482 0.09912 0.29394 0.29394 0.02734 0.07178 0.03418 0.13672 0.00684 0.06152 0.02051 0.32813l0 0.3623-3.5 0 0-0.3623q0.01367-0.2666 0.02051-0.32813 0.00684-0.06494 0.03418-0.13672 0.08545-0.18115 0.22558-0.24951l0-0.01367q0.08203-0.04443 0.16748-0.05811 0.08545-0.01367 0.36573-0.02734l2.23877 0.01367 0.09912 0.04102z m2.09863 6.13183l-0.01367 3.86573-0.02735 0.08545q-0.12646 0.26318-0.37939 0.33496-0.08203 0.02734-3.07959 0.02734-2.99756 0-3.07959-0.02734-0.25293-0.07178-0.37939-0.33496l-0.02735-0.08545-0.01367-7.72803 7 0 0 3.8623z m-4.7749-2.08496q-0.12646 0.01367-0.2461 0.10596-0.11621 0.08887-0.17431 0.21533l-0.04102 0.09912-0.01367 3.33252q0.01367 0.3623 0.02734 0.4751 0.01367 0.08545 0.07178 0.15381l0.01367 0.02734q0.15381 0.21191 0.417 0.23242 0.2666 0.02051 0.46484-0.17431 0.12646-0.12646 0.15381-0.29395 0.02734-0.11279 0.02734-1.86279 0-1.75-0.02734-1.84912-0.04102-0.23584-0.23242-0.36914-0.18799-0.1333-0.44092-0.09229z m2.35156 0q-0.18115 0.01367-0.31445 0.14698-0.1333 0.1333-0.16065 0.31445-0.02734 0.09912-0.02734 1.86279 0 1.76367 0.02734 1.86279 0.02734 0.16748 0.15381 0.28028 0.19824 0.19482 0.46143 0.17431 0.2666-0.02051 0.42041-0.24609l0.01367-0.01367q0.05811-0.08203 0.07178-0.15381 0.01367-0.12646 0.02734-0.4751l0-3.2915-0.04102-0.0957q-0.08545-0.21191-0.25293-0.30762-0.16748-0.09912-0.37939-0.05811z"
+            fill="#A0AAB8"
+          ></path>
+        </svg>
+      </div>
+      <div
+        data-pencil-name="History no matches"
+        style="background-color: #202630; border-radius: 16px; box-sizing: border-box; height: 335px; left: 740px; position: absolute; top: 144px; width: 660px; z-index: 3"
+      >
+        <div
+          data-pencil-name="Heading"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 18px; font-style: normal; font-weight: 500; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 23px; white-space: nowrap; z-index: 0'
+        >
+          没有找到匹配记录
+        </div>
+        <div
+          data-pencil-name="Search value field"
+          style="background-color: #12161C; border-radius: 10px; box-sizing: border-box; height: 40px; left: 24px; outline-offset: -0.5px; outline: 1px solid #3A414D; position: absolute; top: 68px; width: 612px; z-index: 1"
+        ></div>
+        <div
+          data-pencil-name="Search value"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 13px; font-style: normal; font-weight: 600; left: 42px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 79px; white-space: nowrap; z-index: 2'
+        >
+          orchestra 2025
+        </div>
+        <svg
+          data-pencil-name="Clear search"
+          data-icon-name="x"
+          data-icon-set="lucide"
+          viewBox="0 0 13.99993896484375 14"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          style="box-sizing: border-box; height: 16px; left: 607px; position: absolute; top: 80px; width: 16px; z-index: 3"
+        >
+          <path
+            d="M3.34619 2.93945q-0.25293 0.08545-0.37939 0.30762-0.04102 0.08545-0.04102 0.25293 0 0.16748 0.04102 0.25293 0.04443 0.08203 1.62353 1.66455l1.58252 1.58252-1.58252 1.58252q-1.5791 1.58252-1.62353 1.66797-0.04102 0.08203-0.04102 0.23584 0 0.15381 0.03418 0.23926 0.0376 0.08203 0.1333 0.18115 0.09912 0.0957 0.18115 0.1333 0.08545 0.03418 0.23926 0.03418 0.15381 0 0.23584-0.04102 0.08545-0.04443 1.66797-1.62353l1.58252-1.58252 1.58252 1.58252q1.58252 1.5791 1.66455 1.62353 0.08545 0.04102 0.23926 0.04102 0.15381 0 0.23584-0.03418 0.08545-0.0376 0.18115-0.1333 0.09912-0.09912 0.1333-0.18115 0.0376-0.08545 0.0376-0.23926 0-0.15381-0.04443-0.23584-0.04101-0.08545-1.62012-1.66797l-1.58252-1.58252 1.58252-1.58252q1.5791-1.58252 1.62012-1.66455 0.04443-0.08545 0.04443-0.25293 0-0.16748-0.04102-0.25293-0.09912-0.16748-0.28027-0.2666-0.05811-0.02734-0.09912-0.04102-0.04102-0.01367-0.15381-0.01367-0.11279 0-0.15381 0.01367-0.04101 0.01367-0.11279 0.04102-0.09912 0.05811-1.66455 1.62695l-1.56885 1.56543-2.82666-2.81299q-0.31104-0.29395-0.42041-0.37939-0.08545-0.05469-0.19824-0.05469l-0.02735 0q-0.14014 0-0.18115 0.01367z"
+            fill="#A0AAB8"
+          ></path>
+        </svg>
+        <div
+          data-pencil-name="Empty explanation"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 146px; width: 600px; z-index: 4'
+        >
+          试试其他音频名称、文件名或声部。
+          <br />
+          搜索不会影响已保存的记录。
+        </div>
+        <div
+          data-pencil-name="清空搜索"
+          style="align-items: center; background-color: #287CDD; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 24px; outline-offset: -0.3px; outline: 0.6px solid #4998F1; position: absolute; top: 269px; width: 146px; z-index: 5"
+        >
+          <div
+            data-pencil-name="清空搜索 label"
+            style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+          >
+            清空搜索
+          </div>
+        </div>
+      </div>
+      <div
+        data-pencil-name="History delete confirmation"
+        style="background-color: #202630; border-radius: 16px; box-sizing: border-box; height: 403px; left: 40px; position: absolute; top: 523px; width: 660px; z-index: 4"
+      >
+        <svg
+          data-pencil-name="Warning icon"
+          data-icon-name="trash-2"
+          data-icon-set="lucide"
+          viewBox="0 0 13.99993896484375 14"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          style="box-sizing: border-box; height: 24px; left: 24px; position: absolute; top: 27px; width: 24px; z-index: 0"
+        >
+          <path
+            d="M5.65674 0.60156q-0.44775 0.04102-0.84766 0.32129-0.3999 0.28027-0.58105 0.70069-0.08545 0.21191-0.1128 0.37939-0.02734 0.16748-0.02734 0.50244l-0.01367 0.42041-2.4917 0-0.08545 0.05469q-0.18115 0.09912-0.28027 0.2666-0.04102 0.08545-0.04102 0.25293 0 0.16748 0.04102 0.24609 0.04443 0.0752 0.12646 0.16065 0.08545 0.08203 0.14697 0.11963 0.06494 0.03418 0.13331 0.04101 0.07178 0.00684 0.33496 0.00684l0.36572 0 0.01367 7.84082 0.04102 0.16748q0.07178 0.25293 0.18115 0.44092 0.11279 0.18799 0.29394 0.37256 0.18457 0.18115 0.37256 0.29394 0.18799 0.10938 0.44092 0.18115l0.16748 0.04102 6.33008 0 0.16748-0.04102q0.25293-0.07178 0.44092-0.18115 0.18799-0.11279 0.36914-0.29394 0.18457-0.18457 0.29394-0.37256 0.11279-0.18799 0.18457-0.44092l0.04102-0.16748 0.01367-7.84082 0.36572 0q0.26318 0 0.33155-0.00684 0.07178-0.00684 0.1333-0.04101 0.06494-0.0376 0.14697-0.11963 0.08545-0.08545 0.12647-0.16065 0.04443-0.07861 0.04443-0.24609 0-0.16748-0.04102-0.25293-0.09912-0.16748-0.28027-0.2666l-0.08545-0.05469-2.4917 0-0.01367-0.42041q0-0.28027-0.00684-0.37598-0.00684-0.09912-0.03418-0.21191-0.15381-0.56055-0.57422-0.91602-0.42041-0.35889-0.99462-0.41357-0.16748-0.01367-1.31592-0.00684-1.14844 0.00684-1.32959 0.02051z m2.74463 1.20313q0.19482 0.09912 0.29394 0.29394 0.02734 0.07178 0.03418 0.13672 0.00684 0.06152 0.02051 0.32813l0 0.3623-3.5 0 0-0.3623q0.01367-0.2666 0.02051-0.32813 0.00684-0.06494 0.03418-0.13672 0.08545-0.18115 0.22558-0.24951l0-0.01367q0.08203-0.04443 0.16748-0.05811 0.08545-0.01367 0.36573-0.02734l2.23877 0.01367 0.09912 0.04102z m2.09863 6.13183l-0.01367 3.86573-0.02735 0.08545q-0.12646 0.26318-0.37939 0.33496-0.08203 0.02734-3.07959 0.02734-2.99756 0-3.07959-0.02734-0.25293-0.07178-0.37939-0.33496l-0.02735-0.08545-0.01367-7.72803 7 0 0 3.8623z m-4.7749-2.08496q-0.12646 0.01367-0.2461 0.10596-0.11621 0.08887-0.17431 0.21533l-0.04102 0.09912-0.01367 3.33252q0.01367 0.3623 0.02734 0.4751 0.01367 0.08545 0.07178 0.15381l0.01367 0.02734q0.15381 0.21191 0.417 0.23242 0.2666 0.02051 0.46484-0.17431 0.12646-0.12646 0.15381-0.29395 0.02734-0.11279 0.02734-1.86279 0-1.75-0.02734-1.84912-0.04102-0.23584-0.23242-0.36914-0.18799-0.1333-0.44092-0.09229z m2.35156 0q-0.18115 0.01367-0.31445 0.14698-0.1333 0.1333-0.16065 0.31445-0.02734 0.09912-0.02734 1.86279 0 1.76367 0.02734 1.86279 0.02734 0.16748 0.15381 0.28028 0.19824 0.19482 0.46143 0.17431 0.2666-0.02051 0.42041-0.24609l0.01367-0.01367q0.05811-0.08203 0.07178-0.15381 0.01367-0.12646 0.02734-0.4751l0-3.2915-0.04102-0.0957q-0.08545-0.21191-0.25293-0.30762-0.16748-0.09912-0.37939-0.05811z"
+            fill="#EDA2A2"
+          ></path>
+        </svg>
+        <div
+          data-pencil-name="Title"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 21px; font-style: normal; font-weight: 500; left: 64px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 27px; white-space: nowrap; z-index: 1'
+        >
+          删除这条工作记录？
+        </div>
+        <div
+          data-pencil-name="Target"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Nunito Sans", system-ui, sans-serif; font-size: 17px; font-style: normal; font-weight: 600; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 92px; white-space: nowrap; z-index: 2'
+        >
+          Midnight Session
+        </div>
+        <div
+          data-pencil-name="Delete explanation"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; left: 24px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 129px; width: 600px; z-index: 3'
+        >
+          该记录将从历史列表移除。
+          <br />
+          原始音频始终保留。
+        </div>
+        <div
+          data-pencil-name="Delete files checkbox"
+          style="background-color: #303B4A; border-radius: 4px; box-sizing: border-box; height: 16px; left: 24px; position: absolute; top: 207px; width: 16px; z-index: 4"
+        ></div>
+        <div
+          data-pencil-name="Delete files option"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; left: 53px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 203px; white-space: nowrap; z-index: 5'
+        >
+          同时清理应用保存的试听结果
+        </div>
+        <div
+          data-pencil-name="Delete files helper"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; left: 53px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 237px; width: 558px; z-index: 6'
+        >
+          默认不勾选。原始音频及已导出的副本不会删除。
+        </div>
+        <div
+          data-pencil-name="取消"
+          style="align-items: center; background-color: #292F38; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 312px; outline-offset: -0.3px; outline: 0.6px solid #3A4350; position: absolute; top: 335px; width: 146px; z-index: 7"
+        >
+          <div
+            data-pencil-name="取消 label"
+            style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+          >
+            取消
+          </div>
+        </div>
+        <div
+          data-pencil-name="删除记录"
+          style="align-items: center; background-color: #963D49; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 472px; outline-offset: -0.3px; outline: 0.6px solid #BD6571; position: absolute; top: 335px; width: 164px; z-index: 8"
+        >
+          <div
+            data-pencil-name="删除记录 label"
+            style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+          >
+            删除记录
+          </div>
+        </div>
+      </div>
+      <div
+        data-pencil-name="History first use"
+        style="background-color: #202630; border-radius: 16px; box-sizing: border-box; height: 403px; left: 740px; position: absolute; top: 523px; width: 660px; z-index: 5"
+      >
+        <svg
+          data-pencil-name="History icon"
+          data-icon-name="history"
+          data-icon-set="lucide"
+          viewBox="0 0 13.99993896484375 14"
+          preserveAspectRatio="xMidYMid meet"
+          xmlns="http://www.w3.org/2000/svg"
+          style="box-sizing: border-box; height: 42px; left: 302px; position: absolute; top: 58px; width: 42px; z-index: 0"
+        >
+          <path
+            d="M1.59619 1.18945q-0.25293 0.08545-0.37939 0.30762l-0.04102 0.08545 0 3.26074 0.04102 0.07178q0.09912 0.19482 0.29394 0.28027l0.08545 0.04102 2.81299 0.01367q0.32129-0.01367 0.43408-0.02734 0.07178-0.01367 0.15381-0.07178l0.01367-0.01367q0.1709-0.12646 0.21875-0.31446 0.04785-0.18799-0.03076-0.37597-0.0752-0.19141-0.25635-0.28711-0.08545-0.05811-0.2666-0.07178-0.18115-0.01367-0.76904-0.01367l-0.7417 0 0.23584-0.22559q0.7417-0.72803 1.58252-1.09033 0.96729-0.42041 2.03027-0.42041 0.93994 0 1.76367 0.34863 1.17578 0.49219 1.93799 1.49366 0.76563 1.00146 0.91944 2.2456 0.02734 0.22559 0.02734 0.56738 0 0.3418-0.02734 0.56739-0.15381 1.2749-0.93995 2.29004-0.78271 1.01172-1.97216 1.49023-0.81348 0.32129-1.72266 0.32129-0.28027 0-0.46143-0.01367-0.18115-0.01367-0.46142-0.07178-0.88184-0.18115-1.64746-0.68359-0.76221-0.50586-1.28174-1.2544-0.51611-0.74854-0.71094-1.64404-0.08545-0.44775-0.09228-0.77588-0.00684-0.33154-0.0752-0.47168-0.08545-0.16748-0.2666-0.2666-0.05811-0.02734-0.09912-0.04102-0.04102-0.01367-0.15381-0.01367-0.11279 0-0.15381 0.01367-0.04102 0.01367-0.09912 0.04102-0.18115 0.09912-0.28027 0.2666-0.06836 0.15381-0.03418 0.65283 0.03418 0.49561 0.14697 0.9878 0.29395 1.18945 1.03564 2.15673 0.7417 0.96387 1.80469 1.5586 1.06641 0.59473 2.29688 0.70752 0.18457 0.01367 0.5332 0.01367 0.34863 0 0.5332-0.01367 1.38428-0.12646 2.54639-0.86817 1.14844-0.71436 1.86279-1.86279 0.7417-1.16211 0.86817-2.54639 0.01367-0.18457 0.01367-0.5332 0-0.34863-0.01367-0.5332-0.14014-1.52441-1.01514-2.78223-0.875-1.26123-2.2627-1.93457-0.58789-0.28027-1.14843-0.42041-0.55713-0.14014-1.2168-0.15381-1.09033-0.02734-2.1123 0.30762-0.71436 0.23926-1.30225 0.60498-0.58789 0.3623-1.14844 0.90918l-0.28027 0.26318 0-1.67822-0.04102-0.08545q-0.09912-0.18115-0.28027-0.2666-0.08545-0.04102-0.22559-0.04785-0.14014-0.00684-0.18115 0.00683z m5.26367 2.32422q-0.12646 0.02734-0.23925 0.1333-0.10938 0.10596-0.16749 0.23242l-0.02734 0.09571 0 3.19238 0.04102 0.08545q0.05811 0.0957 0.12646 0.15381 0.08545 0.06836 0.36572 0.22217l0.90918 0.46142q1.20312 0.60498 1.30225 0.63233 0.23926 0.06836 0.45459-0.05469 0.21533-0.12646 0.27344-0.3794 0.04102-0.18115-0.04102-0.37939-0.04443-0.0957-0.11621-0.15039-0.06836-0.05811-0.31787-0.18457l-1.83545-0.93652-0.01367-2.70362-0.04102-0.09912q-0.04443-0.08203-0.12304-0.15723-0.0752-0.07861-0.15381-0.11279-0.0752-0.0376-0.19483-0.05127-0.11621-0.01367-0.20166 0z"
+            fill="#7EAEEA"
+          ></path>
+        </svg>
+        <div
+          data-pencil-name="Empty title"
+          style='box-sizing: border-box; color: #E8ECF2; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 23px; font-style: normal; font-weight: 500; left: 221px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 140px; white-space: nowrap; z-index: 1'
+        >
+          还没有工作记录
+        </div>
+        <div
+          data-pencil-name="Empty message"
+          style='box-sizing: border-box; color: #A0AAB8; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 14px; font-style: normal; font-weight: 500; left: 76px; letter-spacing: 0px; line-height: normal; position: absolute; text-align: left; top: 191px; width: 520px; z-index: 2'
+        >
+          完成第一次分离后，音频和结果会显示在这里。
+        </div>
+        <div
+          data-pencil-name="新建分离"
+          style="align-items: center; background-color: #287CDD; border-radius: 9px; box-sizing: border-box; display: flex; flex-direction: row; gap: 6px; height: 34px; justify-content: center; left: 235px; outline-offset: -0.3px; outline: 0.6px solid #4998F1; position: absolute; top: 273px; width: 190px; z-index: 3"
+        >
+          <div
+            data-pencil-name="新建分离 label"
+            style='box-sizing: border-box; color: #F3F6FB; font-family: "Noto Sans SC", system-ui, sans-serif; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0px; line-height: normal; text-align: left; white-space: nowrap'
+          >
+            新建分离
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
