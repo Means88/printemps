@@ -214,3 +214,25 @@ header>button{flex-shrink:0}
 .project-row-copy strong{display:block;font-size:14px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .project-row-copy small{margin-top:10px}
 .project-row>svg:last-child{width:16px;height:16px;color:#a0aab8;flex-shrink:0}
+/* Pen 04: category rail, stem cards and download summary. */
+.separation-dialog[data-mode=setup]{width:min(1392px,calc(100vw - 48px));padding:24px}
+.separation-dialog[data-mode=setup]>p[id]{padding:16px 20px;background:#252d37;border-radius:12px;font-size:14px;margin:20px 0}
+.stem-search-tools{display:flex;align-items:center;gap:24px}
+.stem-search-tools>input{flex:1;min-width:0}
+.stem-search-tools .stem-presets{margin:0;flex-shrink:0}
+.stem-selection-body{display:grid;grid-template-columns:164px minmax(0,1fr) 260px;gap:24px;margin-top:24px}
+.stem-selection-body .stem-categories{align-content:start;flex-direction:column;flex-wrap:nowrap;margin:0;padding:0;background:none;gap:8px}
+.dialog .stem-selection-body .stem-categories button{justify-content:flex-start;min-height:38px;text-align:left;white-space:normal}
+.stem-selection-results{min-width:0}
+.stem-selection-results .stem-options{margin:0;max-height:38vh;padding:1px;gap:12px}
+.dialog .stem-options label{border:1px solid #303944;min-height:78px;cursor:pointer}
+.dialog .stem-options label:has(input:checked){background:#24364d;border-color:#5286ba}
+.stem-options .cached-model{color:#75d8bc}
+.stem-selection-results .selected-stems{max-height:60px}
+.stem-summary{background:#252d37;border-radius:14px;padding:24px;min-width:0}
+.stem-summary h3{font-size:16px;font-weight:500;margin:0 0 28px}
+.stem-summary>strong{display:block;font-size:26px;margin-bottom:12px}
+.stem-summary dl{border-top:1px solid #3a4350;padding-top:20px;margin:24px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stem-summary dt{font-size:12px;color:#a0aab8}.stem-summary dd{margin:0;font-size:18px;white-space:nowrap}
+.separation-dialog[data-mode=setup]>.dialog-actions{border-top:1px solid #3a4350;padding-top:18px;margin-top:24px}
+@media(max-width:1280px){.stem-selection-body{grid-template-columns:144px minmax(0,1fr) 220px;gap:20px}.stem-summary{padding:20px}}
