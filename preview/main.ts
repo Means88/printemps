@@ -7,6 +7,7 @@ import manifest from '../src/shared/model-manifest.json'
 import {stemColor} from '../src/shared/stems'
 import {applyProjectEdits} from '../src/shared/project-edits'
 const uuid=()=>crypto.randomUUID(),en=new URLSearchParams(location.search).get('lang')==='en'
+let failNextClipSave=new URLSearchParams(location.search).get('clipSaveFailure')==='once'
 let failNextSave=new URLSearchParams(location.search).get('saveFailure')==='once'
 const names=en?['Original','Lead vocal','Drums','Bass','Electric guitar','Other']:['原始音频','主唱','鼓组','贝斯','电吉他','其它']
 const stems=['original','lead-vocal','drums','bass','electric-guitar','other']
@@ -35,7 +36,7 @@ let cancelDownload:(()=>void)|undefined
 
 const partial:Partial<DesktopAPI>={
  platform:'browser',
- editClip:async(id,action)=>{const p=projects.find(p=>p.id===id)!;const next=applyClipAction(p,action,uuid);projects=projects.map(p=>p.id===id?next:p);return next},
+ editClip:async(id,action)=>{if(failNextClipSave){failNextClipSave=false;throw new Error('Fixture clip write failed')}const p=projects.find(p=>p.id===id)!;const next=applyClipAction(p,action,uuid);projects=projects.map(p=>p.id===id?next:p);return next},
  editTrack:async(id,action)=>{project=applyTrackAction(project,action);projects=projects.map(p=>p.id===id?project:p);return structuredClone(project)},
  listArchivedProjects:async()=>structuredClone(archived),restoreArchivedProject:async id=>{const item=archived.find(p=>p.archiveId===id);if(!item)throw new Error('Project not found');projects.push(item.project);archived=archived.filter(p=>p.archiveId!==id);return structuredClone(item.project)},purgeArchivedProject:async id=>{archived=archived.filter(p=>p.archiveId!==id)},
  listProjects:async()=>structuredClone(projects),openProject:async id=>{const found=projects.find(p=>p.id===id);if(!found)throw new Error('Project not found');project=found;return structuredClone(project)},importAudio:async()=>structuredClone(project),

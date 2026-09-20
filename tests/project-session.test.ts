@@ -97,3 +97,32 @@ test('queued field edits and a concurrent task commit survive reopening the on-d
   expect(reopened.tracks[0].gain).toBe(-6);expect(reopened.recommendation).toEqual({bpm:134});expect(reopened.monitor).toBe('stems')
  }finally{await rm(root,{recursive:true,force:true})}
 })
+
+test('closing waits for queued clip mutations after metadata saves and publishes their result',async()=>{
+ const base=make();let stored=base,visible:Project|null=null
+ let finish!:()=>void
+ const gate=new Promise<void>(resolve=>{finish=resolve})
+ const session=new ProjectSession({read:async()=>stored,save:async(_id,edits)=>stored=applyProjectEdits(stored,edits)},p=>{visible=p},()=>{},()=>{})
+ session.open(base);session.edit(base,{...base,name:'Renamed project'})
+ session.mutate(base.id,async()=>{await gate;return stored={...stored,tracks:stored.tracks.map((t,i)=>i===1?{...t,clips:[{id:'clip',name:'Renamed excerpt',start:1,end:2,offset:4}]}:t)}})
+ let closed=false
+ const closing=session.flush().then(()=>{closed=true})
+ await new Promise(resolve=>setTimeout(resolve,0))
+ expect(closed).toBe(false);expect(()=>session.open(null)).toThrow('Save pending')
+ finish();await closing
+ expect(visible!.name).toBe('Renamed project')
+ expect(visible!.tracks[1].clips?.[0]).toMatchObject({name:'Renamed excerpt',offset:4})
+ session.open(null);expect(visible).toBeNull()
+})
+
+test('failed clip mutations remain retryable and prevent closing instead of being discarded',async()=>{
+ const base=make();let fail=true,attempts=0,status:SaveState|undefined,visible:Project|null=null
+ const session=new ProjectSession({read:async()=>base,save:async()=>base},p=>{visible=p},s=>{status=s},()=>{})
+ session.open(base);session.mutate(base.id,async()=>{attempts++;if(fail)throw new Error('Clip write failed');return {...base,name:'Mutation saved'}})
+ await expect(session.flush()).rejects.toThrow('Clip write failed')
+ expect(status).toEqual({pending:1,error:'Clip write failed'})
+ expect(()=>session.open(null)).toThrow('Save pending')
+ fail=false;session.retry();await session.flush()
+ expect(attempts).toBe(2);expect(visible!.name).toBe('Mutation saved')
+ expect(status).toEqual({pending:0,error:null})
+})

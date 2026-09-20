@@ -5,10 +5,9 @@
 ## 版本与产物
 
 - 应用 0.1.1，仓库 `Means88/printemps`，应用标识 `com.means88.printemps`，统一 pnpm 11.6.0。
-- 最近普通测试：84 项通过、3 项条件跳过（`/tmp/printemps-keyboard-full-tests.log`）；当前代码已通过生产构建。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
+- 最近普通测试：87 项通过、3 项条件跳过（`/tmp/printemps-clip-save-tests.log`）；当前代码已通过生产构建。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
 - 本地完整包：`release/mac-arm64/Printemps.app`，功能内容截至 `9995a92`，包含模型管理、设置整页、历史分栏、剪辑导出弹窗与 IME 键盘保护。Developer ID 深度严格签名校验与包内真实分析通过；公证跳过。独立合成音频原生验收已验证中文剪辑改名、时间码裁剪及offset更新、0.75秒FLAC导出和重启恢复。
-- 最近三平台 CI：[35492712177](https://github.com/Means88/printemps/actions/runs/35492712177)，提交 `9e21ead`，Windows、macOS、Linux 安装包构建、包内分析及产物上传全部成功；产物保存7天。macOS 为 ad-hoc 签名。之后的模型管理/设置整页还原尚未纳入该次 CI。
-- 当前源 `9995a92` 的新 CI [35494871692](https://github.com/Means88/printemps/actions/runs/35494871692)：Windows/macOS已通过，Linux仍在构建；完成后更新产物证据。
+- 最近三平台 CI：[35494871692](https://github.com/Means88/printemps/actions/runs/35494871692)，提交 `9995a92`，Windows、macOS、Linux 安装包构建、包内分析及产物上传全部成功；产物保存7天。macOS 为 ad-hoc 签名。后续剪辑名搜索与剪辑保存队列修正尚未纳入该次 CI/本机包。
 - 未创建公开 Release，未完成真实发布服务、安装升级或公证验收。
 
 ## 需求与证据

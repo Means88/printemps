@@ -1,7 +1,7 @@
 import type {Project} from '../shared/domain'
 import {applyProjectEdits,diffProjectEdits,type ProjectEdits} from '../shared/project-edits'
 
-type PendingEdit={projectId:string;edits:ProjectEdits}
+type PendingEdit={projectId:string;edits:ProjectEdits}|{projectId:string;operation:()=>Promise<Project>}
 export type SaveState={pending:number;error:string|null}
 type Persistence={read:(id:string)=>Promise<Project>;save:(id:string,edits:ProjectEdits)=>Promise<Project>}
 
@@ -25,6 +25,11 @@ export class ProjectSession {
   this.current=applyProjectEdits(this.current,edits);this.publish(this.current);this.emitStatus()
   this.enqueue(()=>this.persist(),'save')
  }
+ mutate(projectId:string,operation:()=>Promise<Project>){
+  if(this.current?.id!==projectId)return
+  this.pending.push({projectId,operation});this.emitStatus()
+  this.enqueue(()=>this.persist(),'save')
+ }
  private emitStatus(){this.status({pending:this.pending.length,error:this.failure?.message??null})}
  private enqueue(operation:()=>Promise<void>,source:'save'|'refresh'){
   this.queue=this.queue.then(operation).catch(error=>this.report(error instanceof Error?error:new Error(String(error)),source))
@@ -32,14 +37,14 @@ export class ProjectSession {
  private accept(project:Project){
   if(this.current?.id!==project.id)return
   let next=project
-  for(const pending of this.pending)if(pending.projectId===project.id)next=applyProjectEdits(next,pending.edits)
+  for(const pending of this.pending)if(pending.projectId===project.id&&'edits' in pending)next=applyProjectEdits(next,pending.edits)
   this.current=next;this.publish(next)
  }
  private async persist(){
   try{
    while(this.pending.length){
     const pending=this.pending[0]
-    const saved=await this.persistence.save(pending.projectId,pending.edits)
+    const saved='operation' in pending?await pending.operation():await this.persistence.save(pending.projectId,pending.edits)
     this.pending.shift();this.accept(saved)
    }
    this.failure=null
