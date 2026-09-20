@@ -1,3 +1,4 @@
+import {isCompositionKey} from './keyboard'
 import {formatTimecode} from '../shared/timecode'
 import {ClipLane} from './clip-lane'
 import {trackClips,timelineDuration,type ClipAction} from '../shared/clips'
@@ -37,7 +38,7 @@ function Name({value,onSave,en}:{value:string;onSave:(v:string)=>void;en:boolean
   if(name!==value)onSave(name)
   setEditing(false);setInvalid(false)
  }
- return editing?<span className="name-editor" onClick={e=>e.stopPropagation()}><input className="name-input" aria-label={en?'Name':'名称'} aria-invalid={invalid} aria-describedby={invalid?errorId:undefined} autoFocus value={draft} maxLength={80} onChange={e=>{setDraft(e.target.value);setInvalid(false)}} onBlur={save} onKeyDown={e=>{if(e.nativeEvent.isComposing)return;if(e.key==='Enter')save();if(e.key==='Escape'){cancelled.current=true;setEditing(false);setDraft(value);setInvalid(false)}}}/>{invalid&&<small id={errorId} role="alert">{en?'Enter a name.':'名称不能为空。'}</small>}</span>:<button className="name" onClick={e=>{e.stopPropagation();cancelled.current=false;setDraft(value);setInvalid(false);setEditing(true)}}><span className="name-label" title={value}>{value}</span><Pencil1Icon/></button>
+ return editing?<span className="name-editor" onClick={e=>e.stopPropagation()}><input className="name-input" aria-label={en?'Name':'名称'} aria-invalid={invalid} aria-describedby={invalid?errorId:undefined} autoFocus value={draft} maxLength={80} onChange={e=>{setDraft(e.target.value);setInvalid(false)}} onBlur={save} onKeyDown={e=>{if(isCompositionKey(e.nativeEvent))return;if(e.key==='Enter')save();if(e.key==='Escape'){cancelled.current=true;setEditing(false);setDraft(value);setInvalid(false)}}}/>{invalid&&<small id={errorId} role="alert">{en?'Enter a name.':'名称不能为空。'}</small>}</span>:<button className="name" onClick={e=>{e.stopPropagation();cancelled.current=false;setDraft(value);setInvalid(false);setEditing(true)}}><span className="name-label" title={value}>{value}</span><Pencil1Icon/></button>
 }
 
 function App(){

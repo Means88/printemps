@@ -1,11 +1,11 @@
 # Printemps 当前实现与验收状态
 
-截至 2026-09-20，功能代码提交 `70ca3b5`。**整体验收尚未完成**。本文件是当前状态入口；历史运行过程与日志见 [acceptance.md](acceptance.md)，其中旧结论不代表当前版本。
+截至 2026-09-20，包含历史页/剪辑导出还原与 IME 键盘修正。**整体验收尚未完成**。本文件是当前状态入口；历史运行过程与日志见 [acceptance.md](acceptance.md)，其中旧结论不代表当前版本。
 
 ## 版本与产物
 
 - 应用 0.1.1，仓库 `Means88/printemps`，应用标识 `com.means88.printemps`，统一 pnpm 11.6.0。
-- 最近普通测试：78 项通过、3 项条件跳过（`/tmp/printemps-current-full-tests.log`）；最近导出恢复代码已通过生产构建。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
+- 最近普通测试：84 项通过、3 项条件跳过（`/tmp/printemps-keyboard-full-tests.log`）；当前代码已通过生产构建。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
 - 本地完整包：`release/mac-arm64/Printemps.app`，功能内容截至 `82518c3`，包含模型管理、设置整页与历史剪辑导出。Developer ID 深度严格签名校验与包内真实分析通过；公证跳过。独立合成音频原生验收已验证历史片段导出范围与目录选择取消。
 - 最近三平台 CI：[35492712177](https://github.com/Means88/printemps/actions/runs/35492712177)，提交 `9e21ead`，Windows、macOS、Linux 安装包构建、包内分析及产物上传全部成功；产物保存7天。macOS 为 ad-hoc 签名。之后的模型管理/设置整页还原尚未纳入该次 CI。
 - 未创建公开 Release，未完成真实发布服务、安装升级或公证验收。

@@ -462,3 +462,11 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Renderer matches the 520px rounded dialog, colored clip identity, timecode duration, WAV/FLAC moving selection and actual sample rate/channel metadata. Native radio inputs retain keyboard arrow navigation. Action buttons remain right-aligned with one primary.
 - English 1280×800 preview verified keyboard WAV→FLAC switching, corresponding output specification, ENOSPC guidance, retry success with Open folder, and subsequent cancellation clearing old success/shortcut state. No horizontal or vertical clipping in the dialog's failure state. Fixture exports do not write actual files; prior native clip-range evidence remains separate.
 - Seven tests passed across export, export-folders, error-guidance and timecode; production build passed (`/tmp/printemps-clip-export-build.log`). Native package and remote CI predate these renderer/design updates.
+
+## 2026-09-20 — IME-safe editing and dialog shortcuts
+
+- Found clip-name/source-range key handlers committed or cancelled edits without checking composition, unlike the project-name editor. Added a shared composition-key guard, including legacy keyCode 229 candidate confirmation, across names, trims, faders, music parameter inputs, clip keyboard actions and workspace shortcuts.
+- Installed Radix dismissable-layer handles Escape at document capture without a composition check. All application dialogs now prevent dismissal when that Escape belongs to an IME candidate; ordinary Escape remains unchanged.
+- Regression tests invoke real ClipDetails field handlers: composing Enter/Escape preserves all three fields and focus, ordinary Enter dispatches the finished name, and ordinary Escape restores the prior value without saving. Dialog dismissal and global shortcut guards also covered. These tests simulate DOM event properties; real OS candidate-window behavior remains to be verified natively.
+- Browser Chinese fixture: Enter saved 主唱副歌, Escape restored it after an unsaved edit; normal Escape from BPM input closed the music dialog. No real music or user project altered.
+- Full suite: 84 passed, 3 conditional skipped (`/tmp/printemps-keyboard-full-tests.log`). Production build passed (`/tmp/printemps-keyboard-build.log`). No visual design changes in this correction.
