@@ -315,3 +315,51 @@ header>button{flex-shrink:0}
 .history-result-clip>span{border-left:3px solid;padding-left:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .history-result-clip[aria-pressed=true]{background:#24364d;border-color:#4975a5}
 .history-result-clip[aria-pressed=true] small{color:#70abec}
+
+/* Pen 13: full-width project records, column-aligned rows and clip inspector. */
+.history-page{width:100%;padding:24px 48px 40px}
+.titlebar[data-page=history]{--content-gutter:48px}
+.history-heading{margin:22px 0 44px;gap:16px}
+.history-heading h1{margin:0;font-size:28px}
+.history-heading>button:last-child{margin-left:auto;min-width:112px;font-size:12px}
+.history-heading>.icon{background:transparent;border-color:transparent;padding:6px}
+.history-content.has-inspector{grid-template-columns:minmax(0,1fr) 362px;gap:32px}
+.history-browser{min-width:0}
+.history-tools{flex-wrap:wrap;gap:12px}
+.history-search{position:relative;flex:1 1 100%;min-width:0}
+.history-search>svg{position:absolute;left:16px;top:14px;width:16px;height:16px;color:#a0aab8}
+.history-search input{width:100%;height:44px;padding-left:44px;font-size:12px}
+.history-tools select{font-size:12px;height:34px;padding:4px 12px;max-width:none}
+.history-tools select:last-child{margin-left:auto}
+.history-count{margin:24px 0 18px}
+.history-table-heading,.history-page .history-row{display:grid;grid-template-columns:minmax(0,1fr) 130px 92px 128px;gap:12px;align-items:center}
+.history-table-heading{padding:10px 16px 14px;border-bottom:1px solid #303640;color:#a0aab8;font-size:12px}
+.history-page .history-list{margin-top:14px}
+.history-page .history-row{background:#1c2128;border:0;border-radius:10px;margin:0 0 10px;padding:12px 16px;min-height:90px}
+.history-page .history-row-selected{background:#253247}
+.history-page .history-row .history-project,.history-page .history-info{display:flex;align-items:center;gap:16px;padding:0;text-align:left;background:transparent;border:0;min-width:0}
+.history-project>div,.history-info>div{min-width:0}
+.history-project>svg,.history-info>svg{flex-shrink:0;width:24px;height:24px;color:#8db5df}
+.history-page .history-row strong{font-size:15px;font-weight:500}
+.history-page .history-row small{font-size:11px;margin-top:6px}
+.history-row time,.history-task-state{font-size:12px;color:#a0aab8}
+.history-task-state[data-state=complete]{color:#65d8be}
+.history-task-state:is([data-state=running],[data-state=interrupted]){color:#eabb64}
+.history-task-state[data-state=failed]{color:#ee91a6}
+.history-row-actions{display:flex;justify-content:flex-end;align-items:center;gap:12px}
+.history-row-actions button{font-size:12px;padding:8px 16px}
+.history-row-actions .icon{padding:6px;background:transparent;border-color:transparent;color:#a0aab8}
+.history-row-actions .icon:hover{background:#354253;color:#e8ecf2}
+.history-pagination{margin-top:32px}
+.history-pagination button{font-size:12px;min-width:100px}
+.history-inspector{margin-top:0;border:0;min-height:548px;padding:24px;border-radius:18px}
+.history-inspector h3{margin-top:24px;padding-top:24px}
+.history-inspector li{margin:4px 0}
+.history-inspector-actions{margin-top:24px;gap:16px}
+.history-inspector-actions>button{font-size:12px;min-height:36px}
+@media(max-width:1280px){.history-page{padding:24px 32px}.titlebar[data-page=history]{--content-gutter:32px}.history-content.has-inspector{grid-template-columns:minmax(0,1fr) 300px;gap:24px}.history-table-heading,.history-page .history-row{grid-template-columns:minmax(0,1fr) 108px 80px 114px;gap:8px}.history-row-actions{gap:6px}.history-heading{margin-bottom:32px}.history-inspector{padding:20px}}
+@media(max-width:900px){.history-content.has-inspector{grid-template-columns:1fr}.history-inspector{position:static;min-height:0}.history-page{padding:24px}.titlebar[data-page=history]{--content-gutter:24px}.history-table-heading{display:none}.history-page .history-row{grid-template-columns:minmax(0,1fr) auto}.history-row time,.history-task-state{display:none}}
+.history-search{flex:1 1 220px}
+.history-page .history-row>button.history-project:first-child{padding:0}
+.history-row-actions svg{width:18px;height:18px}
+@media(max-width:1280px){.history-heading{margin-top:16px;margin-bottom:24px}.history-count{margin:18px 0 12px}.history-page .history-row{min-height:84px}.history-inspector h2{margin-top:16px}.history-inspector h3{margin-top:18px;padding-top:18px}.history-inspector-actions{margin-top:18px}.history-pagination{margin-top:24px}}

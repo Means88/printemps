@@ -3,3 +3,5 @@
 画板 13（b1tMnW）更新：结果按可用剪辑展示，点击一项出现蓝色圆角选中态及片段时长；选中后才启用“导出剪辑”。切换项目清除选择。隐藏音轨或隐藏来源片段不作为可导出结果列出。同轨多个片段分别列出。导出使用该片段源范围，不添加时间轴前导静音。
 
 示例选中“主唱 · 副歌”，时长 00:24.000；数字为设计示例。
+
+Implementation follow-through: the history renderer now follows board 13's wide record rows, update/status/action columns and right inspector, with 48px page/titlebar gutters (32px at 1280). Existing result/task filters and deletion recovery are retained. Clip export selection resets when the inspected project changes. Verified in Chinese 1440×900 and English 1440×900/1280×800 browser fixtures; native packaging is tracked separately in `docs/acceptance.md`.
