@@ -4,7 +4,7 @@
 
 ## 版本与产物
 
-- **新构建**：`049a3d8` 的本机 Developer ID 签名包（`release/mac-arm64/Printemps.app`，`app.asar` SHA256 `2004d3f9…d5cf6`）已完成深度严格签名校验与包内真实分析。三平台 CI [35501611789](https://github.com/Means88/printemps/actions/runs/35501611789) 在同一 SHA 全部通过并上传安装包。此包包含全部画板对齐改动、IPC 前缀剥离与取消提示修复；18799ce 上通过的原生回归未在此包重跑，只复核了变更屏幕。
+- **新构建**：`049a3d8` 的本机 Developer ID 签名包（`release/mac-arm64/Printemps.app`，`app.asar` SHA256 `2004d3f9…d5cf6`）已完成深度严格签名校验与包内真实分析。三平台 CI [35501611789](https://github.com/Means88/printemps/actions/runs/35501611789) 在同一 SHA 全部通过并上传安装包。此包包含全部画板对齐改动、IPC 前缀剥离与取消提示修复；18799ce 上通过的原生回归未在此包重跑，只复核了变更屏幕。其后的用户反馈修正（hover 内边距、时间码防抖、拖动定位、分离中定位、进度行、侧栏动画）尚未进包。
 
 - 应用 0.1.1，仓库 `Means88/printemps`，应用标识 `com.means88.printemps`，统一 pnpm 11.6.0。
 - 最近普通测试：96 项通过、3 项条件跳过（含新增 IPC 前缀剥离、取消提示、可见音轨计数、错误标题回归；18799ce 时为 92 项，`/tmp/printemps-18799-full-tests.log`）；当前源码已通过生产构建与签名打包；退出保护另通过真实子进程、真实分析及签名包内强杀实测。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
