@@ -78,7 +78,7 @@ export class AudioEngine {
   this.started=start;this.running=true
   const audible=new Set(audibleTracks(this.project).map(t=>t.id))
   for(const t of this.project.tracks)this.startVoice(t,start,this.offset,audible.has(t.id))
-  this.resetClicks();this.timer=setInterval(()=>this.tick(),25)
+  this.resetClicks();this.tick();this.timer=setInterval(()=>this.tick(),25)
  }
  private startVoice(track:Track,at:number,position:number,audible:boolean){
   const buffer=this.buffers.get(`${this.project?.id}/${track.id}`);if(!buffer)return

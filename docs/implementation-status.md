@@ -23,7 +23,7 @@
 
 ## 已运行检查
 
-- 普通测试当前为 56 项通过，2 项真实运行时测试默认跳过。
+- 普通测试当前为 57 项通过，2 项真实运行时测试默认跳过。
 - `npm run build`：类型检查与生产构建通过。
 - `npm run test:integration`：真实内置分析通过；也曾用打包资源通过。
 - `PRINTEMPS_TEST_MODELS=.cache/model-reference/v1 npx vitest run tests/progressive-runtime.test.ts`：真实鼓组→贝斯逐步分离、贝斯→鼓组二次分离及导出副本隔离通过。合成输入仅证明管线，不是歌曲质量或性能基准。

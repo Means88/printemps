@@ -3,6 +3,7 @@ import {AudioEngine} from '../src/renderer/audio-engine'
 import type {Project,Track} from '../src/shared/domain'
 
 class Node {
+ frequency={value:0}
  gain={value:1,setTargetAtTime:vi.fn(),setValueAtTime:vi.fn(),exponentialRampToValueAtTime:vi.fn()}
  connect=vi.fn(()=>this)
  disconnect=vi.fn()
@@ -20,9 +21,11 @@ class Context {
  destination=new Node()
  voices:Node[]=[]
  gains:Node[]=[]
+ oscillators:Node[]=[]
  constructor(){Context.current=this}
  createGain(){const gain=new Node();this.gains.push(gain);return gain}
  createBufferSource(){const voice=new Node();this.voices.push(voice);return voice}
+ createOscillator(){const voice=new Node();this.oscillators.push(voice);return voice}
  decodeAudioData=vi.fn(async()=>({duration:10}))
  resume=vi.fn(async()=>{})
  close=vi.fn(async()=>{})
@@ -38,6 +41,22 @@ beforeEach(()=>{
 afterEach(async()=>{await engine.dispose();vi.unstubAllGlobals();vi.useRealTimers()})
 function deferDecode(){let finish!:(buffer:{duration:number})=>void;Context.current.decodeAudioData.mockImplementationOnce(()=>new Promise(resolve=>{finish=resolve}));return()=>finish({duration:10})}
 async function waitForDecode(count:number){await vi.waitFor(()=>expect(Context.current.decodeAudioData).toHaveBeenCalledTimes(count))}
+
+test('metronome schedules the first downbeat with audio before timer callbacks can arrive late',async()=>{
+ const song={...project([track('original','original')]),metronome:true,music:{bpm:120,key:null,meter:'4/4' as const,firstBeat:0}}
+ await engine.load(song);await engine.play()
+ const context=Context.current
+ expect(context.oscillators).toHaveLength(1)
+ expect(context.oscillators[0].frequency.value).toBe(1500)
+ expect(context.oscillators[0].start).toHaveBeenCalledWith(.025)
+ expect(context.voices[0].start).toHaveBeenCalledWith(.025,0)
+ context.currentTime=.04;await vi.advanceTimersByTimeAsync(25)
+ expect(context.oscillators).toHaveLength(1)
+ await engine.seek(.5)
+ expect(context.oscillators).toHaveLength(2)
+ expect(context.oscillators[1].frequency.value).toBe(800)
+ expect(context.oscillators[1].start).toHaveBeenCalledWith(.065)
+})
 
 test('progressive results keep existing voices running and join at the current clock position',async()=>{
  const original=track('original','original'),a=track('a'),b=track('b')
