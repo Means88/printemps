@@ -537,3 +537,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Removed the assumption that `tracks[0]` is the original audio from recent-project duration and first-beat validation/input bounds. Both now use the same `timelineDuration` as playback; setting first beat to the playhead also clamps to that range.
 - Regression covers a 0.5-second separated excerpt placed before the 4-second original, both orderings, and a result offset extending the project to 5.5 seconds. This is a behavior correction with no design/layout changes.
 - Full current source validation: 90 tests passed, 3 conditional integration tests skipped (`/tmp/printemps-save-track-full-tests.log`); production build passed (`/tmp/printemps-save-track-build.log`). These checks cover the accumulated save-recovery/track-queue changes; they do not establish physical audio or other-platform GUI acceptance.
+
+### 2026-09-20 · Current-source packaging dispatched
+
+- Pushed `9564b9800a815aa46807678c136a796814cdae6d` to `codex/clip-workspace-desktop`.
+- Started three-platform workflow https://github.com/Means88/printemps/actions/runs/35496338370 on that exact SHA. Initial API snapshot confirmed all three jobs in progress; success is not yet claimed.
+- Local `pnpm package` is running against the same source; `/tmp/printemps-current-package.log` reached Developer ID signing. The existing `release/mac-arm64/Printemps.app` is being replaced and must not be treated as a verified artifact until this run completes and signature / bundled-analysis checks pass.
