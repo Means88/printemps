@@ -58786,6 +58786,859 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "f2cQi",
+      "x": 4800,
+      "y": 12792,
+      "name": "33 · 发布页 / Website printemps.dev",
+      "clip": true,
+      "width": 1440,
+      "height": 1720,
+      "fill": "#14171B",
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "I7H2FT",
+          "x": 0,
+          "y": 0,
+          "name": "Nav",
+          "width": 1440,
+          "height": 72,
+          "fill": "#101216",
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "eS4mR",
+              "x": 0,
+              "y": 71,
+              "name": "Divider",
+              "width": 1440,
+              "height": 1,
+              "fill": "#303640",
+              "layout": "none"
+            },
+            {
+              "type": "rectangle",
+              "id": "gDZ0U",
+              "x": 96,
+              "y": 14,
+              "name": "Wordmark",
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "brand/printemps-wordmark-v2.png",
+                "mode": "fit"
+              },
+              "width": 132,
+              "height": 44
+            },
+            {
+              "type": "text",
+              "id": "tTAwp",
+              "x": 1040,
+              "y": 27,
+              "name": "Nav 功能",
+              "fill": "#E8ECF2",
+              "content": "功能",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "dQsnV",
+              "x": 1124,
+              "y": 27,
+              "name": "Nav 下载",
+              "fill": "#E8ECF2",
+              "content": "下载",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "zVEFY",
+              "x": 1208,
+              "y": 27,
+              "name": "Nav 隐私",
+              "fill": "#E8ECF2",
+              "content": "隐私",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "aTPee",
+              "x": 1292,
+              "y": 27,
+              "name": "Nav GitHub",
+              "fill": "#A0AAB8",
+              "content": "GitHub",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "q6LiA",
+              "x": 1376,
+              "y": 27,
+              "name": "Lang toggle",
+              "fill": "#70ABEC",
+              "content": "EN",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OrJCe",
+          "x": 0,
+          "y": 72,
+          "name": "Hero",
+          "width": 1440,
+          "height": 560,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "k0xKWZ",
+              "x": 96,
+              "y": 96,
+              "name": "Eyebrow",
+              "fill": "#70ABEC",
+              "content": "LOCAL STEM SEPARATION",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "THdxC",
+              "x": 96,
+              "y": 132,
+              "name": "Headline",
+              "fill": "#E8ECF2",
+              "content": "从一首歌，听见每个声部。",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 30,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "xIQaq",
+              "x": 96,
+              "y": 190,
+              "name": "Sub",
+              "fill": "#A0AAB8",
+              "textGrowth": "fixed-width",
+              "width": 520,
+              "content": "在你的电脑上分离人声、鼓、贝斯、吉他等 53 种声部，逐轨试听、剪辑、导出。音频与结果只留在本机。",
+              "lineHeight": 1.7,
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "h4vJtk",
+              "x": 96,
+              "y": 282,
+              "name": "Download primary",
+              "width": 220,
+              "height": 44,
+              "fill": "#287CDD",
+              "cornerRadius": 8,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xRxFh",
+                  "x": 30,
+                  "y": 13,
+                  "name": "Download label",
+                  "fill": "#F3F6FB",
+                  "content": "下载 macOS 版（Apple 芯片）",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DWjxE",
+              "x": 328,
+              "y": 282,
+              "name": "Other platforms",
+              "width": 120,
+              "height": 44,
+              "fill": "#292F38",
+              "cornerRadius": 8,
+              "stroke": "#3A4350",
+              "strokeWidth": 1,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LvAPl",
+                  "x": 26,
+                  "y": 13,
+                  "name": "Other label",
+                  "fill": "#E8ECF2",
+                  "content": "其它平台",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "P1Al8",
+              "x": 96,
+              "y": 342,
+              "name": "Version line",
+              "fill": "#8593A7",
+              "content": "v0.1.1 · macOS 14+ · Windows 10+ · Linux x64 · 开源，GitHub 发布",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "BGiu9",
+              "x": 680,
+              "y": 88,
+              "name": "Screenshot frame",
+              "clip": true,
+              "width": 664,
+              "height": 416,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "stroke": "#303640",
+              "strokeWidth": 1,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "p7FFpH",
+                  "x": 24,
+                  "y": 20,
+                  "name": "Screenshot note",
+                  "fill": "#8593A7",
+                  "content": "工作台截图（site/assets/workspace.png）",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OD71D",
+          "x": 96,
+          "y": 664,
+          "name": "Features",
+          "width": 1248,
+          "height": 300,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "b40DQ",
+              "x": 0,
+              "y": 0,
+              "name": "Features title",
+              "fill": "#E8ECF2",
+              "content": "功能",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 22,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "IdOPB",
+              "x": 0,
+              "y": 56,
+              "name": "Feature 53 种声部按需下载",
+              "width": 288,
+              "height": 180,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "o1NN9",
+                  "x": 24,
+                  "y": 24,
+                  "name": "Feature title",
+                  "fill": "#E8ECF2",
+                  "content": "53 种声部按需下载",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "fHOio",
+                  "x": 24,
+                  "y": 60,
+                  "name": "Feature body",
+                  "fill": "#A0AAB8",
+                  "textGrowth": "fixed-width",
+                  "width": 240,
+                  "content": "只下载你要的模型，缓存可管理。BS-Roformer Mega v1。",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "v2f6z",
+              "x": 312,
+              "y": 56,
+              "name": "Feature 非破坏式剪辑",
+              "width": 288,
+              "height": 180,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "b7gRzF",
+                  "x": 24,
+                  "y": 24,
+                  "name": "Feature title",
+                  "fill": "#E8ECF2",
+                  "content": "非破坏式剪辑",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "NKvW7",
+                  "x": 24,
+                  "y": 60,
+                  "name": "Feature body",
+                  "fill": "#A0AAB8",
+                  "textGrowth": "fixed-width",
+                  "width": 240,
+                  "content": "分割、裁剪、只分离选中的片段；结果保留时间轴位置。",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fShoN",
+              "x": 624,
+              "y": 56,
+              "name": "Feature 逐轨试听",
+              "width": 288,
+              "height": 180,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vvhWc",
+                  "x": 24,
+                  "y": 24,
+                  "name": "Feature title",
+                  "fill": "#E8ECF2",
+                  "content": "逐轨试听",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "M9YWE",
+                  "x": 24,
+                  "y": 60,
+                  "name": "Feature body",
+                  "fill": "#A0AAB8",
+                  "textGrowth": "fixed-width",
+                  "width": 240,
+                  "content": "原始/分轨互斥试听、S/M、增益、循环、节拍器与 BPM/调性分析。",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "o16zS",
+              "x": 936,
+              "y": 56,
+              "name": "Feature 独立导出",
+              "width": 288,
+              "height": 180,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XTQbG",
+                  "x": 24,
+                  "y": 24,
+                  "name": "Feature title",
+                  "fill": "#E8ECF2",
+                  "content": "独立导出",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 16,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "T0lIYo",
+                  "x": 24,
+                  "y": 60,
+                  "name": "Feature body",
+                  "fill": "#A0AAB8",
+                  "textGrowth": "fixed-width",
+                  "width": 240,
+                  "content": "WAV/FLAC 24-bit；按剪辑范围或按项目时间轴补空白导出。",
+                  "lineHeight": 1.7,
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "EF9hc",
+          "x": 96,
+          "y": 1000,
+          "name": "Downloads",
+          "width": 1248,
+          "height": 360,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "BrIF4",
+              "x": 0,
+              "y": 0,
+              "name": "Downloads title",
+              "fill": "#E8ECF2",
+              "content": "下载",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 22,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "QgMRV",
+              "x": 0,
+              "y": 40,
+              "name": "Downloads sub",
+              "fill": "#A0AAB8",
+              "content": "安装包来自 GitHub Releases，页面自动读取最新版本。",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "yMg8K",
+              "x": 0,
+              "y": 84,
+              "name": "Download macOS",
+              "width": 400,
+              "height": 240,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wcSuH",
+                  "x": 24,
+                  "y": 24,
+                  "name": "Platform",
+                  "fill": "#E8ECF2",
+                  "content": "macOS",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 18,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "x5ppde",
+                  "x": 24,
+                  "y": 56,
+                  "name": "Requirement",
+                  "fill": "#A0AAB8",
+                  "content": "Apple 芯片 · macOS 14 或更高",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "urylz",
+                  "x": 24,
+                  "y": 80,
+                  "name": "Size",
+                  "fill": "#8593A7",
+                  "content": "DMG · 约 760 MB",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "U1bNSf",
+                  "x": 24,
+                  "y": 116,
+                  "name": "Get macOS",
+                  "width": 120,
+                  "height": 36,
+                  "fill": "#287CDD",
+                  "cornerRadius": 8,
+                  "stroke": "#4998F1",
+                  "strokeWidth": 0.6,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "z3MFi",
+                      "x": 36,
+                      "y": 10,
+                      "name": "Get label",
+                      "fill": "#F3F6FB",
+                      "content": "下载",
+                      "fontFamily": "Noto Sans SC",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "r7sOzh",
+                  "x": 24,
+                  "y": 172,
+                  "name": "Note",
+                  "fill": "#A0AAB8",
+                  "textGrowth": "fixed-width",
+                  "width": 352,
+                  "content": "首次打开需在“系统设置 › 隐私与安全性”放行（尚未公证）。",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "h5ejx",
+              "x": 416,
+              "y": 84,
+              "name": "Download Windows",
+              "width": 400,
+              "height": 240,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "pdXqY",
+                  "x": 24,
+                  "y": 24,
+                  "name": "Platform",
+                  "fill": "#E8ECF2",
+                  "content": "Windows",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 18,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "F6w38",
+                  "x": 24,
+                  "y": 56,
+                  "name": "Requirement",
+                  "fill": "#A0AAB8",
+                  "content": "x64 · Windows 10 或更高",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "QWwzt",
+                  "x": 24,
+                  "y": 80,
+                  "name": "Size",
+                  "fill": "#8593A7",
+                  "content": "安装程序 · 约 340 MB",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "TRT67",
+                  "x": 24,
+                  "y": 116,
+                  "name": "Get Windows",
+                  "width": 120,
+                  "height": 36,
+                  "fill": "#292F38",
+                  "cornerRadius": 8,
+                  "stroke": "#3A4350",
+                  "strokeWidth": 0.6,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "S8US7D",
+                      "x": 36,
+                      "y": 10,
+                      "name": "Get label",
+                      "fill": "#F3F6FB",
+                      "content": "下载",
+                      "fontFamily": "Noto Sans SC",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "CiokC",
+                  "x": 24,
+                  "y": 172,
+                  "name": "Note",
+                  "fill": "#A0AAB8",
+                  "textGrowth": "fixed-width",
+                  "width": 352,
+                  "content": "SmartScreen 可能提示未知发布者，选择“仍要运行”。",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "daTuz",
+              "x": 832,
+              "y": 84,
+              "name": "Download Linux",
+              "width": 400,
+              "height": 240,
+              "fill": "#1C2026",
+              "cornerRadius": 12,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bOUuO",
+                  "x": 24,
+                  "y": 24,
+                  "name": "Platform",
+                  "fill": "#E8ECF2",
+                  "content": "Linux",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 18,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "NLV9R",
+                  "x": 24,
+                  "y": 56,
+                  "name": "Requirement",
+                  "fill": "#A0AAB8",
+                  "content": "x64 · AppImage",
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "o4DmMs",
+                  "x": 24,
+                  "y": 80,
+                  "name": "Size",
+                  "fill": "#8593A7",
+                  "content": "AppImage · 约 3 GB",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "mFMuX",
+                  "x": 24,
+                  "y": 116,
+                  "name": "Get Linux",
+                  "width": 120,
+                  "height": 36,
+                  "fill": "#292F38",
+                  "cornerRadius": 8,
+                  "stroke": "#3A4350",
+                  "strokeWidth": 0.6,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RPz2l",
+                      "x": 36,
+                      "y": 10,
+                      "name": "Get label",
+                      "fill": "#F3F6FB",
+                      "content": "下载",
+                      "fontFamily": "Noto Sans SC",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "WelCa",
+                  "x": 24,
+                  "y": 172,
+                  "name": "Note",
+                  "fill": "#A0AAB8",
+                  "textGrowth": "fixed-width",
+                  "width": 352,
+                  "content": "chmod +x 后直接运行；内含 Python 运行时。",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Noto Sans SC",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "F5y8Ab",
+          "x": 96,
+          "y": 1400,
+          "name": "Privacy",
+          "width": 1248,
+          "height": 180,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "Okx7V",
+              "x": 0,
+              "y": 0,
+              "name": "Privacy title",
+              "fill": "#E8ECF2",
+              "content": "隐私与本地处理",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 22,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "Gcqf9",
+              "x": 0,
+              "y": 44,
+              "name": "Privacy body",
+              "fill": "#A0AAB8",
+              "textGrowth": "fixed-width",
+              "width": 760,
+              "content": "分析与分离全部在本机完成，音频、剪辑和结果只存放在应用私有目录，导出的文件是独立副本。联网仅用于按需下载模型权重（Hugging Face）与检查应用更新。",
+              "lineHeight": 1.8,
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nQR8Y",
+          "x": 0,
+          "y": 1640,
+          "name": "Footer",
+          "width": 1440,
+          "height": 80,
+          "fill": "#00000000",
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "EEhGF",
+              "x": 96,
+              "y": 0,
+              "name": "Divider",
+              "width": 1248,
+              "height": 1,
+              "fill": "#303640",
+              "layout": "none"
+            },
+            {
+              "type": "text",
+              "id": "ZaiDC",
+              "x": 96,
+              "y": 32,
+              "name": "Footer left",
+              "fill": "#8593A7",
+              "content": "© 2026 Printemps · 模型：noblebarkrr/BS-Roformer-MVSep-Mega-53-stems",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "MjVAa",
+              "x": 1180,
+              "y": 32,
+              "name": "Footer right",
+              "fill": "#8593A7",
+              "content": "GitHub · 发布说明 · 许可",
+              "fontFamily": "Noto Sans SC",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {

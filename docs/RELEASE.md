@@ -1,0 +1,38 @@
+# 发布流程（GitHub Releases + printemps.dev）
+
+## 前提
+
+- 仓库目前是 **private**。GitHub Pages 在私有仓库需要付费计划；私有仓库的 Release 资产也无法匿名下载，electron-updater 的 GitHub provider 同样需要 token。要让 printemps.dev 对外可用，需要把 `Means88/printemps` 设为 public，或者新建一个公开的发布仓库并把 `site/app.js` 的 `REPO` 与 `package.json#build.publish` 指向它。这是产品决定，未在代码里替你做。
+- macOS 包目前只签名未公证：用户首次打开要在“系统设置 › 隐私与安全性”放行一次；CI 上没有证书时为 ad-hoc 签名（提示“已损坏”），所以 macOS 资产建议用本机 Developer ID 打出的 DMG 覆盖。公证见下文。
+
+## 发一个版本
+
+1. 在 `main` 上把 `package.json#version` 改成新版本（例如 `0.1.2`），提交。
+2. 打 tag 并推送：
+
+```bash
+git tag v0.1.2 && git push origin v0.1.2
+```
+
+3. `.github/workflows/release.yml` 会在三平台跑测试、准备运行时、`pnpm run dist`、包内分析检查，然后创建 **草稿** Release `v0.1.2` 并附上 dmg/zip/exe/AppImage/blockmap/latest*.yml。也可以在 Actions 里 `workflow_dispatch` 并填已有 tag。
+4. 在本机用签名证书重打 macOS 包并覆盖草稿里的 macOS 资产：
+
+```bash
+pnpm dist --mac && gh release upload v0.1.2 release/*.dmg release/*.zip release/*.blockmap release/latest-mac.yml --clobber
+```
+
+5. 校对自动生成的说明，点 **Publish release**。`site/app.js` 读取 `releases/latest`，页面上的按钮自动指向新资产（草稿不会被读到）。
+
+## 站点与域名
+
+- 站点是 `site/` 下的纯静态文件（无构建步骤），`.github/workflows/pages.yml` 在 `site/**` 变更推到 `main` 时部署。首次需在仓库 Settings › Pages 把 Source 设为 **GitHub Actions**。
+- 自定义域名：`site/CNAME` 已写 `printemps.dev`。在 DNS 侧添加：
+  - `printemps.dev` A 记录 → `185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153`
+  - `printemps.dev` AAAA 记录 → `2606:50c0:8000::153`、`2606:50c0:8001::153`、`2606:50c0:8002::153`、`2606:50c0:8003::153`
+  - `www.printemps.dev` CNAME → `means88.github.io`
+- 部署一次后，在 Settings › Pages 的 Custom domain 填 `printemps.dev`，等 DNS 检查通过后勾选 **Enforce HTTPS**。
+- 本地预览：`python3 -m http.server 8080 --directory site`。
+
+## 公证（暂不处理，记录步骤）
+
+设置 `APPLE_ID`、`APPLE_APP_SPECIFIC_PASSWORD`、`APPLE_TEAM_ID`（或 App Store Connect API Key），electron-builder 会自动 notarize 并 staple。首轮公证很可能被退回并列出未签名的 Python `.so`/`.dylib`，需要为 `extraResources` 里的运行时补签名与 entitlements。通过后 `spctl -a -vv -t install Printemps.dmg` 应显示 `source=Notarized Developer ID`。

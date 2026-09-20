@@ -54,6 +54,10 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 本机另有一个不属于本轮的旧开发实例在运行：`node node_modules/.bin/electron . --user-data-dir=/tmp/printemps-native-menu-qa`（PID 51019/51020，已运行 4 小时以上），进程名也叫 Electron。没有动它；如确认无用可由用户关闭。
 - 临时路径可能被系统清理；不要提交缓存、私有音频、运行时或安装包。
 
+## 发布页与发布流程
+
+- `site/` 是 printemps.dev 静态站（画板 33 `f2cQi`），`pages.yml` 部署，`release.yml` 按 `v*` tag 出三平台草稿 Release；流程与 DNS 见 `docs/RELEASE.md`。**仓库仍是 private**：Pages 与匿名下载需要公开仓库或付费计划，这是待用户决定的事项。公证暂不处理。
+
 ## 处理设备
 
 - MPS 曾“卡死”：20 秒推理 chunk 的注意力激活超出统一内存导致抖动。`worker/separate.py` 的 `select_chunk` 在 MPS 上封顶为 10 秒（`audio.chunk_size`），显存预算 <12 GB 时 5 秒；每个声部后 `torch.mps.empty_cache()`。实测 MPS 19.7 s vs CPU 45.3 s（10 秒合成音频，drums），应用内真实分离 25 s 完成。仍标“实验性”，`自动选择` 不会选 MPS。
