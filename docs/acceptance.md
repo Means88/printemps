@@ -394,3 +394,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Added development-only `?exportRecoveryPreview=1`: successive exports simulate disk-full failure, success, then folder-picker cancellation. No files or system dialogs are created.
 - At 1280×800 in English, verified the disk-full notice fits without clipping; Close/Export remain right-aligned and there is no Open folder button. Retry clears the alert and displays Export complete/Open folder. A subsequent cancelled attempt clears both stale success and folder access. Temporary browser tab closed and viewport reset.
 - `pnpm typecheck` passed. This verifies renderer behavior; native folder-picker cancellation remains a separate desktop acceptance item.
+
+### Model library fidelity — 2026-09-20
+
+- Restored Pen 07's full-page library surface below the native titlebar: cache count/bytes/path summary, search, animated All/Cached/Not downloaded filters, aligned filename/size/status/action table, and five-row pagination. Existing download, delete, cancellation, hash verification and error handling remain connected. Model filenames come from the pinned manifest.
+- Browser preview at 1280×800 English verified 14/53 cached, cached-only pagination from 1–5 to 6–10, empty search 0–0 with disabled pagination, and combined search/filter resetting to page one. Fixed an observed overlay stacking issue and compact filter wrapping. Build passed (`/tmp/printemps-library-layout-build.log`). Cache path changes remain available in Settings; the board's inline change-location action and final titlebar integration still need completion.
+- CI 35492712177 is live at commit 9e21ead; all three jobs reached installer build. It does not include this model-library change. No installer upload result yet.
