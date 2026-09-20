@@ -1,5 +1,10 @@
-export function errorGuidance(message:string,en:boolean,kind:'download'|'separation'='separation'){
+export function errorGuidance(message:string,en:boolean,kind:'download'|'separation'|'export'='separation'){
  const text=(zh:string,english:string)=>en?english:zh
+ if(kind==='export'){
+  if(/ENOSPC|insufficient disk|no space left/i.test(message))return text('导出目录空间不足。请释放空间或选择其它文件夹后重试。','The export folder has insufficient space. Free space or choose another folder and retry.')
+  if(/EACCES|EPERM|permission denied|read.only|outside application storage/i.test(message))return text('无法写入导出目录。请重新导出，并选择有写入权限的其它文件夹。','Cannot write to the export folder. Export again and choose another writable folder.')
+  return text('导出失败，剪辑未受影响。请重试；若仍失败，请选择其它导出文件夹。','Export failed. The clip is unchanged. Retry, or choose another export folder if the problem persists.')
+ }
  if(/Separation interrupted before completion/i.test(message))return text('上次分离被中断，已完成的结果已保留。可重试未完成的声部。','The previous separation was interrupted. Completed results are retained. Retry the unfinished stems.')
  if(/abort|cancelled|canceled/i.test(message))return text('操作已取消。需要时可重新开始。','Operation cancelled. Start again when ready.')
  if(/ENOSPC|insufficient disk|no space left/i.test(message))return text('磁盘空间不足。请释放空间；模型下载也可在设置中更换缓存目录后重试。','Not enough disk space. Free space, or change the model cache folder in Settings before retrying a download.')
@@ -10,7 +15,7 @@ export function errorGuidance(message:string,en:boolean,kind:'download'|'separat
  if(/CUDA|MPS|device.*unavailable/i.test(message))return text('所选处理设备无法完成任务。请在设置中选择 CPU 后重试。','The selected device could not complete the task. Select CPU in Settings and retry.')
  return kind==='download'?text('模型操作失败。请检查网络、缓存目录和可用空间后重试。','Model operation failed. Check the connection, cache folder, and free space, then retry.'):text('分离未完成，源音轨已保留。请重试，或切换处理设备后再试。','Separation did not complete. The source track is retained. Retry, or change the processing device and try again.')
 }
-export function ErrorNotice({message,en,kind='separation'}:{message:string;en:boolean;kind?:'download'|'separation'}){
+export function ErrorNotice({message,en,kind='separation'}:{message:string;en:boolean;kind?:'download'|'separation'|'export'}){
  if(!message)return null
  return <div className="error-notice" role="alert"><p>{errorGuidance(message,en,kind)}</p><details><summary>{en?'Technical details':'技术详情'}</summary><pre>{message}</pre></details></div>
 }

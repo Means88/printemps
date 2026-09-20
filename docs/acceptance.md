@@ -383,3 +383,8 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 
 - Setup and interrupted-download dialog descriptions now resolve the configured/task clip, rather than always displaying the parent track name. Legacy single-clip tasks retain their fallback; selection elsewhere cannot change the configured source label.
 - `pnpm typecheck` passed. Browser fixture check: renamed the Lead vocal clip to Verse vocal (parent track remained Lead vocal), opened Choose stems, and confirmed its source description was Verse vocal. Temporary fixture tab closed; no user audio modified.
+
+### Export failure recovery — 2026-09-20
+
+- Export now uses the shared compact error notice with export-specific guidance for full/read-only/private destination folders. Failed exports no longer expose Open folder when zero files succeeded; a new attempt clears stale success/destination state, including cancelled folder selection.
+- Existing independent-copy and captured-clip behavior is retained. Targeted error/export/clip suite passed 12 tests (including real FFmpeg crop/export checks), and `pnpm run build` passed (`/tmp/printemps-export-recovery-build.log`). Native folder-dialog cancellation and rendered failure layout still need current-build manual verification; these tests do not prove either.
