@@ -1,7 +1,7 @@
 import {applyClipAction} from '../src/shared/clips'
 import {applyTrackAction} from '../src/shared/track-actions'
 // Development-only UI fixture. Never imported by the production renderer entry.
-import type {DesktopAPI} from '../src/shared/api'
+import type {DesktopAPI,SeparationTask} from '../src/shared/api'
 import type {Project,Settings,Track} from '../src/shared/domain'
 import manifest from '../src/shared/model-manifest.json'
 import {stemColor} from '../src/shared/stems'
@@ -52,6 +52,20 @@ if(new URLSearchParams(location.search).get('downloadPreview')==='1'){
   cancelDownload=()=>{clearInterval(timer);cancelDownload=undefined;reject(new Error('Fixture: download cancelled'))}
  })
  partial.cancelModelDownload=async()=>{cancelDownload?.()}
+}
+if(new URLSearchParams(location.search).get('separationDownloadPreview')==='1'){
+ let task:SeparationTask|null=null,attempt=0,timer:ReturnType<typeof setInterval>|undefined
+ const emit=()=>{if(task)for(const listener of separationListeners)listener({...task})}
+ partial.separationStatus=async()=>task
+ partial.startSeparation=async(projectId,sourceId,targets,clipId)=>{
+  if(timer)clearInterval(timer)
+  task={id:uuid(),projectId,sourceId,clipId,targets,stem:targets[0],phase:'downloading',progress:0};attempt++;emit()
+  timer=setInterval(()=>{if(!task)return;task={...task,progress:Math.min(.95,task.progress+.05)}
+   if(attempt===1&&task.progress>=.1){task={...task,phase:'failed',failurePhase:'downloading',error:'Fixture: download interrupted'};clearInterval(timer);timer=undefined}emit()
+  },1000)
+  return task
+ }
+ partial.cancelSeparation=async()=>{if(timer)clearInterval(timer);timer=undefined;if(task){task={...task,phase:'cancelled'};emit()}}
 }
 partial.onMenuCommand=()=>()=>{}
 partial.syncMenu=async()=>{}

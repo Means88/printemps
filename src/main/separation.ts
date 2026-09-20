@@ -46,6 +46,7 @@ export class SeparationService {
  private async execute(cache:ModelCache,ids:string[],source:Track,device:Settings['device'],controller:AbortController,clip:Clip){
   const {projectId,id}=this.task!,signal=controller.signal
   const directory=path.join(this.store.projectDirectory(projectId),'tasks',id),created:string[]=[]
+  let failurePhase:'downloading'|'separating'='separating'
   let committed=false,release:(()=>void)|undefined
   try{
    release=await this.scheduler.acquire(signal)
@@ -55,9 +56,11 @@ export class SeparationService {
    const targets=[]
    const total=ids.reduce((sum,id)=>sum+cache.entry(id).totalBytes,0);let received=0
    for(const stem of ids){
+    failurePhase='downloading'
     const files=await cache.ensure(stem,signal,p=>this.emit({phase:'downloading',stem,progress:(received+p.received)/total}))
     targets.push({id:stem,...files});received+=cache.entry(stem).totalBytes
    }
+   failurePhase='separating'
    signal.throwIfAborted();this.emit({phase:'separating',progress:0,stem:ids[0]})
    const input=path.join(directory,'input.wav')
    const sourceFile=this.store.assetPath(projectId,source.assetId)
@@ -88,7 +91,7 @@ export class SeparationService {
   }catch(e){
    const phase=signal.aborted?'cancelled':'failed';let error=e instanceof Error?e.message:String(e)
    try{await this.finish(phase,error)}catch(saveError){error+=`; Could not save task status: ${String(saveError)}`}
-   this.emit({phase,error})
+   this.emit({phase,error,failurePhase})
   }
   finally{
    if(!committed)await Promise.all(created.map(file=>fs.rm(file,{force:true}).catch(()=>{})))

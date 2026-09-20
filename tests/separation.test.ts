@@ -1,4 +1,4 @@
-import { test,expect } from 'vitest'
+import { test,expect,vi } from 'vitest'
 import { mkdtemp,mkdir,writeFile,readFile,readdir,rm } from 'node:fs/promises'
 import path from 'node:path'
 import { tmpdir } from 'node:os'
@@ -46,5 +46,12 @@ test('separation commits residual first, preserves concurrent edits, and failed/
   expect((await store.load(id)).tracks).toEqual(result.tracks)
   expect(await readdir(path.dirname(store.assetPath(id,assetId)))).toEqual(assets)
   expect(await readdir(path.join(store.projectDirectory(id),'tasks'))).toEqual([])
+  const ensure=vi.spyOn(cache,'ensure').mockRejectedValueOnce(new Error('Download interrupted'))
+  const downloadFailure=await run(result.tracks[1].id)
+  expect(downloadFailure).toMatchObject({phase:'failed',failurePhase:'downloading',error:'Download interrupted'})
+  expect((await store.load(id)).tracks).toEqual(result.tracks)
+  ensure.mockRestore()
+  mode='failure'
+  expect(await run(result.tracks[1].id)).toMatchObject({phase:'failed',failurePhase:'separating',error:'inference failed'})
  }finally{await rm(root,{recursive:true,force:true})}
 })
