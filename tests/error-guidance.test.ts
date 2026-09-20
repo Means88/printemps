@@ -14,5 +14,11 @@ test('task failures give localized recovery actions without replacing diagnostic
   expect(errorGuidance('ENOSPC',true,'export')).toContain('export folder')
   expect(errorGuidance('EACCES',false,'export')).toContain('导出目录')
   expect(errorGuidance('Unknown encoder error',true,'export')).toContain('clip is unchanged')
-  expect(errorGuidance('Choose a folder outside application storage',true,'export')).toContain('writable folder')
+  expect(errorGuidance('Choose a folder outside application storage',true,'export')).toContain('another export folder')
  })
+
+test('private storage rejection guides cache selection without irrelevant network advice',()=>{
+ const message=errorGuidance('Choose a folder outside private application storage',true,'download')
+ expect(message).toContain('restore the default location')
+ expect(message).not.toContain('connection')
+})

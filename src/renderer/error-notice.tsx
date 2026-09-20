@@ -1,5 +1,6 @@
 export function errorGuidance(message:string,en:boolean,kind:'download'|'separation'|'export'='separation'){
  const text=(zh:string,english:string)=>en?english:zh
+ if(/outside (?:private )?application storage/i.test(message))return kind==='export'?text('该目录由应用管理，请选择其它导出文件夹。','This folder is managed by the app. Choose another export folder.'):text('该目录由应用管理。请选择其它文件夹，或恢复默认目录。','This folder is managed by the app. Choose another folder or restore the default location.')
  if(kind==='export'){
   if(/ENOSPC|insufficient disk|no space left/i.test(message))return text('导出目录空间不足。请释放空间或选择其它文件夹后重试。','The export folder has insufficient space. Free space or choose another folder and retry.')
   if(/EACCES|EPERM|permission denied|read.only|outside application storage/i.test(message))return text('无法写入导出目录。请重新导出，并选择有写入权限的其它文件夹。','Cannot write to the export folder. Export again and choose another writable folder.')
