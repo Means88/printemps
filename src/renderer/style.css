@@ -423,3 +423,5 @@ header>button{flex-shrink:0}
 .separation-loading:not(.task-recovery) .spinner{width:16px;height:16px}
 
 .workspace{transition:grid-template-columns .24s ease}.inspector{overflow:hidden auto}.inspector>*:not(.inspector-toggle){transition:opacity .16s ease}.inspector.inspector-collapsed>*:not(.inspector-toggle){opacity:0;pointer-events:none}
+
+.track-head{z-index:3}.ruler{z-index:4}.ruler>span:first-child{z-index:4}.track-area{container-type:inline-size}.separation-loading{position:sticky;left:8px;width:calc(100cqw - 16px);box-sizing:border-box;z-index:1}

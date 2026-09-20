@@ -735,3 +735,10 @@ User feedback on the 049a3d8 build, fixed in source (later than that package/CI)
 - **Separation progress lane** is more compact: 60 px tall (was 108 px), 12–13 px type, 4 px progress bar, 16 px spinner, compact Cancel.
 - **Clip-details sidebar** collapse/expand now animates: `grid-template-columns` transitions over 240 ms and the panel content fades. Sampled column widths 280 → 236 → 149 → 59 → 28 → 5 → 0 px on collapse and 0 → 91 → 169 → 239 → 263 → 279 → 280 px on expand.
 - Tests 96 passed / 3 conditional skipped; typecheck clean; production build passed.
+
+### 2026-09-20 · Progress lane pinned, Space over the metronome switch, handle stacking
+
+- **Separation progress lane** lived inside the zoomed/scrolling timeline content, so it stretched with zoom and slid with horizontal scroll. The track area is now an inline-size container and the lane is `position: sticky; left: 8px; width: calc(100cqw - 16px)`. During a real cached-bass separation the lane stayed at left 8 px / width 1144 px while the content grew from 1160 to 2610 px and the area scrolled 400 px.
+- **Space with the metronome switch focused** toggled nothing useful: the shortcut guard excluded `[role="switch"]`, and the switch kept focus after a click. The guard no longer excludes switches (inputs, sliders and menus still are), and the toolbar switch blurs itself after a click. With the switch focused, Space started playback without changing the switch, a second Space paused, and a click left the switch unfocused.
+- **Clip trim handles** (z-index 2) painted above the sticky track headers (z-index 2) when lanes scrolled under them. Track heads are now z-index 3 and the sticky ruler 4; handles stay at 2.
+- 96 tests passed / 3 conditional skipped; typecheck clean; production build passed. A local `pnpm package` follows; the CI run for 95c1934 was cancelled at the user's request.
