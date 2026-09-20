@@ -27,6 +27,7 @@ pnpm dist --mac && gh release upload v0.1.2 release/*.dmg release/*.zip release/
 
 - 站点是 `site/` 下的纯静态文件（无构建步骤），`.github/workflows/pages.yml` 在 `site/**` 变更推到 `main` 时部署。2026-09-20 已通过 API 创建 Pages 站点（Source = GitHub Actions，`public: true`）、首次部署成功，并把 Custom domain 设为 `printemps.dev`；GitHub 侧已把 `means88.github.io/printemps/` 301 到 `printemps.dev`。
 - 缓存：Cloudflare 代理会按 GitHub 的 `max-age=14400` 缓存 CSS/JS/图片四小时。HTML 里引用写成 `styles.css?v=__BUILD__`（`app.js`、主视觉 `assets/workspace.png` 同样加戳），`pages.yml` 部署时把 `__BUILD__` 替换成提交短号，所以每次部署后浏览器都会拿到新样式；HTML 本身仍可能被缓存最多 4 小时，需要立刻生效时在 Cloudflare 里 Purge Everything。
+- 使用说明：`site/guide.html`（画板 35），地址 `https://printemps.dev/guide`。功能或快捷键变化时同步更新（快捷键表对应 `src/renderer/shortcuts.tsx` 与 `src/main/native-menu.ts`）。
 - 隐私政策：`site/privacy.html`（画板 34），部署后地址为 `https://printemps.dev/privacy`（站内链接省略 `.html`，GitHub Pages 会自动解析扩展名；本地 `python -m http.server` 预览时需手动加 `.html`）。文本按 Apple App 隐私详情结构撰写，向 App Store / Microsoft Store / 其它需要隐私条款链接的渠道提交时直接填这个地址；应用内数据处理方式变化时同步改页面并更新生效日期。
 - 2026-09-20 DNS 已切到 Cloudflare 并生效：`printemps.dev` 解析到 Cloudflare 代理 IP（橙云），HTTPS 由 Cloudflare 的 Google Trust Services 证书终止，回源 GitHub 正常。因为是代理模式，GitHub 侧不会签发自己的证书、Pages 的 Enforce HTTPS 也无法勾选；建议在 Cloudflare 里开 SSL/TLS → Always Use HTTPS（目前 `http://printemps.dev` 直接 200 不跳转），SSL 模式用 Full。`www.printemps.dev` 尚无记录，如需支持请加 CNAME → `means88.github.io`（代理）。
 - 自定义域名：`site/CNAME` 已写 `printemps.dev`。在 DNS 侧添加：

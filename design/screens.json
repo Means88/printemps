@@ -180,5 +180,12 @@
     "title": "隐私政策页 printemps.dev/privacy",
     "png": "exports/34-privacy.png",
     "html": "../site/privacy.html"
+  },
+  {
+    "nodeId": "VeLMf",
+    "slug": "35-guide",
+    "title": "使用说明页 printemps.dev/guide",
+    "png": "exports/35-guide.png",
+    "html": "../site/guide.html"
   }
 ]
