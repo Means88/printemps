@@ -480,3 +480,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - New native export dialog showed that duration and format selector. Real FLAC export through macOS folder picker produced `/tmp/printemps-native-export-qa/Synthetic history export QA_主唱剪辑验收.flac`: 33,075 frames / 44,100Hz, stereo, PCM_24, exactly0.75s without timeline padding.
 - CmdQ exited cleanly; relaunch same profile and All projects showed the updated Chinese name and 00:00.750, the other two-second clip, and no hidden source clip. Export remained disabled until a result was selected. Native history layout and selected-clip export were visually checked. Final QA process quit with exit0.
 - This verifies native text entry and persistence, not an actual OS IME candidate window or audible device playback. Those boundaries remain open.
+
+## 2026-09-20 — Find projects by clip names
+
+- Closed a clip-workflow gap: the shared search indexed track names/stem labels but omitted renamed clips. It now includes clip names, including retained hidden source clips; deleting a clip removes that name from matching. Home's Recent projects now uses the same matcher as All projects.
+- Regression tests cover Chinese/English clip names, whitespace/case, retained hidden sources and deletion. Two project-search tests and typecheck passed.
+- Browser flow renamed a result clip to 独特副歌片段, returned Home and found its project via 独特副歌; All projects found the same result and exposed the renamed clip. Unmatched query removed the inspector. This is behavior-only; existing layout/design unchanged.
+- Current CI remains pinned to `9995a92`, before this search fix. Windows/macOS artifacts are present and unexpired: Windows archive10600073720 (344743774 bytes, sha256449ea39de5716d05495e19066ad7d38f3aeb5fab415dcec6aa292140294a3afc), macOS archive10600462942 (765598321 bytes, sha2563041eeb818b57a1c0b2ee5f7ab2165a0a4fcc269a743721e8b51e39841a538ad). These are artifact archive digests, not individual installer checksums. Linux build still live at this checkpoint; not restarted.

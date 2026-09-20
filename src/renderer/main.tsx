@@ -1,3 +1,4 @@
+import {matchesProject} from '../shared/project-search'
 import {isCompositionKey} from './keyboard'
 import {formatTimecode} from '../shared/timecode'
 import {ClipLane} from './clip-lane'
@@ -58,7 +59,7 @@ function App(){
  const [saveState,setSaveState]=useState<SaveState>({pending:0,error:null})
  const [session]=useState(()=>new ProjectSession({read:id=>window.printemps.openProject(id),save:(id,edits)=>window.printemps.saveProject(id,edits)},setProject,setSaveState,(error,source)=>{if(source==='refresh')setError(error.message)}))
  const en=settings.language==='en',t=(zh:string,enText:string)=>en?enText:zh
- const recentProjects=projects.filter(p=>(p.name+' '+p.sourceName).toLowerCase().includes(search.trim().toLowerCase())).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)).slice(0,3)
+ const recentProjects=projects.filter(p=>matchesProject(p,search)).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)).slice(0,3)
  useEffect(()=>{document.documentElement.lang=settings.language==='en'?'en':'zh-CN'},[settings.language])
  useEffect(()=>{if(!window.printemps){setError('Open this application in Electron (pnpm run dev).');return}Promise.all([window.printemps.listProjects(),window.printemps.getSettings()]).then(([p,s])=>{setProjects(p);setSettings(s)}).catch(e=>setError(String(e)))},[])
  useEffect(()=>{
