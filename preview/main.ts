@@ -67,6 +67,17 @@ if(new URLSearchParams(location.search).get('separationDownloadPreview')==='1'){
  }
  partial.cancelSeparation=async()=>{if(timer)clearInterval(timer);timer=undefined;if(task){task={...task,phase:'cancelled'};emit()}}
 }
+// Deterministic export recovery states; no files or native dialogs are created.
+if(new URLSearchParams(location.search).get('exportRecoveryPreview')==='1'){
+ let attempt=0
+ partial.exportTracks=async(_projectId,_trackIds,_format,clipIds)=>{
+  attempt++
+  if(attempt===1)return {count:0,directory:'/example/exports',failure:{remainingIds:clipIds??[],trackName:'Fixture clip',message:'ENOSPC: fixture export destination is full'}}
+  if(attempt===2)return {count:1,directory:'/example/exports'}
+  return null
+ }
+ partial.openExportDirectory=async()=>{}
+}
 partial.onMenuCommand=()=>()=>{}
 partial.syncMenu=async()=>{}
 window.printemps=new Proxy(partial,{get(target,key){return target[key as keyof DesktopAPI]||(()=>Promise.reject(new Error(en?'UI preview only: this operation requires Electron.':'仅供界面预览：此操作需在 Electron 中验证。')))}}) as DesktopAPI

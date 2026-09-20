@@ -388,3 +388,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 
 - Export now uses the shared compact error notice with export-specific guidance for full/read-only/private destination folders. Failed exports no longer expose Open folder when zero files succeeded; a new attempt clears stale success/destination state, including cancelled folder selection.
 - Existing independent-copy and captured-clip behavior is retained. Targeted error/export/clip suite passed 12 tests (including real FFmpeg crop/export checks), and `pnpm run build` passed (`/tmp/printemps-export-recovery-build.log`). Native folder-dialog cancellation and rendered failure layout still need current-build manual verification; these tests do not prove either.
+
+### Export recovery rendered verification — 2026-09-20
+
+- Added development-only `?exportRecoveryPreview=1`: successive exports simulate disk-full failure, success, then folder-picker cancellation. No files or system dialogs are created.
+- At 1280×800 in English, verified the disk-full notice fits without clipping; Close/Export remain right-aligned and there is no Open folder button. Retry clears the alert and displays Export complete/Open folder. A subsequent cancelled attempt clears both stale success and folder access. Temporary browser tab closed and viewport reset.
+- `pnpm typecheck` passed. This verifies renderer behavior; native folder-picker cancellation remains a separate desktop acceptance item.
