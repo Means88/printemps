@@ -558,3 +558,8 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Made only the QA project directory temporarily read-only. Moving Synthetic result above Original failed with real EACCES; the saved order stayed unchanged. Done remained available, and the workspace displayed the compact localized permission message, collapsed Technical details, and Retry save.
 - Restored original directory permissions, retried, and quit normally (exit 0). Disk data showed Synthetic result before Original. Relaunched the signed package with the same QA profile: recent-project duration remained 00:10 and workspace order remained Synthetic result, Original. Normal exit again returned 0.
 - This fixture's tracks both have 10-second source duration; it proves order persistence and native recovery, not the separate short-first-track edge case covered by the domain regression test.
+
+### 2026-09-20 · Acceptance scope and design index
+
+- User confirmed no Windows/Linux desktop environment is available and asked to complete macOS acceptance first. Their CI builds remain useful packaging evidence; GUI/device acceptance is explicitly deferred, not claimed complete.
+- Added Pen 31 save-recovery design to `design/index.html`. Browser navigation verified its title, original-PNG link, and successfully decoded 1440×176 PNG.
