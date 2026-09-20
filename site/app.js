@@ -18,6 +18,7 @@ let release=null,assets={},failed=false
 function render(){
  const t=copy[lang];document.documentElement.lang=lang==='zh'?'zh-CN':'en'
  for(const el of document.querySelectorAll('[data-t]'))el.textContent=t[el.dataset.t]
+ const shot=document.querySelector('.shot img');if(shot){const src=shot.dataset[lang];if(src&&shot.getAttribute('src')!==src)shot.setAttribute('src',src);shot.alt=lang==='zh'?'Printemps 工作台（中文界面）':'Printemps workspace (English UI)'}
  document.querySelectorAll('.feature').forEach((el,i)=>{el.querySelector('h3').textContent=t.f[i][0];el.querySelector('p').textContent=t.f[i][1]})
  for(const key of ['mac','win','linux']){const card=document.querySelector(`.download[data-platform=${key}]`);const [name,req,note]=t.p[key];card.querySelector('h3').textContent=name;card.querySelector('.req').textContent=req;card.querySelector('.note').textContent=note
   const a=assets[key],btn=card.querySelector('.get'),meta=card.querySelector('.meta')
