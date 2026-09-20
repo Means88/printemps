@@ -56,3 +56,19 @@
 含项目恢复的 macOS arm64 0.1.1 测试包已重新生成：`release/mac-arm64/Printemps.app`。`codesign --verify --deep --strict` exit 0；读取 CFBundleShortVersionString 为 0.1.1；使用包内 Resources 的真实分析测试 1 项通过。日志 `/tmp/printemps-macos-history-package.log` 与 `/tmp/printemps-macos-history-analysis.log`。仅为 ad-hoc 本地测试包，未发布或公证，GUI/声音输出未验证。
 
 Pen 22 号画板正式 PNG 导出同样仅见背景和品牌，已移除该不合格导出文件；可编辑画板和 HTML 保留，PNG 仍待修复。
+
+## 原生 macOS 首轮交互（桌面解锁后）
+
+从真实 0.1.1 macOS 应用的系统文件选择器导入 `.cache/analysis-smoke/input.wav`，直接进入工作区（16 秒合成测试音频）；初始 BPM/调性为空、按钮为“分析”，未自动分析。项目原位改名为“原生验收 · 16 秒合成音频”，音轨改名为“合成原音 · C 大调”。显式分析后通过“复位”应用 120 BPM、C major、4/4。正常退出并重新启动应用，再从最近项目打开，名称与音乐参数保持。此验证覆盖真实 IPC/私有存储及正常退出重开，不证明异常退出或实际可听输出。
+
+用户已明确授权推送并运行 CI。初始提交 `b66b17c0b647ab09756a04c4ba8d70a565c1cc1a` 已推送至私有仓库 main，三平台工作流运行：<https://github.com/Means88/printemps/actions/runs/35479060114>。未创建或发布 Release。运行状态尚未完成，需继续观察同一 run。
+
+原生分离续验：搜索 drums 后仅选择鼓组，显示下载 77.6 MB；观察到下载弹窗 38% 进度，下载后自动返回工作区，在音轨中显示分离 25%/75% 进度；完成后保留原始轨并新增 Other/鼓组，自动切到分轨监听，三轨波形对齐可见。输入仍为 16 秒合成音频，不代表真实歌曲分离质量。
+
+首轮远程 CI：Windows 2025 x64 与 macOS 15 arm64 全部步骤成功（包含原生运行时准备、打包、包内分析）。Ubuntu 打包因 ENOSPC 失败。提交 1547253 在打包前执行 uv cache clean；运行时以 copy 模式安装，不依赖缓存。已重新触发工作流，等待新 run 结果。此 CI 不包含 Windows GUI/声音输出或安装升级验收。
+
+## 原生二次分离与导出（2026-09-20）
+
+从首轮“其它”提取贝斯，完成后工作台顺序为 [合成原音、其它、贝斯、鼓组]，旧“其它”已被原位替换，鼓组仍在后方，游标保持 00:07。通过原生系统目录选择器导出首轮 Other/鼓组 WAV，以及二次分离后的 Other FLAC；soundfile 检查均为 PCM_24、44,100 Hz、双声道、705,600 帧（16 秒）。文件位于 `.cache/native-acceptance/exports/`。播放按钮切换为 Pause，时间从 00:00 推进至 00:09；暂停后显示 Play、00:14。此项证明原生播放控制及时钟推进，不等同于人工听音或多轨同步声学验证。
+
+CI 35479272346 的三个平台均完成构建和包内真实分析；Ubuntu 最终因 uv 缓存已被主动清理、setup-uv 收尾仍试图上传不存在的缓存而失败。3371b17 显式关闭 uv 缓存上传，已启动修正验证：<https://github.com/Means88/printemps/actions/runs/35479607318>。尚未发布 Release。
