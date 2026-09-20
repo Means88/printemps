@@ -83,3 +83,8 @@
 ## 剪辑来源恢复
 
 - 音轨列表重新显示“所有片段均被分离隐藏”的来源轨时，必须同步恢复保留剪辑，不能只恢复空轨道。部分片段仍可见的音轨，普通隐藏/显示不得重新显示已消费的旧片段，以免重复试听。
+
+## 合并到 main 的方式
+
+- 不要在 Pen 打开 `design/Printemps.pen` 时 `git checkout main` 再切回：工作树里的 .pen 会被回退再前进，Pen 会从磁盘重载并丢掉未落盘的修改。用 `git push origin <feature>:main` 快进远端 main（工作树不动）；本地 main 可在之后 `git fetch` 后 `git branch -f main origin/main` 更新。
+- 每次 Pen 原生保存后，用 MCP `Get` 重新列出顶层节点，确认修改确实在文档里再提交。

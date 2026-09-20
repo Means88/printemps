@@ -35,7 +35,7 @@
     "html": "screens/05-model-download.html"
   },
   {
-    "nodeId": "ZGUWf",
+    "nodeId": "pV6c6",
     "slug": "06-processing",
     "title": "工作区内分离进度",
     "png": "exports/06-processing.png"
@@ -125,13 +125,13 @@
     "html": "screens/18-motion.html"
   },
   {
-    "nodeId": "KeoeE",
+    "nodeId": "HjUpo",
     "slug": "20-beat-timeline",
     "title": "节拍器与小节刻度",
     "png": "exports/20-beat-timeline.png"
   },
   {
-    "nodeId": "chmaD",
+    "nodeId": "PB14C",
     "slug": "21-imported-workspace",
     "title": "导入后工作区",
     "png": "exports/21-imported-workspace.png"
@@ -150,13 +150,13 @@
     "png": "exports/22b-deleted-projects.png"
   },
   {
-    "nodeId": "Z3F6dz",
+    "nodeId": "Y5roB",
     "slug": "24-all-tracks",
     "title": "所有音轨弹窗",
     "png": "exports/24-all-tracks.png"
   },
   {
-    "nodeId": "W5oeKw",
+    "nodeId": "UJXIc",
     "slug": "25-rhythm-key",
     "title": "节奏与调性弹窗",
     "png": "exports/25-rhythm-key.png"
