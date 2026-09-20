@@ -44,6 +44,14 @@ test('original separation publishes complete stem/residual pairs before later ta
   expect(result.lastSeparation?.finishedAt).toBeTruthy()
   expect(result.tracks.map(t=>t.stem)).toEqual(['original','other','drums','bass'])
   expect(result.tracks[2].name).toBe('Edited drums');expect(result.tracks[2].gain).toBe(-8)
+  // Simulate termination after the final atomic result commit but before finish().
+  await store.save({...result,lastSeparation:{...result.lastSeparation!,state:'running',finishedAt:undefined}})
+  await store.recoverInterruptedTasks()
+  const fullyRecovered=await store.load(id)
+  expect(fullyRecovered.lastSeparation).toMatchObject({state:'complete',completed:2})
+  expect(fullyRecovered.lastSeparation?.finishedAt).toBeTruthy()
+  expect(fullyRecovered.tracks).toEqual(result.tracks)
+  expect(recoverSeparationTask(fullyRecovered)).toBeNull()
   await store.save({...result,tracks:[result.tracks[0]]});failSecond=true
   const failed=await run(),partial=await store.load(id)
   expect(failed.phase).toBe('failed');expect(partial.tracks.map(t=>t.stem)).toEqual(['original','other','drums'])

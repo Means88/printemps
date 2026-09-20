@@ -192,3 +192,10 @@ c7d60f0 已完成 macOS arm64 打包、`codesign --verify --deep --strict` 及�
 - 正常退出旧包后，通过原生 UI 启动上述新包；AX URL 确认来自 release-status。首页打开保留项目，4 条音轨、120 BPM / C major / 4/4 与小节显示均保留。
 - 导出弹窗及系统文件夹选择器可以打开，但本轮自动化 `Return` / `Escape` 将“前往文件夹”输入变成 `/`，未成功确认输出目录。此现象属于输入自动化验证阻碍，不能据此判定应用导出失败，也不能宣称新“打开文件夹”入口通过原生验收。
 - 用户手动退出屏保后，重建 CUA 连接可读取界面。此前“锁屏”诊断没有充分证据；未修改任何系统屏保或锁屏设置。
+
+
+## 2026-09-20 三平台安装包终态与完整结果恢复
+
+- 工作流 35482306981（e29bc55）终态 success，Windows NSIS、macOS DMG/ZIP、Linux AppImage 构建及各自包内分析全部通过。Linux 清理临时 CI runner 的未使用 SDK 后不再触发上一轮 ENOSPC。未上传或发布安装包。
+- 修正启动恢复边界：结果及 completed 计数已全部原子提交、但最终状态写入前退出的任务，恢复为 complete；仅部分完成仍为 interrupted。结果音轨、名称和混音设置保持不变。
+- `npx vitest run tests/progressive-separation.test.ts tests/store.test.ts` 4 项通过，覆盖完整结果恢复、部分结果恢复与后续重试来源；类型检查通过。此证据是持久化恢复测试，不替代原生强退验收。

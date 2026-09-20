@@ -95,7 +95,13 @@ export class ProjectStore {
   /** Startup only, before accepting jobs. Preserve assets and unreadable projects. */
   async recoverInterruptedTasks() {
     for(const project of await this.list()) {
-      if(project.lastSeparation?.state==='running')await this.update(project.id,current=>({...current,lastSeparation:{...current.lastSeparation!,state:'interrupted',finishedAt:new Date().toISOString()}}))
+      if(project.lastSeparation?.state==='running')await this.update(project.id,current=>{
+        const record=current.lastSeparation!
+        // Results and completed count commit together; final status is a later write.
+        // A crash between those writes must not label fully saved results interrupted.
+        const complete=record.targets.length>0&&record.completed===record.targets.length
+        return {...current,lastSeparation:{...record,state:complete?'complete':'interrupted',finishedAt:new Date().toISOString()}}
+      })
       await fs.rm(path.join(this.projectDirectory(project.id),'tasks'),{recursive:true,force:true})
     }
   }
