@@ -176,3 +176,7 @@ c7d60f0 已完成 macOS arm64 打包、`codesign --verify --deep --strict` 及�
 历史搜索补充中英文标准声部名匹配，音轨改名后仍可按“贝斯”/Bass 等检索，同时保留项目名、源文件名、自定义轨名、大小写与首尾空白处理。独立搜索测试及类型检查通过。设计 README 顶部明确后续导航/弹窗/私有结果流程优先于早期记录，避免把旧工作台历史入口误用为实现要求。
 
 后台分离事件由应用根组件订阅，在新任务、完成声部数量变化或终态时重新读取项目列表，避免离开工作台后首页/历史一直显示旧结果；用请求序号忽略过期读取。开发专用 backgroundTaskPreview 在 15 秒后发送完成事件，实际停留历史页观察 Running · 0/1 自动变为 Complete · 1/1，记录和详情一致，未重开页面。类型检查通过；此项为真实组件加模拟事件验证，不代表新增原生推理证据。
+
+## 安装包 CI 的 Linux 空间修复
+
+35482009303 的 macOS 安装包及包内分析 job 已 success；Linux 在 AppImage 临时目录复制 CUDA NCCL 库时 ENOSPC，runner 仅剩 6 MB，日志保存在 `/tmp/printemps-installer-linux-failure.log`。解包目录构建成功不代表 AppImage 所需峰值空间足够。工作流新增仅 Linux hosted runner 的预装 Android/.NET SDK 清理，保留项目和所需 Node/Python 运行时，后续重跑验证。Windows 同轮 job 在检查时仍运行，不因 Linux 失败视作整体终止。

@@ -30,6 +30,11 @@ jobs:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
+      - name: Free unused hosted-runner SDKs for AppImage staging
+        if: runner.os == 'Linux'
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet
+          df -h .
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
