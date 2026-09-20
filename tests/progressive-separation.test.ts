@@ -68,3 +68,10 @@ test('original separation publishes complete stem/residual pairs before later ta
   expect(recoverSeparationTask({...recovered,tracks:[recovered.tracks[0]]})).toBeNull()
  }finally{await rm(root,{recursive:true,force:true})}
 })
+
+test('restart before the first result preserves the source clip rather than inventing a remainder source',()=>{
+ const project={id:'project',tracks:[{id:'source',clips:[{id:'first'},{id:'second'}]}],lastSeparation:{id:'task',sourceId:'source',clipId:'second',targets:['drums'],state:'interrupted',completed:0}} as unknown as import('../src/shared/domain').Project
+ const restored=recoverSeparationTask(project)
+ expect(restored).toMatchObject({sourceId:'source',clipId:'second',remainingTargets:['drums']})
+ expect(restored?.retrySourceId).toBeUndefined()
+})
