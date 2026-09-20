@@ -31742,7 +31742,7 @@
                   "fill": "#A0AAB8",
                   "textGrowth": "fixed-width",
                   "width": 352,
-                  "content": "chmod +x 后直接运行；内含 Python 运行时。",
+                  "content": "chmod +x 后直接运行。",
                   "lineHeight": 1.6,
                   "fontFamily": "Noto Sans SC",
                   "fontSize": 12,
