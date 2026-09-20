@@ -543,3 +543,11 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Pushed `9564b9800a815aa46807678c136a796814cdae6d` to `codex/clip-workspace-desktop`.
 - Started three-platform workflow https://github.com/Means88/printemps/actions/runs/35496338370 on that exact SHA. Initial API snapshot confirmed all three jobs in progress; success is not yet claimed.
 - Local `pnpm package` is running against the same source; `/tmp/printemps-current-package.log` reached Developer ID signing. The existing `release/mac-arm64/Printemps.app` is being replaced and must not be treated as a verified artifact until this run completes and signature / bundled-analysis checks pass.
+
+### 2026-09-20 · 9564b98 local signed package verified
+
+- `pnpm package` completed successfully; `/tmp/printemps-current-package.log`. Output: `release/mac-arm64/Printemps.app`, Developer ID XINGYU XU. Notarization skipped; no public release or new DMG claimed.
+- `codesign --verify --deep --strict --verbose=2` passed; `/tmp/printemps-current-signature.log`.
+- `PRINTEMPS_TEST_RESOURCES=.../Printemps.app/Contents/Resources pnpm test:integration` passed with the package's Python, Beat This checkpoint and Essentia WASM; `/tmp/printemps-current-analysis.log` (6.91s test-run duration, synthetic pipeline check rather than hardware/music-quality benchmark).
+- app.asar SHA256: `d35fa658dc7bf095491d9f691a4cf4e715fab80db07eabf096e5c555b2a20a49`.
+- Recent original/clip native checks predate this signed package and remain distinct; this turn proves package signing and bundled analysis, not all native UI or physical audio behaviors.
