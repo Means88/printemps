@@ -55,9 +55,16 @@ export class SeparationService {
    if(disk.bavail*disk.bsize<clipDuration(clip)*44100*8*(ids.length+1)*2+16*1024*1024)throw new Error('Insufficient disk space for separation results')
    const targets=[]
    const total=ids.reduce((sum,id)=>sum+cache.entry(id).totalBytes,0);let received=0
+   let downloadModels=ids.map(id=>({id,received:0,total:cache.entry(id).totalBytes,ready:false}))
+   this.emit({downloadModels})
    for(const stem of ids){
     failurePhase='downloading'
-    const files=await cache.ensure(stem,signal,p=>this.emit({phase:'downloading',stem,progress:(received+p.received)/total}))
+    const files=await cache.ensure(stem,signal,p=>{
+     downloadModels=downloadModels.map(row=>row.id===stem?{...row,received:p.received,total:p.total}:row)
+     this.emit({phase:'downloading',stem,progress:(received+p.received)/total,downloadModels})
+    })
+    downloadModels=downloadModels.map(row=>row.id===stem?{...row,received:row.total,ready:true}:row)
+    this.emit({downloadModels})
     targets.push({id:stem,...files});received+=cache.entry(stem).totalBytes
    }
    failurePhase='separating'

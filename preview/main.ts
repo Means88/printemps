@@ -59,8 +59,8 @@ if(new URLSearchParams(location.search).get('separationDownloadPreview')==='1'){
  partial.separationStatus=async()=>task
  partial.startSeparation=async(projectId,sourceId,targets,clipId)=>{
   if(timer)clearInterval(timer)
-  task={id:uuid(),projectId,sourceId,clipId,targets,stem:targets[0],phase:'downloading',progress:0};attempt++;emit()
-  timer=setInterval(()=>{if(!task)return;task={...task,progress:Math.min(.95,task.progress+.05)}
+  task={id:uuid(),projectId,sourceId,clipId,targets,stem:targets[0],phase:'downloading',progress:0,downloadModels:targets.map(id=>({id,received:0,total:manifest.models.find(model=>model.id===id)!.totalBytes,ready:false}))};attempt++;emit()
+  timer=setInterval(()=>{if(!task)return;task={...task,progress:Math.min(.95,task.progress+.05)};task.downloadModels=task.downloadModels?.map(row=>row.id===task!.stem?{...row,received:Math.round(row.total*task!.progress)}:row)
    if(attempt===1&&task.progress>=.1){task={...task,phase:'failed',failurePhase:'downloading',error:'Fixture: download interrupted'};clearInterval(timer);timer=undefined}emit()
   },1000)
   return task

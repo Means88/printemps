@@ -1,6 +1,6 @@
 import type { Project, Settings } from './domain'
 import type {ProjectEdits} from './project-edits'
-export type SeparationTask={id:string;projectId:string;sourceId:string;clipId?:string;failurePhase?:'downloading'|'separating';phase:'waiting'|'downloading'|'separating'|'complete'|'cancelled'|'failed';progress:number;stem?:string;targets?:string[];completedStems?:number;retrySourceId?:string;remainingTargets?:string[];error?:string}
+export type SeparationTask={id:string;projectId:string;sourceId:string;clipId?:string;failurePhase?:'downloading'|'separating';downloadModels?:{id:string;received:number;total:number;ready:boolean}[];phase:'waiting'|'downloading'|'separating'|'complete'|'cancelled'|'failed';progress:number;stem?:string;targets?:string[];completedStems?:number;retrySourceId?:string;remainingTargets?:string[];error?:string}
 export type AnalysisTask={id:string;projectId:string;phase:'waiting'|'analyzing'|'complete'|'cancelled'|'failed';stage:'beats'|'key';error?:string}
 export type UpdateState={phase:'development'|'idle'|'checking'|'available'|'current'|'downloading'|'ready'|'installing'|'error';currentVersion:string;version?:string;percent?:number;transferred?:number;total?:number;error?:string}
 export interface DesktopAPI {
