@@ -19,7 +19,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 源码、构建与远端
 
-- 代码检查点：**签名包与三平台 CI 对应 `049a3d8`**。其后又有一批用户反馈修正（最近项目 hover 内边距、时间码等宽数字防抖、播放头按住拖动、分离中允许定位、进度行紧凑、侧栏收起动画，见 acceptance.md “Workspace feedback fixes”），**尚未进包/CI**。049a3d8 所含改动：画板 30/03/04/13/05/07/09/10/14/15/16 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`、首页引导文案与步骤行、顶栏图标顺序、声部弹窗标题/来源行/搜索/分类选中态/处理设备行、历史页副标题与“新建项目”主按钮、模型管理排序/主按钮/页脚、设置说明文字、声部搜索结果/空态、删除弹窗与空态卡、模型下载弹窗标题/计数/已缓存行、错误提示标题+图标与下载失败动作）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，96 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点（其后提交只改 docs）。
+- 代码检查点：**签名包与三平台 CI 对应 `049a3d8`**。其后有两批用户反馈修正（见 acceptance.md “Workspace feedback fixes” 与 “Second feedback round”），本地包 `9da5785` 含第一批；第二批（顶栏图标固定、logo 回首页、设备探测、导出对齐/导出音轨、字号缩小、返回箭头等）**尚未进包**，CI 按用户要求暂不触发。049a3d8 所含改动：画板 30/03/04/13/05/07/09/10/14/15/16 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`、首页引导文案与步骤行、顶栏图标顺序、声部弹窗标题/来源行/搜索/分类选中态/处理设备行、历史页副标题与“新建项目”主按钮、模型管理排序/主按钮/页脚、设置说明文字、声部搜索结果/空态、删除弹窗与空态卡、模型下载弹窗标题/计数/已缓存行、错误提示标题+图标与下载失败动作）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，96 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点（其后提交只改 docs）。
 - **最后推送、签名包和三平台 CI 现在都对应 `049a3d8876a57a7fd42fac5ea4c1224d48299fa4`**。18799ce 的原生回归证据仍有效（源码只在 UI 层变化），但其包与 CI 已被覆盖。
 - CI：https://github.com/Means88/printemps/actions/runs/35501611789 ，三平台成功；产物 ID/哈希见 acceptance.md 最后一节，2026-09-27 过期。workflow 只在 `pull_request` 和 `workflow_dispatch` 触发，推送不会自动跑；用 `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`。
 - 本地签名包 `release/mac-arm64/Printemps.app`（Developer ID，未公证），`app.asar` SHA256 `2004d3f922567161422afd9b181a6ea7f8ae7c16c107dc6a2e785c7aa57d5cf6`。日志：`/tmp/printemps-049a3d8-package.log`、`-signature.log`、`-packaged-analysis.log`；18799ce 的日志 `/tmp/printemps-18799-*.log` 仍在。
@@ -61,6 +61,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 最新 31：`OspP2`，保存/导入失败中英紧凑提示，1440×328，x4800/y11324。PNG `design/save-recovery/OspP2.png`，入口 `design/index.html`。
 - 30 多剪辑工作台 `ymoeh`；29 原生窗口 `x0yR1`；03 首页 `u1mPk`；04 声部选择 `rAm7a`；05 下载 `RJx43`；08 导出 `S5oPw`；13 历史 `b1tMnW`。
 - 修改先读取当前节点；复制节点会产生新 ID。显式定位曾比 fill_container 更稳定。保存后核实文件实际变化。
+- 新增画板 32（`b8troH`，导出音轨）；画板 08 加“对齐”行；画板 10 六张卡按钮改右对齐、primary 在右；画板 13 加返回箭头；画板 03 去掉问号；画板 30 顶栏图标移入标题栏。
 - 本轮改动画板 03（`u1mPk`）、04（`rAm7a`）、08（`S5oPw`）、13（`b1tMnW`）、02（`aA8yW`）、07（`N9u2S`）、09（`WbwXU`）、14（`T3jqc`）的文案/控件与应用同步，PNG 已重新导出到各自目录及 `design/exports/`。**画板 04/13 的控件是画板帧的直接子节点而非对话框面板的子节点，Copy 时必须放到同一父节点，否则渲染错位。**
 - 本轮改动画板 30（`ymoeh`）：新增缩放按钮组（Copy 自 Split 按钮/标签）、删除提示行与示例注释、导出文案、起始位置颜色；已用原生 File → Save 保存并重新导出 `design/workspace-revision/ymoeh.png`，README 已注明。**注意：在该画板直接 Insert 新文本节点会出现 +50px 的 y 偏移并渲染错位，用 Copy 现有文本节点再改内容则正常。**
 

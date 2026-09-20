@@ -29,7 +29,7 @@ const api:DesktopAPI={
  editClip:(id,action)=>ipcRenderer.invoke('clips:edit',id,action),
  editTrack:(id,action)=>ipcRenderer.invoke('tracks:edit',id,action),
  deleteProject:(id,purge)=>ipcRenderer.invoke('projects:delete',id,purge),
- exportTracks:(id,tracks,format,clipIds)=>ipcRenderer.invoke('tracks:export',id,tracks,format,clipIds),
+ exportTracks:(id,tracks,format,clipIds,options)=>ipcRenderer.invoke('tracks:export',id,tracks,format,clipIds,options),
  openExportDirectory:directory=>ipcRenderer.invoke('exports:open-directory',directory),
  listModels:()=>ipcRenderer.invoke('models:list'),
  downloadModel:(id)=>ipcRenderer.invoke('models:download',id),
@@ -40,6 +40,7 @@ const api:DesktopAPI={
  chooseSettingsDirectory:kind=>ipcRenderer.invoke('settings:choose-directory',kind),
  resetSettingsDirectory:kind=>ipcRenderer.invoke('settings:reset-directory',kind),
  getSettings:()=>ipcRenderer.invoke('settings:get'),
+ probeDevice:()=>ipcRenderer.invoke('device:probe'),
  saveSettings:(settings)=>ipcRenderer.invoke('settings:save',settings)
 }
 contextBridge.exposeInMainWorld('printemps',api)

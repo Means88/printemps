@@ -159,5 +159,12 @@
     "title": "二次分离与其它音轨",
     "png": "exports/22-secondary-separation.png",
     "html": "screens/22-secondary-separation.html"
+  },
+  {
+    "nodeId": "b8troH",
+    "slug": "32-export-tracks",
+    "title": "导出音轨（顶栏导出）",
+    "png": "exports/32-export-tracks.png",
+    "html": "screens/08-export.html"
   }
 ]

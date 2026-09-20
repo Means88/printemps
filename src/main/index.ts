@@ -1,3 +1,4 @@
+import {runJsonWorker} from './json-worker'
 import {applyClipAction,clipActionSchema} from '../shared/clips'
 import {installNativeMenu} from './native-menu'
 import {menuStateSchema} from '../shared/native-menu'
@@ -110,11 +111,11 @@ handle('tracks:edit',async(id:string,input:unknown)=>{
  })
 })
 handle('projects:delete',(id:string,purge:boolean)=>{if(separation.busy||analysis.busy||exportingProjects.has(id))throw new Error('Wait for active tasks or export to finish before deleting a project');return store.remove(id,purge===true)})
-handle('tracks:export',async(id:string,trackIds:string[],format:'wav'|'flac',clipIds?:string[])=>{
+handle('tracks:export',async(id:string,trackIds:string[],format:'wav'|'flac',clipIds?:string[],options?:{alignment?:'clip'|'timeline'})=>{
  if(exportingProjects.has(id))throw new Error('This project is already being exported')
  exportingProjects.add(id)
  try{
- const plan=await prepareExport(store,id,trackIds,format,clipIds)
+ const plan=await prepareExport(store,id,trackIds,format,clipIds,options)
  const result=await dialog.showOpenDialog(win,{properties:['openDirectory','createDirectory'],defaultPath:(await store.settings()).exportDirectory||undefined})
  if(result.canceled)return null
  const directory=result.filePaths[0]
@@ -157,6 +158,8 @@ handle('separation:start',async(projectId:string,sourceId:string,ids:string[],cl
 handle('separation:status',()=>separation.status())
 handle('separation:cancel',(id:string)=>separation.cancel(id))
 handle('settings:get',()=>store.settings())
+let deviceProbe:Promise<{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}>|null=null
+handle('device:probe',()=>{deviceProbe??=runJsonWorker<{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}>(python,path.join(runtimeRoot,'worker/device_probe.py'),{},new AbortController().signal,event=>event.type==='result'?{cuda:!!event.cuda,mps:!!event.mps,auto:event.auto==='cuda'?'cuda':'cpu'}:undefined).catch(e=>{deviceProbe=null;throw e});return deviceProbe})
 const settingsService=new SettingsService(store,()=>!!download||separation.busy)
 handle('settings:save',(value)=>settingsService.save(value))
 handle('settings:directories',()=>settingsService.directories())
@@ -192,6 +195,8 @@ function createWindow(){
 }
 createWindow()
 app.on('activate',()=>{if(BrowserWindow.getAllWindows().length===0)createWindow()})
+app.on('browser-window-blur',(_event,window)=>{if(process.platform==='darwin'&&!window.isDestroyed())window.setWindowButtonVisibility(true)})
+app.on('browser-window-focus',(_event,window)=>{if(process.platform==='darwin'&&!window.isDestroyed())window.setWindowButtonVisibility(true)})
 app.on('window-all-closed',()=>{if(process.platform!=='darwin')app.quit()})
 
 }).catch(error => { console.error(error); app.quit() })

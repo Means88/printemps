@@ -742,3 +742,17 @@ User feedback on the 049a3d8 build, fixed in source (later than that package/CI)
 - **Space with the metronome switch focused** toggled nothing useful: the shortcut guard excluded `[role="switch"]`, and the switch kept focus after a click. The guard no longer excludes switches (inputs, sliders and menus still are), and the toolbar switch blurs itself after a click. With the switch focused, Space started playback without changing the switch, a second Space paused, and a click left the switch unfocused.
 - **Clip trim handles** (z-index 2) painted above the sticky track headers (z-index 2) when lanes scrolled under them. Track heads are now z-index 3 and the sticky ruler 4; handles stay at 2.
 - 96 tests passed / 3 conditional skipped; typecheck clean; production build passed. A local `pnpm package` follows; the CI run for 95c1934 was cancelled at the user's request.
+
+### 2026-09-20 · Second feedback round: exports, header, settings device, history, typography
+
+Implemented from user feedback on the local 9da5785 build and verified on the rebuilt `out/` with the isolated Chinese profile (Pen edited alongside; PNGs re-exported):
+
+- **Header tools are stable across pages**: 模型管理 / 设置 sit at a fixed right offset in the title bar on every page (measured left 1314 / 1352 px on Home, Settings, Model library and the workspace); the workspace adds ? before them and the sidebar toggle after them, other pages reserve the toggle slot. The logo is a Home button. Board 03 dropped ?, board 30 moved its four icons into the title bar left of the window controls.
+- **Model library** back is a top-left arrow sized like the workspace one (41×30) and no longer auto-focuses (the focus ring the user saw). All projects / Deleted projects regained a top-left Home arrow (board 13 updated).
+- **Processing device**: a new `worker/device_probe.py` + `device:probe` IPC report CUDA/MPS availability and what 自动选择 resolves to; Settings shows “自动选择（当前将使用 CPU）” and “本机可用：CPU · Apple MPS（实验性，需手动选择）”; the stem chooser summary shows “处理设备 自动选择 · CPU”. The idle “检查新版本” caption under 应用更新 was removed.
+- **macOS traffic lights**: `setWindowButtonVisibility(true)` is re-asserted on window blur/focus as a workaround for them disappearing while the window is inactive. Not verifiable through the page capture; needs a visual check on the next package.
+- **Export**: every export offers 对齐 = 剪辑范围 or 项目时间轴; timeline alignment prepends `adelay` silence equal to the clip offset (`exportFilter`, real-ffmpeg test: 0.5 s clip at offset 0.5 → 1.0 s file starting with silence). The header 导出 now opens 导出音轨 (new board 32): a checklist of visible result tracks (original excluded), format, alignment, “导出 N 条音轨”. Board 08 gained the alignment row.
+- **Buttons rule** recorded in `design/README.md`: actions right-aligned, one primary at the far right. Board 10's six cards were re-laid-out accordingly; the lane notice is now 关闭 / 重试(primary) and the download failure dialog 取消任务 / 重试下载.
+- **Typography** scaled to DAW proportions: home headline 30 px, page titles 22 px, dialog titles 20 px, clip title 18 px, summary count 22 px, transport clock 20 px.
+- **Search fields** match their neighbours: history search 34 px like the selects (icon vertically centred), model library search 38 px like the filter group.
+- Tests 97 passed / 3 conditional skipped (including the new alignment test); typecheck clean; production build passed.

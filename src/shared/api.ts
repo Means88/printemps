@@ -32,7 +32,7 @@ export interface DesktopAPI {
   editClip(id:string,action:import('./clips').ClipAction):Promise<Project>
   editTrack(id:string,action:import('./track-actions').TrackAction):Promise<Project>
   deleteProject(id: string, purge: boolean): Promise<void>
-  exportTracks(projectId:string, trackIds:string[], format:'wav'|'flac',clipIds?:string[]): Promise<{count:number;directory:string;failure?:{remainingIds:string[];trackName:string;message:string}}|null>
+  exportTracks(projectId:string, trackIds:string[], format:'wav'|'flac',clipIds?:string[],options?:{alignment?:'clip'|'timeline'}): Promise<{count:number;directory:string;failure?:{remainingIds:string[];trackName:string;message:string}}|null>
   openExportDirectory(directory:string):Promise<void>
   listModels(): Promise<{id:string;bytes:number;cached:boolean}[]>
   downloadModel(id:string): Promise<void>
@@ -40,9 +40,12 @@ export interface DesktopAPI {
   deleteModel(id:string): Promise<void>
   onModelProgress(callback:(progress:{modelId:string;received:number;total:number})=>void):()=>void
   getSettings(): Promise<Settings>
+  probeDevice(): Promise<DeviceProbe>
   saveSettings(settings: Partial<Pick<Settings,'language'|'device'>>): Promise<Settings>
   settingsDirectories():Promise<{modelDirectory:string;exportDirectory:string}>
   chooseSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings|null>
   resetSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings>
 }
 declare global { interface Window { printemps: DesktopAPI } }
+
+export interface DeviceProbe{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}
