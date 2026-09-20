@@ -18,6 +18,15 @@ if(new URLSearchParams(location.search).get('taskStates')==='1'){
  projects=projects.map((p,i)=>({...p,lastSeparation:{id:uuid(),sourceId:p.tracks[0].id,retrySourceId:p.tracks[5].id,targets:['drums','bass'],state:states[i%5],completed:i%5===0?2:1,startedAt:p.createdAt,finishedAt:i%5===4?undefined:p.updatedAt,error:i%5===1?'Fixture: second target failed':undefined}}))
 }
 const noopSubscription=()=>()=>{}
+const separationListeners=new Set<Parameters<DesktopAPI['onSeparation']>[0]>()
+if(new URLSearchParams(location.search).get('backgroundTaskPreview')==='1'){
+ const taskId=uuid(),projectId=projects[0].id,sourceId=projects[0].tracks[0].id
+ projects[0]={...projects[0],lastSeparation:{id:taskId,sourceId,targets:['drums'],completed:0,state:'running',startedAt:new Date().toISOString()}}
+ setTimeout(()=>{
+  projects=projects.map(p=>p.id===projectId?{...p,lastSeparation:{...p.lastSeparation!,state:'complete',completed:1,finishedAt:new Date().toISOString()}}:p)
+  for(const listener of separationListeners)listener({id:taskId,projectId,sourceId,phase:'complete',progress:1,targets:['drums'],completedStems:1})
+ },15000)
+}
 const modelListeners=new Set<Parameters<DesktopAPI['onModelProgress']>[0]>()
 const cachedModels=new Set(manifest.models.filter((_,i)=>i%4===0).map(m=>m.id))
 let cancelDownload:(()=>void)|undefined
@@ -28,7 +37,7 @@ const partial:Partial<DesktopAPI>={
  saveProject:async (id,edits)=>{if(id!==project.id)throw new Error('Project not found');if(failNextSave){failNextSave=false;throw new Error(en?'Fixture: saving failed. Retry to keep your changes.':'测试示例：保存失败，请重试以保留修改。')}project=applyProjectEdits(project,edits);projects=projects.map(p=>p.id===project.id?project:p);return structuredClone(project)},deleteProject:async(id,purge)=>{const item=projects.find(p=>p.id===id);if(item&&!purge)archived.push({archiveId:uuid(),project:item});projects=projects.filter(p=>p.id!==id)},
  getSettings:async()=>settings,saveSettings:async p=>settings={...settings,...p},settingsDirectories:async()=>({modelDirectory:'/example/model-cache',exportDirectory:'/example/exports'}),
  listModels:async()=>manifest.models.map(m=>({id:m.id,bytes:m.totalBytes,cached:cachedModels.has(m.id)})),separationStatus:async()=>null,analysisStatus:async()=>null,
- updateStatus:async()=>({phase:'development',currentVersion:'UI fixture'}),onAnalysis:noopSubscription,onSeparation:noopSubscription,onModelProgress:listener=>{modelListeners.add(listener);return()=>{modelListeners.delete(listener)}},onUpdate:noopSubscription,onCloseRequest:noopSubscription
+ updateStatus:async()=>({phase:'development',currentVersion:'UI fixture'}),onAnalysis:noopSubscription,onSeparation:listener=>{separationListeners.add(listener);return()=>{separationListeners.delete(listener)}},onModelProgress:listener=>{modelListeners.add(listener);return()=>{modelListeners.delete(listener)}},onUpdate:noopSubscription,onCloseRequest:noopSubscription
 }
 if(new URLSearchParams(location.search).get('downloadPreview')==='1'){
  partial.downloadModel=id=>new Promise<void>((resolve,reject)=>{

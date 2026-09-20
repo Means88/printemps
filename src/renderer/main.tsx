@@ -49,6 +49,18 @@ function App(){
  const recentProjects=projects.filter(p=>(p.name+' '+p.sourceName).toLowerCase().includes(search.trim().toLowerCase())).sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)).slice(0,3)
  useEffect(()=>{document.documentElement.lang=settings.language==='en'?'en':'zh-CN'},[settings.language])
  useEffect(()=>{if(!window.printemps){setError('Open this application in Electron (npm run dev).');return}Promise.all([window.printemps.listProjects(),window.printemps.getSettings()]).then(([p,s])=>{setProjects(p);setSettings(s)}).catch(e=>setError(String(e)))},[])
+ useEffect(()=>{
+  let mounted=true,revision=0,lastTask='',completed=0
+  const unsubscribe=window.printemps?.onSeparation(task=>{
+   const count=task.completedStems||0
+   const refresh=task.id!==lastTask||count!==completed||['complete','failed','cancelled'].includes(task.phase)
+   lastTask=task.id;completed=count
+   if(!refresh)return
+   const request=++revision
+   void window.printemps.listProjects().then(items=>{if(mounted&&request===revision)setProjects(items)}).catch(e=>{if(mounted&&request===revision)setError(String(e))})
+  })
+  return()=>{mounted=false;unsubscribe?.()}
+ },[])
  function update(next:Project){if(project)session.edit(project,next)}
  useEffect(()=>window.printemps?.onCloseRequest(async()=>{
   flushSync(()=>{if(document.activeElement instanceof HTMLElement)document.activeElement.blur()})
