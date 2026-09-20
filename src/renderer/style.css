@@ -189,3 +189,15 @@ header>button{flex-shrink:0}
 /* Keep the track-list group aligned with the 244px track headers (Pen 30). */
 .track-list-tools{display:flex;align-items:center;gap:16px;width:215px;flex-shrink:0;white-space:nowrap}.track-list-tools>span{font-size:12px;color:#a0aab8}
 @media(max-width:1280px){.track-list-tools{width:223px;gap:12px}}
+/* Pen 30 uses 84px lanes; keep the gain readout above its 24px fader. */
+.track{min-height:84px}
+.track-head{padding:9px 16px}
+.track-head>.name,.metronome-track .track-head>strong{height:20px;line-height:20px}
+.metronome-track .track-head>strong{display:block}
+.track-head>small{height:16px;line-height:16px;margin:2px 0;max-width:124px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.track-controls{height:24px}
+.track-controls .fader{height:24px}
+.track-controls .gain-value,.track-controls .gain-input{position:absolute;right:0;bottom:24px}
+.track-controls .gain-input{width:72px;height:18px}
+.multi-clip-wave{min-height:0;margin:4px 8px}
+.audio-clip svg{height:calc(100% - 22px)}
