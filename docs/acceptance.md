@@ -406,3 +406,9 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Added Pen 07's Change location action using the existing native directory-selection API. A successful selection refreshes model verification and propagates returned Settings into the app; controls disable during the operation. Existing backend task/path checks remain authoritative.
 - Opening the library updates titlebar title and gutter; returning restores the underlying page title. At 1440×900 English, brand and content left edges both measured 48px. Table bottom 792.89px fits inside its 812px viewport after adjusting row padding. Back restored New project. Browser fixture did not invoke a real native folder picker.
 - Production build passed (`/tmp/printemps-model-library-integration-build.log`). CI 35492712177 still covers the prior 9e21ead commit, not these library revisions.
+
+### Library download presentation and CI artifact — 2026-09-20
+
+- Library download progress now reuses the animated rounded task-progress component. Header progress text stays inline with its icon instead of wrapping beneath the titlebar.
+- English 1280×800 simulated download observed at 87%, then completion updated cached count 14→15 and restored actions. A second simulated download was cancelled and restored Change location / row actions with cancellation guidance. The list scrolls independently while the progress strip and cancel control stay visible. Preview did not download model weights.
+- Production build passed (`/tmp/printemps-library-progress-build.log`). CI run 35492712177 macOS job succeeded and artifact 10600205263 was verified present/unexpired, 765,586,979 bytes, for commit 9e21ead. Windows/Linux were still running; this does not cover subsequent library changes.
