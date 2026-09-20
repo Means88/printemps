@@ -296,7 +296,7 @@ header>button{flex-shrink:0}
 .preferences-page>h2{font-size:26px;font-weight:600;margin:0 0 24px}
 .preferences-fields{min-height:0;overflow:auto;flex:1}
 .preference-row,.preferences-page .directory-setting{display:grid;grid-template-columns:55% minmax(0,45%);align-items:center;min-height:112px;gap:0;margin:0;padding:24px 8px 24px 0;border-bottom:1px solid #303640}
-.preference-row>span,.preferences-page .directory-setting>strong{font-size:16px;font-weight:500}
+.preference-row>span,.preferences-page .directory-setting>strong,.preferences-page .directory-label{font-size:16px;font-weight:500}.preference-row>span,.directory-label{display:flex;flex-direction:column;gap:8px;padding-right:32px}.preference-row>span small,.directory-label small{font-size:13px;font-weight:400;color:#a0aab8;line-height:1.5}.preferences-lead{margin:-14px 0 6px;color:#a0aab8;font-size:14px}
 .preference-row select,.directory-path{width:100%;height:44px;background:#242b35;border:1px solid #3a4350;border-radius:10px;font-size:14px}
 .preferences-page .directory-settings{border:0;padding:0}
 .directory-path{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:10px 16px}
@@ -405,3 +405,13 @@ header>button{flex-shrink:0}
 .separation-dialog[data-mode=setup] .dialog-lead{margin:6px 0 0;color:#a0aab8;font-size:14px;line-height:1.5}.separation-dialog[data-mode=setup]>p.stem-source{display:flex;align-items:center;gap:16px;padding:14px 20px}.stem-source svg{width:24px;height:24px;color:#8eb8eb;flex-shrink:0}.stem-source span{display:flex;flex-direction:column;gap:2px;min-width:0}.stem-source strong{font-weight:600;font-size:14px;color:#e8ecf2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.stem-source small{font-size:12px;color:#a0aab8}.stem-search{position:relative;display:flex;align-items:center;flex:1;min-width:0}.stem-search svg{position:absolute;left:14px;width:16px;height:16px;color:#a0aab8;pointer-events:none}.stem-search input{width:100%;padding-left:40px}.stem-categories button.selected{background:#253954!important;border-color:#253954!important;color:#8fc0ff}.stem-summary-note{margin-top:14px;line-height:1.6}
 
 .history-heading p{margin:6px 0 0;color:#a0aab8;font-size:13px}
+
+.model-library-footer{display:flex;align-items:center;gap:10px}.model-library-note{margin-right:auto;color:#8593a7;font-size:12px}
+
+.preferences-page .directory-label strong{font-size:16px;font-weight:500}
+
+.stem-results-heading{margin:0 0 12px;color:#a0aab8;font-size:13px}.stem-search-notes{margin-top:20px}.stem-search-notes p{margin:0 0 8px;font-size:12px;color:#a0aab8}.stem-search-notes .stem-search-note-selected{color:#8fc0ff;font-size:13px}.stem-search-clear{position:absolute;right:10px;display:grid;place-items:center;width:24px;height:24px;padding:0;background:transparent;border:0;color:#a0aab8}.stem-search-clear svg{width:14px;height:14px}
+
+.delete-dialog h2{display:flex;align-items:center;gap:12px}.delete-dialog h2 svg{width:20px;height:20px;color:#e57373}.delete-dialog-name{font-size:16px;color:#e8ecf2;margin:16px 0 6px}.delete-dialog-body{margin:0 0 18px;font-size:13px;line-height:1.7}.dialog label.delete-dialog-option{display:flex;align-items:flex-start;justify-content:flex-start;gap:12px;margin:0 0 8px}.delete-dialog-option input{margin-top:3px}.delete-dialog-option span{display:flex;flex-direction:column;gap:4px}.delete-dialog-option strong{font-weight:500;font-size:14px}.delete-dialog-option small{font-size:12px}.history-empty{padding:40px 8px;text-align:left}.history-empty h3{margin:0 0 10px;font-size:16px;font-weight:500}.history-empty p{margin:0 0 20px;font-size:13px;line-height:1.7}.history-empty-first{text-align:center;padding:64px 8px}.history-empty-first svg{width:36px;height:36px;color:#70abec;margin-bottom:16px}.history-empty-first h3{font-size:20px}
+
+.error-notice-heading{display:flex;align-items:center;gap:10px;margin-bottom:6px}.error-notice-heading svg{width:18px;height:18px;color:#e0b35a;flex-shrink:0}.error-notice-heading strong{font-size:15px;font-weight:600;color:#e8ecf2}

@@ -12189,36 +12189,7 @@
           "width": 1440,
           "height": 60,
           "fill": "#101216",
-          "layout": "none",
-          "children": [
-            {
-              "type": "frame",
-              "id": "QsGEx",
-              "x": 1010,
-              "y": 12,
-              "name": "Open analysis model tools",
-              "context": "打开音乐分析工具，管理 final0 或 small0 缓存。",
-              "width": 190,
-              "height": 36,
-              "fill": "#20252D",
-              "cornerRadius": 10,
-              "layout": "none",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "KEBV0",
-                  "x": 16,
-                  "y": 8,
-                  "name": "Analysis model tools label",
-                  "fill": "#A0AAB8",
-                  "content": "BPM / 调性分析工具",
-                  "fontFamily": "Noto Sans SC",
-                  "fontSize": 13,
-                  "fontWeight": "normal"
-                }
-              ]
-            }
-          ]
+          "layout": "none"
         },
         {
           "type": "rectangle",
@@ -12351,7 +12322,7 @@
               "id": "dhHZL",
               "name": "返回工作台 label",
               "fill": "#F3F6FB",
-              "content": "返回工作台",
+              "content": "返回",
               "fontFamily": "Noto Sans SC",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -17908,30 +17879,6 @@
           "layout": "none"
         },
         {
-          "type": "text",
-          "id": "QXYqm",
-          "x": 806,
-          "y": 734,
-          "name": "Language options",
-          "fill": "#A0AAB8",
-          "content": "语言选项：简体中文 / English",
-          "fontFamily": "Noto Sans SC",
-          "fontSize": 12,
-          "fontWeight": "normal"
-        },
-        {
-          "type": "text",
-          "id": "AwLaf",
-          "x": 806,
-          "y": 760,
-          "name": "Device options",
-          "fill": "#A0AAB8",
-          "content": "设备选项：自动选择 / CPU / 可用的 GPU",
-          "fontFamily": "Noto Sans SC",
-          "fontSize": 12,
-          "fontWeight": "normal"
-        },
-        {
           "type": "frame",
           "id": "A2rqva",
           "x": 1222,
@@ -21203,7 +21150,7 @@
               "y": 129,
               "name": "Result count",
               "fill": "#A0AAB8",
-              "content": "找到 1 条记录",
+              "content": "共 1 条记录",
               "fontFamily": "Noto Sans SC",
               "fontSize": 12,
               "fontWeight": "normal"
@@ -21345,7 +21292,7 @@
               "fill": "#A0AAB8",
               "textGrowth": "fixed-width",
               "width": 600,
-              "content": "试试其他音频名称、文件名或声部。\n搜索不会影响已保存的记录。",
+              "content": "试试其他项目名称、文件名或声部。\n搜索不会影响已保存的记录。",
               "fontFamily": "Noto Sans SC",
               "fontSize": 14,
               "fontWeight": "500"
@@ -21411,7 +21358,7 @@
               "y": 27,
               "name": "Title",
               "fill": "#E8ECF2",
-              "content": "删除这条工作记录？",
+              "content": "删除这个项目？",
               "fontFamily": "Noto Sans SC",
               "fontSize": 21,
               "fontWeight": "500"
@@ -21437,7 +21384,7 @@
               "fill": "#A0AAB8",
               "textGrowth": "fixed-width",
               "width": 600,
-              "content": "该记录将从历史列表移除。\n原始音频始终保留。",
+              "content": "该项目将从列表移除，可在“已删除”中恢复。\n原始音频文件与已导出的副本始终保留。",
               "fontFamily": "Noto Sans SC",
               "fontSize": 14,
               "fontWeight": "500"
@@ -21529,7 +21476,7 @@
                   "id": "rHamH",
                   "name": "删除记录 label",
                   "fill": "#F3F6FB",
-                  "content": "删除记录",
+                  "content": "删除项目",
                   "fontFamily": "Noto Sans SC",
                   "fontSize": 12,
                   "fontWeight": "normal"
@@ -21569,7 +21516,7 @@
               "y": 140,
               "name": "Empty title",
               "fill": "#E8ECF2",
-              "content": "还没有工作记录",
+              "content": "还没有项目",
               "fontFamily": "Noto Sans SC",
               "fontSize": 23,
               "fontWeight": "500"
@@ -21609,7 +21556,7 @@
                   "id": "tjgDI",
                   "name": "新建分离 label",
                   "fill": "#F3F6FB",
-                  "content": "新建分离",
+                  "content": "新建项目",
                   "fontFamily": "Noto Sans SC",
                   "fontSize": 12,
                   "fontWeight": "normal"

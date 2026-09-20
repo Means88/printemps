@@ -690,3 +690,22 @@ Method as before: Chinese isolated-profile window driven through CDP, screenshot
 
 - Pen note: siblings on boards 04/13 are direct children of the board frame, not of the dialog panel frame; copies must be placed in the same parent or they render offset. Recorded so the “+50 px” confusion from board 30 is understood as parent mismatch, not a renderer bug.
 - Native checks after rebuild (Chinese, isolated profile): Home 1440×900 shows intro, steps row, arrow link, `5 音轨`; stem chooser shows the new title, source row `分离来源：权限恢复验证 / 00:00.750 · 44.1 kHz · Stereo`, tinted 全部 category, `处理设备 CPU`; All projects shows subtitle, 已删除 + 新建项目, `共 1 条记录`, `分离结果 · 4 个剪辑`; export dialog unchanged. English 1280×800 workspace has no horizontal overflow. Tests 95 passed / 3 conditional skipped; typecheck clean. Not yet in a signed package or CI.
+
+### 2026-09-20 · Boards 05 / 07 / 09 / 10 / 14 / 15 / 16 compared and aligned
+
+Same method (Chinese isolated-profile window over CDP; the model-download and download-failure states through the `preview.html?separationDownloadPreview=1` fixture in the built-in browser at 1440×900). Pen edited first where the board was stale, saved natively, PNGs re-exported to `design/exports/07-model-library.png`, `09-preferences.png`, `14-history-states.png`.
+
+| Board | Deviation | Decision | Where |
+| --- | --- | --- | --- |
+| 07 Model library | Alphabetical list vs cached first; 下载 secondary vs primary; “大小” vs “权重大小”; footer note missing | Follow board | App: cached models sort first, primary 下载, 权重大小 header, footer note “每个模型附带约 1.6 kB 配置文件…” |
+| 07 | Board said 返回工作台 and carried a stale “BPM / 调性分析工具” pill | App is right (entry may be Home) | Pen: 返回, pill removed |
+| 09 Settings | Subtitle hidden; rows lacked descriptions; device option “自动（CUDA / CPU）” | Follow board | App: visible subtitle, per-row descriptions, “自动选择” |
+| 09 | Board footnote listing option values | Annotation | Pen: removed |
+| 15 / 16 Stem search | No results heading, no clear button, no retained-selection note, generic empty copy | Follow board | App: “‘…’ 的搜索结果 · N 个声部”, × clear button, “已选 N 个声部，其中 M 个不在当前搜索结果中。” / “已选的 N 个声部仍保留，可以继续分离。”, tip line, “没有找到‘…’相关声部” |
+| 14 History states | Delete dialog wording and neutral button; plain empty texts | Follow board with project wording | App: icon + “删除这个项目？”, name, two-line body, checkbox with sub-note, red 删除项目; empty search card with 清空搜索; first-run empty state with icon and 新建项目 |
+| 14 | Board used 记录 / 新建分离 wording | App wording | Pen: 项目 / 新建项目, “共 1 条记录” |
+| 05 Model download | Title “下载模型”, no model count line, heading was the stem name only, cached targets not listed | Follow board | App: “只下载这次需要的模型”, “N 个模型 · 共 X MB”, “下载{声部}模型”, cached-targets row “已缓存 · 无需重复下载” |
+| 10 Recovery cards | Notices had guidance text only; download failure actions were 返回工作区 / 重试 | Follow board anatomy | App: every `ErrorNotice` now shows an icon + state title (下载中断 / 磁盘空间不足 / 无法写入文件夹 / 模型校验失败 / 内存不足 / 处理设备不可用 / 分离被中断 / 已取消 / 导出失败…) above the guidance; download failure offers 取消任务 + 重试下载; “download interrupted” now maps to the network guidance |
+
+- Verified: Model library shows 贝斯/鼓组 first with 删除缓存, primary 下载 elsewhere, footer note and pagination on one row. Settings shows subtitle and four descriptions without inner scroll (834 px). Stem chooser: “‘吉他’ 的搜索结果 · 4 个声部”, note “已选 2 个声部，其中 1 个不在当前搜索结果中。”, chips retained; “theremin” shows the empty copy and “已选的 2 个声部仍保留…”. History: empty-search card and delete dialog as designed. Preview fixture: download dialog shows “2 个模型 · 共 155.2 MB”, “下载电吉他模型 10 %”, queue statuses, source aside; after the fixture failure the notice reads “下载中断 / 模型下载中断或网络不可用…” with 取消任务 / 重试下载.
+- Tests 96 passed / 3 conditional skipped (36 files); typecheck clean; production build passed. Boards 02 (size reference) and 11 (interaction spec sheet) were not restructured. All of this is later than the 18799ce signed package and CI.

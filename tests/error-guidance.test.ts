@@ -22,3 +22,12 @@ test('private storage rejection guides cache selection without irrelevant networ
  expect(message).toContain('restore the default location')
  expect(message).not.toContain('connection')
 })
+import {errorHeadline} from '../src/renderer/error-notice'
+test('recovery notices carry a short state title matching their guidance',()=>{
+ expect(errorHeadline('Fixture: download interrupted',false,'download')).toBe('下载中断')
+ expect(errorGuidance('Fixture: download interrupted',false,'download')).toContain('检查网络')
+ expect(errorHeadline('ENOSPC: no space left on device',true)).toBe('Not enough disk space')
+ expect(errorHeadline('Separation interrupted before completion',false)).toBe('分离被中断')
+ expect(errorHeadline('EACCES: permission denied',true,'export')).toBe('Cannot write to the export folder')
+ expect(errorHeadline('Unexpected worker exit',false)).toBe('分离失败')
+})
