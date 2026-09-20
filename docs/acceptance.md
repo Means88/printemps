@@ -199,3 +199,10 @@ c7d60f0 已完成 macOS arm64 打包、`codesign --verify --deep --strict` 及�
 - 工作流 35482306981（e29bc55）终态 success，Windows NSIS、macOS DMG/ZIP、Linux AppImage 构建及各自包内分析全部通过。Linux 清理临时 CI runner 的未使用 SDK 后不再触发上一轮 ENOSPC。未上传或发布安装包。
 - 修正启动恢复边界：结果及 completed 计数已全部原子提交、但最终状态写入前退出的任务，恢复为 complete；仅部分完成仍为 interrupted。结果音轨、名称和混音设置保持不变。
 - `npx vitest run tests/progressive-separation.test.ts tests/store.test.ts` 4 项通过，覆盖完整结果恢复、部分结果恢复与后续重试来源；类型检查通过。此证据是持久化恢复测试，不替代原生强退验收。
+
+
+## 2026-09-20 Pen 历史页一致性
+
+通过 Pen MCP 更新 b1tMnW：历史列表与详情补上“其它”，详情共 6 条结果音轨；新建入口改为“新建项目”；按钮图层名称同步为继续试听/导出音轨，不再遗留“查看文件位置”名称。保留其它画板。重新导出 design/archive-export/b1tMnW.png 与 index.html，1440×900 PNG 视觉检查无重叠、裁切；画板结构检查无溢出报告。
+
+78f7ea7 的三平台安装包工作流已启动：35482898080。结果尚待终态，不沿用上一提交的通过结论。原生目录选择器重置连接后键盘异常仍复现，已请求手动确认测试目录，尚未完成新导出目录入口验收。
