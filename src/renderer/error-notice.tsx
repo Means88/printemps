@@ -1,5 +1,6 @@
 export function errorGuidance(message:string,en:boolean,kind:'download'|'separation'='separation'){
  const text=(zh:string,english:string)=>en?english:zh
+ if(/Separation interrupted before completion/i.test(message))return text('上次分离被中断，已完成的结果已保留。可重试未完成的声部。','The previous separation was interrupted. Completed results are retained. Retry the unfinished stems.')
  if(/abort|cancelled|canceled/i.test(message))return text('操作已取消。需要时可重新开始。','Operation cancelled. Start again when ready.')
  if(/ENOSPC|insufficient disk|no space left/i.test(message))return text('磁盘空间不足。请释放空间；模型下载也可在设置中更换缓存目录后重试。','Not enough disk space. Free space, or change the model cache folder in Settings before retrying a download.')
  if(/EACCES|EPERM|permission denied|read.only/i.test(message))return text('无法写入文件夹。请检查访问权限，或在设置中选择可写入的缓存目录后重试。','Cannot write to the folder. Check permissions, or choose a writable cache folder in Settings and retry.')

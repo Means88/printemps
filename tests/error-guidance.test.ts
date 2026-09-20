@@ -7,4 +7,5 @@ test('task failures give localized recovery actions without replacing diagnostic
  expect(errorGuidance('Model integrity check failed',false)).toContain('重新下载')
  expect(errorGuidance('Operation was aborted',false)).toContain('已取消')
  expect(errorGuidance('Unexpected worker exit',true)).toContain('source track is retained')
+ expect(errorGuidance('Separation interrupted before completion',false)).toContain('重试未完成')
 })
