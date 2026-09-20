@@ -19,10 +19,10 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 源码、构建与远端
 
-- 代码检查点：签名包/CI 对应 `18799ce`。本轮末尾另有源码修改，**尚未进入任何包或 CI**：画板 30/03/04/13/05/07/09/10/14/15/16 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`、首页引导文案与步骤行、顶栏图标顺序、声部弹窗标题/来源行/搜索/分类选中态/处理设备行、历史页副标题与“新建项目”主按钮、模型管理排序/主按钮/页脚、设置说明文字、声部搜索结果/空态、删除弹窗与空态卡、模型下载弹窗标题/计数/已缓存行、错误提示标题+图标与下载失败动作）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，96 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点。
-- **最后推送、签名包和三平台 CI 现在都对应 `18799ce20b584cd4c5959dea86df2a2fd95b799d`**。旧的 9564b98 包与 CI 已被覆盖，不再是当前证据。
-- CI：https://github.com/Means88/printemps/actions/runs/35498158919 ，三平台成功；产物 ID/哈希见 acceptance.md 最后一节，2026-09-27 过期。workflow 只在 `pull_request` 和 `workflow_dispatch` 触发，推送不会自动跑；用 `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`。
-- 本地签名包 `release/mac-arm64/Printemps.app`（Developer ID，未公证），`app.asar` SHA256 `55ae0a0ea511058c8fd59294cdd3e455a5e6df54916e590fe3a07b6eaf62a151`。日志：`/tmp/printemps-18799-package.log`、`-signature.log`、`-packaged-analysis.log`、`-full-tests.log`（92 passed / 3 skipped）。
+- 代码检查点：**签名包与三平台 CI 现对应 `049a3d8`**（包含本轮全部源码修改）：画板 30/03/04/13/05/07/09/10/14/15/16 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`、首页引导文案与步骤行、顶栏图标顺序、声部弹窗标题/来源行/搜索/分类选中态/处理设备行、历史页副标题与“新建项目”主按钮、模型管理排序/主按钮/页脚、设置说明文字、声部搜索结果/空态、删除弹窗与空态卡、模型下载弹窗标题/计数/已缓存行、错误提示标题+图标与下载失败动作）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，96 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点（其后提交只改 docs）。
+- **最后推送、签名包和三平台 CI 现在都对应 `049a3d8876a57a7fd42fac5ea4c1224d48299fa4`**。18799ce 的原生回归证据仍有效（源码只在 UI 层变化），但其包与 CI 已被覆盖。
+- CI：https://github.com/Means88/printemps/actions/runs/35501611789 ，三平台成功；产物 ID/哈希见 acceptance.md 最后一节，2026-09-27 过期。workflow 只在 `pull_request` 和 `workflow_dispatch` 触发，推送不会自动跑；用 `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`。
+- 本地签名包 `release/mac-arm64/Printemps.app`（Developer ID，未公证），`app.asar` SHA256 `2004d3f922567161422afd9b181a6ea7f8ae7c16c107dc6a2e785c7aa57d5cf6`。日志：`/tmp/printemps-049a3d8-package.log`、`-signature.log`、`-packaged-analysis.log`；18799ce 的日志 `/tmp/printemps-18799-*.log` 仍在。
 - `out/` 由本轮 `pnpm package` 重建，与源码一致。
 
 ## 本轮完成的 macOS 验收（详见 acceptance.md 末尾两节）
@@ -48,7 +48,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 - 所有 QA 应用均已退出；无待完成的 CI、打包任务。
 - 隔离 profile `/var/folders/hh/0nr41s6j25d6xp6g97dq9m0w0000gn/T/printemps-close-native-xa56q9gc`（路径亦在 `/tmp/printemps-close-native-path.txt`）。项目 `e0691b7b-…` 现名 `测试项目`，BPM 120、节拍器开、5 条可见轨，历史两次分离均 complete。
-- 应用副本：`/private/tmp/Printemps-18799-QA.app`（签名包 APFS 克隆）、`/private/tmp/Printemps-Close-QA.app`（Electron 运行时 + 仓库 `out/`）。重开时显式传 `--user-data-dir` 上述 profile；后者还要传仓库路径作为第一个参数。
+- 应用副本：`/private/tmp/Printemps-049a3d8-QA.app`（当前签名包 APFS 克隆）、`/private/tmp/Printemps-18799-QA.app`（上一版）、`/private/tmp/Printemps-Close-QA.app`（Electron 运行时 + 仓库 `out/`）。重开时显式传 `--user-data-dir` 上述 profile；后者还要传仓库路径作为第一个参数。
 - 模型缓存 `/Users/means88/x/stems/.cache/model-reference/v1`（drums/bass），已在 QA settings.json 中指定；不要重复下载。
 - 损坏音频夹具 `/tmp/printemps-invalid-audio-qa.wav`（40 字节）。
 - 本机另有一个不属于本轮的旧开发实例在运行：`node node_modules/.bin/electron . --user-data-dir=/tmp/printemps-native-menu-qa`（PID 51019/51020，已运行 4 小时以上），进程名也叫 Electron。没有动它；如确认无用可由用户关闭。
@@ -73,8 +73,8 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 下一步（按优先级）
 
-1. 把本轮全部源码改动（IPC 前缀、取消提示、画板 30/03/04/13 对齐）合并为一次新包/CI（`pnpm package` + `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`），在新签名包上只复核变更点。
+1. 已完成：049a3d8 新包 + CI，签名包上复核了变更屏幕（详见 acceptance.md 末节）。若再有改动，仍按“合并后一次打包”的原则。
 2. 画板对照已全部完成；后续设计变更走同样流程（先 Pen 后代码，PNG 重新导出）。
-3. 新包出来后只需复核变更点（技术详情文案、视觉修正），本轮已在 18799ce 上通过的原生回归不必重复整套跑。
+3. 可选：在 049a3d8 签名包上重跑一遍 18799ce 已过的原生回归（导入回滚、强杀恢复、裁剪/导出、EACCES、取消），本轮只做了变更屏幕的复核。
 4. 仍缺原生证据：导出写入失败（磁盘满/只读导出目录）、离线缺模型下载失败、拖放导入。
 5. 持续在 acceptance.md 和 implementation-status.md 区分已测/未测。物理输入法候选窗、人耳听感、Windows/Linux 桌面、真实差分升级、公证/公开发布不能冒充完成。

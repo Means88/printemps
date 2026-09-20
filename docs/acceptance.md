@@ -709,3 +709,17 @@ Same method (Chinese isolated-profile window over CDP; the model-download and do
 
 - Verified: Model library shows 贝斯/鼓组 first with 删除缓存, primary 下载 elsewhere, footer note and pagination on one row. Settings shows subtitle and four descriptions without inner scroll (834 px). Stem chooser: “‘吉他’ 的搜索结果 · 4 个声部”, note “已选 2 个声部，其中 1 个不在当前搜索结果中。”, chips retained; “theremin” shows the empty copy and “已选的 2 个声部仍保留…”. History: empty-search card and delete dialog as designed. Preview fixture: download dialog shows “2 个模型 · 共 155.2 MB”, “下载电吉他模型 10 %”, queue statuses, source aside; after the fixture failure the notice reads “下载中断 / 模型下载中断或网络不可用…” with 取消任务 / 重试下载.
 - Tests 96 passed / 3 conditional skipped (36 files); typecheck clean; production build passed. Boards 02 (size reference) and 11 (interaction spec sheet) were not restructured. All of this is later than the 18799ce signed package and CI.
+
+### 2026-09-20 · 049a3d8 signed package, three-platform CI and signed spot checks
+
+- Pushed `049a3d8876a57a7fd42fac5ea4c1224d48299fa4` (all board-alignment work, IPC-prefix stripping and cancelled-notice fix) and dispatched https://github.com/Means88/printemps/actions/runs/35501611789 . All three jobs succeeded (tests, installer build, packaged real analysis, upload). Artifacts, 7-day retention, archive digests:
+
+| Platform | Artifact ID | Archive bytes | Archive SHA256 |
+| --- | --- | --- | --- |
+| macOS ARM64 | 10602083580 | 765619167 | a2e8e9466eb1cbcf8acb4adc759a376e6d49c6e9c4aafb34f425a6e743f7b30f |
+| Windows X64 | 10602801440 | 344748462 | 6ebbea8a80a23e19f37ad0279357172c5e2adffaba146de04511eba1bad25450 |
+| Linux X64 | 10602403635 | 3045459894 | 2e2a501bbb887d7eae53e488fbce0e9b0dbf9fc33109f3f52a94bce18599d8fa |
+
+- Local `pnpm package` on the same SHA replaced `release/mac-arm64/Printemps.app` (Developer ID, notarization skipped; `/tmp/printemps-049a3d8-package.log`). `codesign --verify --deep --strict` passed (`/tmp/printemps-049a3d8-signature.log`); packaged Beat This/Essentia integration passed (`/tmp/printemps-049a3d8-packaged-analysis.log`). `app.asar` SHA256 `2004d3f922567161422afd9b181a6ea7f8ae7c16c107dc6a2e785c7aa57d5cf6`.
+- Signed clone `/private/tmp/Printemps-049a3d8-QA.app` with the isolated synthetic profile in Chinese: Home renders the intro and steps row with header order ? / 模型管理 / 设置; All projects shows the subtitle, 已删除 + 新建项目 and “共 1 条记录”; the stem chooser shows the new title, source row and presets; the workspace master reads `-30.0 dB` next to the speaker icon and 起始位置 uses the clip colour. Cmd+Q exited cleanly; profile language restored to English.
+- Native regressions that passed on 18799ce (import rollback, forced-exit recovery, trim, export, EACCES restart, cancel) were not rerun on this package; only the changed screens were spot-checked.
