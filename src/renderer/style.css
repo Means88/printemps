@@ -363,3 +363,24 @@ header>button{flex-shrink:0}
 .history-page .history-row>button.history-project:first-child{padding:0}
 .history-row-actions svg{width:18px;height:18px}
 @media(max-width:1280px){.history-heading{margin-top:16px;margin-bottom:24px}.history-count{margin:18px 0 12px}.history-page .history-row{min-height:84px}.history-inspector h2{margin-top:16px}.history-inspector h3{margin-top:18px;padding-top:18px}.history-inspector-actions{margin-top:18px}.history-pagination{margin-top:24px}}
+
+/* Pen 08: export the selected clip, preserving the shared segmented control. */
+.clip-export-dialog{width:min(520px,92vw);padding:28px;display:flex;flex-direction:column;gap:24px}
+.clip-export-dialog h2{font-size:20px;font-weight:500;margin:0}
+.export-clip-summary{padding:16px;background:#141a22;border-radius:10px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.export-clip-summary strong{font-size:15px;font-weight:500;overflow-wrap:anywhere}
+.export-clip-summary>span{font-size:12px;color:#a0aab8;font-variant-numeric:tabular-nums}
+.export-format-row{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:13px;color:#a0aab8}
+.export-format-options{display:flex;position:relative;isolation:isolate;width:208px;height:36px;padding:3px;background:#292f38;border-radius:10px;flex-shrink:0}
+.export-format-options::before{content:'';position:absolute;inset:3px auto 3px 3px;width:calc((100% - 6px)/2);border-radius:7px;background:#287cdd;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.export-format-options[data-value=flac]::before{transform:translateX(100%)}
+.clip-export-dialog .export-format-options label{position:relative;flex:1;display:grid;place-items:center;justify-content:center;margin:0;font-size:12px;border-radius:7px;cursor:pointer;color:#e8ecf2}
+.export-format-options input{position:absolute;width:1px;height:1px;opacity:0;padding:0;pointer-events:none}
+.export-format-options label:has(input:focus-visible){outline:2px solid #70abec;outline-offset:3px}
+.export-format-options:has(input:disabled){opacity:.5}
+.export-format-options label:has(input:disabled){cursor:default}
+.clip-export-dialog .export-specification{margin:0;font-size:12px;line-height:1.4}
+.clip-export-dialog .dialog-actions{margin:0;flex-wrap:wrap}
+.clip-export-dialog .dialog-actions>button{min-width:88px}
+.clip-export-dialog .export-success{margin:0;font-size:12px;color:#65d8be}
+@media(prefers-reduced-motion:reduce){.export-format-options::before{transition:none}}

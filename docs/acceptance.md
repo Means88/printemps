@@ -455,3 +455,10 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Browser fixture verification: English 1440×900 and 1280×800, Chinese 1440×900. Four rows, pagination and inspector actions fit. Chinese measured pagination bottom 839px and inspector bottom 808.69px in a 900px viewport, without horizontal overflow.
 - Clip selection enabled Export clip; moving to the next project page cleared selection and disabled export. Search found fixture 12; no-match search removed the inspector. Delete confirmation identified the selected project and cancellation returned without mutation.
 - `tests/project-search.test.ts` and `tests/pagination.test.ts`: 3 passed. `pnpm run build` passed. This restores an existing Pen layout, without changing the editable design. Native package remains at `82518c3`; these renderer changes are not yet included in it.
+
+## 2026-09-20 — Selected-clip export design and implementation
+
+- Pen 08 now represents the current single-clip export flow, retaining the previous whole-track page in an independent archive board. Saved editable Pen and refreshed `design/exports/08-export.png`; design/interaction notes in `design/clip-export/README.md`.
+- Renderer matches the 520px rounded dialog, colored clip identity, timecode duration, WAV/FLAC moving selection and actual sample rate/channel metadata. Native radio inputs retain keyboard arrow navigation. Action buttons remain right-aligned with one primary.
+- English 1280×800 preview verified keyboard WAV→FLAC switching, corresponding output specification, ENOSPC guidance, retry success with Open folder, and subsequent cancellation clearing old success/shortcut state. No horizontal or vertical clipping in the dialog's failure state. Fixture exports do not write actual files; prior native clip-range evidence remains separate.
+- Seven tests passed across export, export-folders, error-guidance and timecode; production build passed (`/tmp/printemps-clip-export-build.log`). Native package and remote CI predate these renderer/design updates.
