@@ -75,3 +75,13 @@ test('restart before the first result preserves the source clip rather than inve
  expect(restored).toMatchObject({sourceId:'source',clipId:'second',remainingTargets:['drums']})
  expect(restored?.retrySourceId).toBeUndefined()
 })
+
+test('a deliberate cancel with no partial results is not resurfaced on reopen, while a partial cancel still offers its remainder',()=>{
+ const base={id:'project',tracks:[{id:'source',clips:[{id:'clip'}]},{id:'remainder',clips:[{id:'remainder'}]}]} as unknown as import('../src/shared/domain').Project
+ const cancelledEmpty={...base,lastSeparation:{id:'task',sourceId:'source',clipId:'clip',targets:['bass'],state:'cancelled',completed:0,error:'Task cancelled'}} as unknown as import('../src/shared/domain').Project
+ expect(recoverSeparationTask(cancelledEmpty)).toBeNull()
+ const cancelledPartial={...base,lastSeparation:{id:'task',sourceId:'source',retrySourceId:'remainder',targets:['drums','bass'],state:'cancelled',completed:1}} as unknown as import('../src/shared/domain').Project
+ expect(recoverSeparationTask(cancelledPartial)).toMatchObject({phase:'cancelled',remainingTargets:['bass'],retrySourceId:'remainder'})
+ const failedEmpty={...base,lastSeparation:{id:'task',sourceId:'source',clipId:'clip',targets:['bass'],state:'failed',completed:0,error:'boom'}} as unknown as import('../src/shared/domain').Project
+ expect(recoverSeparationTask(failedEmpty)).toMatchObject({phase:'failed',clipId:'clip'})
+})
