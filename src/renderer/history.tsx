@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import {ArrowLeftIcon} from '@radix-ui/react-icons'
 import {paginate} from '../shared/pagination'
+import {matchesProject} from '../shared/project-search'
 import {ExportDialog} from './export-dialog'
 import type {Project} from '../shared/domain'
 const taskLabels={running:['处理中','Running'],complete:['已完成','Complete'],failed:['失败','Failed'],cancelled:['已取消','Cancelled'],interrupted:['已中断','Interrupted']} as const
@@ -23,7 +24,7 @@ export function History({projects,en,onOpen,onRefresh,onBack}:{projects:Project[
   setDeleting(null);await refresh()
  }catch(e){setError(String(e))}finally{setBusy(false)}}
  const items:{project:Project;archiveId?:string}[]=showArchived?archived:projects.map(project=>({project}))
- const filtered=items.filter(({project:p})=>taskFilter==='all'||(p.lastSeparation?.state||'none')===taskFilter).filter(({project:p})=>resultFilter==='all'||(p.tracks.some(track=>track.role!=='original')?resultFilter==='results':resultFilter==='empty')).filter(({project:p})=>`${p.name} ${p.sourceName} ${p.tracks.map(t=>`${t.name} ${t.stem}`).join(' ')}`.toLowerCase().includes(query.trim().toLowerCase())).sort((a,b)=>sort==='name'?a.project.name.localeCompare(b.project.name,en?'en':'zh-CN'):b.project.updatedAt.localeCompare(a.project.updatedAt))
+ const filtered=items.filter(({project:p})=>taskFilter==='all'||(p.lastSeparation?.state||'none')===taskFilter).filter(({project:p})=>resultFilter==='all'||(p.tracks.some(track=>track.role!=='original')?resultFilter==='results':resultFilter==='empty')).filter(({project:p})=>matchesProject(p,query)).sort((a,b)=>sort==='name'?a.project.name.localeCompare(b.project.name,en?'en':'zh-CN'):b.project.updatedAt.localeCompare(a.project.updatedAt))
  const result=paginate(filtered,page,4)
  const selected=!showArchived?(result.items.find(item=>item.project.id===selectedId)||result.items[0])?.project:undefined
  useEffect(()=>{if(page!==result.page)setPage(result.page)},[page,result.page])
