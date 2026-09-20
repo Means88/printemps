@@ -509,3 +509,11 @@ macOS arm64 干净依赖目录的冻结安装、66 项常规测试（2 项按条
 - Concurrent close/quit error handlers share one visible alert guard. Existing flush failure semantics still prevent close and retain pending changes.
 - Focused validation: `pnpm exec vitest run tests/save-failure.test.ts tests/project-session.test.ts tests/shutdown.test.ts` — 10 passed; `pnpm typecheck` passed.
 - This is source-level validation of the copy and existing save queue. The new wording has not yet been included in a signed package or rechecked in a native error dialog; earlier real EACCES recovery evidence remains separate.
+
+### 2026-09-20 · Native recovery wording verified (37869cc)
+
+- Production build completed (`/tmp/printemps-close-copy-build.log`). Launched the installed Electron runtime clone `/private/tmp/Printemps-Close-QA.app` against the current production `out/`, using only the existing isolated synthetic QA profile.
+- Made that QA project directory temporarily read-only, edited the focused clip name to `Localized recovery verified`, and invoked Cmd+Q without committing the field first.
+- Native accessibility output confirmed “Changes have not been saved”, the window-retention message, and the write-access / Retry save instruction. No private path was present in this native alert. The process stayed alive; the old saved project was unchanged.
+- Restored the exact original directory mode, dismissed the alert, and clicked Retry save. The editable name and waveform label updated; Cmd+Q then exited with code 0. Disk assertions confirmed the new name and unchanged source range 1.25–2.0s / timeline offset 4.25s, plus restored directory permissions.
+- This validates the current unpackaged production Electron window. It does not update the signed artifact or prove Windows/Linux native rendering. The workspace error banner still exposes the raw diagnostic; a future design-aligned recovery banner should keep details collapsed.
