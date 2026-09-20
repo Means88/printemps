@@ -1,3 +1,4 @@
+import {diagnosticDetail} from '../shared/diagnostic'
 export function importGuidance(message:string,en:boolean){
  const t=(zh:string,english:string)=>en?english:zh
  if(/ENOSPC|no space left|insufficient disk/i.test(message))return t('磁盘空间不足，请释放空间后重新选择音频。','Not enough disk space. Free space, then choose the audio again.')
@@ -10,7 +11,7 @@ export function ImportRecovery({message,en,busy,onChoose}:{message:string;en:boo
  const t=(zh:string,english:string)=>en?english:zh
  return <section className="save-recovery" aria-label={t('无法导入','Cannot import')}>
   <p role="alert">{t('无法导入','Cannot import')} · {importGuidance(message,en)}</p>
-  <details><summary>{t('技术详情','Technical details')}</summary><pre>{message}</pre></details>
+  <details><summary>{t('技术详情','Technical details')}</summary><pre>{diagnosticDetail(message)}</pre></details>
   <button disabled={busy} onClick={onChoose}>{t('选择其它音频','Choose another file')}</button>
  </section>
 }

@@ -1,3 +1,4 @@
+import {diagnosticDetail} from '../shared/diagnostic'
 export function errorGuidance(message:string,en:boolean,kind:'download'|'separation'|'export'='separation'){
  const text=(zh:string,english:string)=>en?english:zh
  if(/outside (?:private )?application storage/i.test(message))return kind==='export'?text('该目录由应用管理，请选择其它导出文件夹。','This folder is managed by the app. Choose another export folder.'):text('该目录由应用管理。请选择其它文件夹，或恢复默认目录。','This folder is managed by the app. Choose another folder or restore the default location.')
@@ -18,5 +19,5 @@ export function errorGuidance(message:string,en:boolean,kind:'download'|'separat
 }
 export function ErrorNotice({message,en,kind='separation'}:{message:string;en:boolean;kind?:'download'|'separation'|'export'}){
  if(!message)return null
- return <div className="error-notice" role="alert"><p>{errorGuidance(message,en,kind)}</p><details><summary>{en?'Technical details':'技术详情'}</summary><pre>{message}</pre></details></div>
+ return <div className="error-notice" role="alert"><p>{errorGuidance(message,en,kind)}</p><details><summary>{en?'Technical details':'技术详情'}</summary><pre>{diagnosticDetail(message)}</pre></details></div>
 }

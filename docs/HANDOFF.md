@@ -19,7 +19,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 源码、构建与远端
 
-- 代码 HEAD：`18799ce`（源码与 `9a23dd8` 相同，仅多文档）。本轮之后的提交只改 `docs/`；以 `git log -5` 查看最终检查点。
+- 代码检查点：签名包/CI 对应 `18799ce`。本轮末尾另有一个源码小修（`src/shared/diagnostic.ts` 剥离 IPC 错误前缀，三个技术详情面板接入，附回归测试；93 passed / 3 skipped，生产构建通过），**尚未进入任何包或 CI**。以 `git log -5` 查看最终检查点。
 - **最后推送、签名包和三平台 CI 现在都对应 `18799ce20b584cd4c5959dea86df2a2fd95b799d`**。旧的 9564b98 包与 CI 已被覆盖，不再是当前证据。
 - CI：https://github.com/Means88/printemps/actions/runs/35498158919 ，三平台成功；产物 ID/哈希见 acceptance.md 最后一节，2026-09-27 过期。workflow 只在 `pull_request` 和 `workflow_dispatch` 触发，推送不会自动跑；用 `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`。
 - 本地签名包 `release/mac-arm64/Printemps.app`（Developer ID，未公证），`app.asar` SHA256 `55ae0a0ea511058c8fd59294cdd3e455a5e6df54916e590fe3a07b6eaf62a151`。日志：`/tmp/printemps-18799-package.log`、`-signature.log`、`-packaged-analysis.log`、`-full-tests.log`（92 passed / 3 skipped）。
@@ -30,8 +30,9 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 1. 检查了上一轮恢复分离的完成画面：Other/Drums 各 0.75 s、offset 4.25，来源片段隐藏、同轨 2 秒片段保留。
 2. IME：用 CDP `Input.imeSetComposition` 走 Chromium 真实组合管线，剪辑名和项目名在组合期间 Enter/Escape 不提交不失焦，提交中文后保存落盘（`你好世界`、`测试项目`）。**这不是物理拼音候选窗实操**，那一项仍需用户本人或有屏幕控制的环境确认。
 3. 真实播放：原生窗口 AudioContext running、默认输出设备（MacBook Air 扬声器）outputLatency 26 ms，母线分析仪读到真实信号；节拍器 120 BPM 每 0.499 s 一次点击，峰值与 −12 dB×母线增益一致。**证明信号到达系统默认设备，不证明人耳听感。**
-4. 签名包 18799ce 原生验收：原生文件选择器导入 40 字节损坏 WAV → 紧凑横幅 52 px（展开 72.5 px），项目目录无残留；真实 drums 分离 33% 时 `kill -9` 主进程 → 包内 Python 1 s 内退出 → 重启恢复 interrupted 并保留 `clipId` → Retry 重开预选声部弹窗 → Start 完成（~48 s），结果 0–2 s、offset 8，来源轨全部片段消费后整轨隐藏。Cmd+Q 1 s 内退出，无 singleton 锁和残留进程。
-5. 排除了一个疑似缺陷：关窗后用 AppleScript `tell application "Electron" to quit` 不退出，是因为本机还运行着另一个同名 Electron 进程（见下），对 QA 进程直接 Cmd+Q 正常退出。
+4. 签名包 18799ce 原生验收（第一批）：原生文件选择器导入 40 字节损坏 WAV → 紧凑横幅 52 px（展开 72.5 px），项目目录无残留；真实 drums 分离 33% 时 `kill -9` 主进程 → 包内 Python 1 s 内退出 → 重启恢复 interrupted 并保留 `clipId` → Retry 重开预选声部弹窗 → Start 完成（~48 s），结果 0–2 s、offset 8，来源轨全部片段消费后整轨隐藏。Cmd+Q 1 s 内退出，无 singleton 锁和残留进程。
+5. 签名包 18799ce 原生验收（第二批，acceptance.md 最后一节）：Source out 精确裁剪落盘并复原；FLAC 剪辑经真实文件夹面板导出 0.75 s 24-bit，面板 Escape 取消后无文件、弹窗回到空闲；项目目录只读 → 改名 → 紧凑 EACCES 横幅 → 恢复权限 → Retry save 落盘 → Cmd+Q → 重启保留；缓存 bass 二次分离 33% 取消 → Python 3 s 内退出、任务 cancelled、来源片段保留、无新轨、Dismiss 清除提示。
+6. 排除了一个疑似缺陷：关窗后用 AppleScript `tell application "Electron" to quit` 不退出，是因为本机还运行着另一个同名 Electron 进程（见下），对 QA 进程直接 Cmd+Q 正常退出。
 
 ## QA 自动化方法（可复用）
 
@@ -58,14 +59,15 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 修改先读取当前节点；复制节点会产生新 ID。显式定位曾比 fill_container 更稳定。保存后核实文件实际变化。
 - 本轮没有改动设计。
 
-## 已知小问题（未修）
+## 已知小问题
 
-- 导入失败横幅“技术详情”文本带有 IPC 包装前缀 `Error invoking remote method 'projects:import': Error:`，再接 FFmpeg 信息；建议在主进程或 renderer 剥掉前缀。属于文案打磨，不影响恢复流程。
-- 工作台在 Original 试听模式下，分轨列表整体置灰是预期行为（互斥试听）。
+- 已修（源码，未进包）：技术详情曾带 IPC 包装前缀 `Error invoking remote method '…': Error:`；现由 `diagnosticDetail` 统一剥离。
+- 未修：首页最近项目显示“6 tracks”，工作台显示“Tracks / 05”，因为首页把已全部消费、隐藏的来源轨也计入。需决定首页是否排除隐藏轨后再改。
+- 预期行为：Original 试听模式下分轨列表整体置灰（互斥试听）；中断分离的 Retry 会重开 Choose stems 预选来源与声部，需再点 Start separation。
 
 ## 下一步（按优先级）
 
-1. 在 18799ce 签名包补做剩余原生回归：剪辑精确裁剪/导出（含取消、失败）、多剪辑二次分离的失败/取消恢复、写入失败（EACCES）恢复与重启保留。这些此前只在 9564b98 或更早包验证过。
-2. 逐屏对照 Pen 画板（中文 1440×900、1280×800、英文长文案），列出并修正视觉偏差；修正后再合并为一次新包/CI，不要每个小改动重打大型包。
-3. 若修 IPC 前缀等小问题，与视觉修正一并进入下一轮包。
+1. 逐屏对照 Pen 画板（中文 1440×900、1280×800、英文长文案），列出并修正视觉偏差；连同 IPC 前缀修复、首页隐藏轨计数决定一并合并为一次新包/CI，不要每个小改动重打大型包。可复用本文“QA 自动化方法”截图对照。
+2. 新包出来后只需复核变更点（技术详情文案、视觉修正），本轮已在 18799ce 上通过的原生回归不必重复整套跑。
+3. 仍缺原生证据：导出写入失败（磁盘满/只读导出目录）、离线缺模型下载失败、拖放导入。
 4. 持续在 acceptance.md 和 implementation-status.md 区分已测/未测。物理输入法候选窗、人耳听感、Windows/Linux 桌面、真实差分升级、公证/公开发布不能冒充完成。

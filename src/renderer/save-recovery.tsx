@@ -1,3 +1,4 @@
+import {diagnosticDetail} from '../shared/diagnostic'
 export function SaveRecovery({message,en,onRetry}:{message:string;en:boolean;onRetry:()=>void}){
  const t=(zh:string,english:string)=>en?english:zh
  const reason=/ENOSPC|no space left|insufficient disk/i.test(message)
@@ -7,7 +8,7 @@ export function SaveRecovery({message,en,onRetry}:{message:string;en:boolean;onR
    :t('修改尚未保存，请重试。','Changes have not been saved. Please retry.')
  return <section className="save-recovery" aria-label={t('保存失败','Save failed')}>
   <p role="alert">{t('保存失败','Save failed')} · {reason}</p>
-  <details><summary>{t('技术详情','Technical details')}</summary><pre>{message}</pre></details>
+  <details><summary>{t('技术详情','Technical details')}</summary><pre>{diagnosticDetail(message)}</pre></details>
   <button onClick={onRetry}>{t('重试保存','Retry save')}</button>
  </section>
 }
