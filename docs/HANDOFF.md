@@ -19,7 +19,7 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 
 ## 源码、构建与远端
 
-- 代码检查点：**签名包与三平台 CI 对应 `049a3d8`**。其后有两批用户反馈修正（见 acceptance.md “Workspace feedback fixes” 与 “Second feedback round”），本地包 `9da5785` 含第一批；第二批（顶栏图标固定、logo 回首页、设备探测、导出对齐/导出音轨、字号缩小、返回箭头等）**尚未进包**，CI 按用户要求暂不触发。049a3d8 所含改动：画板 30/03/04/13/05/07/09/10/14/15/16 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`、首页引导文案与步骤行、顶栏图标顺序、声部弹窗标题/来源行/搜索/分类选中态/处理设备行、历史页副标题与“新建项目”主按钮、模型管理排序/主按钮/页脚、设置说明文字、声部搜索结果/空态、删除弹窗与空态卡、模型下载弹窗标题/计数/已缓存行、错误提示标题+图标与下载失败动作）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，96 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点（其后提交只改 docs）。
+- 代码检查点：**签名包与三平台 CI 对应 `049a3d8`**。其后有两批用户反馈修正（见 acceptance.md “Workspace feedback fixes” 与 “Second feedback round”），本地包 `9da5785` 含第一批；第二批（顶栏图标固定、logo 回首页、设备探测、导出对齐/导出音轨、字号缩小、返回箭头等）与设计系统 token 化**尚未进包**（本轮末尾会再打一次本地包），CI 按用户要求暂不触发。049a3d8 所含改动：画板 30/03/04/13/05/07/09/10/14/15/16 偏差决定的实现（总音量扬声器图标 + 内联电平、循环范围行、起始位置剪辑颜色、首页/全部项目只计可见音轨 `visibleTrackCount`、首页引导文案与步骤行、顶栏图标顺序、声部弹窗标题/来源行/搜索/分类选中态/处理设备行、历史页副标题与“新建项目”主按钮、模型管理排序/主按钮/页脚、设置说明文字、声部搜索结果/空态、删除弹窗与空态卡、模型下载弹窗标题/计数/已缓存行、错误提示标题+图标与下载失败动作）；`src/shared/diagnostic.ts` 剥离技术详情里的 IPC 错误前缀（三个面板接入）；`src/shared/task-recovery.ts` 不再在重开时复现无部分结果的已取消分离提示。均附回归测试，96 passed / 3 skipped，生产构建通过。以 `git log -5` 查看最终检查点（其后提交只改 docs）。
 - **最后推送、签名包和三平台 CI 现在都对应 `049a3d8876a57a7fd42fac5ea4c1224d48299fa4`**。18799ce 的原生回归证据仍有效（源码只在 UI 层变化），但其包与 CI 已被覆盖。
 - CI：https://github.com/Means88/printemps/actions/runs/35501611789 ，三平台成功；产物 ID/哈希见 acceptance.md 最后一节，2026-09-27 过期。workflow 只在 `pull_request` 和 `workflow_dispatch` 触发，推送不会自动跑；用 `gh workflow run native-build.yml --ref codex/clip-workspace-desktop`。
 - 本地签名包 `release/mac-arm64/Printemps.app`（Developer ID，未公证），`app.asar` SHA256 `2004d3f922567161422afd9b181a6ea7f8ae7c16c107dc6a2e785c7aa57d5cf6`。日志：`/tmp/printemps-049a3d8-package.log`、`-signature.log`、`-packaged-analysis.log`；18799ce 的日志 `/tmp/printemps-18799-*.log` 仍在。
@@ -53,6 +53,13 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 损坏音频夹具 `/tmp/printemps-invalid-audio-qa.wav`（40 字节）。
 - 本机另有一个不属于本轮的旧开发实例在运行：`node node_modules/.bin/electron . --user-data-dir=/tmp/printemps-native-menu-qa`（PID 51019/51020，已运行 4 小时以上），进程名也叫 Electron。没有动它；如确认无用可由用户关闭。
 - 临时路径可能被系统清理；不要提交缓存、私有音频、运行时或安装包。
+
+## 设计系统与 lint
+
+- 规范：`docs/DESIGN.md`（宏观规则）+ `AGENTS.md` “设计系统与规范”；token 在 `src/renderer/tokens.css`，`style.css` 只引用 `var(--token)`。
+- 门禁：`pnpm lint` = `oxlint`（`@shadcn/lint`，检查 TSX className）+ `scripts/design-lint.mjs`（检查 `style.css` 的原始颜色/刻度外数值/裸动效与 TSX 内联主题色），当前 0 违规；发现即修，不放宽。
+- Tailwind v4 仅提供映射到 token 的工具类（`src/renderer/tailwind.css`，无 preflight）；新界面布局类可用，主题值仍来自 token。
+- 已知副作用：`pnpm add` 重新链接后 `node_modules/.bin` 目标曾丢失可执行位，`chmod +x` 即可。
 
 ## 设计文件
 

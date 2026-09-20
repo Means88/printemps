@@ -1,0 +1,19 @@
+/* Tailwind v4 utilities on top of the Printemps tokens. No preflight: style.css owns the base styles.
+   Utility classes are for layout in new UI (docs/DESIGN.md §8); colours, type, radii and spacing map 1:1 to tokens.css. */
+@import './tokens.css';
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@theme inline{
+ --color-*:initial;
+ --color-bg:var(--bg);--color-bg-titlebar:var(--bg-titlebar);--color-surface:var(--surface);--color-surface-2:var(--surface-2);--color-panel:var(--panel);--color-raised:var(--raised);--color-raised-hover:var(--raised-hover);--color-field:var(--field);--color-overlay:var(--overlay);--color-scrim:var(--scrim);
+ --color-hairline:var(--hairline);--color-border:var(--border);--color-border-strong:var(--border-strong);
+ --color-text:var(--text);--color-text-strong:var(--text-strong);--color-text-muted:var(--text-muted);--color-text-faint:var(--text-faint);
+ --color-accent:var(--accent);--color-accent-bright:var(--accent-bright);--color-accent-soft:var(--accent-soft);--color-accent-text:var(--accent-text);--color-accent-tint:var(--accent-tint);--color-accent-tint-2:var(--accent-tint-2);
+ --color-good:var(--good);--color-warn:var(--warn);--color-warn-bg:var(--warn-bg);--color-warn-border:var(--warn-border);--color-danger:var(--danger);--color-danger-text:var(--danger-text);--color-danger-bg:var(--danger-bg);--color-danger-border:var(--danger-border);--color-solo:var(--solo);--color-mute:var(--mute);--color-stem-other:var(--stem-other);
+ --text-*:initial;
+ --text-2xs:var(--text-2xs);--text-xs:var(--text-xs);--text-sm:var(--text-sm);--text-md:var(--text-md);--text-lg:var(--text-lg);--text-xl:var(--text-xl);--text-2xl:var(--text-2xl);--text-3xl:var(--text-3xl);--text-display:var(--text-display);
+ --radius-*:initial;
+ --radius-sm:var(--radius-sm);--radius-md:var(--radius-md);--radius-lg:var(--radius-lg);--radius-xl:var(--radius-xl);--radius-2xl:var(--radius-2xl);--radius-pill:var(--radius-pill);
+ --spacing:4px;
+ --ease-settle:var(--ease-settle);
+}

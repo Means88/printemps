@@ -7,7 +7,8 @@
 - **新构建**：`049a3d8` 的本机 Developer ID 签名包（`release/mac-arm64/Printemps.app`，`app.asar` SHA256 `2004d3f9…d5cf6`）已完成深度严格签名校验与包内真实分析。三平台 CI [35501611789](https://github.com/Means88/printemps/actions/runs/35501611789) 在同一 SHA 全部通过并上传安装包。此包包含全部画板对齐改动、IPC 前缀剥离与取消提示修复；18799ce 上通过的原生回归未在此包重跑，只复核了变更屏幕。其后的用户反馈修正（hover 内边距、时间码防抖、拖动定位、分离中定位、进度行、侧栏动画）尚未进包。
 
 - 应用 0.1.1，仓库 `Means88/printemps`，应用标识 `com.means88.printemps`，统一 pnpm 11.6.0。
-- 最近普通测试：96 项通过、3 项条件跳过（含新增 IPC 前缀剥离、取消提示、可见音轨计数、错误标题回归；18799ce 时为 92 项，`/tmp/printemps-18799-full-tests.log`）；当前源码已通过生产构建与签名打包；退出保护另通过真实子进程、真实分析及签名包内强杀实测。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
+- 设计系统：`docs/DESIGN.md` + `src/renderer/tokens.css` + `pnpm lint`（oxlint/@shadcn/lint + design-lint）已落地，`style.css` 无原始颜色与刻度外数值。
+- 最近普通测试：97 项通过、3 项条件跳过（含新增 IPC 前缀剥离、取消提示、可见音轨计数、错误标题回归；18799ce 时为 92 项，`/tmp/printemps-18799-full-tests.log`）；当前源码已通过生产构建与签名打包；退出保护另通过真实子进程、真实分析及签名包内强杀实测。条件测试分别为真实分析、真实分离和约1.5GB缓冲压力测试，均有独立运行通过记录。
 - 本地完整包：`release/mac-arm64/Printemps.app`，功能内容截至 `049a3d8`，包含模型管理、设置整页、历史分栏、剪辑导出弹窗、IME 键盘保护、统一保存队列、紧凑保存/导入恢复提示及父进程退出保护。Developer ID 深度严格签名校验与包内真实分析通过；公证跳过。此签名包已验证：原生文件选择器导入损坏 WAV 的紧凑提示与回滚、真实分离 33% 时强杀主进程→包内 Python 1 秒内退出→重启恢复 interrupted→重试完成、Source out 精确裁剪、原生文件夹面板 FLAC 剪辑导出与面板取消、只读目录 EACCES 改名→恢复→Retry save→重启保留、缓存 bass 二次分离 33% 取消。排序重启保留来自 9564b98 包；中文剪辑改名、裁剪及 0.75 秒 FLAC 原生导出来自更早 9995a92 包，不能混同。
 - 最近三平台 CI：[35501611789](https://github.com/Means88/printemps/actions/runs/35501611789)，提交 `049a3d8`，Windows、macOS、Linux 的测试、安装包构建、包内分析及产物上传全部成功；产物保存 7 天，至 2026-09-27。macOS CI 包为 ad-hoc 签名，本机包为 Developer ID 签名。Windows 分支的父进程句柄监视已随 CI 测试通过，但未做桌面实测。
 - 未创建公开 Release，未完成真实发布服务、安装升级或公证验收。

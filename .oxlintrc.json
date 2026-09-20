@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": [
+    "@shadcn/lint"
+  ],
+  "ignorePatterns": [
+    "out/**",
+    "release/**",
+    "dist/**",
+    "node_modules/**",
+    ".runtime/**",
+    ".venv/**",
+    "design/**",
+    "worker/**"
+  ],
+  "settings": {
+    "shadcn": {
+      "note": "See docs/DESIGN.md. Semantic class names from style.css are expected here (no-unknown-classes is off for that reason); colours, type, radii and spacing come from src/renderer/tokens.css, and className is for layout only."
+    }
+  },
+  "rules": {
+    "shadcn/no-raw-colors": "error",
+    "shadcn/no-arbitrary-values": "error",
+    "shadcn/require-static-classes": "error",
+    "shadcn/no-restyle": [
+      "error",
+      {
+        "allow": [
+          "layout"
+        ]
+      }
+    ]
+  },
+  "categories": {
+    "correctness": "off"
+  }
+}

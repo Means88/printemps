@@ -17,7 +17,9 @@
     "dist": "node scripts/verify-package-inputs.mjs && pnpm run build && electron-builder --publish never",
     "runtime:prepare": "node scripts/prepare-runtime.mjs",
     "test:integration": "node scripts/test-integration.mjs",
-    "preview:ui": "vite --config scripts/preview.vite.mjs"
+    "preview:ui": "vite --config scripts/preview.vite.mjs",
+    "lint:design": "node scripts/design-lint.mjs",
+    "lint": "oxlint && node scripts/design-lint.mjs"
   },
   "build": {
     "appId": "com.means88.printemps",
@@ -118,6 +120,8 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@shadcn/lint": "^0.1.1",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -125,6 +129,8 @@
     "electron": "^44.4.3",
     "electron-builder": "^26.15.3",
     "electron-vite": "^5.0.0",
+    "oxlint": "^1.83.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vite": "^7.3.6",
     "vitest": "^5.0.1"

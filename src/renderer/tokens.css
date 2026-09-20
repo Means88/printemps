@@ -1,0 +1,53 @@
+/* Printemps design tokens — the only place a colour, type step, radius, spacing step or duration is written as a literal.
+   Everything in style.css references these. Provenance: the dark DAW palette from design/Printemps.pen board 00 (2026-09-20). */
+:root{
+ /* Ground and surfaces (two depth levels: flat surfaces, floating overlays). */
+ --bg:#14171b;              /* app background */
+ --bg-titlebar:#101216;     /* title bar, darkest ground */
+ --surface:#1c2026;         /* project bar, lane list */
+ --surface-2:#20252d;       /* ruler, footer, inspector ground */
+ --panel:#242c37;           /* track heads, cards */
+ --raised:#292f38;          /* buttons, segmented controls */
+ --raised-hover:#354253;
+ --field:#141a22;           /* inputs, lists inside dialogs */
+ --overlay:#202630;         /* dialogs */
+ --scrim:#00000099;         /* dialog backdrop */
+ /* Edges: one cue per edge. Hairline separates siblings; border outlines a control. */
+ --hairline:#303640;
+ --border:#3a4350;
+ --border-strong:#46505e;
+ /* Text */
+ --text:#e8ecf2;
+ --text-strong:#f3f6fb;
+ --text-muted:#a0aab8;
+ --text-faint:#8593a7;
+ /* The single accent */
+ --accent:#287cdd;
+ --accent-bright:#4c9aff;   /* accent border, progress */
+ --accent-soft:#70abec;     /* links, eyebrow, focus ring */
+ --accent-text:#8fc0ff;     /* text on --accent-tint */
+ --accent-tint:#253954;     /* selected category / selected row */
+ --accent-tint-2:#24364d;   /* active task lane */
+ /* Status tones mean status */
+ --good:#75d8bc;
+ --warn:#e0b35a;
+ --warn-bg:#342922;
+ --warn-border:#725142;
+ --danger:#e57373;
+ --danger-text:#ffccd1;
+ --danger-bg:#553039;
+ --danger-border:#9b5364;
+ --solo:#665586;            /* solo/mute pressed states follow the DAW convention */
+ --mute:#664d2e;
+ /* Data colour for the remainder ("other") track; every other track colour comes from src/shared/stems.ts */
+ --stem-other:#4dd6ba;
+ /* Type steps (px). A screen uses at most three of these. */
+ --text-2xs:11px;--text-xs:12px;--text-sm:13px;--text-md:14px;--text-lg:16px;--text-xl:18px;--text-2xl:20px;--text-3xl:22px;--text-display:30px;
+ /* Radii: sm 3 (checkbox, tick), md 8 (buttons, fields, clips), lg 10 (segmented, cards), xl 12 (banners, panels), 2xl 16 (dialogs), pill 999 */
+ --radius-sm:3px;--radius-md:8px;--radius-lg:10px;--radius-xl:12px;--radius-2xl:16px;--radius-pill:999px;
+ /* Spacing scale */
+ --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;
+ /* Motion: arriving settles, leaving is quick. */
+ --dur-fast:120ms;--dur-base:200ms;--dur-slow:240ms;--ease-settle:cubic-bezier(.2,.8,.2,1);--ease-out:ease-out;
+}
+@media(prefers-reduced-motion:reduce){:root{--dur-fast:0ms;--dur-base:0ms;--dur-slow:0ms}}

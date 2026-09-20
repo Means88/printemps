@@ -21,6 +21,15 @@
 - 顶栏采用自绘 header + 原生窗口控件叠加（Pen 画板 29）：macOS 按钮在左，Windows/Linux 在右；预留系统安全区域，空白可拖动、控件 no-drag，不绘制假系统按钮。
 - 原生菜单由 Electron 绘制；菜单语言、勾选、禁用状态与工作区一致。空格等单键快捷键仅在工作区生效，避免抢占输入框和弹窗操作。
 
+## 设计系统与规范
+
+- 设计系统是事实来源，不是记忆。颜色、字号、圆角、间距、时长只在 `src/renderer/tokens.css` 写一次字面量；`style.css` 与所有新样式只引用 `var(--token)`。不写 `#hex`、不写刻度外的 `font-size`/`border-radius`/`gap`/`padding`、不发明 cubic-bezier。
+- 字号刻度 `--text-2xs…--text-display`（11/12/13/14/16/18/20/22/30），一屏最多三档；圆角表 sm 3 / md 8 / lg 10 / xl 12 / 2xl 16 / pill；间距刻度 `--space-*`（4…40）。缺档就说出来，不要写死。
+- 组合现有控件（button、`.icon`、`.segments`、`.fader`、`.dialog`、`ErrorNotice`、`SaveRecovery`），className 只做布局；改颜色/内边距/形状/字号要在组件里加变体并注释原因。TSX 的 `style={{}}` 只放几何与数据颜色（`--clip-color`、音轨色），不放主题色。
+- 一屏一个 primary；操作区右对齐、primary 在最右、secondary 在其左（弹窗、卡片、通知条一律如此）。每条边只用一种分界线索，两级深度，卡里不套卡，兄弟之间不画线。
+- 宏观规则见 `docs/DESIGN.md`；改任何界面之前先读，改完对照 1–8 节逐项自查（中文 1440×900 / 1280×800 与英文长文案）。
+- 机械检查：`pnpm lint`（`oxlint` + `@shadcn/lint` 检查 TSX className；`scripts/design-lint.mjs` 检查 `style.css` 与 TSX 内联主题色）。发现即 bug，用 token 或变体修，不得放宽规则、不得加 disable 注释。Tailwind v4 仅提供映射到 token 的工具类（`src/renderer/tailwind.css`，无 preflight），新界面的布局类可以用它；主题值仍来自 token。
+
 ## 音频与数据规则
 
 - 原始音频和分离结果存于应用私有目录，不提供直接打开结果文件的入口。导出 WAV/FLAC 创建独立副本，外部修改不得影响试听。
