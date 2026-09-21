@@ -39,7 +39,9 @@ export const settingsSchema = z.object({
   modelDirectory: z.string().default(''), exportDirectory: z.string().default(''),
   proxyMode: z.enum(['system','direct','manual']).default('system'), proxyUrl: z.string().default(''),
   /** Interpreter used for separation only; empty means the bundled runtime. Analysis always uses the bundled one. */
-  pythonPath: z.string().default('')
+  pythonPath: z.string().default(''),
+  /** Origin that serves the model weights; empty means the default Hugging Face host. */
+  hfEndpoint: z.string().default('')
 })
 export type Settings = z.infer<typeof settingsSchema>
 export function rename(value: string): string {

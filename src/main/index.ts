@@ -18,7 +18,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 import {promises as fsPromises, constants as fsConstants} from 'node:fs'
 import path from 'node:path'
 import { ProjectStore } from './store'
-import { ModelCache } from './models'
+import { ModelCache, modelBaseUrl } from './models'
 import {TaskScheduler} from './task-scheduler'
 import { AnalysisService } from './analysis'
 import { SeparationService } from './separation'
@@ -143,6 +143,7 @@ handle('exports:open-directory',async(directory:string)=>{
  if(error)throw new Error(error)
 })
 let modelCache:ModelCache|null=null
+let modelBase=''
 let download:AbortController|null=null
 // Model downloads run on their own session so the proxy preference applies to them and nothing else.
 const downloadSession=session.fromPartition('printemps-downloads',{cache:false})
@@ -154,7 +155,8 @@ await applyProxy()
 {const saved=(await store.settings()).pythonPath;if(saved){try{await fsPromises.access(saved,fsConstants.X_OK);interpreter=saved}catch{interpreter=python}}}
 async function models(){
  const settings=await store.settings(),directory=settings.modelDirectory||path.join(store.root,'models')
- if(!modelCache||modelCache.directory!==directory){if(download||separation.busy)throw new Error('Wait for active task to finish');modelCache=new ModelCache(directory,undefined,undefined,downloadFetcher as unknown as typeof fetch)}
+ const base=modelBaseUrl(settings.hfEndpoint)
+ if(!modelCache||modelCache.directory!==directory||modelBase!==base){if(download||separation.busy)throw new Error('Wait for active task to finish');modelBase=base;modelCache=new ModelCache(directory,undefined,base,downloadFetcher as unknown as typeof fetch)}
  return modelCache
 }
 handle('models:list',async()=> (await models()).list())

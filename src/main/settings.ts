@@ -5,8 +5,9 @@ import {z} from 'zod'
 import {ProjectStore} from './store'
 import type {Settings} from '../shared/domain'
 import {normalizeProxyUrl} from './proxy'
+import {normalizeEndpoint} from './models'
 export type DirectoryKind='modelDirectory'|'exportDirectory'
-const preferences=z.object({language:z.enum(['zh','en']).optional(),device:z.enum(['auto','cpu','cuda','mps']).optional(),proxyMode:z.enum(['system','direct','manual']).optional(),proxyUrl:z.string().max(400).optional()}).strict()
+const preferences=z.object({language:z.enum(['zh','en']).optional(),device:z.enum(['auto','cpu','cuda','mps']).optional(),proxyMode:z.enum(['system','direct','manual']).optional(),proxyUrl:z.string().max(400).optional(),hfEndpoint:z.string().max(400).optional()}).strict()
 export class SettingsService {
  private queue:Promise<unknown>=Promise.resolve()
  constructor(private store:ProjectStore,private modelBusy:()=>boolean){}
@@ -14,7 +15,7 @@ export class SettingsService {
   const next=this.queue.catch(()=>{}).then(async()=>this.store.saveSettings(await update(await this.store.settings())))
   this.queue=next;return next
  }
- save(value:unknown){const patch=preferences.parse(value);if(patch.proxyUrl!==undefined)patch.proxyUrl=normalizeProxyUrl(patch.proxyUrl);return this.change(current=>({...current,...patch}))}
+ save(value:unknown){const patch=preferences.parse(value);if(patch.proxyUrl!==undefined)patch.proxyUrl=normalizeProxyUrl(patch.proxyUrl);if(patch.hfEndpoint!==undefined)patch.hfEndpoint=normalizeEndpoint(patch.hfEndpoint);return this.change(current=>({...current,...patch}))}
  setDirectory(kind:DirectoryKind,directory:string){
   if(!['modelDirectory','exportDirectory'].includes(kind))throw new Error('Invalid directory type')
   return this.change(async current=>{

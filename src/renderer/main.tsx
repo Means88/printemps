@@ -50,7 +50,7 @@ function Name({value,onSave,en}:{value:string;onSave:(v:string)=>void;en:boolean
 function App(){
  const [separationBusy,setSeparationBusy]=useState(false)
  const [importError,setImportError]=useState('')
- const [projects,setProjects]=useState<Project[]>([]),[project,setProject]=useState<Project|null>(null),[settings,setSettings]=useState<Settings>({language:'zh',device:'auto',modelDirectory:'',exportDirectory:'',proxyMode:'system',proxyUrl:'',pythonPath:''}),[settingsOpen,setSettingsOpen]=useState(false),[error,setError]=useState(''),[busy,setBusy]=useState(false),[search,setSearch]=useState(''),[playing,setPlaying]=useState(false),[time,setTime]=useState(0)
+ const [projects,setProjects]=useState<Project[]>([]),[project,setProject]=useState<Project|null>(null),[settings,setSettings]=useState<Settings>({language:'zh',device:'auto',modelDirectory:'',exportDirectory:'',proxyMode:'system',proxyUrl:'',pythonPath:'',hfEndpoint:''}),[settingsOpen,setSettingsOpen]=useState(false),[error,setError]=useState(''),[busy,setBusy]=useState(false),[search,setSearch]=useState(''),[playing,setPlaying]=useState(false),[time,setTime]=useState(0)
  const [historyOpen,setHistoryOpen]=useState(false),[modelsOpen,setModelsOpen]=useState(false)
  const [dragging,setDragging]=useState(false),[loadingAudio,setLoadingAudio]=useState(false)
  const [inspectorCollapsed,setInspectorCollapsed]=useState(false)
