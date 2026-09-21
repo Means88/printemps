@@ -3,7 +3,7 @@ import json
 import sys
 
 # What separate.py and the vendored BS-Roformer implementation import.
-REQUIRED = ('numpy', 'soundfile', 'yaml', 'torch', 'einops', 'rotary_embedding_torch', 'beartype')
+REQUIRED = ('numpy', 'soundfile', 'yaml', 'torch', 'einops', 'rotary_embedding_torch', 'beartype', 'packaging')
 
 def main():
     sys.stdin.readline()
