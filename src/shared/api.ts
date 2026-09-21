@@ -50,4 +50,5 @@ export interface DesktopAPI {
 }
 declare global { interface Window { printemps: DesktopAPI } }
 
-export interface DeviceProbe{cuda:boolean;mps:boolean;auto:'cuda'|'cpu';torch:string;missing:string[];custom:boolean}
+/** `backend` distinguishes an NVIDIA build from a ROCm one; both expose AMD/NVIDIA GPUs as `cuda`. */
+export interface DeviceProbe{cuda:boolean;mps:boolean;auto:'cuda'|'cpu';torch:string;backend:''|'cuda'|'rocm';missing:string[];custom:boolean}

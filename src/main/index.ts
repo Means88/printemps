@@ -42,8 +42,8 @@ const scheduler=new TaskScheduler()
 // Separation may run on an interpreter the user supplies (for CUDA); analysis always uses the bundled one.
 let interpreter=python
 const currentPython=()=>interpreter
-type Probe={cuda:boolean;mps:boolean;auto:'cuda'|'cpu';torch:string;missing:string[];custom:boolean}
-const probeInterpreter=(executable:string)=>runJsonWorker<Probe>(executable,path.join(runtimeRoot,'worker/device_probe.py'),{},new AbortController().signal,event=>event.type==='result'?{cuda:!!event.cuda,mps:!!event.mps,auto:event.auto==='cuda'?'cuda':'cpu',torch:String(event.torch||''),missing:Array.isArray(event.missing)?event.missing.map(String):[],custom:executable!==python}:undefined)
+type Probe={cuda:boolean;mps:boolean;auto:'cuda'|'cpu';torch:string;backend:''|'cuda'|'rocm';missing:string[];custom:boolean}
+const probeInterpreter=(executable:string)=>runJsonWorker<Probe>(executable,path.join(runtimeRoot,'worker/device_probe.py'),{},new AbortController().signal,event=>event.type==='result'?{cuda:!!event.cuda,mps:!!event.mps,auto:event.auto==='cuda'?'cuda':'cpu',torch:String(event.torch||''),backend:event.backend==='rocm'?'rocm':event.backend==='cuda'?'cuda':'',missing:Array.isArray(event.missing)?event.missing.map(String):[],custom:executable!==python}:undefined)
 const separation=new SeparationService(store,currentPython,path.join(runtimeRoot,'worker/separate.py'),task=>{if(win&&!win.isDestroyed())win.webContents.send('separation:progress',task)},undefined,scheduler)
 const analysis=new AnalysisService(store,python,path.join(runtimeRoot,'worker/analyze.py'),task=>{if(win&&!win.isDestroyed())win.webContents.send('analysis:progress',task)},undefined,scheduler)
 let quitReady=false,quitting=false

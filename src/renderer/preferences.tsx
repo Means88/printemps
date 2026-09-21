@@ -3,6 +3,9 @@ import {useEffect,useState} from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import type {Settings} from '../shared/domain'
 import type {DeviceProbe} from '../shared/api'
+
+/** A ROCm build reaches AMD GPUs through the same torch.cuda API, so name whichever backend the probe found. */
+function backendName(probe:DeviceProbe|null,unknown:string){return probe?.backend==='rocm'?'AMD ROCm':probe?.backend==='cuda'?'NVIDIA CUDA':unknown}
 import {DirectorySettings} from './directory-settings'
 import {UpdatePanel} from './update-panel'
 
@@ -12,11 +15,12 @@ export function Preferences({open,onOpenChange,en,settings,onChange}:{open:boole
  useEffect(()=>{if(!open)return;let live=true;window.printemps.probeDevice().then(result=>{if(live)setProbe(result)}).catch(()=>{});return ()=>{live=false}},[open])
  const [saving,setSaving]=useState(false),[error,setError]=useState('')
  const t=(zh:string,english:string)=>en?english:zh
+ const gpuName=backendName(probe,'NVIDIA CUDA / AMD ROCm')
  async function save(value:Partial<Pick<Settings,'language'|'device'|'proxyMode'|'proxyUrl'|'hfEndpoint'>>){setSaving(true);setError('');try{onChange(await window.printemps.saveSettings(value))}catch(e){setError(String(e))}finally{setSaving(false)}}
  return <Dialog.Root open={open} onOpenChange={value=>{if(!saving){setError('');onOpenChange(value)}}}><Dialog.Portal><Dialog.Overlay className="overlay preferences-overlay"/><Dialog.Content onEscapeKeyDown={preserveCompositionEscape} className="preferences-page">
  <Dialog.Title>{t('按你的习惯工作','Work your way')}</Dialog.Title><Dialog.Description className="preferences-lead">{t('语言、处理设备、推理环境、网络与存储位置','Language, processing device, inference environment, network and storage')}</Dialog.Description>
  <div className="preferences-fields"><label className="preference-row"><span><strong>{t('界面语言','Interface language')}</strong><small>{t('即时切换界面语言，不影响文件名。','Switches the interface immediately; file names are unchanged.')}</small></span><select disabled={saving} value={settings.language} onChange={e=>void save({language:e.target.value as 'zh'|'en'})}><option value="zh">简体中文</option><option value="en">English</option></select></label>
- <label className="preference-row"><span><strong>{t('处理设备','Processing device')}</strong><small>{t('优先使用可用加速设备；不可用时使用 CPU。','Uses an available accelerator first and falls back to the CPU.')}{probe&&<><br/>{t(`本机可用：CPU${probe.cuda?' · NVIDIA CUDA':''}${probe.mps?' · Apple MPS（实验性，需手动选择）':''}`,`Available here: CPU${probe.cuda?' · NVIDIA CUDA':''}${probe.mps?' · Apple MPS (experimental, manual only)':''}`)}</>}</small></span><select disabled={saving} value={settings.device} onChange={e=>void save({device:e.target.value as Settings['device']})}><option value="auto">{probe?t(`自动选择（当前将使用 ${probe.auto==='cuda'?'NVIDIA CUDA':'CPU'}）`,`Automatic (currently ${probe.auto==='cuda'?'NVIDIA CUDA':'CPU'})`):t('自动选择','Automatic')}</option><option value="cpu">CPU</option><option value="cuda">NVIDIA CUDA</option><option value="mps">{t('Apple MPS（实验性）','Apple MPS (experimental)')}</option></select></label>
+ <label className="preference-row"><span><strong>{t('处理设备','Processing device')}</strong><small>{t('优先使用可用加速设备；不可用时使用 CPU。','Uses an available accelerator first and falls back to the CPU.')}{probe&&<><br/>{t(`本机可用：CPU${probe.cuda?' · '+gpuName:''}${probe.mps?' · Apple MPS（实验性，需手动选择）':''}`,`Available here: CPU${probe.cuda?' · '+gpuName:''}${probe.mps?' · Apple MPS (experimental, manual only)':''}`)}</>}</small></span><select disabled={saving} value={settings.device} onChange={e=>void save({device:e.target.value as Settings['device']})}><option value="auto">{probe?t(`自动选择（当前将使用 ${probe.auto==='cuda'?gpuName:'CPU'}）`,`Automatic (currently ${probe.auto==='cuda'?gpuName:'CPU'})`):t('自动选择','Automatic')}</option><option value="cpu">CPU</option><option value="cuda">{gpuName}</option><option value="mps">{t('Apple MPS（实验性）','Apple MPS (experimental)')}</option></select></label>
  <InterpreterRow en={en} settings={settings} probe={probe} onChange={value=>{onChange(value);refreshProbe()}}/>
  <EndpointRow en={en} settings={settings} saving={saving} onSave={save}/>
  <ProxyRow en={en} settings={settings} saving={saving} onSave={save}/>
@@ -46,9 +50,10 @@ function InterpreterRow({en,settings,probe,onChange}:{en:boolean;settings:Settin
   if(!custom)return t('分离使用内置运行时。','Separation uses the bundled runtime.')
   if(!probe)return t('正在检查…','Checking…')
   if(probe.missing.length)return t(`缺少 ${probe.missing.join('、')}`,`Missing ${probe.missing.join(', ')}`)
-  return t(`torch ${probe.torch} · ${probe.cuda?'CUDA 可用':'未检测到 CUDA'}`,`torch ${probe.torch} · ${probe.cuda?'CUDA available':'no CUDA detected'}`)
+  const name=backendName(probe,'GPU')
+  return t(`torch ${probe.torch} · ${probe.cuda?name+' 可用':'未检测到 '+name}`,`torch ${probe.torch} · ${probe.cuda?name+' available':'no '+name+' detected'}`)
  }
- return <div className="preference-row proxy-row"><span><strong>{t('推理环境','Inference environment')}</strong><small>{t('默认使用内置运行时，仅 CPU。要用 NVIDIA CUDA，可指定自备的 Python 环境，只影响分离，分析仍用内置运行时。','The bundled runtime is CPU only. To use NVIDIA CUDA, point this at your own Python environment; it affects separation only, analysis keeps using the bundled runtime.')}</small></span>
+ return <div className="preference-row proxy-row"><span><strong>{t('推理环境','Inference environment')}</strong><small>{t('默认使用内置运行时，仅 CPU。要用 NVIDIA CUDA 或 AMD ROCm，可指定自备的 Python 环境，只影响分离，分析仍用内置运行时。','The bundled runtime is CPU only. To use NVIDIA CUDA or AMD ROCm, point this at your own Python environment; it affects separation only, analysis keeps using the bundled runtime.')}</small></span>
  <div className="proxy-fields"><button className="directory-path" title={settings.pythonPath} disabled={busy} onClick={()=>pick()}>{settings.pythonPath||t('内置运行时','Bundled runtime')}<span aria-hidden="true">…</span></button>
  <small>{status()}</small>
  <div className="dialog-actions"><button disabled={busy||!custom} onClick={()=>pick(true)}>{t('恢复默认','Use default')}</button></div>

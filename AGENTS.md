@@ -40,7 +40,7 @@
 - 主进程与 Python worker 之间用 UTF-8 通信：`runJsonWorker` 固定设 `PYTHONIOENCODING=utf-8`。Python 3.14 在 Windows 上仍按区域代码页解码 stdio，GBK 这类双字节页会把奇数个非 ASCII 字节后的反斜杠当成尾字节吞掉，使转义过的路径分隔符变成非法 JSON 转义——路径里有一个中文字符就足以让分离失败。不要移除这个环境变量。
 - 分离、分析任务由主进程调度；长任务不要阻塞界面。保存、关闭、切换项目和任务恢复须保留现有防丢失行为。
 - 三个平台的内置运行时统一是 **CPU 版 torch**：Linux 的默认 PyPI 轮子会捆绑整套 NVIDIA CUDA 运行库（约 2.5 GB），使 AppImage 超过 GitHub Release 单文件 2 GiB 上限，所以 `worker/requirements.txt` 用直接轮子 URL 钉 Linux 与 Windows 的 CPU 版 torch/torchaudio（macOS 走 PyPI）。不要为了 GPU 把 CUDA 轮子放回默认包，也不要改成 `--extra-index-url` + `unsafe-best-match`：那会让 macOS 的 torch 在两个源之间产生哈希歧义。
-- GPU 由用户在设置的「推理环境」里指定自备 Python 环境提供，**只作用于分离**；分析始终用内置运行时（它带固定版本的节拍模型）。`worker/device_probe.py` 校验该环境是否具备 separate.py 与内置 BS-Roformer 所需的包，缺包要明确列出而不是让分离崩掉。
+- GPU 由用户在设置的「推理环境」里指定自备 Python 环境提供，**只作用于分离**；ROCm 版 PyTorch 通过同一套 `torch.cuda` 接口暴露 AMD 显卡，所以设备值仍是 `cuda`，界面名称由 `device_probe.py` 报告的 `backend`（`torch.version.hip` 区分）决定，不要把标签写死成 NVIDIA。分析始终用内置运行时（它带固定版本的节拍模型）。`worker/device_probe.py` 校验该环境是否具备 separate.py 与内置 BS-Roformer 所需的包，缺包要明确列出而不是让分离崩掉。
 - Beat This 用于节拍分析，Essentia WASM 用于调性分析。小型分析资源随包携带；不要将模型推断值当作绝对正确的乐理事实。
 
 - 音轨包含多个剪辑；`start/end` 是私有源文件内的秒数，`offset` 是项目时间轴上的起点。分割与裁剪只修改元数据，试听按 source range 与 offset 映射，空隙静音。
