@@ -3,7 +3,7 @@
 ## 前提
 
 - 仓库目前是 **private**。GitHub Pages 在私有仓库需要付费计划；私有仓库的 Release 资产也无法匿名下载，electron-updater 的 GitHub provider 同样需要 token。要让 printemps.dev 对外可用，需要把 `Means88/printemps` 设为 public，或者新建一个公开的发布仓库并把 `site/app.js` 的 `REPO` 与 `package.json#build.publish` 指向它。这是产品决定，未在代码里替你做。
-- macOS 包若未公证，用户首次打开要在“系统设置 › 隐私与安全性”放行一次；公证配置见下文，CI 上没有证书时为 ad-hoc 签名（提示“已损坏”），所以 macOS 资产建议用本机 Developer ID 打出的 DMG 覆盖。公证见下文。
+- macOS 公证已打通（2026-09-21 首次成功，凭据为 App Store Connect API Key，CI 五个 secret 已配齐）。未公证的包用户首次打开要在“系统设置 › 隐私与安全性”放行一次；配置见下文，CI 上没有证书时为 ad-hoc 签名（提示“已损坏”），所以 macOS 资产建议用本机 Developer ID 打出的 DMG 覆盖。公证见下文。
 
 ## 发一个版本
 
@@ -63,7 +63,11 @@ APPLE_API_KEY=<path>/AuthKey_XXXXXXXX.p8 APPLE_API_KEY_ID=XXXXXXXX APPLE_API_ISS
 spctl -a -vv -t install release-notarized/mac-arm64/Printemps.app
 ```
 
-看到 `source=Notarized Developer ID` 即通过，用户首次打开不再需要去“隐私与安全性”放行。electron-builder 先公证并 staple `.app`，再用它生成 DMG/zip，所以 DMG 里的应用已带 staple 票据。
+看到 `source=Notarized Developer ID` 即通过，用户首次打开不再需要去“隐私与安全性”放行。
+
+**DMG 本身不会被 staple**，`xcrun stapler validate <dmg>` 会说没有票据、`spctl -t install <dmg>` 会 rejected，这是 electron-builder 的既定行为（`dmg.sign` 默认 `false`，其文档说签 DMG 会与公证要求冲突），不是配置错误。Gatekeeper 评估的是用户真正启动的那个 `.app`，它已带票据。验证要对 `.app` 做，不要对 DMG 做。
+
+2026-09-21 实测：给 DMG 打上浏览器下载的隔离属性再挂载，里面的 `Printemps.app` 仍为 `accepted / source=Notarized Developer ID`，`stapler validate` 通过。
 
 `.p8` 是凭据：放在仓库之外，`.gitignore` 已屏蔽 `*.p8` 与 `AuthKey_*`。泄露后到 App Store Connect 吊销该密钥即可。
 

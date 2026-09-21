@@ -4,6 +4,7 @@
 
 ## 版本与产物
 
+- **已公证包**：`release-notarized/`（源码同 `b9776bd`）通过 Apple 公证并 staple，`spctl` 判定 `Notarized Developer ID`；公证不再是待办，CI secrets 已配齐但尚未跑过一次 CI 公证。
 - **最新本地包**：`b9776bd` 的 Developer ID 签名包与 DMG 在 `release-b9776bd/`（`app.asar` `bfdbab43…`，主进程 bundle 与本地构建一致；含全局按钮尺寸统一、Pen 整理后的画板基线）。上一包 `05ea070` 在 `release-05ea070/`（`app.asar` `bff7c4f8…`，主进程 bundle 与本地构建一致；含分析结果直接应用、控件缩小、网络代理）。上一包 `b17e7bb` 在 `release-b17e7bb/`（`app.asar` SHA256 `8ec1ff2a…83693`），含网络代理设置、导出音轨与对齐、MPS 分块修复、界面反馈修正；深度严格签名校验通过，未公证；隔离 profile 启动并保存代理设置验证通过，其它原生回归未在此包重跑。旧的 `release/` 包已被 electron-builder 清理步骤移除。
 - **上一构建**：`049a3d8` 的本机 Developer ID 签名包（已删除，`app.asar` SHA256 `2004d3f9…d5cf6`）已完成深度严格签名校验与包内真实分析。三平台 CI [35501611789](https://github.com/Means88/printemps/actions/runs/35501611789) 在同一 SHA 全部通过并上传安装包。此包包含全部画板对齐改动、IPC 前缀剥离与取消提示修复；18799ce 上通过的原生回归未在此包重跑，只复核了变更屏幕。其后的用户反馈修正（hover 内边距、时间码防抖、拖动定位、分离中定位、进度行、侧栏动画）尚未进包。
 
