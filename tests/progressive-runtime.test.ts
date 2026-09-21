@@ -33,7 +33,7 @@ test.runIf(!!modelDirectory)('real progressive and secondary separation preserve
   const resources=process.env.PRINTEMPS_TEST_RESOURCES
   const python=path.resolve(resources||'.runtime','python',process.platform==='win32'?'python.exe':'bin/python3')
   const script=resources?path.resolve(resources,'worker/separate.py'):path.resolve('worker/separate.py')
-  service=new SeparationService(store,python,script,task=>{
+  service=new SeparationService(store,()=>python,script,task=>{
    if(task.completedStems&&!published.includes(task.completedStems)){
     published.push(task.completedStems)
     console.info(`Published ${task.completedStems} real stem(s)`)

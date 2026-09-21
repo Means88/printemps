@@ -1,18 +1,31 @@
-"""Report which processing devices this runtime can use and what 'auto' resolves to."""
+"""Report whether this interpreter can run separation, which devices it offers, and what 'auto' resolves to."""
 import json
 import sys
 
+# What separate.py and the vendored BS-Roformer implementation import.
+REQUIRED = ('numpy', 'soundfile', 'yaml', 'torch', 'einops', 'rotary_embedding_torch', 'beartype')
+
 def main():
     sys.stdin.readline()
-    cuda = mps = False
+    missing = [name for name in REQUIRED if not _importable(name)]
+    version, cuda, mps, note = '', False, False, ''
+    if 'torch' not in missing:
+        try:
+            import torch
+            version = str(torch.__version__)
+            cuda = bool(torch.cuda.is_available())
+            mps = bool(getattr(torch.backends, 'mps', None) and torch.backends.mps.is_available())
+        except Exception as error:  # torch present but unusable
+            note = str(error)
+    print(json.dumps({'type': 'result', 'cuda': cuda, 'mps': mps, 'auto': 'cuda' if cuda else 'cpu',
+                      'torch': version, 'missing': missing, 'note': note}), flush=True)
+
+def _importable(name):
     try:
-        import torch
-        cuda = bool(torch.cuda.is_available())
-        mps = bool(getattr(torch.backends, 'mps', None) and torch.backends.mps.is_available())
-    except Exception as error:  # torch missing or broken: report CPU only
-        print(json.dumps({'type': 'result', 'cuda': False, 'mps': False, 'auto': 'cpu', 'note': str(error)}), flush=True)
-        return
-    print(json.dumps({'type': 'result', 'cuda': cuda, 'mps': mps, 'auto': 'cuda' if cuda else 'cpu'}), flush=True)
+        __import__(name)
+        return True
+    except Exception:
+        return False
 
 if __name__ == '__main__':
     main()

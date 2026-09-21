@@ -1,5 +1,11 @@
-torch==2.11.0
-torchaudio==2.11.0
+# Linux 的默认 PyPI torch 捆绑整套 NVIDIA CUDA 运行库（约 2.5 GB），会让 AppImage 超过
+# GitHub Release 单文件 2 GiB 上限。三个平台统一用 CPU 轮子；GPU 由用户在设置里
+# 指定自备的 Python 环境提供。macOS 与 Windows 的默认 PyPI 轮子本来就是 CPU 版，保持不变。
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.11.0+cpu ; sys_platform == 'linux'
+torch==2.11.0 ; sys_platform != 'linux'
+torchaudio==2.11.0+cpu ; sys_platform == 'linux'
+torchaudio==2.11.0 ; sys_platform != 'linux'
 beat-this==1.1.0
 numpy>=2,<3
 soundfile>=0.13,<1

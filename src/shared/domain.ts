@@ -37,7 +37,9 @@ export const settingsSchema = z.object({
   language: z.enum(['zh','en']).default('zh'),
   device: z.enum(['auto','cpu','cuda','mps']).default('auto'),
   modelDirectory: z.string().default(''), exportDirectory: z.string().default(''),
-  proxyMode: z.enum(['system','direct','manual']).default('system'), proxyUrl: z.string().default('')
+  proxyMode: z.enum(['system','direct','manual']).default('system'), proxyUrl: z.string().default(''),
+  /** Interpreter used for separation only; empty means the bundled runtime. Analysis always uses the bundled one. */
+  pythonPath: z.string().default('')
 })
 export type Settings = z.infer<typeof settingsSchema>
 export function rename(value: string): string {

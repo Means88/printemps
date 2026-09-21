@@ -71,7 +71,7 @@ test('real audio cropping feeds only the selected range to separation and export
   let finish!:(task:SeparationTask)=>void
   const done=new Promise<SeparationTask>(resolve=>finish=resolve)
   let expectedDuration=1
-  const service=new SeparationService(store,'unused','unused',task=>{if(['complete','failed'].includes(task.phase))finish(task)},async(_py,_script,request)=>{
+  const service=new SeparationService(store,()=>'unused','unused',task=>{if(['complete','failed'].includes(task.phase))finish(task)},async(_py,_script,request)=>{
    const input=await inspectWave(request.input);expect(input.duration).toBe(expectedDuration);expect(Math.max(...input.peaks)).toBeCloseTo(.2)
    const out=path.join(request.output,'out.wav'),other=path.join(request.output,'other.wav');await copyFile(request.input,out);await copyFile(request.input,other)
    return {type:'complete',outputs:[{stem:'drums',path:out}],other}

@@ -38,6 +38,8 @@
 - 二次分离剩余轨命名为 `{来源剪辑当前名称} - 其它`，英文为 `{来源剪辑当前名称} - Other`。
 - 声部选择和模型下载用弹窗；推理回工作区，以 loading 音轨显示进度，完成声部可试听。
 - 分离、分析任务由主进程调度；长任务不要阻塞界面。保存、关闭、切换项目和任务恢复须保留现有防丢失行为。
+- 三个平台的内置运行时统一是 **CPU 版 torch**：Linux 的默认 PyPI 轮子会捆绑整套 NVIDIA CUDA 运行库（约 2.5 GB），使 AppImage 超过 GitHub Release 单文件 2 GiB 上限，所以 `worker/requirements.txt` 在 Linux 上钉 `torch==2.11.0+cpu`。不要为了 GPU 把 CUDA 轮子放回默认包。
+- GPU 由用户在设置的「推理环境」里指定自备 Python 环境提供，**只作用于分离**；分析始终用内置运行时（它带固定版本的节拍模型）。`worker/device_probe.py` 校验该环境是否具备 separate.py 与内置 BS-Roformer 所需的包，缺包要明确列出而不是让分离崩掉。
 - Beat This 用于节拍分析，Essentia WASM 用于调性分析。小型分析资源随包携带；不要将模型推断值当作绝对正确的乐理事实。
 
 - 音轨包含多个剪辑；`start/end` 是私有源文件内的秒数，`offset` 是项目时间轴上的起点。分割与裁剪只修改元数据，试听按 source range 与 offset 映射，空隙静音。

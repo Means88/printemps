@@ -36,7 +36,7 @@ test('original separation publishes complete stem/residual pairs before later ta
    return {type:'complete',outputs:[{stem,path:path.join(request.output,'0.wav')}],other:path.join(request.output,'other.wav')}
   }
   let finished!:(task:SeparationTask)=>void
-  const service=new SeparationService(store,'unused','unused',task=>{if(['complete','failed'].includes(task.phase))finished(task)},runner)
+  const service=new SeparationService(store,()=>'unused','unused',task=>{if(['complete','failed'].includes(task.phase))finished(task)},runner)
   async function run(){const result=new Promise<SeparationTask>(resolve=>{finished=resolve});await service.start(id,sourceId,['drums','bass'],cache,'cpu');const task=await result;await expect.poll(()=>service.busy).toBe(false);return task}
   expect((await run()).phase).toBe('complete')
   const result=await store.load(id)

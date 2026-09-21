@@ -45,7 +45,9 @@ export interface DesktopAPI {
   settingsDirectories():Promise<{modelDirectory:string;exportDirectory:string}>
   chooseSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings|null>
   resetSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings>
+  choosePythonInterpreter():Promise<Settings|null>
+  resetPythonInterpreter():Promise<Settings>
 }
 declare global { interface Window { printemps: DesktopAPI } }
 
-export interface DeviceProbe{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}
+export interface DeviceProbe{cuda:boolean;mps:boolean;auto:'cuda'|'cpu';torch:string;missing:string[];custom:boolean}

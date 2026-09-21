@@ -37,6 +37,16 @@ pnpm dist --mac && gh release upload v0.1.2 release/*.dmg release/*.zip release/
 - `printemps.dev` 的 DNS 托管在 Cloudflare（nile/aliza.ns.cloudflare.com），当前 A/AAAA 仍指向 Cloudflare 代理地址，站点尚未生效。需要在 Cloudflare 把根域改为上面的 GitHub A/AAAA 记录（或 CNAME 到 `means88.github.io`），并把代理设为 **DNS only**（灰云）；若保留橙云代理，SSL/TLS 模式需为 Full。DNS 生效、GitHub 签发证书后，再在 Settings › Pages 勾选 **Enforce HTTPS**（API `https_enforced` 在证书签发前会返回 404）。
 - 本地预览：`python3 -m http.server 8080 --directory site`。
 
+## 产物体积与 GitHub 限制
+
+- GitHub Release 单个资产上限 **2 GiB**，超出会在上传时报 `HTTP 422: size must be less than 2147483648`。
+- 2026-09-21 的首次 CI 发布就撞上这条：Linux 的 AppImage 约 3.05 GB，因为 Linux 的默认 PyPI `torch` 捆绑整套 NVIDIA CUDA 运行库，而 macOS 与 Windows 的默认轮子本来就是 CPU 版（DMG 359 MB、exe 328 MB）。
+- 现在 `worker/requirements.txt` 在非 macOS 平台钉 `torch==2.11.0+cpu`（额外索引 `https://download.pytorch.org/whl/cpu`），锁文件里 19 个 CUDA 相关包已移除，包数从 41 降到 24。重新生成锁文件要带 `--index-strategy unsafe-best-match`：
+  ```bash
+  uv pip compile --python-version 3.14 --universal --generate-hashes --index-strategy unsafe-best-match worker/requirements.txt -o worker/requirements.lock
+  ```
+- 需要 GPU 的用户在设置的「推理环境」里指定自备 Python 环境，不走安装包。
+
 ## 公证
 
 electron-builder 26 的 `mac.notarize` 是**禁用**开关（设 `false` 才跳过），检测到下面任一组环境变量就自动 notarize 并 staple，`package.json` 不需要改。

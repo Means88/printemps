@@ -1,4 +1,4 @@
-import {promises as fs} from 'node:fs'
+import {promises as fs, constants as fsConstants} from 'node:fs'
 import path from 'node:path'
 import {randomUUID} from 'node:crypto'
 import {z} from 'zod'
@@ -29,6 +29,19 @@ export class SettingsService {
    // A task may have started while the native picker or filesystem probe was running.
    if(kind==='modelDirectory'&&this.modelBusy())throw new Error('Wait for model tasks to finish before changing the cache directory')
    return {...current,[kind]:real}
+  })
+ }
+ /** Store an interpreter path for separation. Capability checks happen in the main process probe. */
+ setPythonPath(value:string){
+  return this.change(async current=>{
+   const candidate=value.trim()
+   if(!candidate)return {...current,pythonPath:''}
+   if(!path.isAbsolute(candidate))throw new Error('Choose an absolute path to a Python interpreter')
+   const real=await fs.realpath(candidate)
+   const stat=await fs.stat(real)
+   if(!stat.isFile())throw new Error('Choose a Python executable, not a folder')
+   await fs.access(real,fsConstants.X_OK)
+   return {...current,pythonPath:real}
   })
  }
  async directories(){const current=await this.store.settings();return {modelDirectory:current.modelDirectory||path.join(this.store.root,'models'),exportDirectory:current.exportDirectory}}

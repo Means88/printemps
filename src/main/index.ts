@@ -15,6 +15,7 @@ import {proxyConfig,proxyCredentials} from './proxy'
 import {createDownloadFetcher} from './download-fetch'
 import {ExportFolders} from './export-folders'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import {promises as fsPromises, constants as fsConstants} from 'node:fs'
 import path from 'node:path'
 import { ProjectStore } from './store'
 import { ModelCache } from './models'
@@ -38,7 +39,12 @@ const store=new ProjectStore(app.getPath('userData'));await store.initialize();a
 const runtimeRoot=app.isPackaged?process.resourcesPath:app.getAppPath()
 const python=app.isPackaged?path.join(runtimeRoot,'python',process.platform==='win32'?'python.exe':'bin/python3'):path.join(runtimeRoot,'.venv',process.platform==='win32'?'Scripts/python.exe':'bin/python')
 const scheduler=new TaskScheduler()
-const separation=new SeparationService(store,python,path.join(runtimeRoot,'worker/separate.py'),task=>{if(win&&!win.isDestroyed())win.webContents.send('separation:progress',task)},undefined,scheduler)
+// Separation may run on an interpreter the user supplies (for CUDA); analysis always uses the bundled one.
+let interpreter=python
+const currentPython=()=>interpreter
+type Probe={cuda:boolean;mps:boolean;auto:'cuda'|'cpu';torch:string;missing:string[];custom:boolean}
+const probeInterpreter=(executable:string)=>runJsonWorker<Probe>(executable,path.join(runtimeRoot,'worker/device_probe.py'),{},new AbortController().signal,event=>event.type==='result'?{cuda:!!event.cuda,mps:!!event.mps,auto:event.auto==='cuda'?'cuda':'cpu',torch:String(event.torch||''),missing:Array.isArray(event.missing)?event.missing.map(String):[],custom:executable!==python}:undefined)
+const separation=new SeparationService(store,currentPython,path.join(runtimeRoot,'worker/separate.py'),task=>{if(win&&!win.isDestroyed())win.webContents.send('separation:progress',task)},undefined,scheduler)
 const analysis=new AnalysisService(store,python,path.join(runtimeRoot,'worker/analyze.py'),task=>{if(win&&!win.isDestroyed())win.webContents.send('analysis:progress',task)},undefined,scheduler)
 let quitReady=false,quitting=false
 const shutdown=new ShutdownCoordinator(()=>{quitting=true;download?.abort();const task=separation.status();if(task)separation.cancel(task.id);const a=analysis.status();if(a)analysis.cancel(a.id)},()=>separation.busy||analysis.busy||!!download||ioTasks>0,()=>{quitReady=true;app.quit()})
@@ -144,6 +150,8 @@ let proxySettings:Pick<Settings,'proxyMode'|'proxyUrl'>={proxyMode:'system',prox
 async function applyProxy(){const settings=await store.settings();proxySettings={proxyMode:settings.proxyMode,proxyUrl:settings.proxyUrl};await downloadSession.setProxy(proxyConfig(proxySettings))}
 const downloadFetcher=createDownloadFetcher(options=>net.request({...options,session:downloadSession}),()=>proxyCredentials(proxySettings))
 await applyProxy()
+// Restore the user's interpreter, but fall back to the bundled one if it has since disappeared.
+{const saved=(await store.settings()).pythonPath;if(saved){try{await fsPromises.access(saved,fsConstants.X_OK);interpreter=saved}catch{interpreter=python}}}
 async function models(){
  const settings=await store.settings(),directory=settings.modelDirectory||path.join(store.root,'models')
  if(!modelCache||modelCache.directory!==directory){if(download||separation.busy)throw new Error('Wait for active task to finish');modelCache=new ModelCache(directory,undefined,undefined,downloadFetcher as unknown as typeof fetch)}
@@ -167,12 +175,29 @@ handle('separation:start',async(projectId:string,sourceId:string,ids:string[],cl
 handle('separation:status',()=>separation.status())
 handle('separation:cancel',(id:string)=>separation.cancel(id))
 handle('settings:get',()=>store.settings())
-let deviceProbe:Promise<{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}>|null=null
-handle('device:probe',()=>{deviceProbe??=runJsonWorker<{cuda:boolean;mps:boolean;auto:'cuda'|'cpu'}>(python,path.join(runtimeRoot,'worker/device_probe.py'),{},new AbortController().signal,event=>event.type==='result'?{cuda:!!event.cuda,mps:!!event.mps,auto:event.auto==='cuda'?'cuda':'cpu'}:undefined).catch(e=>{deviceProbe=null;throw e});return deviceProbe})
+let deviceProbe:Promise<Probe>|null=null
+handle('device:probe',()=>{deviceProbe??=probeInterpreter(interpreter).catch(e=>{deviceProbe=null;throw e});return deviceProbe})
 const settingsService=new SettingsService(store,()=>!!download||separation.busy)
 handle('settings:save',async(value)=>{const saved=await settingsService.save(value);await applyProxy();return saved})
 handle('settings:directories',()=>settingsService.directories())
 handle('settings:reset-directory',(kind:DirectoryKind)=>settingsService.setDirectory(kind,''))
+handle('settings:choose-python',async()=>{
+ if(separation.busy)throw new Error('Wait for the separation to finish before changing the interpreter')
+ const result=await dialog.showOpenDialog(win,{properties:['openFile'],defaultPath:(await store.settings()).pythonPath||undefined})
+ if(result.canceled)return null
+ const candidate=result.filePaths[0]
+ const probe=await probeInterpreter(candidate).catch(e=>{throw new Error(`Cannot run this interpreter: ${e instanceof Error?e.message:String(e)}`)})
+ if(probe.missing.length)throw new Error(`This environment is missing ${probe.missing.join(', ')}. Install them with pip, then choose it again.`)
+ const saved=await settingsService.setPythonPath(candidate)
+ interpreter=saved.pythonPath||python;deviceProbe=null
+ return saved
+})
+handle('settings:reset-python',async()=>{
+ if(separation.busy)throw new Error('Wait for the separation to finish before changing the interpreter')
+ const saved=await settingsService.setPythonPath('')
+ interpreter=python;deviceProbe=null
+ return saved
+})
 handle('settings:choose-directory',async(kind:DirectoryKind)=>{
  if(!['modelDirectory','exportDirectory'].includes(kind))throw new Error('Invalid directory type')
  if(kind==='modelDirectory'&&(download||separation.busy))throw new Error('Wait for model tasks to finish')

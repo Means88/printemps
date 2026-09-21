@@ -1,5 +1,5 @@
 import {test,expect} from 'vitest'
-import {mkdtemp,mkdir,readdir,rm,symlink,realpath} from 'node:fs/promises'
+import {mkdtemp,mkdir,readdir,rm,symlink,realpath,writeFile} from 'node:fs/promises'
 import path from 'node:path'
 import {tmpdir} from 'node:os'
 import {ProjectStore} from '../src/main/store'
@@ -22,6 +22,15 @@ test('directory preferences preserve concurrent language edits and reject privat
   await expect(settings.setDirectory('exportDirectory',store.root)).rejects.toThrow('private')
   const alias=path.join(root,'alias');await symlink(store.root,alias,process.platform==='win32'?'junction':'dir')
   await expect(settings.setDirectory('modelDirectory',alias)).rejects.toThrow('private')
+  const fakePython=path.join(root,'python3');await writeFile(fakePython,'#!/bin/sh\nexit 0\n',{mode:0o755})
+  await settings.setPythonPath(fakePython)
+  expect((await store.settings()).pythonPath).toBe(await realpath(fakePython))
+  await expect(settings.setPythonPath('python3')).rejects.toThrow('absolute')
+  await expect(settings.setPythonPath(selected)).rejects.toThrow('not a folder')
+  const notExecutable=path.join(root,'plain.txt');await writeFile(notExecutable,'',{mode:0o644})
+  await expect(settings.setPythonPath(notExecutable)).rejects.toThrow()
+  await settings.setPythonPath('')
+  expect((await store.settings()).pythonPath).toBe('')
   busy=true;await expect(settings.setDirectory('modelDirectory','')).rejects.toThrow('Wait')
   expect((await store.settings()).modelDirectory).toBe(selected)
   await settings.setDirectory('exportDirectory',selected)

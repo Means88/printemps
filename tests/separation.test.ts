@@ -32,7 +32,7 @@ test('separation commits residual first, preserves concurrent edits, and failed/
   }
   const snapshots:SeparationTask[]=[]
   let resolveTask:(task:SeparationTask)=>void=()=>{}
-  const service=new SeparationService(store,'unused','unused',task=>{snapshots.push(task);if(['complete','failed','cancelled'].includes(task.phase))resolveTask(task)},runner)
+  const service=new SeparationService(store,()=>'unused','unused',task=>{snapshots.push(task);if(['complete','failed','cancelled'].includes(task.phase))resolveTask(task)},runner)
   async function run(source:string){const completed=new Promise<SeparationTask>(resolve=>{resolveTask=resolve});await service.start(id,source,['drums'],cache,'cpu');const task=await completed;await expect.poll(()=>service.busy).toBe(false);return task}
   const completed=await run(sourceId);expect(completed.phase).toBe('complete');expect(completed.targets).toEqual(['drums'])
   expect(completed.downloadModels).toEqual([{id:'drums',received:bytes.length*2,total:bytes.length*2,ready:true}])

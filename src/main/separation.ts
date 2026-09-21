@@ -15,7 +15,7 @@ import type { SeparationTask } from '../shared/api'
 export class SeparationService {
  private task:SeparationTask|null=null
  private controller:AbortController|null=null
- constructor(private store:ProjectStore,private python:string,private script:string,private notify:(task:SeparationTask)=>void,private runner=runSeparation,private scheduler=new TaskScheduler()){}
+ constructor(private store:ProjectStore,private python:()=>string,private script:string,private notify:(task:SeparationTask)=>void,private runner=runSeparation,private scheduler=new TaskScheduler()){}
  get busy(){return this.controller!==null}
  status(){return this.task?{...this.task}:null}
  cancel(id:string){if(this.task?.id===id)this.controller?.abort()}
@@ -75,7 +75,7 @@ export class SeparationService {
    if(cropped)await renderClip(sourceFile,input,clip,source.sampleRate,signal)
    const inputFile=cropped?input:sourceFile
    if(source.role==='original'){await this.executeOriginal(projectId,source,targets,directory,device,signal,clip,inputFile);committed=true;await this.finish('complete');this.emit({phase:'complete',progress:1});return}
-   const result=await this.runner(this.python,this.script,{input:inputFile,output:directory,device,targets},signal,p=>this.emit({phase:'separating',progress:p.progress,stem:p.stem}))
+   const result=await this.runner(this.python(),this.script,{input:inputFile,output:directory,device,targets},signal,p=>this.emit({phase:'separating',progress:p.progress,stem:p.stem}))
    const outputs:Track[]=[]
    const en=(await this.store.settings()).language==='en'
    const files=[{stem:'other',path:result.other},...result.outputs]
@@ -113,7 +113,7 @@ export class SeparationService {
   for(const [index,target] of targets.entries()){
    signal.throwIfAborted()
    const chunkDirectory=path.join(directory,String(index));await fs.mkdir(chunkDirectory)
-   const result=await this.runner(this.python,this.script,{input:remainder?this.store.assetPath(projectId,remainder.assetId):inputFile,output:chunkDirectory,device,targets:[target]},signal,p=>this.emit({phase:'separating',stem:target.id,progress:(index+p.progress)/targets.length}))
+   const result=await this.runner(this.python(),this.script,{input:remainder?this.store.assetPath(projectId,remainder.assetId):inputFile,output:chunkDirectory,device,targets:[target]},signal,p=>this.emit({phase:'separating',stem:target.id,progress:(index+p.progress)/targets.length}))
    const staged:string[]=[],outputs:Track[]=[]
    let published=false
    try{
