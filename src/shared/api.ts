@@ -47,6 +47,8 @@ export interface DesktopAPI {
   resetSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings>
   /** Opens a section of the online guide in the default browser. The topic is a fixed key, not a URL. */
   openDocumentation(topic:'inference-environment'):Promise<void>
+  /** Writes a redacted report of this session's failures to a file the user picks. Returns null if cancelled. */
+  exportDiagnostics():Promise<string|null>
   choosePythonInterpreter():Promise<Settings|null>
   resetPythonInterpreter():Promise<Settings>
 }

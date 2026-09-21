@@ -8,6 +8,7 @@ import {ShutdownCoordinator} from './shutdown'
 import {closeSaveFailure} from '../shared/save-failure'
 import electronUpdater from 'electron-updater'
 import {SettingsService,type DirectoryKind} from './settings'
+import {Diagnostics} from './diagnostics'
 import type {Settings} from '../shared/domain'
 import {UpdateService} from './updates'
 import { app, BrowserWindow, dialog, ipcMain, protocol, net, session, shell } from 'electron'
@@ -16,6 +17,7 @@ import {createDownloadFetcher} from './download-fetch'
 import {ExportFolders} from './export-folders'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import {promises as fsPromises, constants as fsConstants} from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
 import { ProjectStore } from './store'
 import { ModelCache, modelBaseUrl } from './models'
@@ -44,8 +46,8 @@ let interpreter=python
 const currentPython=()=>interpreter
 type Probe={cuda:boolean;mps:boolean;auto:'cuda'|'cpu';torch:string;backend:''|'cuda'|'rocm';missing:string[];custom:boolean}
 const probeInterpreter=(executable:string)=>runJsonWorker<Probe>(executable,path.join(runtimeRoot,'worker/device_probe.py'),{},new AbortController().signal,event=>event.type==='result'?{cuda:!!event.cuda,mps:!!event.mps,auto:event.auto==='cuda'?'cuda':'cpu',torch:String(event.torch||''),backend:event.backend==='rocm'?'rocm':event.backend==='cuda'?'cuda':'',missing:Array.isArray(event.missing)?event.missing.map(String):[],custom:executable!==python}:undefined)
-const separation=new SeparationService(store,currentPython,path.join(runtimeRoot,'worker/separate.py'),task=>{if(win&&!win.isDestroyed())win.webContents.send('separation:progress',task)},undefined,scheduler)
-const analysis=new AnalysisService(store,python,path.join(runtimeRoot,'worker/analyze.py'),task=>{if(win&&!win.isDestroyed())win.webContents.send('analysis:progress',task)},undefined,scheduler)
+const separation=new SeparationService(store,currentPython,path.join(runtimeRoot,'worker/separate.py'),task=>{if(task.phase==='failed'&&task.error)diagnostics.record('separation',task.error);if(win&&!win.isDestroyed())win.webContents.send('separation:progress',task)},undefined,scheduler)
+const analysis=new AnalysisService(store,python,path.join(runtimeRoot,'worker/analyze.py'),task=>{if(task.phase==='failed'&&task.error)diagnostics.record('analysis',task.error);if(win&&!win.isDestroyed())win.webContents.send('analysis:progress',task)},undefined,scheduler)
 let quitReady=false,quitting=false
 const shutdown=new ShutdownCoordinator(()=>{quitting=true;download?.abort();const task=separation.status();if(task)separation.cancel(task.id);const a=analysis.status();if(a)analysis.cancel(a.id)},()=>separation.busy||analysis.busy||!!download||ioTasks>0,()=>{quitReady=true;app.quit()})
 let flushInProgress:Promise<void>|null=null
@@ -92,6 +94,8 @@ protocol.handle('printemps',async request=>{
   return new Response(response.body,{status:response.status,headers})
  }catch{return new Response(null,{status:404})}
 })
+// Kept in memory only; nothing is written or sent unless the user exports it themselves.
+const diagnostics=new Diagnostics()
 function handle(channel:string,fn:(...args:any[])=>unknown){
  ipcMain.handle(channel,async(event,...args)=>{
   if(event.sender!==win.webContents||event.senderFrame!==win.webContents.mainFrame)throw new Error('Unauthorized request')
@@ -99,7 +103,7 @@ function handle(channel:string,fn:(...args:any[])=>unknown){
   if(updates.status().phase==='installing'&&channel!=='projects:save')throw new Error('Application is restarting to install an update')
   const tracked=['projects:import','projects:import-dropped','projects:save','tracks:edit','clips:edit','tracks:export','settings:save','settings:choose-directory','settings:reset-directory','projects:delete','projects:restore','projects:purge-archived'].includes(channel)
   if(tracked)ioTasks++
-  try{return await fn(...args)}finally{if(tracked)ioTasks--}
+  try{return await fn(...args)}catch(e){diagnostics.record(`ipc ${channel}`,e);throw e}finally{if(tracked)ioTasks--}
  })
 }
 handle('projects:list',()=>store.list())
@@ -185,6 +189,22 @@ handle('settings:directories',()=>settingsService.directories())
 handle('settings:reset-directory',(kind:DirectoryKind)=>settingsService.setDirectory(kind,''))
 /** The renderer picks a topic, never a URL, so it cannot ask the shell to open an arbitrary address. */
 const DOCUMENTATION:Record<string,string>={'inference-environment':'12-cuda'}
+handle('diagnostics:export',async()=>{
+ const stamp=new Date().toISOString().replace(/[:.]/g,'-').slice(0,19)
+ const result=await dialog.showSaveDialog(win,{defaultPath:`printemps-diagnostics-${stamp}.txt`,filters:[{name:'Text',extensions:['txt']}]})
+ if(result.canceled||!result.filePath)return null
+ const settings=await store.settings()
+ const report=diagnostics.report({
+  app:app.getVersion(),packaged:String(app.isPackaged),
+  platform:`${process.platform} ${process.arch} ${os.release()}`,
+  electron:process.versions.electron,chrome:process.versions.chrome,node:process.versions.node,
+  device:settings.device,interpreter:settings.pythonPath?'custom':'bundled',
+  downloadSource:settings.hfEndpoint||'default',proxy:settings.proxyMode,language:settings.language,
+  exportedAt:new Date().toISOString(),
+ })
+ await fsPromises.writeFile(result.filePath,report,'utf8')
+ return result.filePath
+})
 handle('docs:open',async(topic:string)=>{
  const section=DOCUMENTATION[topic]
  if(!section)throw new Error('Unknown documentation topic')

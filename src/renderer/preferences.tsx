@@ -25,7 +25,7 @@ export function Preferences({open,onOpenChange,en,settings,onChange}:{open:boole
  <EndpointRow en={en} settings={settings} saving={saving} onSave={save}/>
  <ProxyRow en={en} settings={settings} saving={saving} onSave={save}/>
  <DirectorySettings en={en} settings={settings} onChange={onChange}/>
- {error&&<p role="alert">{error}</p>}<UpdatePanel en={en}/></div>
+ {error&&<p role="alert">{error}</p>}<DiagnosticsRow en={en}/><UpdatePanel en={en}/></div>
  <div className="dialog-actions preferences-actions"><Dialog.Close className="primary" disabled={saving}>{t('完成','Done')}</Dialog.Close></div>
  </Dialog.Content></Dialog.Portal></Dialog.Root>
 }
@@ -74,4 +74,12 @@ function EndpointRow({en,settings,saving,onSave}:{en:boolean;settings:Settings;s
  <div className="proxy-fields"><select aria-label={t('模型下载源','Model download source')} disabled={saving} value={preset} onChange={e=>{const next=e.target.value as 'default'|'mirror'|'custom';setPreset(next);if(next==='default')void onSave({hfEndpoint:''});else if(next==='mirror')void onSave({hfEndpoint:MIRROR})}}>
  <option value="default">huggingface.co</option><option value="mirror">hf-mirror.com</option><option value="custom">{t('自定义','Custom')}</option></select>
  {preset==='custom'&&<input type="text" inputMode="url" autoComplete="off" spellCheck={false} aria-label={t('下载源地址','Download source address')} placeholder="https://hf-mirror.com" disabled={saving} value={address} onChange={e=>setAddress(e.target.value)} onBlur={commit} onKeyDown={e=>{if(e.nativeEvent.isComposing)return;if(e.key==='Enter'){e.preventDefault();commit()}if(e.key==='Escape'){e.preventDefault();setAddress(settings.hfEndpoint)}}}/>}</div></div>
+}
+
+function DiagnosticsRow({en}:{en:boolean}){
+ const t=(zh:string,english:string)=>en?english:zh
+ const [busy,setBusy]=useState(false),[saved,setSaved]=useState(''),[error,setError]=useState('')
+ async function exportLog(){setBusy(true);setError('');setSaved('');try{const file=await window.printemps.exportDiagnostics();if(file)setSaved(file)}catch(e){setError(String(e))}finally{setBusy(false)}}
+ return <div className="preference-row"><span><strong>{t('诊断日志','Diagnostic log')}</strong><small>{t('导出本次运行中记录的错误，用户名与文件路径已移除。报告问题时可附在 GitHub issue 里。','Exports the failures recorded this session, with your account name and file paths removed. Attach it to a GitHub issue when reporting a problem.')}{saved&&<><br/>{t('已保存到 ','Saved to ')}{saved}</>}{error&&<><br/>{error}</>}</small></span>
+ <div className="dialog-actions"><button disabled={busy} onClick={exportLog}>{t('导出日志','Export log')}</button></div></div>
 }

@@ -40,6 +40,7 @@ const api:DesktopAPI={
  chooseSettingsDirectory:kind=>ipcRenderer.invoke('settings:choose-directory',kind),
  resetSettingsDirectory:kind=>ipcRenderer.invoke('settings:reset-directory',kind),
  openDocumentation:topic=>ipcRenderer.invoke('docs:open',topic),
+ exportDiagnostics:()=>ipcRenderer.invoke('diagnostics:export'),
  choosePythonInterpreter:()=>ipcRenderer.invoke('settings:choose-python'),
  resetPythonInterpreter:()=>ipcRenderer.invoke('settings:reset-python'),
  getSettings:()=>ipcRenderer.invoke('settings:get'),
