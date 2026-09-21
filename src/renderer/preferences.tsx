@@ -55,7 +55,7 @@ function InterpreterRow({en,settings,probe,onChange}:{en:boolean;settings:Settin
  }
  return <div className="preference-row proxy-row"><span><strong>{t('推理环境','Inference environment')}</strong><small>{t('默认使用内置运行时，仅 CPU。要用 NVIDIA CUDA 或 AMD ROCm，可指定自备的 Python 环境，只影响分离，分析仍用内置运行时。','The bundled runtime is CPU only. To use NVIDIA CUDA or AMD ROCm, point this at your own Python environment; it affects separation only, analysis keeps using the bundled runtime.')}</small></span>
  <div className="proxy-fields"><button className="directory-path" title={settings.pythonPath} disabled={busy} onClick={()=>pick()}>{settings.pythonPath||t('内置运行时','Bundled runtime')}<span aria-hidden="true">…</span></button>
- <small>{status()}</small>
+ <small>{status()} <button type="button" className="link" onClick={()=>void window.printemps.openDocumentation('inference-environment').catch(e=>setError(String(e)))}>{t('查看配置说明','How to set this up')}</button></small>
  <div className="dialog-actions"><button disabled={busy||!custom} onClick={()=>pick(true)}>{t('恢复默认','Use default')}</button></div>
  {error&&<p role="alert">{error}</p>}</div></div>
 }

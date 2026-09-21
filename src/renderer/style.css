@@ -455,3 +455,5 @@ header>button{flex-shrink:0}
 
 /* macOS 26 draws inactive traffic lights as dark glass dots; a slightly lighter well behind them keeps them legible on the darkest ground (user report 2026-09-20). */
 .titlebar[data-platform=darwin]::before{content:'';position:absolute;left:0;top:0;bottom:0;width:160px;background:radial-gradient(ellipse 96px 40px at 56px 50%,var(--raised-hover) 0%,var(--panel) 45%,transparent 100%);pointer-events:none;-webkit-app-region:drag}
+.preference-row button.link{min-height:0;padding:0;border:0;background:none;color:var(--accent-soft);font-size:inherit}
+.preference-row button.link:hover:not(:disabled){background:none;text-decoration:underline}

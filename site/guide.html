@@ -7,7 +7,10 @@
 <footer><div class="container"><span>© 2026 Printemps · <span data-t="credit">模型致谢：</span> <a href="https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems" rel="noopener">noblebarkrr/BS-Roformer-MVSep-Mega-53-stems</a></span><span><a href="https://github.com/Means88/printemps" rel="noopener">GitHub</a> · <a href="https://github.com/Means88/printemps/releases" rel="noopener" data-t="notes">发布说明</a> · <a href="/guide" data-t="guideLink">使用说明</a> · <a href="/privacy" data-t="privacyPolicy">隐私政策</a></span></div></footer>
 <script>
 (()=>{const t={zh:{navFeatures:'功能',navDownload:'下载',navGuide:'使用说明',navPrivacy:'隐私',guideLink:'使用说明',credit:'模型致谢：',notes:'发布说明',privacyPolicy:'隐私政策',toggle:'EN'},en:{navFeatures:'Features',navDownload:'Download',navGuide:'Guide',navPrivacy:'Privacy',guideLink:'User guide',credit:'Model credit:',notes:'Release notes',privacyPolicy:'Privacy policy',toggle:'中文'}};
-let lang=(()=>{try{return localStorage.getItem('printemps-lang')}catch{return null}})()||(navigator.language.startsWith('zh')?'zh':'en');
+const deepLink=(location.hash.match(/^#(zh|en)-/)||[])[1];
+let lang=deepLink||(()=>{try{return localStorage.getItem('printemps-lang')}catch{return null}})()||(navigator.language.startsWith('zh')?'zh':'en');
 const render=()=>{document.documentElement.lang=lang==='zh'?'zh-CN':'en';for(const el of document.querySelectorAll('[data-t]'))el.textContent=t[lang][el.dataset.t];for(const el of document.querySelectorAll('[data-lang]'))el.classList.toggle('active',el.dataset.lang===lang);document.getElementById('toggle').textContent=t[lang].toggle};
-document.getElementById('toggle').addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';try{localStorage.setItem('printemps-lang',lang)}catch{}render()});render()})();
+document.getElementById('toggle').addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';try{localStorage.setItem('printemps-lang',lang)}catch{}render()});render();
+// The target was display:none while the other language was active, so scroll once it is shown.
+if(location.hash){const target=document.getElementById(location.hash.slice(1));if(target)target.scrollIntoView()}})();
 </script></body></html>

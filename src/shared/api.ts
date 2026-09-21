@@ -45,6 +45,8 @@ export interface DesktopAPI {
   settingsDirectories():Promise<{modelDirectory:string;exportDirectory:string}>
   chooseSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings|null>
   resetSettingsDirectory(kind:'modelDirectory'|'exportDirectory'):Promise<Settings>
+  /** Opens a section of the online guide in the default browser. The topic is a fixed key, not a URL. */
+  openDocumentation(topic:'inference-environment'):Promise<void>
   choosePythonInterpreter():Promise<Settings|null>
   resetPythonInterpreter():Promise<Settings>
 }

@@ -12191,6 +12191,18 @@
               "fontWeight": "normal"
             }
           ]
+        },
+        {
+          "type": "text",
+          "id": "iKqVD",
+          "x": 56,
+          "y": 537,
+          "name": "Setting link 2a 配置说明",
+          "fill": "#6FA8F5",
+          "content": "查看配置说明 ↗",
+          "fontFamily": "Noto Sans SC",
+          "fontSize": 13,
+          "fontWeight": "normal"
         }
       ]
     },

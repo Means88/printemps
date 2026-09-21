@@ -183,6 +183,14 @@ const settingsService=new SettingsService(store,()=>!!download||separation.busy)
 handle('settings:save',async(value)=>{const saved=await settingsService.save(value);await applyProxy();return saved})
 handle('settings:directories',()=>settingsService.directories())
 handle('settings:reset-directory',(kind:DirectoryKind)=>settingsService.setDirectory(kind,''))
+/** The renderer picks a topic, never a URL, so it cannot ask the shell to open an arbitrary address. */
+const DOCUMENTATION:Record<string,string>={'inference-environment':'12-cuda'}
+handle('docs:open',async(topic:string)=>{
+ const section=DOCUMENTATION[topic]
+ if(!section)throw new Error('Unknown documentation topic')
+ const language=(await store.settings()).language
+ await shell.openExternal(`https://printemps.dev/guide#${language}-${section}`)
+})
 handle('settings:choose-python',async()=>{
  if(separation.busy)throw new Error('Wait for the separation to finish before changing the interpreter')
  const result=await dialog.showOpenDialog(win,{properties:['openFile'],defaultPath:(await store.settings()).pythonPath||undefined})
