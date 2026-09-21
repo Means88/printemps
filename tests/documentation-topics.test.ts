@@ -44,8 +44,10 @@ test('each Windows command is offered in both shells with the right syntax',()=>
  expect(guide).toContain("localStorage.getItem(shellKey)")
  // Readers are not assumed to know how to open a terminal, so each shell carries its own how-to.
  for(const shell of ['powershell','cmd']) expect(guide.match(new RegExp(`<span data-shell="${shell}">`,'g'))?.length,shell).toBe(2)
+ // Win+R is the method that does not vary with the Windows version or display language.
  expect(guide).toContain('Windows 键')
  expect(guide).toContain('Windows key')
+ expect(guide.match(/<strong>R<\/strong>/g)?.length).toBe(4)
  // Long commands are copied, not retyped.
  expect(guide).toContain("button.className='copy'")
 })
