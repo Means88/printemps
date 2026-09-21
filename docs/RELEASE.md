@@ -40,11 +40,13 @@ pnpm dist --mac && gh release upload v0.1.2 release/*.dmg release/*.zip release/
 ## 产物体积与 GitHub 限制
 
 - GitHub Release 单个资产上限 **2 GiB**，超出会在上传时报 `HTTP 422: size must be less than 2147483648`。
-- 2026-09-21 的首次 CI 发布就撞上这条：Linux 的 AppImage 约 3.05 GB，因为 Linux 的默认 PyPI `torch` 捆绑整套 NVIDIA CUDA 运行库，而 macOS 与 Windows 的默认轮子本来就是 CPU 版（DMG 359 MB、exe 328 MB）。
-- 现在 `worker/requirements.txt` 在非 macOS 平台钉 `torch==2.11.0+cpu`（额外索引 `https://download.pytorch.org/whl/cpu`），锁文件里 19 个 CUDA 相关包已移除，包数从 41 降到 24。重新生成锁文件要带 `--index-strategy unsafe-best-match`：
+- 2026-09-21 的首次 CI 发布就撞上这条：Linux 的 AppImage 约 3.05 GB（改为 CPU 版依赖后实测降到 495 MB），因为 Linux 的默认 PyPI `torch` 捆绑整套 NVIDIA CUDA 运行库，而 macOS 与 Windows 的默认轮子本来就是 CPU 版（DMG 359 MB、exe 328 MB）。
+- 现在 `worker/requirements.txt` 用**直接轮子 URL**钉 Linux（x86_64 / aarch64）与 Windows 的 CPU 版 torch 和 torchaudio，macOS 仍走 PyPI。锁文件里的 CUDA 条目只剩下「既非 aarch64 也非 x86_64 的 Linux」这一分支，三个构建目标都不会装到。重新生成锁文件用原命令即可，不需要索引策略参数：
   ```bash
-  uv pip compile --python-version 3.14 --universal --generate-hashes --index-strategy unsafe-best-match worker/requirements.txt -o worker/requirements.lock
+  uv pip compile --python-version 3.14 --universal --generate-hashes worker/requirements.txt -o worker/requirements.lock
   ```
+- **不要改用 `--extra-index-url` + `--index-strategy unsafe-best-match`**：PyTorch 源与 PyPI 上的 macOS 轮子是同版本、不同文件、哈希不同，编译期记的是 PyPI 的哈希、安装期却会选 PyTorch 源的，导致 macOS `--require-hashes` 安装失败。直接 URL 没有这个歧义。
+- Python 版本或目标架构变化时，直接 URL 会明确报错，而不是悄悄把 CUDA 轮子装回来。
 - 需要 GPU 的用户在设置的「推理环境」里指定自备 Python 环境，不走安装包。
 
 ## 公证

@@ -1,11 +1,18 @@
 # Linux 的默认 PyPI torch 捆绑整套 NVIDIA CUDA 运行库（约 2.5 GB），会让 AppImage 超过
-# GitHub Release 单文件 2 GiB 上限。三个平台统一用 CPU 轮子；GPU 由用户在设置里
-# 指定自备的 Python 环境提供。macOS 与 Windows 的默认 PyPI 轮子本来就是 CPU 版，保持不变。
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.11.0+cpu ; sys_platform == 'linux'
-torch==2.11.0 ; sys_platform != 'linux'
-torchaudio==2.11.0+cpu ; sys_platform == 'linux'
-torchaudio==2.11.0 ; sys_platform != 'linux'
+# GitHub Release 单文件 2 GiB 上限。三个平台统一用 CPU 轮子；GPU 由用户在设置的
+# 「推理环境」里指定自备 Python 环境提供。
+#
+# macOS 走 PyPI（其默认轮子本来就是 CPU 版）。Linux 与 Windows 直接钉 PyTorch 的 CPU 轮子 URL：
+# 用额外索引会让 macOS 的 torch 在两个源之间产生歧义（同版本、不同文件、哈希不一致），直接 URL 没有这个问题。
+# Python 版本或目标架构变化时这里会明确报错，而不是悄悄把 CUDA 轮子装回来。
+torch==2.11.0 ; sys_platform == 'darwin'
+torchaudio==2.11.0 ; sys_platform == 'darwin'
+torch @ https://download.pytorch.org/whl/cpu/torch-2.11.0%2Bcpu-cp314-cp314-manylinux_2_28_x86_64.whl ; sys_platform == 'linux' and platform_machine == 'x86_64'
+torch @ https://download.pytorch.org/whl/cpu/torch-2.11.0%2Bcpu-cp314-cp314-manylinux_2_28_aarch64.whl ; sys_platform == 'linux' and platform_machine == 'aarch64'
+torch @ https://download.pytorch.org/whl/cpu/torch-2.11.0%2Bcpu-cp314-cp314-win_amd64.whl ; sys_platform == 'win32'
+torchaudio @ https://download.pytorch.org/whl/cpu/torchaudio-2.11.0%2Bcpu-cp314-cp314-manylinux_2_28_x86_64.whl ; sys_platform == 'linux' and platform_machine == 'x86_64'
+torchaudio @ https://download.pytorch.org/whl/cpu/torchaudio-2.11.0%2Bcpu-cp314-cp314-manylinux_2_28_aarch64.whl ; sys_platform == 'linux' and platform_machine == 'aarch64'
+torchaudio @ https://download.pytorch.org/whl/cpu/torchaudio-2.11.0%2Bcpu-cp314-cp314-win_amd64.whl ; sys_platform == 'win32'
 beat-this==1.1.0
 numpy>=2,<3
 soundfile>=0.13,<1

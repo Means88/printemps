@@ -27,8 +27,11 @@ test('directory preferences preserve concurrent language edits and reject privat
   expect((await store.settings()).pythonPath).toBe(await realpath(fakePython))
   await expect(settings.setPythonPath('python3')).rejects.toThrow('absolute')
   await expect(settings.setPythonPath(selected)).rejects.toThrow('not a folder')
-  const notExecutable=path.join(root,'plain.txt');await writeFile(notExecutable,'',{mode:0o644})
-  await expect(settings.setPythonPath(notExecutable)).rejects.toThrow()
+  // Windows grants X_OK to every readable file, so the executable bit is only checked elsewhere.
+  if(process.platform!=='win32'){
+   const notExecutable=path.join(root,'plain.txt');await writeFile(notExecutable,'',{mode:0o644})
+   await expect(settings.setPythonPath(notExecutable)).rejects.toThrow()
+  }
   await settings.setPythonPath('')
   expect((await store.settings()).pythonPath).toBe('')
   busy=true;await expect(settings.setDirectory('modelDirectory','')).rejects.toThrow('Wait')

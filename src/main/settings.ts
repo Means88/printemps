@@ -40,7 +40,8 @@ export class SettingsService {
    const real=await fs.realpath(candidate)
    const stat=await fs.stat(real)
    if(!stat.isFile())throw new Error('Choose a Python executable, not a folder')
-   await fs.access(real,fsConstants.X_OK)
+   // Windows reports X_OK for every readable file, so the executable bit is only meaningful elsewhere.
+   if(process.platform!=='win32')await fs.access(real,fsConstants.X_OK)
    return {...current,pythonPath:real}
   })
  }
