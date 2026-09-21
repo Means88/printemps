@@ -1,5 +1,7 @@
 # Printemps
 
+[![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-db61a2?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/Means88)
+
 An Electron audio separation and listening workspace, based on the approved Pen designs. Audio processing, analysis, playback and export run locally. Selected separation models and application updates are downloaded explicitly.
 
 ## Development
