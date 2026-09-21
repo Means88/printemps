@@ -68,6 +68,14 @@ BPM/调性/拍号/第一拍支持手动修改及主动分析；不自动分析�
 - 画板 09 新增「应用更新」行（当前版本 + 34px「检查更新」按钮），完成按钮下移，画板高 1040。
 - 已知：画板 30 内有若干 `enabled:false` 的历史节点（试听结果、在文件夹中显示、Other 轨等），复制出的新板也带着，不影响渲染；如需彻底清理可在 30 上删除后再同步。
 
+## 已发布 v0.1.1（2026-09-21）
+
+- 仓库已从 private 转为 **public**。转之前扫过全部历史：没有密钥文件或密钥串、没有音频/模型/安装包被提交过。提交者邮箱 `means88.x@gmail.com` 随 git 历史公开，这是常态，改需重写历史。
+- Release `v0.1.1` 基于 `6d630a4`，含中文路径分离失败的修复。产物：DMG 359 MB、mac zip 369 MB、AppImage 495 MB、Windows exe 328 MB，外加 blockmap 与 `latest*.yml`。macOS 已公证。
+- 已验证匿名可用：未登录调 `releases/latest` API 正常，`curl` 分段下载 DMG 返回 206；printemps.dev 下载区显示 `v0.1.1`，三个平台卡片各自指向正确资产。
+- 转 public 后三平台 CI 在标准 runner 上免费。
+- 仍未验证：真实安装、桌面运行、版本间自动升级。
+
 ## 发布页与发布流程
 
 - `site/` 是 printemps.dev 静态站（画板 33 `f2cQi`），`pages.yml` 部署（Pages 已启用并首次部署成功，Custom domain 已设为 printemps.dev，DNS 已于 2026-09-20 切到 Cloudflare 代理并生效，站点与 `/privacy` 在线；CSS/JS/主视觉带 `?v=<commit>` 缓存戳），`release.yml` 按 `v*` tag 出三平台草稿 Release；流程与 DNS 见 `docs/RELEASE.md`。`site/privacy.html` 是独立隐私政策页（画板 34 `VE9BB`，1440×2295），按 Apple App 隐私详情的数据类型分类写成 13 节（结论“不收集数据”，列出设备上处理的数据、Hugging Face/GitHub 两类联网、保留与删除、权限、追踪、儿童、权利、网站、变更、联系），中英双语共用 `printemps-lang` 语言偏好；导航“隐私”、首页隐私摘要与页脚均链到它，供以后上架需要隐私条款链接的渠道使用。首页 GitHub 链接改为图标。`site/guide.html` 是完整使用说明页（画板 35 `VeLMf`，14 节，中英，含快捷键表），导航/页脚/首页按钮均已链接；改功能或快捷键时要同步这页。**仓库仍是 private**：Pages 与匿名下载需要公开仓库或付费计划，这是待用户决定的事项。公证暂不处理。
