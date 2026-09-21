@@ -65,7 +65,8 @@
 - 初次安装：`corepack enable`，随后 `pnpm install --frozen-lockfile`。
 - 桌面开发：`pnpm dev`；UI 示例：`pnpm preview:ui`（5174 端口，`?lang=en`）。
 - 基础检查：`pnpm test`、`pnpm run build`（含 TypeScript 检查）；单独类型检查 `pnpm typecheck`。
-- 首次 Python 环境及分析资源准备按 `README.md`，Windows 使用 `.venv/Scripts/python.exe`。
+- 首次 Python 环境及分析资源准备按 `README.md`，Windows 使用 `.venv/Scripts/python.exe`。深入的测试与验证手段见 `docs/testing.md`。
+- `README.md` 只放项目介绍与基本开发流程；验证细节、历史实测数据、发布流程分别归 `docs/testing.md`、`docs/acceptance.md`、`docs/RELEASE.md`，不要再堆回 README。
 - 准备打包运行时：`pnpm runtime:prepare`；真实分析检查：`pnpm test:integration`。
 - `pnpm package` 生成解包应用；`pnpm dist` 生成安装包，两者均 `--publish never`。额外参数直接追加，例如 `pnpm run dist --linux AppImage --x64`。
 - 打包使用当前平台/架构的 `.runtime`，不要把某平台 Python/原生二进制复制到另一平台。
