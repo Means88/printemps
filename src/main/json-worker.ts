@@ -1,11 +1,21 @@
 import { spawn } from 'node:child_process'
 import { createInterface } from 'node:readline'
 
+/**
+ * The request is written as UTF-8, so the worker must read it as UTF-8. Python 3.14 still decodes
+ * stdio with the locale code page on Windows, and a DBCS page such as GBK swallows the backslash
+ * after an odd run of non-ASCII bytes as a trail byte, turning an escaped path separator into an
+ * invalid JSON escape. Any project path containing one CJK character was enough to break separation.
+ */
+export function workerEnvironment(parentPid:number=process.pid):NodeJS.ProcessEnv{
+ const environment:NodeJS.ProcessEnv={...process.env,PYTHONUNBUFFERED:'1',PYTHONNOUSERSITE:'1',PYTHONDONTWRITEBYTECODE:'1',PYTHONIOENCODING:'utf-8',PRINTEMPS_PARENT_PID:String(parentPid)}
+ delete environment.PYTHONHOME;delete environment.PYTHONPATH
+ return environment
+}
 export function runJsonWorker<T>(python:string,script:string,request:unknown,signal:AbortSignal,onEvent:(event:any)=>T|undefined,interpreterArgs:string[]=['-u']):Promise<T> {
  return new Promise((resolve,reject)=>{
   if(signal.aborted){reject(new Error('Task cancelled'));return}
-  const environment:NodeJS.ProcessEnv={...process.env,PYTHONUNBUFFERED:'1',PYTHONNOUSERSITE:'1',PYTHONDONTWRITEBYTECODE:'1',PRINTEMPS_PARENT_PID:String(process.pid)}
-  delete environment.PYTHONHOME;delete environment.PYTHONPATH
+  const environment=workerEnvironment()
   const child=spawn(python,[...interpreterArgs,script],{windowsHide:true,stdio:['pipe','pipe','pipe'],env:environment})
   let result:T|undefined,error='',diagnostics='',aborted=false,killTimer:ReturnType<typeof setTimeout>|undefined
   const stop=()=>{

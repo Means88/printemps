@@ -37,6 +37,7 @@
 - 分离必须展示剩余“其它”音轨。二次分离完成后保留并隐藏来源剪辑，在原位置插入剩余轨和目标轨；同轨其它剪辑保留，仅所有剪辑隐藏时隐藏来源轨，继承所需混音设置；失败/取消保留可恢复来源。
 - 二次分离剩余轨命名为 `{来源剪辑当前名称} - 其它`，英文为 `{来源剪辑当前名称} - Other`。
 - 声部选择和模型下载用弹窗；推理回工作区，以 loading 音轨显示进度，完成声部可试听。
+- 主进程与 Python worker 之间用 UTF-8 通信：`runJsonWorker` 固定设 `PYTHONIOENCODING=utf-8`。Python 3.14 在 Windows 上仍按区域代码页解码 stdio，GBK 这类双字节页会把奇数个非 ASCII 字节后的反斜杠当成尾字节吞掉，使转义过的路径分隔符变成非法 JSON 转义——路径里有一个中文字符就足以让分离失败。不要移除这个环境变量。
 - 分离、分析任务由主进程调度；长任务不要阻塞界面。保存、关闭、切换项目和任务恢复须保留现有防丢失行为。
 - 三个平台的内置运行时统一是 **CPU 版 torch**：Linux 的默认 PyPI 轮子会捆绑整套 NVIDIA CUDA 运行库（约 2.5 GB），使 AppImage 超过 GitHub Release 单文件 2 GiB 上限，所以 `worker/requirements.txt` 用直接轮子 URL 钉 Linux 与 Windows 的 CPU 版 torch/torchaudio（macOS 走 PyPI）。不要为了 GPU 把 CUDA 轮子放回默认包，也不要改成 `--extra-index-url` + `unsafe-best-match`：那会让 macOS 的 torch 在两个源之间产生哈希歧义。
 - GPU 由用户在设置的「推理环境」里指定自备 Python 环境提供，**只作用于分离**；分析始终用内置运行时（它带固定版本的节拍模型）。`worker/device_probe.py` 校验该环境是否具备 separate.py 与内置 BS-Roformer 所需的包，缺包要明确列出而不是让分离崩掉。
